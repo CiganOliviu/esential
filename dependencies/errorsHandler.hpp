@@ -42,5 +42,45 @@ public:
   std::string getOneDimensionalArrayElementsDivisionZeroError = "";
   std::string getOneDimensionalArrayElementsDivisionNegativeError = "";
 
+  std::string oneDimensionalArrayInitializationZeroError = "";
+  std::string oneDimensionalArrayInitializationNegativeError = "";
+
+  std::string checkIfSymetricOneDimensionalArrayZeroError = "";
+  std::string checkIfSymetricOneDimensionalArrayNegativeError = "";
+
+  std::string addValueOneDimensionalArrayZeroError = "";
+  std::string addValueOneDimensionalArrayNegativeError = "";
+
+  std::string isValueInOneDimensionalArrayZeroError = "";
+  std::string isValueInOneDimensionalArrayNegativeError = "";
+
+  std::string getOneDimensionalArraysSumODAObjectOneZeroError = "";
+  std::string getOneDimensionalArraysSumODAObjectTwoZeroError = "";
+  std::string getOneDimensionalArraysSumODAObjectOneNegativeError = "";
+  std::string getOneDimensionalArraysSumODAObjectTwoNegativeError = "";
+  std::string getOneDimensionalArraysSumStartPointsError = "";
+  std::string getOneDimensionalArraysSumEndPointsError = "";
+
+  std::string getOneDimensionalArraysProductODAObjectOneZeroError = "";
+  std::string getOneDimensionalArraysProductODAObjectTwoZeroError = "";
+  std::string getOneDimensionalArraysProductODAObjectOneNegativeError = "";
+  std::string getOneDimensionalArraysProductODAObjectTwoNegativeError = "";
+  std::string getOneDimensionalArraysProductStartPointsError = "";
+  std::string getOneDimensionalArraysProductEndPointsError = "";
+
+  std::string getOneDimensionalArraysDifferenceODAObjectOneZeroError = "";
+  std::string getOneDimensionalArraysDifferenceODAObjectTwoZeroError = "";
+  std::string getOneDimensionalArraysDifferenceODAObjectOneNegativeError = "";
+  std::string getOneDimensionalArraysDifferenceODAObjectTwoNegativeError = "";
+  std::string getOneDimensionalArraysDifferenceStartPointsError = "";
+  std::string getOneDimensionalArraysDifferenceEndPointsError = "";
+
+  std::string getOneDimensionalArraysDivisionODAObjectOneZeroError = "";
+  std::string getOneDimensionalArraysDivisionODAObjectTwoZeroError = "";
+  std::string getOneDimensionalArraysDivisionODAObjectOneNegativeError = "";
+  std::string getOneDimensionalArraysDivisionODAObjectTwoNegativeError = "";
+  std::string getOneDimensionalArraysDivisionStartPointsError = "";
+  std::string getOneDimensionalArraysDivisionEndPointsError = "";
+
   virtual ~errorsHandler () {}
 };

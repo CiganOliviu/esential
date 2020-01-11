@@ -188,3 +188,156 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getOneDimensionalArrayE
 
   return division;
 }
+
+template <class Type> void oneDimensionalArraysWorkFlow::oneDimensionalArrayInitialization (oneDimensionalArrayType<Type> ODAObject, Type initializator) {
+
+  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.oneDimensionalArrayInitializationZeroError);
+  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.oneDimensionalArrayInitializationNegativeError);
+
+  for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
+    ODAObject.oneDimensionalArray[iterator] = initializator;
+}
+
+template <class Type> bool oneDimensionalArraysWorkFlow::checkIfSymetricOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
+
+  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.checkIfSymetricOneDimensionalArrayZeroError);
+  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.checkIfSymetricOneDimensionalArrayNegativeError);
+
+  int iterator = ODAObject.startPoint, jiterator = ODAObject.length - 1 + ODAObject.extender;
+  bool checker = false;
+
+  while (iterator < jiterator) {
+
+    if (ODAObject.oneDimensionalArray[iterator] == ODAObject.oneDimensionalArray[jiterator])
+      checker = true;
+    else
+      checker = false;
+
+    iterator += 1;
+    jiterator -= 1;
+  }
+
+  return checker;
+}
+
+template <class Type> void oneDimensionalArraysWorkFlow::addValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, limits<Type> valueAndPosition) {
+
+  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.addValueOneDimensionalArrayZeroError);
+  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.addValueOneDimensionalArrayNegativeError);
+
+  for (size_t iterator = ODAObject.length + ODAObject.endPoint; iterator > valueAndPosition.maximLimit + ODAObject.startPoint; iterator--)
+    ODAObject.oneDimensionalArray[iterator + 1] = ODAObject.oneDimensionalArray[iterator];
+
+  ODAObject.oneDimensionalArray[valueAndPosition.maximLimit + ODAObject.startPoint] = valueAndPosition.minimLimit;
+}
+
+template <class Type> bool oneDimensionalArraysWorkFlow::isValueInOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type value) {
+
+  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.isValueInOneDimensionalArrayZeroError);
+  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.isValueInOneDimensionalArrayNegativeError);
+
+  for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
+    if (value == ODAObject.oneDimensionalArray[iterator]) return true;
+
+  return false;
+}
+
+template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysSum (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
+
+  if (__validations__.isZero(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysSumODAObjectOneZeroError);
+  if (__validations__.isNegative(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysSumODAObjectOneNegativeError);
+
+  if (__validations__.isZero(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysSumODAObjectTwoZeroError);
+  if (__validations__.isNegative(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysSumODAObjectTwoNegativeError);
+
+  limits<int> startPointsValueChecker;
+  startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
+  startPointsValueChecker.maximLimit = ODAObjectTwo.startPoint;
+
+  limits<int> endPointsValueChecker;
+  endPointsValueChecker.minimLimit = ODAObjectOne.endPoint;
+  endPointsValueChecker.maximLimit = ODAObjectTwo.endPoint;
+
+  if (!__validations__.isEqual(startPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysSumStartPointsError);
+  if (!__validations__.isEqual(endPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysSumEndPointsError);
+
+  for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
+    ODAObjectOne.oneDimensionalArray[iterator] += ODAObjectTwo.oneDimensionalArray[iterator];
+
+  return ODAObjectOne;
+}
+
+template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysProduct (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
+
+  if (__validations__.isZero(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysProductODAObjectOneZeroError);
+  if (__validations__.isNegative(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysProductODAObjectOneNegativeError);
+
+  if (__validations__.isZero(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysProductODAObjectTwoZeroError);
+  if (__validations__.isNegative(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysProductODAObjectTwoNegativeError);
+
+  limits<int> startPointsValueChecker;
+  startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
+  startPointsValueChecker.maximLimit = ODAObjectTwo.startPoint;
+
+  limits<int> endPointsValueChecker;
+  endPointsValueChecker.minimLimit = ODAObjectOne.endPoint;
+  endPointsValueChecker.maximLimit = ODAObjectTwo.endPoint;
+
+  if (!__validations__.isEqual(startPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysProductStartPointsError);
+  if (!__validations__.isEqual(endPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysProductEndPointsError);
+
+  for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
+    ODAObjectOne.oneDimensionalArray[iterator] *= ODAObjectTwo.oneDimensionalArray[iterator];
+
+  return ODAObjectOne;
+}
+
+template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysDifference (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
+
+  if (__validations__.isZero(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysDifferenceODAObjectOneZeroError);
+  if (__validations__.isNegative(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysDifferenceODAObjectOneNegativeError);
+
+  if (__validations__.isZero(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysDifferenceODAObjectTwoZeroError);
+  if (__validations__.isNegative(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysDifferenceODAObjectTwoNegativeError);
+
+  limits<int> startPointsValueChecker;
+  startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
+  startPointsValueChecker.maximLimit = ODAObjectTwo.startPoint;
+
+  limits<int> endPointsValueChecker;
+  endPointsValueChecker.minimLimit = ODAObjectOne.endPoint;
+  endPointsValueChecker.maximLimit = ODAObjectTwo.endPoint;
+
+  if (!__validations__.isEqual(startPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysDifferenceStartPointsError);
+  if (!__validations__.isEqual(endPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysDifferenceEndPointsError);
+
+  for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
+    ODAObjectOne.oneDimensionalArray[iterator] -= ODAObjectTwo.oneDimensionalArray[iterator];
+
+  return ODAObjectOne;
+}
+
+template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysDivision (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
+
+  if (__validations__.isZero(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysDivisionODAObjectOneZeroError);
+  if (__validations__.isNegative(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysDivisionODAObjectOneNegativeError);
+
+  if (__validations__.isZero(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysDivisionODAObjectTwoZeroError);
+  if (__validations__.isNegative(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysDivisionODAObjectTwoNegativeError);
+
+  limits<int> startPointsValueChecker;
+  startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
+  startPointsValueChecker.maximLimit = ODAObjectTwo.startPoint;
+
+  limits<int> endPointsValueChecker;
+  endPointsValueChecker.minimLimit = ODAObjectOne.endPoint;
+  endPointsValueChecker.maximLimit = ODAObjectTwo.endPoint;
+
+  if (!__validations__.isEqual(startPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysDivisionStartPointsError);
+  if (!__validations__.isEqual(endPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysDivisionEndPointsError);
+
+  for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
+    ODAObjectOne.oneDimensionalArray[iterator] /= ODAObjectTwo.oneDimensionalArray[iterator];
+
+  return ODAObjectOne;
+}
