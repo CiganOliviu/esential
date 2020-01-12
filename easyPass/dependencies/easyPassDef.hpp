@@ -79,6 +79,7 @@ namespace easyPassDefinitions {
   class assertions {
   private:
     errorHandler __error__;
+    validationRules __rules__;
 
   public:
     assertions () {}

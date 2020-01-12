@@ -203,7 +203,7 @@ template <class Type> bool oneDimensionalArraysWorkFlow::checkIfSymetricOneDimen
   if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.checkIfSymetricOneDimensionalArrayZeroError);
   if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.checkIfSymetricOneDimensionalArrayNegativeError);
 
-  int iterator = ODAObject.startPoint, jiterator = ODAObject.length - 1 + ODAObject.extender;
+  int iterator = ODAObject.startPoint, jiterator = ODAObject.length - 1 + ODAObject.endPoint;
   bool checker = false;
 
   while (iterator < jiterator) {

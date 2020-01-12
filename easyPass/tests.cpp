@@ -46,8 +46,41 @@ namespace sumProductDivisionDifference {
   limits<float> differenceLimitsCaseFive;
 }
 
+namespace initializationSymetricAddValueIsValue {
+
+  oneDimensionalArrayType<int> initializationAddValueIsValueDataTestCaseOne;
+  oneDimensionalArrayType<int> initializationAddValueIsValueDataTestCaseTwo;
+  oneDimensionalArrayType<float> initializationAddValueIsValueDataTestCaseThree;
+  oneDimensionalArrayType<float> initializationAddValueIsValueDataTestCaseFour;
+
+  oneDimensionalArrayType<int> initializationAddValueIsValueTestCaseOne;
+  oneDimensionalArrayType<int> initializationAddValueIsValueTestCaseTwo;
+  oneDimensionalArrayType<float> initializationAddValueIsValueTestCaseThree;
+  oneDimensionalArrayType<float> initializationAddValueIsValueTestCaseFour;
+
+  limits<int> addValueTestCaseOne;
+  limits<int> addValueTestCaseTwo;
+  limits<float> addValueTestCaseThree;
+  limits<float> addValueTestCaseFour;
+}
+
+namespace symetricData {
+
+  oneDimensionalArrayType<int> symetricDataTestCaseOne;
+  oneDimensionalArrayType<int> symetricDataTestCaseTwo;
+  oneDimensionalArrayType<float> symetricDataTestCaseThree;
+  oneDimensionalArrayType<float> symetricDataTestCaseFour;
+
+  limits<bool> symetricTestCaseOne;
+  limits<bool> symetricTestCaseTwo;
+  limits<bool> symetricTestCaseThree;
+  limits<bool> symetricTestCaseFour;
+}
+
 using namespace maxMinData;
 using namespace sumProductDivisionDifference;
+using namespace initializationSymetricAddValueIsValue;
+using namespace symetricData;
 
 class setParameters {
 
@@ -62,6 +95,8 @@ public:
   void _setParametersFor_getOneDimensionalArrayElementsSumTestCases ();
   void _setParametersFor_getOneDimensionalArrayElementsProductTestCases ();
   void _setParametersFor_getOneDimensionalArrayElementsDifferenceTestCases ();
+  void _setParametersFor_oneDimensionalArrayInitializationTestCases ();
+  void _setParametersFor_checkIfSymetricOneDimensionalArray ();
 
   virtual ~setParameters () {}
 };
@@ -187,6 +222,45 @@ void setParameters::_setParametersFor_getOneDimensionalArrayElementsDifferenceTe
   differenceLimitsCaseThree.maximLimit = differenceValueFromODACaseThree;
 }
 
+void setParameters::_setParametersFor_oneDimensionalArrayInitializationTestCases () {
+
+  ODAWorkFlow.readDynamicFileOneDimensionalArray<int> ((char*)"data/initializationAddValueIsValue/ODATestCaseOne.data", initializationAddValueIsValueDataTestCaseOne);
+  ODAWorkFlow.readDynamicFileOneDimensionalArray<int> ((char*)"data/initializationAddValueIsValue/ODATestCaseTwo.data", initializationAddValueIsValueDataTestCaseTwo);
+  ODAWorkFlow.readDynamicFileOneDimensionalArray<float> ((char*)"data/initializationAddValueIsValue/ODATestCaseThree.data", initializationAddValueIsValueDataTestCaseThree);
+  ODAWorkFlow.readDynamicFileOneDimensionalArray<float> ((char*)"data/initializationAddValueIsValue/ODATestCaseFour.data", initializationAddValueIsValueDataTestCaseFour);
+
+  initializationAddValueIsValueTestCaseOne.length = initializationAddValueIsValueDataTestCaseOne.length;
+  initializationAddValueIsValueTestCaseTwo.length = initializationAddValueIsValueDataTestCaseTwo.length;
+  initializationAddValueIsValueTestCaseThree.length = initializationAddValueIsValueDataTestCaseThree.length;
+  initializationAddValueIsValueTestCaseFour.length = initializationAddValueIsValueDataTestCaseFour.length;
+
+  ODAWorkFlow.oneDimensionalArrayInitialization<int> (initializationAddValueIsValueTestCaseOne, 1);
+  ODAWorkFlow.oneDimensionalArrayInitialization<int> (initializationAddValueIsValueTestCaseTwo, 100);
+  ODAWorkFlow.oneDimensionalArrayInitialization<float> (initializationAddValueIsValueTestCaseThree, 3.3);
+  ODAWorkFlow.oneDimensionalArrayInitialization<float> (initializationAddValueIsValueTestCaseFour, 7.2);
+}
+
+void setParameters::_setParametersFor_checkIfSymetricOneDimensionalArray () {
+
+  ODAWorkFlow.readDynamicFileOneDimensionalArray<int> ((char*)"data/symetricCases/ODATestCaseOne.data", symetricDataTestCaseOne);
+  ODAWorkFlow.readDynamicFileOneDimensionalArray<int> ((char*)"data/symetricCases/ODATestCaseTwo.data", symetricDataTestCaseTwo);
+  ODAWorkFlow.readDynamicFileOneDimensionalArray<float> ((char*)"data/symetricCases/ODATestCaseThree.data", symetricDataTestCaseThree);
+  ODAWorkFlow.readDynamicFileOneDimensionalArray<float> ((char*)"data/symetricCases/ODATestCaseFour.data", symetricDataTestCaseFour);
+
+  symetricTestCaseOne.minimLimit = ODAWorkFlow.checkIfSymetricOneDimensionalArray<int> (symetricDataTestCaseOne);
+  symetricTestCaseOne.maximLimit = true;
+
+  symetricTestCaseTwo.minimLimit = ODAWorkFlow.checkIfSymetricOneDimensionalArray<int> (symetricDataTestCaseTwo);
+  symetricTestCaseTwo.maximLimit = true;
+
+  symetricTestCaseThree.minimLimit = ODAWorkFlow.checkIfSymetricOneDimensionalArray<float> (symetricDataTestCaseThree);
+  symetricTestCaseThree.maximLimit = false;
+
+  symetricTestCaseFour.minimLimit = ODAWorkFlow.checkIfSymetricOneDimensionalArray<float> (symetricDataTestCaseFour);
+  symetricTestCaseFour.maximLimit = true;
+
+}
+
 class testCases : public setParameters {
 
 private:
@@ -200,6 +274,8 @@ public:
   void getOneDimensionalArrayElementsSumTestCases ();
   void getOneDimensionalArrayElementsProductTestCases ();
   void getOneDimensionalArrayElementsDifferenceTestCases ();
+  void oneDimensionalArrayInitializationTestCases ();
+  void checkIfSymetricOneDimensionalArrayTestCases ();
 
   virtual ~testCases () {}
 };
@@ -257,6 +333,26 @@ void testCases::getOneDimensionalArrayElementsDifferenceTestCases () {
   assert.countTest ((char*)"getOneDimensionalArrayElementsDifferenceTestCaseFive", assert.assertPrimitiveDataTypes<float> (differenceLimitsCaseFive));
 }
 
+void testCases::oneDimensionalArrayInitializationTestCases () {
+
+  _setParametersFor_oneDimensionalArrayInitializationTestCases ();
+
+  assert.countTest ((char*)"oneDimensionalArrayInitializationTestCaseOne", assert.assertOneDimensionalArrays<int> (initializationAddValueIsValueTestCaseOne, initializationAddValueIsValueDataTestCaseOne));
+  assert.countTest ((char*)"oneDimensionalArrayInitializationTestCaseTwo", assert.assertOneDimensionalArrays<int> (initializationAddValueIsValueTestCaseTwo, initializationAddValueIsValueDataTestCaseTwo));
+  assert.countTest ((char*)"oneDimensionalArrayInitializationTestCaseThree", assert.assertOneDimensionalArrays<float> (initializationAddValueIsValueTestCaseThree, initializationAddValueIsValueDataTestCaseThree));
+  assert.countTest ((char*)"oneDimensionalArrayInitializationTestCaseFour", assert.assertOneDimensionalArrays<float> (initializationAddValueIsValueTestCaseFour, initializationAddValueIsValueDataTestCaseFour));
+}
+
+void testCases::checkIfSymetricOneDimensionalArrayTestCases () {
+
+  _setParametersFor_checkIfSymetricOneDimensionalArray ();
+
+  assert.countTest ((char*)"checkIfSymetricOneDimensionalArrayTestCaseOne", assert.assertPrimitiveDataTypes<bool> (symetricTestCaseOne));
+  assert.countTest ((char*)"checkIfSymetricOneDimensionalArrayTestCaseTwo", assert.assertPrimitiveDataTypes<bool> (symetricTestCaseTwo));
+  assert.countTest ((char*)"checkIfSymetricOneDimensionalArrayTestCaseThree", assert.assertPrimitiveDataTypes<bool> (symetricTestCaseThree));
+  assert.countTest ((char*)"checkIfSymetricOneDimensionalArrayTestCaseFour", assert.assertPrimitiveDataTypes<bool> (symetricTestCaseFour));
+}
+
 int main(int argc, char const *argv[]) {
 
   testCases tests;
@@ -267,7 +363,9 @@ int main(int argc, char const *argv[]) {
   tests.getOneDimensionalArrayElementsSumTestCases ();
   tests.getOneDimensionalArrayElementsProductTestCases ();
   tests.getOneDimensionalArrayElementsDifferenceTestCases ();
-
+  tests.oneDimensionalArrayInitializationTestCases ();
+  tests.checkIfSymetricOneDimensionalArrayTestCases ();
+  
   assert.getConclusion ();
 
   return 0;

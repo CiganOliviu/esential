@@ -30,10 +30,14 @@ public:
   std::string putsMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void putsMatrix (matrixType<Type> MTObject);";
   std::string putsMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void putsMatrix (matrixType<Type> MTObject);";
 
+  std::string assertOneDimensionalArraysZeroError = "Unable to handle length as zero in template <class Type> bool assertOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);";
+  std::string assertOneDimensionalArraysNegativeError = "Unable to handle negative length template <class Type> bool assertOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);";
   std::string assertOneDimensionalArraysUnequalLengths = "Unable to process with unequal lengths in template <class Type> bool assertOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);";
   std::string assertOneDimensionalArraysUnequalStartPoints = "Unable to process with unequal start points in template <class Type> bool assertOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);";
   std::string assertOneDimensionalArraysUnequalEndPoints = "Unable to process with unequal end points in template <class Type> bool assertOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);";
 
+  std::string assertMatrixZeroError = "Unable to handle line or column as zero in template <class Type> bool assertMatrix (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo);";
+  std::string assertMatrixNegativeError = "Unable to handle negative line or column in template <class Type> bool assertMatrix (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo);";
   std::string assertMatrixUnequalLines = "Unable to process with unequal lines in template <class Type> bool assertMatrix (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo);";
   std::string assertMatrixUnequalColumns = "Unable to process with unequal columns in template <class Type> bool assertMatrix (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo);";
   std::string assertMatrixUnequalStartLinePoints = "Unable to process with unequal start line points in template <class Type> bool assertMatrix (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo);";

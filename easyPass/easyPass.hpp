@@ -158,39 +158,72 @@ template <class Type> bool assertions::assertPrimitiveDataTypes (limits<Type> li
 
 template <class Type> bool assertions::assertOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  limits<Type> lengths (ODAObjectOne.length, ODAObjectTwo.length);
-  limits<Type> startPoints (ODAObjectOne.startPoint, ODAObjectTwo.startPoint);
-  limits<Type> endPoints (ODAObjectOne.endPoint, ODAObjectTwo.endPoint);
+  limits<Type> lengths;
+  lengths.minimLimit = ODAObjectOne.length;
+  lengths.maximLimit = ODAObjectTwo.length;
 
-  if (!isEqual(lengths)) throw systemException (__error__.assertOneDimensionalArraysUnequalLengths);
-  if (!isEqual(startPoints)) throw systemException (__error__.assertOneDimensionalArraysUnequalStartPoints);
-  if (!isEqual(endPoints)) throw systemException (__error__.assertOneDimensionalArraysUnequalEndPoints);
+  limits<Type> startPoints;
+  startPoints.minimLimit = ODAObjectOne.startPoint;
+  startPoints.maximLimit = ODAObjectTwo.startPoint;
+
+  limits<Type> endPoints;
+  endPoints.minimLimit = ODAObjectOne.endPoint;
+  endPoints.maximLimit = ODAObjectTwo.endPoint;
+
+  if (__rules__.isZero(ODAObjectOne.length)) throw systemException (__error__.assertOneDimensionalArraysZeroError);
+  else if (__rules__.isNegative(ODAObjectOne.length)) throw systemException (__error__.assertOneDimensionalArraysZeroError);
+  if (__rules__.isZero(ODAObjectTwo.length)) throw systemException (__error__.assertOneDimensionalArraysZeroError);
+  else if (__rules__.isNegative(ODAObjectTwo.length)) throw systemException (__error__.assertOneDimensionalArraysZeroError);
+  if (!__rules__.isEqual(lengths)) throw systemException (__error__.assertOneDimensionalArraysUnequalLengths);
+  if (!__rules__.isEqual(startPoints)) throw systemException (__error__.assertOneDimensionalArraysUnequalStartPoints);
+  if (!__rules__.isEqual(endPoints)) throw systemException (__error__.assertOneDimensionalArraysUnequalEndPoints);
 
   for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
-    if (ODAObjectOne[iterator] != ODAObjectTwo[iterator]) return false;
+    if (ODAObjectOne.oneDimensionalArray[iterator] != ODAObjectTwo.oneDimensionalArray[iterator]) return false;
 
   return true;
 }
 
 template <class Type> bool assertions::assertMatrix (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo) {
 
-  limits<Type> lines (MTObjectOne.line, MTObjectTwo.line);
-  limits<Type> columns (MTObjectOne.column, MTObjectTwo.column);
-  limits<Type> startLinePoints (MTObjectOne.startLinePoint, MTObjectTwo.startLinePoint);
-  limits<Type> endLinePoints (MTObjectOne.endLinePoint, MTObjectTwo.endLinePoint);
-  limits<Type> startColumnPoints (MTObjectOne.startLinePoint, MTObjectTwo.startColumnPoint);
-  limits<Type> endColumnPoints (MTObjectOne.endLinePoint, MTObjectTwo.endLinePoint);
+  limits<Type> lines;
+  lines.minimLimit = MTObjectOne.line;
+  lines.maximLimit = MTObjectTwo.line;
 
-  if (!isEqual(lines)) throw systemException (__error__.assertMatrixUnequalLines);
-  if (!isEqual(columns)) throw systemException (__error__.assertMatrixUnequalColumns);
-  if (!isEqual(startLinePoints)) throw systemException (__error__.assertMatrixUnequalStartLinePoints);
-  if (!isEqual(endLinePoints)) throw systemException (__error__.assertMatrixUnequalEndLinePoints);
-  if (!isEqual(startColumnPoints)) throw systemException (__error__.assertMatrixUnequalStartColumnPoints);
-  if (!isEqual(endColumnPoints)) throw systemException (__error__.assertMatrixUnequalEndColumnPoints);
+  limits<Type> columns;
+  columns.minimLimit = MTObjectOne.column;
+  columns.maximLimit = MTObjectTwo.column;
+
+  limits<Type> startLinePoints;
+  startLinePoints.minimLimit = MTObjectOne.startLinePoint;
+  startLinePoints.maximLimit = MTObjectTwo.startLinePoint;
+
+  limits<Type> endLinePoints;
+  endLinePoints.minimLimit = MTObjectOne.endLinePoint;
+  endLinePoints.maximLimit = MTObjectTwo.endLinePoint;
+
+  limits<Type> startColumnPoints;
+  startColumnPoints.minimLimit = MTObjectOne.startColumnPoint;
+  startColumnPoints.maximLimit = MTObjectTwo.startColumnPoint;
+
+  limits<Type> endColumnPoints;
+  endColumnPoints.minimLimit = MTObjectOne.endLinePoint;
+  endColumnPoints.maximLimit = MTObjectTwo.endLinePoint;
+
+  if (__rules__.isZero(MTObjectOne.line) && __rules__.isZero(MTObjectOne.column)) throw systemException (__error__.assertMatrixZeroError);
+  else if (__rules__.isNegative(MTObjectOne.line) && __rules__.isNegative(MTObjectOne.column)) throw systemException (__error__.assertMatrixNegativeError);
+  if (__rules__.isZero(MTObjectTwo.line) && __rules__.isZero(MTObjectTwo.column)) throw systemException (__error__.readMatrixZeroError);
+  else if (__rules__.isNegative(MTObjectTwo.line) && __rules__.isNegative(MTObjectTwo.column)) throw systemException (__error__.readMatrixNegativeError);
+  if (!__rules__.isEqual(lines)) throw systemException (__error__.assertMatrixUnequalLines);
+  if (!__rules__.isEqual(columns)) throw systemException (__error__.assertMatrixUnequalColumns);
+  if (!__rules__.isEqual(startLinePoints)) throw systemException (__error__.assertMatrixUnequalStartLinePoints);
+  if (!__rules__.isEqual(endLinePoints)) throw systemException (__error__.assertMatrixUnequalEndLinePoints);
+  if (!__rules__.isEqual(startColumnPoints)) throw systemException (__error__.assertMatrixUnequalStartColumnPoints);
+  if (!__rules__.isEqual(endColumnPoints)) throw systemException (__error__.assertMatrixUnequalEndColumnPoints);
 
   for (size_t iterator = MTObjectOne.startLinePoint; iterator < MTObjectOne.line + MTObjectOne.endLinePoint; iterator++)
     for (size_t jiterator = MTObjectOne.startColumnPoint; jiterator < MTObjectOne.column + MTObjectOne.endColumnPoint; jiterator++)
-      if (MTObjectOne[iterator][jiterator] != MTObjectTwo[iterator][jiterator]) return false;
+      if (MTObjectOne.matrix[iterator][jiterator] != MTObjectTwo.matrix[iterator][jiterator]) return false;
 
   return true;
 }
