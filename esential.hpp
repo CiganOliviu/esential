@@ -228,7 +228,9 @@ template <class Type> void oneDimensionalArraysWorkFlow::addValueOneDimensionalA
   for (size_t iterator = ODAObject.length + ODAObject.endPoint; iterator > valueAndPosition.maximLimit + ODAObject.startPoint; iterator--)
     ODAObject.oneDimensionalArray[iterator + 1] = ODAObject.oneDimensionalArray[iterator];
 
-  ODAObject.oneDimensionalArray[valueAndPosition.maximLimit + ODAObject.startPoint] = valueAndPosition.minimLimit;
+  int position = static_cast<int> (valueAndPosition.maximLimit);
+
+  ODAObject.oneDimensionalArray[position + ODAObject.startPoint] = valueAndPosition.minimLimit;
 }
 
 template <class Type> bool oneDimensionalArraysWorkFlow::isValueInOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type value) {

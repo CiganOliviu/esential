@@ -62,6 +62,11 @@ namespace initializationSymetricAddValueIsValue {
   limits<int> addValueTestCaseTwo;
   limits<float> addValueTestCaseThree;
   limits<float> addValueTestCaseFour;
+
+  limits<bool> checkIfEqualODACaseOne;
+  limits<bool> checkIfEqualODACaseTwo;
+  limits<bool> checkIfEqualODACaseThree;
+  limits<bool> checkIfEqualODACaseFour;
 }
 
 namespace symetricData {
@@ -86,6 +91,7 @@ class setParameters {
 
 private:
   oneDimensionalArraysWorkFlow ODAWorkFlow;
+  assertions assert;
 
 public:
   setParameters () {}
@@ -97,6 +103,8 @@ public:
   void _setParametersFor_getOneDimensionalArrayElementsDifferenceTestCases ();
   void _setParametersFor_oneDimensionalArrayInitializationTestCases ();
   void _setParametersFor_checkIfSymetricOneDimensionalArray ();
+  void _setParametersFor_addValueOneDimensionalArray ();
+  void _setParametersFor_isValueInOneDimensionalArray ();
 
   virtual ~setParameters () {}
 };
@@ -235,9 +243,22 @@ void setParameters::_setParametersFor_oneDimensionalArrayInitializationTestCases
   initializationAddValueIsValueTestCaseFour.length = initializationAddValueIsValueDataTestCaseFour.length;
 
   ODAWorkFlow.oneDimensionalArrayInitialization<int> (initializationAddValueIsValueTestCaseOne, 1);
-  ODAWorkFlow.oneDimensionalArrayInitialization<int> (initializationAddValueIsValueTestCaseTwo, 100);
+  ODAWorkFlow.oneDimensionalArrayInitialization<int> (initializationAddValueIsValueTestCaseTwo, 99);
   ODAWorkFlow.oneDimensionalArrayInitialization<float> (initializationAddValueIsValueTestCaseThree, 3.3);
-  ODAWorkFlow.oneDimensionalArrayInitialization<float> (initializationAddValueIsValueTestCaseFour, 7.2);
+  ODAWorkFlow.oneDimensionalArrayInitialization<float> (initializationAddValueIsValueTestCaseFour, 16.6);
+
+  checkIfEqualODACaseOne.minimLimit = assert.assertOneDimensionalArrays<int> (initializationAddValueIsValueTestCaseOne, initializationAddValueIsValueDataTestCaseOne);
+  checkIfEqualODACaseOne.maximLimit = true;
+
+  checkIfEqualODACaseTwo.minimLimit = assert.assertOneDimensionalArrays<int> (initializationAddValueIsValueTestCaseTwo, initializationAddValueIsValueDataTestCaseTwo);
+  checkIfEqualODACaseTwo.maximLimit = false;
+
+  checkIfEqualODACaseThree.minimLimit = assert.assertOneDimensionalArrays<float> (initializationAddValueIsValueTestCaseThree, initializationAddValueIsValueDataTestCaseThree);
+  checkIfEqualODACaseThree.maximLimit = true;
+
+  checkIfEqualODACaseFour.minimLimit = assert.assertOneDimensionalArrays<float> (initializationAddValueIsValueTestCaseFour, initializationAddValueIsValueDataTestCaseFour);
+  checkIfEqualODACaseFour.maximLimit = false;
+
 }
 
 void setParameters::_setParametersFor_checkIfSymetricOneDimensionalArray () {
@@ -258,7 +279,58 @@ void setParameters::_setParametersFor_checkIfSymetricOneDimensionalArray () {
 
   symetricTestCaseFour.minimLimit = ODAWorkFlow.checkIfSymetricOneDimensionalArray<float> (symetricDataTestCaseFour);
   symetricTestCaseFour.maximLimit = true;
+}
 
+void setParameters::_setParametersFor_addValueOneDimensionalArray () {
+
+  addValueTestCaseOne.minimLimit = 12;
+  addValueTestCaseOne.maximLimit = 5;
+
+  addValueTestCaseTwo.minimLimit = 7;
+  addValueTestCaseTwo.maximLimit = 9;
+
+  addValueTestCaseThree.minimLimit = 3.3;
+  addValueTestCaseThree.maximLimit = 3;
+
+  addValueTestCaseFour.minimLimit = 4.123;
+  addValueTestCaseFour.maximLimit = 6;
+
+  ODAWorkFlow.addValueOneDimensionalArray (initializationAddValueIsValueDataTestCaseOne, addValueTestCaseOne);
+  ODAWorkFlow.addValueOneDimensionalArray (initializationAddValueIsValueTestCaseOne, addValueTestCaseOne);
+
+  ODAWorkFlow.addValueOneDimensionalArray (initializationAddValueIsValueDataTestCaseTwo, addValueTestCaseTwo);
+
+  ODAWorkFlow.addValueOneDimensionalArray (initializationAddValueIsValueDataTestCaseThree, addValueTestCaseThree);
+  ODAWorkFlow.addValueOneDimensionalArray (initializationAddValueIsValueTestCaseThree, addValueTestCaseThree);
+
+  ODAWorkFlow.addValueOneDimensionalArray (initializationAddValueIsValueDataTestCaseFour, addValueTestCaseFour);
+
+  checkIfEqualODACaseOne.minimLimit = assert.assertOneDimensionalArrays<int> (initializationAddValueIsValueTestCaseOne, initializationAddValueIsValueDataTestCaseOne);
+  checkIfEqualODACaseOne.maximLimit = true;
+
+  checkIfEqualODACaseTwo.minimLimit = assert.assertOneDimensionalArrays<int> (initializationAddValueIsValueTestCaseTwo, initializationAddValueIsValueDataTestCaseTwo);
+  checkIfEqualODACaseTwo.maximLimit = false;
+
+  checkIfEqualODACaseThree.minimLimit = assert.assertOneDimensionalArrays<float> (initializationAddValueIsValueTestCaseThree, initializationAddValueIsValueDataTestCaseThree);
+  checkIfEqualODACaseThree.maximLimit = true;
+
+  checkIfEqualODACaseFour.minimLimit = assert.assertOneDimensionalArrays<float> (initializationAddValueIsValueTestCaseFour, initializationAddValueIsValueDataTestCaseFour);
+  checkIfEqualODACaseFour.maximLimit = false;
+}
+
+void setParameters::_setParametersFor_isValueInOneDimensionalArray () {
+
+  checkIfEqualODACaseOne.minimLimit = ODAWorkFlow.isValueInOneDimensionalArray<int> (initializationAddValueIsValueTestCaseOne, 12);
+  checkIfEqualODACaseOne.maximLimit = true;
+
+  checkIfEqualODACaseTwo.minimLimit = ODAWorkFlow.isValueInOneDimensionalArray<int> (initializationAddValueIsValueTestCaseTwo, 37);
+  checkIfEqualODACaseTwo.maximLimit = false;
+
+  checkIfEqualODACaseThree.minimLimit = ODAWorkFlow.isValueInOneDimensionalArray<float> (initializationAddValueIsValueTestCaseThree, 3.3);
+  checkIfEqualODACaseThree.maximLimit = true;
+
+  checkIfEqualODACaseFour.minimLimit = ODAWorkFlow.isValueInOneDimensionalArray<float> (initializationAddValueIsValueTestCaseFour, 17.2);
+  checkIfEqualODACaseFour.maximLimit = false;
 }
 
 class testCases : public setParameters {
@@ -276,6 +348,8 @@ public:
   void getOneDimensionalArrayElementsDifferenceTestCases ();
   void oneDimensionalArrayInitializationTestCases ();
   void checkIfSymetricOneDimensionalArrayTestCases ();
+  void addValueOneDimensionalArrayTestCases ();
+  void isValueInOneDimensionalArrayTestCases ();
 
   virtual ~testCases () {}
 };
@@ -337,10 +411,10 @@ void testCases::oneDimensionalArrayInitializationTestCases () {
 
   _setParametersFor_oneDimensionalArrayInitializationTestCases ();
 
-  assert.countTest ((char*)"oneDimensionalArrayInitializationTestCaseOne", assert.assertOneDimensionalArrays<int> (initializationAddValueIsValueTestCaseOne, initializationAddValueIsValueDataTestCaseOne));
-  assert.countTest ((char*)"oneDimensionalArrayInitializationTestCaseTwo", assert.assertOneDimensionalArrays<int> (initializationAddValueIsValueTestCaseTwo, initializationAddValueIsValueDataTestCaseTwo));
-  assert.countTest ((char*)"oneDimensionalArrayInitializationTestCaseThree", assert.assertOneDimensionalArrays<float> (initializationAddValueIsValueTestCaseThree, initializationAddValueIsValueDataTestCaseThree));
-  assert.countTest ((char*)"oneDimensionalArrayInitializationTestCaseFour", assert.assertOneDimensionalArrays<float> (initializationAddValueIsValueTestCaseFour, initializationAddValueIsValueDataTestCaseFour));
+  assert.countTest ((char*)"oneDimensionalArrayInitializationTestCaseOne", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseOne));
+  assert.countTest ((char*)"oneDimensionalArrayInitializationTestCaseTwo", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseTwo));
+  assert.countTest ((char*)"oneDimensionalArrayInitializationTestCaseThree", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseThree));
+  assert.countTest ((char*)"oneDimensionalArrayInitializationTestCaseFour", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseFour));
 }
 
 void testCases::checkIfSymetricOneDimensionalArrayTestCases () {
@@ -351,6 +425,26 @@ void testCases::checkIfSymetricOneDimensionalArrayTestCases () {
   assert.countTest ((char*)"checkIfSymetricOneDimensionalArrayTestCaseTwo", assert.assertPrimitiveDataTypes<bool> (symetricTestCaseTwo));
   assert.countTest ((char*)"checkIfSymetricOneDimensionalArrayTestCaseThree", assert.assertPrimitiveDataTypes<bool> (symetricTestCaseThree));
   assert.countTest ((char*)"checkIfSymetricOneDimensionalArrayTestCaseFour", assert.assertPrimitiveDataTypes<bool> (symetricTestCaseFour));
+}
+
+void testCases::addValueOneDimensionalArrayTestCases () {
+
+  _setParametersFor_addValueOneDimensionalArray ();
+
+  assert.countTest ((char*)"addValueOneDimensionalArrayTestCaseOne", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseOne));
+  assert.countTest ((char*)"addValueOneDimensionalArrayTestCaseTwo", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseTwo));
+  assert.countTest ((char*)"addValueOneDimensionalArrayTestCaseThree", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseThree));
+  assert.countTest ((char*)"addValueOneDimensionalArrayTestCaseFour", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseFour));
+}
+
+void testCases::isValueInOneDimensionalArrayTestCases () {
+
+  _setParametersFor_isValueInOneDimensionalArray ();
+
+  assert.countTest ((char*)"isValueInOneDimensionalArrayTestCaseOne", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseOne));
+  assert.countTest ((char*)"isValueInOneDimensionalArrayTestCaseTwo", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseTwo));
+  assert.countTest ((char*)"isValueInOneDimensionalArrayTestCaseThree", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseThree));
+  assert.countTest ((char*)"isValueInOneDimensionalArrayTestCaseFour", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseFour));
 }
 
 int main(int argc, char const *argv[]) {
@@ -365,7 +459,9 @@ int main(int argc, char const *argv[]) {
   tests.getOneDimensionalArrayElementsDifferenceTestCases ();
   tests.oneDimensionalArrayInitializationTestCases ();
   tests.checkIfSymetricOneDimensionalArrayTestCases ();
-  
+  tests.addValueOneDimensionalArrayTestCases ();
+  tests.isValueInOneDimensionalArrayTestCases ();
+
   assert.getConclusion ();
 
   return 0;
