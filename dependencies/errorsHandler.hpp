@@ -91,5 +91,8 @@ public:
   std::string bubbleSortZeroError = "";
   std::string bubbleSortNegativeError = "";
 
+  std::string minimumValueSortZeroError = "";
+  std::string minimumValueSortNegativeError = "";
+
   virtual ~errorsHandler () {}
 };
