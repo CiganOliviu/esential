@@ -39,6 +39,7 @@ namespace easyPassDefinitions {
     template <class Type> bool isEqual (limits<Type> limitsObject);
     template <class Type> Type returnTheMaximumParameter (limits<Type> limitsObject);
     template <class Type> Type returnTheMinimumParameter (limits<Type> limitsObject);
+    template <class Type> void interchangeValues (Type & parameterOne, Type & parameterTwo);
 
     virtual ~validationRules () {}
   };

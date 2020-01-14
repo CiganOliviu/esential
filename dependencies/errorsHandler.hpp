@@ -33,6 +33,9 @@ public:
   std::string getMaximumValueOneDimensionalArrayZeroError = "";
   std::string getMaximumValueOneDimensionalArrayNegativeError = "";
 
+  std::string getMaximumValueOneDimensionalArrayDivideEtEmperaZeroError = "";
+  std::string getMaximumValueOneDimensionalArrayDivideEtEmperaNegativeError = "";
+
   std::string getOneDimensionalArrayElementsSumZeroError = "";
   std::string getOneDimensionalArrayElementsSumNegativeError = "";
 
@@ -84,6 +87,9 @@ public:
   std::string getOneDimensionalArraysDivisionODAObjectTwoNegativeError = "";
   std::string getOneDimensionalArraysDivisionStartPointsError = "";
   std::string getOneDimensionalArraysDivisionEndPointsError = "";
+
+  std::string bubbleSortZeroError = "";
+  std::string bubbleSortNegativeError = "";
 
   virtual ~errorsHandler () {}
 };

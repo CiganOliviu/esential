@@ -175,6 +175,44 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getMaximumValueOneDimen
   return maximumValue;
 }
 
+template <class Type> Type oneDimensionalArraysWorkFlow::getMaximumValueOneDimensionalArrayDivideEtEmpera (limits<Type> interval, oneDimensionalArrayType<Type> ODAObject) {
+
+  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.getMaximumValueOneDimensionalArrayDivideEtEmperaZeroError);
+  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.getMaximumValueOneDimensionalArrayDivideEtEmperaNegativeError);
+
+  int middle, positionLeft = static_cast<int> (interval.minimLimit), positionRight;
+  limits<Type> leftRightLimits;
+  limits<Type> returningIntervalCaseOne;
+  limits<Type> leftWing;
+  limits<Type> rightWing;
+
+  if (interval.minimLimit == interval.maximLimit) return ODAObject.oneDimensionalArray[positionLeft];
+  else if (std::abs(interval.maximLimit - interval.minimLimit) == 1) {
+
+    positionLeft = static_cast<int> (interval.minimLimit);
+    positionRight = static_cast<int> (interval.minimLimit);
+
+    returningIntervalCaseOne.minimLimit = ODAObject.oneDimensionalArray[positionLeft];
+    returningIntervalCaseOne.maximLimit = ODAObject.oneDimensionalArray[positionRight];
+
+    return __validations__.returnTheMaximumParameter<Type> (returningIntervalCaseOne);
+  } else {
+
+    middle = (interval.minimLimit + interval.maximLimit) / 2;
+
+    leftWing.minimLimit = interval.minimLimit;
+    leftWing.maximLimit = middle;
+
+    rightWing.minimLimit = middle + 1;
+    rightWing.maximLimit = interval.maximLimit;
+
+    leftRightLimits.minimLimit = getMaximumValueOneDimensionalArrayDivideEtEmpera<Type> (leftWing, ODAObject);
+    leftRightLimits.maximLimit = getMaximumValueOneDimensionalArrayDivideEtEmpera<Type> (rightWing, ODAObject);
+
+    return __validations__.returnTheMaximumParameter<Type> (leftRightLimits);
+  }
+}
+
 template <class Type> Type oneDimensionalArraysWorkFlow::getOneDimensionalArrayElementsSum (oneDimensionalArrayType<Type> ODAObject) {
 
   if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.getOneDimensionalArrayElementsSumZeroError);
@@ -380,4 +418,15 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
     ODAObjectOne.oneDimensionalArray[iterator] /= ODAObjectTwo.oneDimensionalArray[iterator];
 
   return ODAObjectOne;
+}
+
+template <class Type> void oneDimensionalArraysWorkFlow::bubbleSort (oneDimensionalArrayType<Type> ODAObject) {
+
+  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.bubbleSortZeroError);
+  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.bubbleSortNegativeError);
+
+  for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint - 1; iterator++)
+    for (size_t jiterator = ODAObject.startPoint; jiterator < ODAObject.length + ODAObject.endPoint - iterator - 1; jiterator++)
+      if (ODAObject.oneDimensionalArray[jiterator] > ODAObject.oneDimensionalArray[jiterator + 1])
+      __validations__.interchangeValues (ODAObject.oneDimensionalArray[jiterator], ODAObject.oneDimensionalArray[jiterator + 1]);
 }

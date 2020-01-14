@@ -49,6 +49,13 @@ template <class Type> Type validationRules::returnTheMinimumParameter (limits<Ty
   return limitsObject.maximLimit;
 }
 
+template <class Type> void validationRules::interchangeValues (Type & parameterOne, Type & parameterTwo) {
+
+  parameterOne = parameterOne + parameterTwo;
+  parameterTwo = parameterOne - parameterTwo;
+  parameterOne = parameterOne - parameterTwo;
+}
+
 template <class Type> Type randomGenerator::numberGenerator (limits<Type> limitsObject) {
 
   srand(time(0));
