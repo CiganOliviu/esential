@@ -14,6 +14,12 @@ namespace maxMinData {
   limits<float> minLimitsCaseFour;
   limits<float> minLimitsCaseFive;
 
+  limits<int> intervalAtDivideEtEmperaTestCaseOne;
+  limits<int> intervalAtDivideEtEmperaTestCaseTwo;
+  limits<int> intervalAtDivideEtEmperaTestCaseThree;
+  limits<float> intervalAtDivideEtEmperaTestCaseFour;
+  limits<float> intervalAtDivideEtEmperaTestCaseFive;
+
   limits<int> maxLimitsCaseOne;
   limits<int> maxLimitsCaseTwo;
   limits<int> maxLimitsCaseThree;
@@ -97,6 +103,7 @@ public:
   setParameters () {}
 
   void _setParametersFor_getMinimumValueOneDimensionalArrayTestCases ();
+  void _setParametersFor_getMinimumValueOneDimensionalArrayDivideEtEmperaTestCases ();
   void _setParametersFor_getMaximumValueOneDimensionalArrayTestCases ();
   void _setParametersFor_getOneDimensionalArrayElementsSumTestCases ();
   void _setParametersFor_getOneDimensionalArrayElementsProductTestCases ();
@@ -137,6 +144,45 @@ void setParameters::_setParametersFor_getMinimumValueOneDimensionalArrayTestCase
 
     minLimitsCaseFive.minimLimit = -999999.999999;
     minLimitsCaseFive.maximLimit = minValueFromODACaseFive;
+}
+
+void setParameters::_setParametersFor_getMinimumValueOneDimensionalArrayDivideEtEmperaTestCases () {
+
+  intervalAtDivideEtEmperaTestCaseOne.minimLimit = 0;
+  intervalAtDivideEtEmperaTestCaseOne.maximLimit = minMaxODATestCaseOne.length - 1;
+
+  intervalAtDivideEtEmperaTestCaseTwo.minimLimit = 0;
+  intervalAtDivideEtEmperaTestCaseTwo.maximLimit = minMaxODATestCaseTwo.length - 1;
+
+  intervalAtDivideEtEmperaTestCaseThree.minimLimit = 0;
+  intervalAtDivideEtEmperaTestCaseThree.maximLimit = minMaxODATestCaseThree.length - 1;
+
+  intervalAtDivideEtEmperaTestCaseFour.minimLimit = 0;
+  intervalAtDivideEtEmperaTestCaseFour.maximLimit = minMaxODATestCaseFour.length - 1;
+
+  intervalAtDivideEtEmperaTestCaseFive.minimLimit = 0;
+  intervalAtDivideEtEmperaTestCaseFive.maximLimit = minMaxODATestCaseFive.length - 1;
+
+/*  int minValueFromODACaseOne = ODAWorkFlow.getMinimumValueOneDimensionalArrayDivideEtEmpera<int> (intervalAtDivideEtEmperaTestCaseOne, minMaxODATestCaseOne);
+  int minValueFromODACaseTwo = ODAWorkFlow.getMinimumValueOneDimensionalArrayDivideEtEmpera<int> (intervalAtDivideEtEmperaTestCaseTwo, minMaxODATestCaseTwo);
+  int minValueFromODACaseThree = ODAWorkFlow.getMinimumValueOneDimensionalArrayDivideEtEmpera<int> (intervalAtDivideEtEmperaTestCaseThree, minMaxODATestCaseThree);*/
+  float minValueFromODACaseFour = ODAWorkFlow.getMinimumValueOneDimensionalArrayDivideEtEmpera<float> (intervalAtDivideEtEmperaTestCaseFour, minMaxODATestCaseFour);
+//  float minValueFromODACaseFive = ODAWorkFlow.getMinimumValueOneDimensionalArrayDivideEtEmpera<float> (intervalAtDivideEtEmperaTestCaseFive, minMaxODATestCaseFive);
+/*
+  minLimitsCaseOne.minimLimit = 1;
+  minLimitsCaseOne.maximLimit = minValueFromODACaseOne;
+
+  minLimitsCaseTwo.minimLimit = -564387;
+  minLimitsCaseTwo.maximLimit = minValueFromODACaseTwo;
+
+  minLimitsCaseThree.minimLimit = -999999;
+  minLimitsCaseThree.maximLimit = minValueFromODACaseThree;
+*/
+  minLimitsCaseFour.minimLimit = 1.2;
+  minLimitsCaseFour.maximLimit = minValueFromODACaseFour;
+/*
+  minLimitsCaseFive.minimLimit = -999999.999999;
+  minLimitsCaseFive.maximLimit = minValueFromODACaseFive;*/
 }
 
 void setParameters::_setParametersFor_getMaximumValueOneDimensionalArrayTestCases () {
@@ -342,6 +388,7 @@ public:
   testCases () {}
 
   void getMinimumValueOneDimensionalArrayTestCases ();
+  void getMinimumValueOneDimensionalArrayDivideEtEmperaTestCases ();
   void getMaximumValueOneDimensionalArrayTestCases ();
   void getOneDimensionalArrayElementsSumTestCases ();
   void getOneDimensionalArrayElementsProductTestCases ();
@@ -365,15 +412,26 @@ void testCases::getMinimumValueOneDimensionalArrayTestCases () {
   assert.countTest ((char*)"getMinimumValueOneDimensionalArrayTestCaseFive", assert.assertPrimitiveDataTypes<float> (minLimitsCaseFive));
 }
 
+void testCases::getMinimumValueOneDimensionalArrayDivideEtEmperaTestCases () {
+
+  _setParametersFor_getMinimumValueOneDimensionalArrayDivideEtEmperaTestCases ();
+
+  assert.countTest ((char*)"getMinimumValueOneDimensionalArrayDivideEtEmperaTestCaseOne", assert.assertPrimitiveDataTypes<int> (minLimitsCaseOne));
+  assert.countTest ((char*)"getMinimumValueOneDimensionalArrayDivideEtEmperaTestCaseTwo", assert.assertPrimitiveDataTypes<int> (minLimitsCaseTwo));
+  assert.countTest ((char*)"getMinimumValueOneDimensionalArrayDivideEtEmperaTestCaseThree", assert.assertPrimitiveDataTypes<int> (minLimitsCaseThree));
+  assert.countTest ((char*)"getMinimumValueOneDimensionalArrayDivideEtEmperaTestCaseFour", assert.assertPrimitiveDataTypes<float> (minLimitsCaseFour));
+  assert.countTest ((char*)"getMinimumValueOneDimensionalArrayDivideEtEmperaTestCaseFive", assert.assertPrimitiveDataTypes<float> (minLimitsCaseFive));
+}
+
 void testCases::getMaximumValueOneDimensionalArrayTestCases () {
 
   _setParametersFor_getMaximumValueOneDimensionalArrayTestCases ();
 
-  assert.countTest ((char*)"getMaximumValueOneDimensionalArrayTestCaseOne", assert.assertPrimitiveDataTypes<int> (maxLimitsCaseOne));
+  /*assert.countTest ((char*)"getMaximumValueOneDimensionalArrayTestCaseOne", assert.assertPrimitiveDataTypes<int> (maxLimitsCaseOne));
   assert.countTest ((char*)"getMaximumValueOneDimensionalArrayTestCaseTwo", assert.assertPrimitiveDataTypes<int> (maxLimitsCaseTwo));
-  assert.countTest ((char*)"getMaximumValueOneDimensionalArrayTestCaseThree", assert.assertPrimitiveDataTypes<int> (maxLimitsCaseThree));
+  assert.countTest ((char*)"getMaximumValueOneDimensionalArrayTestCaseThree", assert.assertPrimitiveDataTypes<int> (maxLimitsCaseThree));*/
   assert.countTest ((char*)"getMaximumValueOneDimensionalArrayTestCaseFour", assert.assertPrimitiveDataTypes<float> (maxLimitsCaseFour));
-  assert.countTest ((char*)"getMaximumValueOneDimensionalArrayTestCaseFive", assert.assertPrimitiveDataTypes<float> (maxLimitsCaseFive));
+//  assert.countTest ((char*)"getMaximumValueOneDimensionalArrayTestCaseFive", assert.assertPrimitiveDataTypes<float> (maxLimitsCaseFive));
 }
 
 void testCases::getOneDimensionalArrayElementsSumTestCases () {
@@ -453,6 +511,7 @@ int main(int argc, char const *argv[]) {
   assertions assert;
 
   tests.getMinimumValueOneDimensionalArrayTestCases ();
+  tests.getMinimumValueOneDimensionalArrayDivideEtEmperaTestCases ();
   tests.getMaximumValueOneDimensionalArrayTestCases ();
   tests.getOneDimensionalArrayElementsSumTestCases ();
   tests.getOneDimensionalArrayElementsProductTestCases ();

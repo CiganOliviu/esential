@@ -27,6 +27,9 @@ public:
   std::string getMinimumValueOneDimensionalArrayZeroError = "";
   std::string getMinimumValueOneDimensionalArrayNegativeError = "";
 
+  std::string getMinimumValueOneDimensionalArrayDivideEtEmperaZeroError = "";
+  std::string getMinimumValueOneDimensionalArrayDivideEtEmperaNegativeError = "";
+
   std::string getMaximumValueOneDimensionalArrayZeroError = "";
   std::string getMaximumValueOneDimensionalArrayNegativeError = "";
 

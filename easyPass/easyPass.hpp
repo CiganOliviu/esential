@@ -35,6 +35,20 @@ template <class Type> bool validationRules::isEqual (limits<Type> limitsObject) 
     return false;
 }
 
+template <class Type> Type validationRules::returnTheMaximumParameter (limits<Type> limitsObject) {
+
+  if (limitsObject.minimLimit >= limitsObject.maximLimit) return limitsObject.minimLimit;
+
+  return limitsObject.maximLimit;
+}
+
+template <class Type> Type validationRules::returnTheMinimumParameter (limits<Type> limitsObject) {
+
+  if (limitsObject.minimLimit <= limitsObject.maximLimit) return limitsObject.minimLimit;
+
+  return limitsObject.maximLimit;
+}
+
 template <class Type> Type randomGenerator::numberGenerator (limits<Type> limitsObject) {
 
   srand(time(0));

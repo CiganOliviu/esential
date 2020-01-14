@@ -123,6 +123,44 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getMinimumValueOneDimen
   return minimumValue;
 }
 
+template <class Type> Type oneDimensionalArraysWorkFlow::getMinimumValueOneDimensionalArrayDivideEtEmpera (limits<Type> interval, oneDimensionalArrayType<Type> ODAObject) {
+
+  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.getMinimumValueOneDimensionalArrayDivideEtEmperaZeroError);
+  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.getMinimumValueOneDimensionalArrayDivideEtEmperaNegativeError);
+
+  int middle, positionLeft = static_cast<int> (interval.minimLimit), positionRight;
+  limits<Type> leftRightLimits;
+  limits<Type> returningIntervalCaseOne;
+  limits<Type> leftWing;
+  limits<Type> rightWing;
+
+  if (interval.minimLimit == interval.maximLimit) return ODAObject.oneDimensionalArray[positionLeft];
+  else if (std::abs(interval.maximLimit - interval.minimLimit) == 1) {
+
+    positionLeft = static_cast<int> (interval.minimLimit);
+    positionRight = static_cast<int> (interval.minimLimit);
+
+    returningIntervalCaseOne.minimLimit = ODAObject.oneDimensionalArray[positionLeft];
+    returningIntervalCaseOne.maximLimit = ODAObject.oneDimensionalArray[positionRight];
+
+    return __validations__.returnTheMinimumParameter<Type> (returningIntervalCaseOne);
+  } else {
+
+    middle = (interval.minimLimit + interval.maximLimit) / 2;
+
+    leftWing.minimLimit = interval.minimLimit;
+    leftWing.maximLimit = middle;
+
+    rightWing.minimLimit = middle + 1;
+    rightWing.maximLimit = interval.maximLimit;
+
+    leftRightLimits.minimLimit = getMinimumValueOneDimensionalArrayDivideEtEmpera<Type> (leftWing, ODAObject);
+    leftRightLimits.maximLimit = getMinimumValueOneDimensionalArrayDivideEtEmpera<Type> (rightWing, ODAObject);
+
+    return __validations__.returnTheMinimumParameter<Type> (leftRightLimits);
+  }
+}
+
 template <class Type> Type oneDimensionalArraysWorkFlow::getMaximumValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.getMaximumValueOneDimensionalArrayZeroError);
