@@ -433,8 +433,8 @@ template <class Type> void oneDimensionalArraysWorkFlow::bubbleSort (oneDimensio
 
 template <class Type> void oneDimensionalArraysWorkFlow::minimumValueSort (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.bubbleSortZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.bubbleSortNegativeError);
+  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.minimumValueSortZeroError);
+  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.minimumValueSortNegativeError);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint - 1; iterator++)
     for (size_t jiterator = ODAObject.startPoint + 1; jiterator < ODAObject.length + ODAObject.endPoint; jiterator++)

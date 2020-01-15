@@ -35,21 +35,47 @@ namespace sumProductDivisionDifference {
   oneDimensionalArrayType<float> sumProductDivisionDifferenceTestCaseFour;
   oneDimensionalArrayType<float> sumProductDivisionDifferenceTestCaseFive;
 
-  limits<int> sumLimitsCaseOne;
-  limits<int> sumLimitsCaseTwo;
-  limits<int> sumLimitsCaseThree;
-  limits<float> sumLimitsCaseFour;
-  limits<float> sumLimitsCaseFive;
+  oneDimensionalArrayType<int> ExpectedResultArraysSumProductDivisionDifferenceTestCaseOne;
+  oneDimensionalArrayType<int> ExpectedResultArraysSumProductDivisionDifferenceTestCaseTwo;
+  oneDimensionalArrayType<float> ExpectedResultArraysSumProductDivisionDifferenceTestCaseThree;
+  oneDimensionalArrayType<float> ExpectedResultArraysSumProductDivisionDifferenceTestCaseFive;
 
-  limits<int> productLimitsCaseOne;
-  limits<int> productLimitsCaseTwo;
-  limits<int> productLimitsCaseThree;
-  limits<float> productLimitsCaseFive;
+  limits<int> elementsSumLimitsCaseOne;
+  limits<int> elementsSumLimitsCaseTwo;
+  limits<int> elementsSumLimitsCaseThree;
+  limits<float> elementsSumLimitsCaseFour;
+  limits<float> elementsSumLimitsCaseFive;
 
-  limits<int> differenceLimitsCaseOne;
-  limits<int> differenceLimitsCaseTwo;
-  limits<int> differenceLimitsCaseThree;
-  limits<float> differenceLimitsCaseFive;
+  limits<int> elementsProductLimitsCaseOne;
+  limits<int> elementsProductLimitsCaseTwo;
+  limits<int> elementsProductLimitsCaseThree;
+  limits<float> elementsProductLimitsCaseFive;
+
+  limits<int> elementsDifferenceLimitsCaseOne;
+  limits<int> elementsDifferenceLimitsCaseTwo;
+  limits<int> elementsDifferenceLimitsCaseThree;
+  limits<float> elementsDifferenceLimitsCaseFive;
+
+  limits<int> arraysSumLimitsCaseOne;
+  limits<int> arraysSumLimitsCaseTwo;
+  limits<int> arraysSumLimitsCaseThree;
+  limits<float> arraysSumLimitsCaseFour;
+  limits<float> arraysSumLimitsCaseFive;
+
+  limits<int> arraysProductLimitsCaseOne;
+  limits<int> arraysProductLimitsCaseTwo;
+  limits<int> arraysProductLimitsCaseThree;
+  limits<float> arraysProductLimitsCaseFive;
+
+  limits<int> arraysDifferenceLimitsCaseOne;
+  limits<int> arraysDifferenceLimitsCaseTwo;
+  limits<int> arraysDifferenceLimitsCaseThree;
+  limits<float> arraysDifferenceLimitsCaseFive;
+
+  limits<bool> resultTestCaseOne;
+  limits<bool> resultTestCaseTwo;
+  limits<bool> resultTestCaseThree;
+  limits<bool> resultTestCaseFour;
 }
 
 namespace initializationSymetricAddValueIsValue {
@@ -110,9 +136,12 @@ public:
   void _setParametersFor_getOneDimensionalArrayElementsProductTestCases ();
   void _setParametersFor_getOneDimensionalArrayElementsDifferenceTestCases ();
   void _setParametersFor_oneDimensionalArrayInitializationTestCases ();
-  void _setParametersFor_checkIfSymetricOneDimensionalArray ();
-  void _setParametersFor_addValueOneDimensionalArray ();
-  void _setParametersFor_isValueInOneDimensionalArray ();
+  void _setParametersFor_checkIfSymetricOneDimensionalArrayTestCases ();
+  void _setParametersFor_addValueOneDimensionalArrayTestCases ();
+  void _setParametersFor_isValueInOneDimensionalArrayTestCases ();
+  void _setParametersFor_getOneDimensionalArraysSumTestCases ();
+  void _setParametersFor_getOneDimensionalArraysProductTestCases ();
+  void _setParametersFor_getOneDimensionalArraysDifferenceTestCases ();
 
   virtual ~setParameters () {}
 };
@@ -269,20 +298,20 @@ void setParameters::_setParametersFor_getOneDimensionalArrayElementsSumTestCases
   float sumValueFromODACaseFour = ODAWorkFlow.getOneDimensionalArrayElementsSum <float> (sumProductDivisionDifferenceTestCaseFour);
   float sumValueFromODACaseFive = ODAWorkFlow.getOneDimensionalArrayElementsSum <float> (sumProductDivisionDifferenceTestCaseFive);
 
-  sumLimitsCaseOne.minimLimit = 28;
-  sumLimitsCaseOne.maximLimit = sumValueFromODACaseOne;
+  elementsSumLimitsCaseOne.minimLimit = 28;
+  elementsSumLimitsCaseOne.maximLimit = sumValueFromODACaseOne;
 
-  sumLimitsCaseTwo.minimLimit = 496580;
-  sumLimitsCaseTwo.maximLimit = sumValueFromODACaseTwo;
+  elementsSumLimitsCaseTwo.minimLimit = 496580;
+  elementsSumLimitsCaseTwo.maximLimit = sumValueFromODACaseTwo;
 
-  sumLimitsCaseThree.minimLimit = 6019;
-  sumLimitsCaseThree.maximLimit = sumValueFromODACaseThree;
+  elementsSumLimitsCaseThree.minimLimit = 6019;
+  elementsSumLimitsCaseThree.maximLimit = sumValueFromODACaseThree;
 
-  sumLimitsCaseFour.minimLimit = 1401110.9929900004;
-  sumLimitsCaseFour.maximLimit = sumValueFromODACaseFour;
+  elementsSumLimitsCaseFour.minimLimit = 1401110.9929900004;
+  elementsSumLimitsCaseFour.maximLimit = sumValueFromODACaseFour;
 
-  sumLimitsCaseFive.minimLimit = 69.2;
-  sumLimitsCaseFive.maximLimit = sumValueFromODACaseFive;
+  elementsSumLimitsCaseFive.minimLimit = 69.2;
+  elementsSumLimitsCaseFive.maximLimit = sumValueFromODACaseFive;
 }
 
 void setParameters::_setParametersFor_getOneDimensionalArrayElementsProductTestCases () {
@@ -292,17 +321,17 @@ void setParameters::_setParametersFor_getOneDimensionalArrayElementsProductTestC
   int productValueFromODACaseThree = ODAWorkFlow.getOneDimensionalArrayElementsProduct <int> (sumProductDivisionDifferenceTestCaseThree);
   float productValueFromODACaseFive = ODAWorkFlow.getOneDimensionalArrayElementsProduct <float> (sumProductDivisionDifferenceTestCaseFive);
 
-  productLimitsCaseOne.minimLimit = 5040;
-  productLimitsCaseOne.maximLimit = productValueFromODACaseOne;
+  elementsProductLimitsCaseOne.minimLimit = 5040;
+  elementsProductLimitsCaseOne.maximLimit = productValueFromODACaseOne;
 
-  productLimitsCaseTwo.minimLimit = 0;
-  productLimitsCaseTwo.maximLimit = productValueFromODACaseTwo;
+  elementsProductLimitsCaseTwo.minimLimit = 0;
+  elementsProductLimitsCaseTwo.maximLimit = productValueFromODACaseTwo;
 
-  productLimitsCaseThree.minimLimit = 0;
-  productLimitsCaseThree.maximLimit = productValueFromODACaseThree;
+  elementsProductLimitsCaseThree.minimLimit = 0;
+  elementsProductLimitsCaseThree.maximLimit = productValueFromODACaseThree;
 
-  productLimitsCaseFive.minimLimit = 97107017.26053968;
-  productLimitsCaseFive.maximLimit = productValueFromODACaseFive;
+  elementsProductLimitsCaseFive.minimLimit = 97107017.26053968;
+  elementsProductLimitsCaseFive.maximLimit = productValueFromODACaseFive;
 }
 
 void setParameters::_setParametersFor_getOneDimensionalArrayElementsDifferenceTestCases () {
@@ -312,14 +341,14 @@ void setParameters::_setParametersFor_getOneDimensionalArrayElementsDifferenceTe
   int differenceValueFromODACaseThree = ODAWorkFlow.getOneDimensionalArrayElementsDifference <int> (sumProductDivisionDifferenceTestCaseThree);
   float differenceValueFromODACaseFive = ODAWorkFlow.getOneDimensionalArrayElementsDifference <float> (sumProductDivisionDifferenceTestCaseFive);
 
-  differenceLimitsCaseOne.minimLimit = -26;
-  differenceLimitsCaseOne.maximLimit = differenceValueFromODACaseOne;
+  elementsDifferenceLimitsCaseOne.minimLimit = -26;
+  elementsDifferenceLimitsCaseOne.maximLimit = differenceValueFromODACaseOne;
 
-  differenceLimitsCaseTwo.minimLimit = -472154;
-  differenceLimitsCaseTwo.maximLimit = differenceValueFromODACaseTwo;
+  elementsDifferenceLimitsCaseTwo.minimLimit = -472154;
+  elementsDifferenceLimitsCaseTwo.maximLimit = differenceValueFromODACaseTwo;
 
-  differenceLimitsCaseThree.minimLimit = -5995;
-  differenceLimitsCaseThree.maximLimit = differenceValueFromODACaseThree;
+  elementsDifferenceLimitsCaseThree.minimLimit = -5995;
+  elementsDifferenceLimitsCaseThree.maximLimit = differenceValueFromODACaseThree;
 }
 
 void setParameters::_setParametersFor_oneDimensionalArrayInitializationTestCases () {
@@ -353,7 +382,7 @@ void setParameters::_setParametersFor_oneDimensionalArrayInitializationTestCases
 
 }
 
-void setParameters::_setParametersFor_checkIfSymetricOneDimensionalArray () {
+void setParameters::_setParametersFor_checkIfSymetricOneDimensionalArrayTestCases () {
 
   ODAWorkFlow.readDynamicFileOneDimensionalArray<int> ((char*)"data/symetricCases/ODATestCaseOne.data", symetricDataTestCaseOne);
   ODAWorkFlow.readDynamicFileOneDimensionalArray<int> ((char*)"data/symetricCases/ODATestCaseTwo.data", symetricDataTestCaseTwo);
@@ -373,7 +402,7 @@ void setParameters::_setParametersFor_checkIfSymetricOneDimensionalArray () {
   symetricTestCaseFour.maximLimit = true;
 }
 
-void setParameters::_setParametersFor_addValueOneDimensionalArray () {
+void setParameters::_setParametersFor_addValueOneDimensionalArrayTestCases () {
 
   addValueTestCaseOne.minimLimit = 12;
   addValueTestCaseOne.maximLimit = 5;
@@ -410,7 +439,7 @@ void setParameters::_setParametersFor_addValueOneDimensionalArray () {
   checkIfEqualODACaseFour.maximLimit = false;
 }
 
-void setParameters::_setParametersFor_isValueInOneDimensionalArray () {
+void setParameters::_setParametersFor_isValueInOneDimensionalArrayTestCases () {
 
   checkIfEqualODACaseOne.minimLimit = ODAWorkFlow.isValueInOneDimensionalArray<int> (initializationAddValueIsValueTestCaseOne, 12);
   checkIfEqualODACaseOne.maximLimit = true;
@@ -423,6 +452,18 @@ void setParameters::_setParametersFor_isValueInOneDimensionalArray () {
 
   checkIfEqualODACaseFour.minimLimit = ODAWorkFlow.isValueInOneDimensionalArray<float> (initializationAddValueIsValueTestCaseFour, 17.2);
   checkIfEqualODACaseFour.maximLimit = false;
+}
+
+void setParameters::_setParametersFor_getOneDimensionalArraysSumTestCases () {
+  // pass
+}
+
+void setParameters::_setParametersFor_getOneDimensionalArraysProductTestCases () {
+  // pass
+}
+
+void setParameters::_setParametersFor_getOneDimensionalArraysDifferenceTestCases () {
+  // pass
 }
 
 class testCases : public setParameters {
@@ -444,6 +485,7 @@ public:
   void checkIfSymetricOneDimensionalArrayTestCases ();
   void addValueOneDimensionalArrayTestCases ();
   void isValueInOneDimensionalArrayTestCases ();
+  void getOneDimensionalArraysSumTestCases ();
 
   virtual ~testCases () {}
 };
@@ -496,31 +538,31 @@ void testCases::getOneDimensionalArrayElementsSumTestCases () {
 
   _setParametersFor_getOneDimensionalArrayElementsSumTestCases ();
 
-  assert.countTest ((char*)"getOneDimensionalArrayElementsSumTestCaseOne", assert.assertPrimitiveDataTypes<int> (sumLimitsCaseOne));
-  assert.countTest ((char*)"getOneDimensionalArrayElementsSumTestCaseTwo", assert.assertPrimitiveDataTypes<int> (sumLimitsCaseTwo));
-  assert.countTest ((char*)"getOneDimensionalArrayElementsSumTestCaseThree", assert.assertPrimitiveDataTypes<int> (sumLimitsCaseThree));
-  assert.countTest ((char*)"getOneDimensionalArrayElementsSumTestCaseFour", assert.assertPrimitiveDataTypes<float> (sumLimitsCaseFour));
-  assert.countTest ((char*)"getOneDimensionalArrayElementsSumTestCaseFive", assert.assertPrimitiveDataTypes<float> (sumLimitsCaseFive));
+  assert.countTest ((char*)"getOneDimensionalArrayElementsSumTestCaseOne", assert.assertPrimitiveDataTypes<int> (elementsSumLimitsCaseOne));
+  assert.countTest ((char*)"getOneDimensionalArrayElementsSumTestCaseTwo", assert.assertPrimitiveDataTypes<int> (elementsSumLimitsCaseTwo));
+  assert.countTest ((char*)"getOneDimensionalArrayElementsSumTestCaseThree", assert.assertPrimitiveDataTypes<int> (elementsSumLimitsCaseThree));
+  assert.countTest ((char*)"getOneDimensionalArrayElementsSumTestCaseFour", assert.assertPrimitiveDataTypes<float> (elementsSumLimitsCaseFour));
+  assert.countTest ((char*)"getOneDimensionalArrayElementsSumTestCaseFive", assert.assertPrimitiveDataTypes<float> (elementsSumLimitsCaseFive));
 }
 
 void testCases::getOneDimensionalArrayElementsProductTestCases () {
 
   _setParametersFor_getOneDimensionalArrayElementsProductTestCases ();
 
-  assert.countTest ((char*)"getOneDimensionalArrayElementsProductTestCaseOne", assert.assertPrimitiveDataTypes<int> (productLimitsCaseOne));
-  assert.countTest ((char*)"getOneDimensionalArrayElementsProductTestCaseTwo", assert.assertPrimitiveDataTypes<int> (productLimitsCaseTwo));
-  assert.countTest ((char*)"getOneDimensionalArrayElementsProductTestCaseThree", assert.assertPrimitiveDataTypes<int> (productLimitsCaseThree));
-  assert.countTest ((char*)"getOneDimensionalArrayElementsProductTestCaseFive", assert.assertPrimitiveDataTypes<float> (productLimitsCaseFive));
+  assert.countTest ((char*)"getOneDimensionalArrayElementsProductTestCaseOne", assert.assertPrimitiveDataTypes<int> (elementsProductLimitsCaseOne));
+  assert.countTest ((char*)"getOneDimensionalArrayElementsProductTestCaseTwo", assert.assertPrimitiveDataTypes<int> (elementsProductLimitsCaseTwo));
+  assert.countTest ((char*)"getOneDimensionalArrayElementsProductTestCaseThree", assert.assertPrimitiveDataTypes<int> (elementsProductLimitsCaseThree));
+  assert.countTest ((char*)"getOneDimensionalArrayElementsProductTestCaseFive", assert.assertPrimitiveDataTypes<float> (elementsProductLimitsCaseFive));
 }
 
 void testCases::getOneDimensionalArrayElementsDifferenceTestCases () {
 
   _setParametersFor_getOneDimensionalArrayElementsDifferenceTestCases ();
 
-  assert.countTest ((char*)"getOneDimensionalArrayElementsDifferenceTestCaseOne", assert.assertPrimitiveDataTypes<int> (differenceLimitsCaseOne));
-  assert.countTest ((char*)"getOneDimensionalArrayElementsDifferenceTestCaseTwo", assert.assertPrimitiveDataTypes<int> (differenceLimitsCaseTwo));
-  assert.countTest ((char*)"getOneDimensionalArrayElementsDifferenceTestCaseThree", assert.assertPrimitiveDataTypes<int> (differenceLimitsCaseThree));
-  assert.countTest ((char*)"getOneDimensionalArrayElementsDifferenceTestCaseFive", assert.assertPrimitiveDataTypes<float> (differenceLimitsCaseFive));
+  assert.countTest ((char*)"getOneDimensionalArrayElementsDifferenceTestCaseOne", assert.assertPrimitiveDataTypes<int> (elementsDifferenceLimitsCaseOne));
+  assert.countTest ((char*)"getOneDimensionalArrayElementsDifferenceTestCaseTwo", assert.assertPrimitiveDataTypes<int> (elementsDifferenceLimitsCaseTwo));
+  assert.countTest ((char*)"getOneDimensionalArrayElementsDifferenceTestCaseThree", assert.assertPrimitiveDataTypes<int> (elementsDifferenceLimitsCaseThree));
+  assert.countTest ((char*)"getOneDimensionalArrayElementsDifferenceTestCaseFive", assert.assertPrimitiveDataTypes<float> (elementsDifferenceLimitsCaseFive));
 }
 
 void testCases::oneDimensionalArrayInitializationTestCases () {
@@ -535,7 +577,7 @@ void testCases::oneDimensionalArrayInitializationTestCases () {
 
 void testCases::checkIfSymetricOneDimensionalArrayTestCases () {
 
-  _setParametersFor_checkIfSymetricOneDimensionalArray ();
+  _setParametersFor_checkIfSymetricOneDimensionalArrayTestCases ();
 
   assert.countTest ((char*)"checkIfSymetricOneDimensionalArrayTestCaseOne", assert.assertPrimitiveDataTypes<bool> (symetricTestCaseOne));
   assert.countTest ((char*)"checkIfSymetricOneDimensionalArrayTestCaseTwo", assert.assertPrimitiveDataTypes<bool> (symetricTestCaseTwo));
@@ -545,7 +587,7 @@ void testCases::checkIfSymetricOneDimensionalArrayTestCases () {
 
 void testCases::addValueOneDimensionalArrayTestCases () {
 
-  _setParametersFor_addValueOneDimensionalArray ();
+  _setParametersFor_addValueOneDimensionalArrayTestCases ();
 
   assert.countTest ((char*)"addValueOneDimensionalArrayTestCaseOne", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseOne));
   assert.countTest ((char*)"addValueOneDimensionalArrayTestCaseTwo", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseTwo));
@@ -555,12 +597,17 @@ void testCases::addValueOneDimensionalArrayTestCases () {
 
 void testCases::isValueInOneDimensionalArrayTestCases () {
 
-  _setParametersFor_isValueInOneDimensionalArray ();
+  _setParametersFor_isValueInOneDimensionalArrayTestCases ();
 
   assert.countTest ((char*)"isValueInOneDimensionalArrayTestCaseOne", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseOne));
   assert.countTest ((char*)"isValueInOneDimensionalArrayTestCaseTwo", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseTwo));
   assert.countTest ((char*)"isValueInOneDimensionalArrayTestCaseThree", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseThree));
   assert.countTest ((char*)"isValueInOneDimensionalArrayTestCaseFour", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseFour));
+}
+
+void testCases::getOneDimensionalArraysSumTestCases () {
+
+  // pass
 }
 
 int main(int argc, char const *argv[]) {
