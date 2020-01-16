@@ -40,8 +40,8 @@ public:
   template <class Type> void bubbleSort (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void minimumValueSort (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void quickSort (limits<Type> interval, oneDimensionalArrayType<Type> ODAObject); // it will be implemented
-  template <class Type> void insertionSort (oneDimensionalArrayType<Type> ODAObject); // it will be implemented
-  template <class Type> void selectionSort (oneDimensionalArrayType<Type> ODAObject); // it will be implemented
+  template <class Type> void insertionSort (oneDimensionalArrayType<Type> ODAObject); 
+  template <class Type> void selectionSort (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void shellSort (oneDimensionalArrayType<Type> ODAObject); // it will be implemented
 
   virtual ~oneDimensionalArraysWorkFlow () {}

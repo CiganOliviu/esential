@@ -139,9 +139,6 @@ public:
   void _setParametersFor_checkIfSymetricOneDimensionalArrayTestCases ();
   void _setParametersFor_addValueOneDimensionalArrayTestCases ();
   void _setParametersFor_isValueInOneDimensionalArrayTestCases ();
-  void _setParametersFor_getOneDimensionalArraysSumTestCases ();
-  void _setParametersFor_getOneDimensionalArraysProductTestCases ();
-  void _setParametersFor_getOneDimensionalArraysDifferenceTestCases ();
 
   virtual ~setParameters () {}
 };
@@ -454,18 +451,6 @@ void setParameters::_setParametersFor_isValueInOneDimensionalArrayTestCases () {
   checkIfEqualODACaseFour.maximLimit = false;
 }
 
-void setParameters::_setParametersFor_getOneDimensionalArraysSumTestCases () {
-  // pass
-}
-
-void setParameters::_setParametersFor_getOneDimensionalArraysProductTestCases () {
-  // pass
-}
-
-void setParameters::_setParametersFor_getOneDimensionalArraysDifferenceTestCases () {
-  // pass
-}
-
 class testCases : public setParameters {
 
 private:
@@ -485,7 +470,6 @@ public:
   void checkIfSymetricOneDimensionalArrayTestCases ();
   void addValueOneDimensionalArrayTestCases ();
   void isValueInOneDimensionalArrayTestCases ();
-  void getOneDimensionalArraysSumTestCases ();
 
   virtual ~testCases () {}
 };
@@ -603,11 +587,6 @@ void testCases::isValueInOneDimensionalArrayTestCases () {
   assert.countTest ((char*)"isValueInOneDimensionalArrayTestCaseTwo", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseTwo));
   assert.countTest ((char*)"isValueInOneDimensionalArrayTestCaseThree", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseThree));
   assert.countTest ((char*)"isValueInOneDimensionalArrayTestCaseFour", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseFour));
-}
-
-void testCases::getOneDimensionalArraysSumTestCases () {
-
-  // pass
 }
 
 int main(int argc, char const *argv[]) {

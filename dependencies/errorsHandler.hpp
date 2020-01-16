@@ -94,5 +94,17 @@ public:
   std::string minimumValueSortZeroError = "";
   std::string minimumValueSortNegativeError = "";
 
+  std::string quickSortZeroError = "";
+  std::string quickSortNegativeError = "";
+
+  std::string insertionSortZeroError = "";
+  std::string insertionSortNegativeError = "";
+
+  std::string selectionSortZeroError = "";
+  std::string selectionSortNegativeError = "";
+
+  std::string shellSortZeroError = "";
+  std::string shellSortNegativeError = "";
+
   virtual ~errorsHandler () {}
 };

@@ -437,7 +437,42 @@ template <class Type> void oneDimensionalArraysWorkFlow::minimumValueSort (oneDi
   if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.minimumValueSortNegativeError);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint - 1; iterator++)
-    for (size_t jiterator = ODAObject.startPoint + 1; jiterator < ODAObject.length + ODAObject.endPoint; jiterator++)
+    for (size_t jiterator = iterator + 1; jiterator < ODAObject.length + ODAObject.endPoint; jiterator++)
+      if (ODAObject.oneDimensionalArray[iterator] > ODAObject.oneDimensionalArray[jiterator])
+        __validations__.interchangeValues (ODAObject.oneDimensionalArray[iterator], ODAObject.oneDimensionalArray[jiterator]);
+}
+
+template <class Type> void oneDimensionalArraysWorkFlow::quickSort (limits<Type> interval, oneDimensionalArrayType<Type> ODAObject) {
+  // pass
+}
+
+template <class Type> void oneDimensionalArraysWorkFlow::insertionSort (oneDimensionalArrayType<Type> ODAObject) {
+
+  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.insertionSortZeroError);
+  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.insertionSortNegativeError);
+
+  Type temporarParameter;
+  int jiterator;
+
+  for (size_t iterator = ODAObject.startPoint + 1; iterator < ODAObject.length + ODAObject.endPoint; iterator++) {
+      temporarParameter = ODAObject.oneDimensionalArray[iterator];
+      jiterator = iterator - 1;
+
+      while (jiterator >= 0 && ODAObject.oneDimensionalArray[jiterator] > temporarParameter) {
+        ODAObject.oneDimensionalArray[jiterator + 1] = ODAObject.oneDimensionalArray[jiterator];
+        jiterator -= 1;
+      }
+      ODAObject.oneDimensionalArray[jiterator + 1] = temporarParameter;
+  }
+}
+
+template <class Type> void oneDimensionalArraysWorkFlow::selectionSort (oneDimensionalArrayType<Type> ODAObject) {
+
+  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.insertionSortZeroError);
+  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.insertionSortNegativeError);
+
+  for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
+    for (size_t jiterator = iterator + 1; jiterator < ODAObject.length + ODAObject.endPoint; jiterator++)
       if (ODAObject.oneDimensionalArray[iterator] > ODAObject.oneDimensionalArray[jiterator])
         __validations__.interchangeValues (ODAObject.oneDimensionalArray[iterator], ODAObject.oneDimensionalArray[jiterator]);
 }
