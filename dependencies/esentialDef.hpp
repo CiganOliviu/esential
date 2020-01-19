@@ -30,6 +30,8 @@ private:
   errorsHandler __errors__;
   validationRules __validations__;
 
+  template <class Type> Type sortAndNormalizeNumber (Type parameter);
+
 public:
   oneDimensionalArraysWorkFlow () {}
 
@@ -55,6 +57,7 @@ public:
   template <class Type> bool checkIfSymetricOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void addValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, limits<Type> valueAndPosition);
   template <class Type> bool isValueInOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type value);
+  template <class Type> void normalizeOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
 
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysSum (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysProduct (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
@@ -63,10 +66,10 @@ public:
 
   template <class Type> void bubbleSort (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void minimumValueSort (oneDimensionalArrayType<Type> ODAObject);
-  template <class Type> void quickSort (limits<Type> interval, oneDimensionalArrayType<Type> ODAObject); // it will be implemented
   template <class Type> void insertionSort (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void selectionSort (oneDimensionalArrayType<Type> ODAObject);
-  template <class Type> void shellSort (oneDimensionalArrayType<Type> ODAObject); // it will be implemented
+  template <class Type> void shellSort (oneDimensionalArrayType<Type> ODAObject);
+  template <class Type> void reverseOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
 
   virtual ~oneDimensionalArraysWorkFlow () {}
 };

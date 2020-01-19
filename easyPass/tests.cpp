@@ -606,4 +606,6 @@ int main(int argc, char const *argv[]) {
   tests.isValueInOneDimensionalArrayTestCases ();
 
   assert.getConclusion ();
+
+  return 0;
 }

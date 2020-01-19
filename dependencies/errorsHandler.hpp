@@ -60,6 +60,9 @@ public:
   std::string isValueInOneDimensionalArrayZeroError = "";
   std::string isValueInOneDimensionalArrayNegativeError = "";
 
+  std::string normalizeOneDimensionalArrayZeroError = "";
+  std::string normalizeOneDimensionalArrayNegativeError = "";
+
   std::string getOneDimensionalArraysSumODAObjectOneZeroError = "";
   std::string getOneDimensionalArraysSumODAObjectTwoZeroError = "";
   std::string getOneDimensionalArraysSumODAObjectOneNegativeError = "";
