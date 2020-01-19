@@ -87,7 +87,7 @@ template <class Type> void randomGenerator::oneDimensionalArrayGenerator (oneDim
     ODAObject.oneDimensionalArray[iterator] = (rand() % (limitsObject.maximLimit - limitsObject.minimLimit + 1)) + limitsObject.minimLimit;
 }
 
-template <class Type> void randomGenerator::matrixGenerator (matrixType<Type> MTObject, limits<Type> limitsObject) {
+template <class Type> void randomGenerator::matrixGenerator (matrixType<Type> & MTObject, limits<Type> limitsObject) {
 
   if (isZero(MTObject.line) && isZero(MTObject.column)) throw systemException (__error__.matrixGeneratorZeroError);
   else if (isNegative(MTObject.line) && isNegative(MTObject.column)) throw systemException (__error__.matrixGeneratorNegativeError);
@@ -119,7 +119,7 @@ template <class Type> void checkAndSupport::putsOneDimensionalArray (oneDimensio
     std::cout << ODAObject.oneDimensionalArray[iterator] << " ";
 }
 
-template <class Type> void checkAndSupport::readMatrix (matrixType<Type> MTObject) {
+template <class Type> void checkAndSupport::readMatrix (matrixType<Type> & MTObject) {
 
   if (isZero(MTObject.line) && isZero(MTObject.column)) throw systemException (__error__.readMatrixZeroError);
   else if (isNegative(MTObject.line) && isNegative(MTObject.column)) throw systemException (__error__.readMatrixNegativeError);
@@ -129,7 +129,7 @@ template <class Type> void checkAndSupport::readMatrix (matrixType<Type> MTObjec
         std::cin >> MTObject.matrix[iterator][jiterator];
 }
 
-template <class Type> void checkAndSupport::putsMatrix (matrixType<Type> MTObject) {
+template <class Type> void checkAndSupport::putsMatrix (matrixType<Type> & MTObject) {
 
   if (isZero(MTObject.line) && isZero(MTObject.column)) throw systemException (__error__.putsMatrixZeroError);
   else if (isNegative(MTObject.line) && isNegative(MTObject.column)) throw systemException (__error__.putsMatrixNegativeError);
@@ -166,6 +166,34 @@ template <class Type> void checkAndSupport::putsTree (binaryTreeType<Type> * roo
     RootLeftRight(root->leftLeaf);
     RootLeftRight(root->rightLeaf);
   }
+}
+
+template <class Type> void portData::portOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
+
+  if (isZero(ODAObjectTwo.length)) throw systemException (__error__.portOneDimensionalArraysZeroError);
+  else if (isNegative(ODAObjectTwo.length)) throw systemException (__error__.portOneDimensionalArraysNegativeError);
+
+  ODAObjectOne.length = ODAObjectTwo.length;
+  ODAObjectOne.startPoint = ODAObjectTwo.startPoint;
+  ODAObjectOne.endPoint = ODAObjectTwo.endPoint;
+
+  for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
+    ODAObjectOne.oneDimensionalArray[iterator] = ODAObjectTwo.oneDimensionalArray[iterator];
+}
+
+template <class Type> void portData::portMatrices (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo) {
+
+  if (isZero(matrixObjectTwo.line) && isZero(matrixObjectTwo.column)) throw systemException (__error__.putsMatrixZeroError);
+  else if (isNegative(matrixObjectTwo.line) && isNegative(matrixObjectTwo.column)) throw systemException (__error__.putsMatrixNegativeError);
+
+  matrixObjectOne.line = matrixObjectTwo.line;
+  matrixObjectOne.column = matrixObjectTwo.column;
+  matrixObjectOne.startPoint = matrixObjectTwo.startPoint;
+  matrixObjectOne.endPoint = matrixObjectOne.endPoint;
+
+  for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.line + matrixObjectOne.endLinePoint; iterator++)
+      for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.column + matrixObjectOne.endColumnPoint; jiterator++)
+        matrixObjectOne.matrix[iterator][jiterator] = matrixObjectTwo.matrix[iterator][jiterator];
 }
 
 template <class Type> bool assertions::assertPrimitiveDataTypes (limits<Type> limitsObject) {
@@ -205,7 +233,7 @@ template <class Type> bool assertions::assertOneDimensionalArrays (oneDimensiona
   return true;
 }
 
-template <class Type> bool assertions::assertMatrix (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo) {
+template <class Type> bool assertions::assertMatrix (matrixType<Type> & MTObjectOne, matrixType<Type> & MTObjectTwo) {
 
   limits<Type> lines;
   lines.minimLimit = MTObjectOne.line;

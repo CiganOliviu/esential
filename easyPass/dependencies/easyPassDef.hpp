@@ -1,3 +1,27 @@
+/*
+MIT License
+
+Copyright (c) 2020 Cigan Oliviu David
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
 #include "dataStructures.hpp"
 #include "errorHandler.hpp"
 
@@ -55,7 +79,7 @@ namespace easyPassDefinitions {
     template <class Type> Type numberGenerator (limits<Type> limitsObject);
     template <class Type> Type staticNumberGenerator (limits<Type> limitsObject);
     template <class Type> void oneDimensionalArrayGenerator (oneDimensionalArrayType<Type> ODAObject, limits<Type> limitsObject);
-    template <class Type> void matrixGenerator (matrixType<Type> MTObject, limits<Type> limitsObject);
+    template <class Type> void matrixGenerator (matrixType<Type> & MTObject, limits<Type> limitsObject);
 
     virtual ~randomGenerator () {}
   };
@@ -70,13 +94,26 @@ namespace easyPassDefinitions {
     template <class Type> void readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
     template <class Type> void putsOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
 
-    template <class Type> void readMatrix (matrixType<Type> MTObject);
-    template <class Type> void putsMatrix (matrixType<Type> MTObject);
+    template <class Type> void readMatrix (matrixType<Type> & MTObject);
+    template <class Type> void putsMatrix (matrixType<Type> & MTObject);
 
     template <class Type> void readTree (binaryTreeType<Type> *& root);
     template <class Type> void putsTree (binaryTreeType<Type> * root);
 
     virtual ~checkAndSupport () {}
+  };
+
+  class portData {
+  private:
+    errorHandler __error__;
+
+  public:
+    portData () {};
+
+    template <class Type> void portOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
+    template <class Type> void portMatrices (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
+
+    virtual ~portData () {}
   };
 
   class assertions {
@@ -89,7 +126,7 @@ namespace easyPassDefinitions {
 
     template <class Type> bool assertPrimitiveDataTypes (limits<Type> limitsObject);
     template <class Type> bool assertOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
-    template <class Type> bool assertMatrix (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo);
+    template <class Type> bool assertMatrix (matrixType<Type> & MTObjectOne, matrixType<Type> & MTObjectTwo);
 
     void countTest (char * testCase, bool testCasePassed);
     void getConclusion ();

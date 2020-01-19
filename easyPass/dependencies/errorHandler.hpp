@@ -32,6 +32,12 @@ public:
   std::string putsMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void putsMatrix (matrixType<Type> MTObject);";
   std::string putsMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void putsMatrix (matrixType<Type> MTObject);";
 
+  std::string portOneDimensionalArraysZeroError = "Unable to handle length as zero in template emplate <class Type> void portOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);";
+  std::string portOneDimensionalArraysNegativeError = "Unable to handle negative length in template emplate <class Type> void portOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);";
+
+  std::string portMatricesZeroError = "Unable to handle line or column as zero in template template <class Type> void portMatrices (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo)";
+  std::string portMatricesNegativeError = "Unable to handle negative line or column in template template <class Type> void portMatrices (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo)";
+
   std::string assertOneDimensionalArraysZeroError = "Unable to handle length as zero in template <class Type> bool assertOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);";
   std::string assertOneDimensionalArraysNegativeError = "Unable to handle negative length template <class Type> bool assertOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);";
   std::string assertOneDimensionalArraysUnequalLengths = "Unable to process with unequal lengths in template <class Type> bool assertOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);";
