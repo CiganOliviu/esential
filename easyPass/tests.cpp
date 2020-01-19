@@ -590,7 +590,6 @@ void testCases::isValueInOneDimensionalArrayTestCases () {
 }
 
 int main(int argc, char const *argv[]) {
-
   testCases tests;
   assertions assert;
 
@@ -607,6 +606,4 @@ int main(int argc, char const *argv[]) {
   tests.isValueInOneDimensionalArrayTestCases ();
 
   assert.getConclusion ();
-
-  return 0;
 }
