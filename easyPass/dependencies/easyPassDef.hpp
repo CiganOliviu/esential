@@ -92,10 +92,14 @@ namespace easyPassDefinitions {
     checkAndSupport () {}
 
     template <class Type> void readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
+    template <class Type> void readDynamicFileDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
     template <class Type> void putsOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
+    template <class Type> void putsFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
 
     template <class Type> void readMatrix (matrixType<Type> & MTObject);
+    template <class Type> void readDynamicFileMatrix (char * fileName, matrixType<Type> & MTObject);
     template <class Type> void putsMatrix (matrixType<Type> & MTObject);
+    template <class Type> void putsFileMatrix (char * fileName, matrixType<Type> & MTObject);
 
     template <class Type> void readTree (binaryTreeType<Type> *& root);
     template <class Type> void putsTree (binaryTreeType<Type> * root);
@@ -112,7 +116,8 @@ namespace easyPassDefinitions {
 
     template <class Type> void portOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
     template <class Type> void portMatrices (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
-
+    template <class Type> void portLimits (limits<Type> & limitsObject);
+    
     virtual ~portData () {}
   };
 

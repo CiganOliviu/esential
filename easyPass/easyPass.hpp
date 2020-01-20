@@ -110,6 +110,28 @@ template <class Type> void checkAndSupport::readOneDimensionalArray (oneDimensio
     std::cin >> ODAObject.oneDimensionalArray[iterator];
 }
 
+template <class Type> void checkAndSupport::readDynamicFileDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+
+    std::ifstream dataStream(fileName, std::ios::in);
+    Type data;
+
+    if (dataStream.is_open()) {
+
+      while (dataStream >> data) {
+
+        ODAObject.oneDimensionalArray[ODAObject.length] = data;
+        ODAObject.length += 1;
+      }
+
+      if (isZero(ODAObject.length)) throw systemException (__error__.readDynamicFileOneDimensionalArrayZeroError);
+      else if (isNegative(ODAObject.length)) throw systemException (__error__.readDynamicFileOneDimensionalArrayNegativeError);
+
+      dataStream.close();
+    }
+    else
+      throw systemException (__error__.filesError);
+}
+
 template <class Type> void checkAndSupport::putsOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   if (isZero(ODAObject.length)) throw systemException (__error__.putsOneDimensionalArrayZeroError);
@@ -117,6 +139,24 @@ template <class Type> void checkAndSupport::putsOneDimensionalArray (oneDimensio
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
     std::cout << ODAObject.oneDimensionalArray[iterator] << " ";
+}
+
+template <class Type> void checkAndSupport::putsFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+
+  if (isZero(ODAObject.length)) throw systemException (__error__.putsFileOneDimensionalArrayZeroError);
+  else if (isNegative(ODAObject.length)) throw systemException (__error__.putsFileOneDimensionalArrayNegativeError);
+
+  std::ofstream dataStream(fileName, std::ios::out);
+
+  if (dataStream.is_open()) {
+
+    for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
+      dataStream << ODAObject.oneDimensionalArray[iterator] << " ";
+
+    dataStream.close();
+  }
+  else
+    throw systemException (__error__.filesError);
 }
 
 template <class Type> void checkAndSupport::readMatrix (matrixType<Type> & MTObject) {
@@ -129,6 +169,39 @@ template <class Type> void checkAndSupport::readMatrix (matrixType<Type> & MTObj
         std::cin >> MTObject.matrix[iterator][jiterator];
 }
 
+template <class Type> void checkAndSupport::readDynamicFileMatrix (char * fileName, matrixType<Type> & MTObject) {
+
+  std::ifstream dataStream(fileName, std::ios::in);
+
+  Type data;
+  char endOfLine;
+  int auxColumnLength = MTObject.columnRefference;
+
+  if (dataStream.is_open()) {
+
+    while (dataStream >> data) {
+
+      MTObject.matrix[MTObject.lineRefference][auxColumnLength] = data;
+
+      auxColumnLength += 1;
+
+      dataStream.get (endOfLine);
+
+      if (endOfLine == '\n') {
+        MTObject.lineRefference += 1;
+        MTObject.columnRefference = auxColumnLength;
+        auxColumnLength = 0;
+      }
+    }
+
+    if (isZero(MTObject.lineRefference) || isZero(MTObject.columnRefference)) throw systemException (__error__.readDynamicFileMatrixZeroError);
+    if (isNegative(MTObject.lineRefference) || isNegative(MTObject.columnRefference)) throw systemException (__error__.readDynamicFileMatrixNegativeError);
+
+    dataStream.close();
+  }
+  else throw systemException(__error__.filesError);
+}
+
 template <class Type> void checkAndSupport::putsMatrix (matrixType<Type> & MTObject) {
 
   if (isZero(MTObject.line) && isZero(MTObject.column)) throw systemException (__error__.putsMatrixZeroError);
@@ -139,6 +212,25 @@ template <class Type> void checkAndSupport::putsMatrix (matrixType<Type> & MTObj
         std::cout << MTObject.matrix[iterator][jiterator] << " ";
       std::cout <<'\n';
   }
+}
+
+template <class Type> void checkAndSupport::putsFileMatrix (char * fileName, matrixType<Type> & MTObject) {
+
+  if (isZero(MTObject.line) && isZero(MTObject.column)) throw systemException (__error__.putsFileMatrixZeroError);
+  else if (isNegative(MTObject.line) && isNegative(MTObject.column)) throw systemException (__error__.putsFileMatrixNegativeError);
+
+  std::ofstream dataStream(fileName, std::ios::out);
+
+  if (dataStream.is_open()) {
+
+    for (size_t iterator = MTObject.startLinePoint; iterator < MTObject.line + MTObject.endLinePoint; iterator++) {
+        for (size_t jiterator = MTObject.startColumnPoint; jiterator < MTObject.column + MTObject.endColumnPoint; jiterator++)
+          dataStream << MTObject.matrix[iterator][jiterator] << " ";
+        dataStream <<'\n';
+    }
+    dataStream.close();
+  }
+  else throw systemException (__error__.filesError);
 }
 
 template <class Type> void checkAndSupport::readTree (binaryTreeType<Type> *& root) {
@@ -194,6 +286,13 @@ template <class Type> void portData::portMatrices (matrixType<Type> & matrixObje
   for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.line + matrixObjectOne.endLinePoint; iterator++)
       for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.column + matrixObjectOne.endColumnPoint; jiterator++)
         matrixObjectOne.matrix[iterator][jiterator] = matrixObjectTwo.matrix[iterator][jiterator];
+}
+
+template <class Type> void portData::portLimits (limits<Type> & limitsObject) {
+
+    limitsObject.minimLimit = limitsObject.minimLimit + limitsObject.maximLimit;
+    limitsObject.maximLimit = limitsObject.minimLimit - limitsObject.maximLimit;
+    limitsObject.minimLimit = limitsObject.minimLimit - limitsObject.maximLimit;
 }
 
 template <class Type> bool assertions::assertPrimitiveDataTypes (limits<Type> limitsObject) {

@@ -14,6 +14,8 @@ private:
 public:
   errorHandler () {}
 
+  std::string filesError = "Unable to open file";
+
   std::string oneDimensionalArrayGeneratorZeroError = "Unable to handle length as zero in template <class Type> void oneDimensionalArrayGenerator (oneDimensionalArrayType<Type> ODAObject, limits<Type> limitsObject);";
   std::string oneDimensionalArrayGeneratorNegativeError = "Unable to handle negative length in template <class Type> void oneDimensionalArrayGenerator (oneDimensionalArrayType<Type> ODAObject, limits<Type> limitsObject);";
 
@@ -23,14 +25,26 @@ public:
   std::string readOneDimensionalArrayZeroError = "Unable to handle length as zero in template <class Type> void readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);";
   std::string readOneDimensionalArrayNegativeError = "Unable to handle negative length in template <class Type> void readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);";
 
-  std::string putsOneDimensionalArrayZeroError = "Unable to handle length as zero template <class Type> void putsOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);";
-  std::string putsOneDimensionalArrayNegativeError = "Unable to handle negative length template <class Type> void putsOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);";
+  std::string readDynamicFileOneDimensionalArrayZeroError = "Unable to handle length as zero in template <class Type> void readDynamicFileDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);";
+  std::string readDynamicFileOneDimensionalArrayNegativeError = "Unable to handle negative length in template <class Type> void readDynamicFileDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);";
+
+  std::string putsOneDimensionalArrayZeroError = "Unable to handle length as zero template in <class Type> void putsOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);";
+  std::string putsOneDimensionalArrayNegativeError = "Unable to handle negative length template in <class Type> void putsOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);";
+
+  std::string putsFileOneDimensionalArrayZeroError = "Unable to handle length as zero in template <class Type> void putsFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);";
+  std::string putsFileOneDimensionalArrayNegativeError = "Unable to handle negative length in template <class Type> void putsFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);";
 
   std::string readMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void readMatrix (matrixType<Type> MTObject);";
   std::string readMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void readMatrix (matrixType<Type> MTObject);";
 
+  std::string readDynamicFileMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void readDynamicFileMatrix (char * fileName, matrixType<Type> & MTObject);";
+  std::string readDynamicFileMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void readDynamicFileMatrix (char * fileName, matrixType<Type> & MTObject);";
+
   std::string putsMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void putsMatrix (matrixType<Type> MTObject);";
   std::string putsMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void putsMatrix (matrixType<Type> MTObject);";
+
+  std::string putsFileMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void putsFileMatrix (char * fileName, matrixType<Type> & MTObject);";
+  std::string putsFileMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void putsFileMatrix (char * fileName, matrixType<Type> & MTObject);";
 
   std::string portOneDimensionalArraysZeroError = "Unable to handle length as zero in template emplate <class Type> void portOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);";
   std::string portOneDimensionalArraysNegativeError = "Unable to handle negative length in template emplate <class Type> void portOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);";
