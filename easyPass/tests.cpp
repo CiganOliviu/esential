@@ -116,17 +116,17 @@ namespace symetricData {
 
 namespace normalizeOneDimensionalArrayDataSets {
 
-    oneDimensionalArrayType<int> normalizeOneDimensionalArrayTestCaseOne;
-    oneDimensionalArrayType<int> normalizeOneDimensionalArrayTestCaseTwo;
-    oneDimensionalArrayType<float> normalizeOneDimensionalArrayTestCaseThree;
+  oneDimensionalArrayType<int> normalizeOneDimensionalArrayTestCaseOne;
+  oneDimensionalArrayType<int> normalizeOneDimensionalArrayTestCaseTwo;
+  oneDimensionalArrayType<float> normalizeOneDimensionalArrayTestCaseThree;
 
-    oneDimensionalArrayType<int> normalizeOneDimensionalArrayExpectedResultTestCaseOne;
-    oneDimensionalArrayType<int> normalizeOneDimensionalArrayExpectedResultTestCaseTwo;
-    oneDimensionalArrayType<float> normalizeOneDimensionalArrayExpectedResultTestCaseThree;
+  oneDimensionalArrayType<int> normalizeOneDimensionalArrayExpectedResultTestCaseOne;
+  oneDimensionalArrayType<int> normalizeOneDimensionalArrayExpectedResultTestCaseTwo;
+  oneDimensionalArrayType<float> normalizeOneDimensionalArrayExpectedResultTestCaseThree;
 
-    limits<bool> checkIfEqualArraysCaseOne;
-    limits<bool> checkIfEqualArraysCaseTwo;
-    limits<bool> checkIfEqualArraysCaseThree;
+  limits<bool> checkIfEqualArraysCaseOne;
+  limits<bool> checkIfEqualArraysCaseTwo;
+  limits<bool> checkIfEqualArraysCaseThree;
 }
 
 using namespace maxMinData;
@@ -192,26 +192,26 @@ void setParameters::_setParametersFor_getMinimumValueOneDimensionalArrayTestCase
 
 void setParameters::_setParametersFor_getMaximumValueOneDimensionalArrayTestCases () {
 
-    int maxValueFromODACaseOne = ODAWorkFlow.getMaximumValueOneDimensionalArray<int> (minMaxODATestCaseOne);
-    int maxValueFromODACaseTwo = ODAWorkFlow.getMaximumValueOneDimensionalArray<int> (minMaxODATestCaseTwo);
-    int maxValueFromODACaseThree = ODAWorkFlow.getMaximumValueOneDimensionalArray<int> (minMaxODATestCaseThree);
-    float maxValueFromODACaseFour = ODAWorkFlow.getMaximumValueOneDimensionalArray<float> (minMaxODATestCaseFour);
-    float maxValueFromODACaseFive = ODAWorkFlow.getMaximumValueOneDimensionalArray<float> (minMaxODATestCaseFive);
+  int maxValueFromODACaseOne = ODAWorkFlow.getMaximumValueOneDimensionalArray<int> (minMaxODATestCaseOne);
+  int maxValueFromODACaseTwo = ODAWorkFlow.getMaximumValueOneDimensionalArray<int> (minMaxODATestCaseTwo);
+  int maxValueFromODACaseThree = ODAWorkFlow.getMaximumValueOneDimensionalArray<int> (minMaxODATestCaseThree);
+  float maxValueFromODACaseFour = ODAWorkFlow.getMaximumValueOneDimensionalArray<float> (minMaxODATestCaseFour);
+  float maxValueFromODACaseFive = ODAWorkFlow.getMaximumValueOneDimensionalArray<float> (minMaxODATestCaseFive);
 
-    maxLimitsCaseOne.minimLimit = 7;
-    maxLimitsCaseOne.maximLimit = maxValueFromODACaseOne;
+  maxLimitsCaseOne.minimLimit = 7;
+  maxLimitsCaseOne.maximLimit = maxValueFromODACaseOne;
 
-    maxLimitsCaseTwo.minimLimit = 975432;
-    maxLimitsCaseTwo.maximLimit = maxValueFromODACaseTwo;
+  maxLimitsCaseTwo.minimLimit = 975432;
+  maxLimitsCaseTwo.maximLimit = maxValueFromODACaseTwo;
 
-    maxLimitsCaseThree.minimLimit = 999999;
-    maxLimitsCaseThree.maximLimit = maxValueFromODACaseThree;
+  maxLimitsCaseThree.minimLimit = 999999;
+  maxLimitsCaseThree.maximLimit = maxValueFromODACaseThree;
 
-    maxLimitsCaseFour.minimLimit = 9.9;
-    maxLimitsCaseFour.maximLimit = maxValueFromODACaseFour;
+  maxLimitsCaseFour.minimLimit = 9.9;
+  maxLimitsCaseFour.maximLimit = maxValueFromODACaseFour;
 
-    maxLimitsCaseFive.minimLimit = 999999.999999;
-    maxLimitsCaseFive.maximLimit = maxValueFromODACaseFive;
+  maxLimitsCaseFive.minimLimit = 999999.999999;
+  maxLimitsCaseFive.maximLimit = maxValueFromODACaseFive;
 }
 
 void setParameters::_setParametersFor_getMinimumValueOneDimensionalArrayDivideEtEmperaTestCases () {
@@ -638,6 +638,7 @@ void testCases::normalizeOneDimensionalArrayTestCases () {
 }
 
 int main(int argc, char const *argv[]) {
+  
   testCases tests;
   assertions assert;
 
