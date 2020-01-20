@@ -114,10 +114,26 @@ namespace symetricData {
   limits<bool> symetricTestCaseFour;
 }
 
+namespace normalizeOneDimensionalArrayDataSets {
+
+    oneDimensionalArrayType<int> normalizeOneDimensionalArrayTestCaseOne;
+    oneDimensionalArrayType<int> normalizeOneDimensionalArrayTestCaseTwo;
+    oneDimensionalArrayType<float> normalizeOneDimensionalArrayTestCaseThree;
+
+    oneDimensionalArrayType<int> normalizeOneDimensionalArrayExpectedResultTestCaseOne;
+    oneDimensionalArrayType<int> normalizeOneDimensionalArrayExpectedResultTestCaseTwo;
+    oneDimensionalArrayType<float> normalizeOneDimensionalArrayExpectedResultTestCaseThree;
+
+    limits<bool> checkIfEqualArraysCaseOne;
+    limits<bool> checkIfEqualArraysCaseTwo;
+    limits<bool> checkIfEqualArraysCaseThree;
+}
+
 using namespace maxMinData;
 using namespace sumProductDivisionDifference;
 using namespace initializationSymetricAddValueIsValue;
 using namespace symetricData;
+using namespace normalizeOneDimensionalArrayDataSets;
 
 class setParameters {
 
@@ -139,6 +155,7 @@ public:
   void _setParametersFor_checkIfSymetricOneDimensionalArrayTestCases ();
   void _setParametersFor_addValueOneDimensionalArrayTestCases ();
   void _setParametersFor_isValueInOneDimensionalArrayTestCases ();
+  void _setParametersFor_normalizeOneDimensionalArray ();
 
   virtual ~setParameters () {}
 };
@@ -451,6 +468,27 @@ void setParameters::_setParametersFor_isValueInOneDimensionalArrayTestCases () {
   checkIfEqualODACaseFour.maximLimit = false;
 }
 
+void setParameters::_setParametersFor_normalizeOneDimensionalArray () {
+
+  ODAWorkFlow.readDynamicFileOneDimensionalArray ((char*)"data/normalizeOneDimensionalArrayDataSets/ODATestCaseOne.data", normalizeOneDimensionalArrayTestCaseOne);
+  ODAWorkFlow.readDynamicFileOneDimensionalArray ((char*)"data/normalizeOneDimensionalArrayDataSets/ODAResultTestCaseOne.data", normalizeOneDimensionalArrayExpectedResultTestCaseOne);
+
+  ODAWorkFlow.readDynamicFileOneDimensionalArray ((char*)"data/normalizeOneDimensionalArrayDataSets/ODATestCaseTwo.data", normalizeOneDimensionalArrayTestCaseTwo);
+  ODAWorkFlow.readDynamicFileOneDimensionalArray ((char*)"data/normalizeOneDimensionalArrayDataSets/ODAResultTestCaseTwo.data", normalizeOneDimensionalArrayExpectedResultTestCaseTwo);
+
+  ODAWorkFlow.readDynamicFileOneDimensionalArray<float> ((char*)"data/normalizeOneDimensionalArrayDataSets/ODATestCaseThree.data", normalizeOneDimensionalArrayTestCaseThree);
+  ODAWorkFlow.readDynamicFileOneDimensionalArray<float> ((char*)"data/normalizeOneDimensionalArrayDataSets/ODAResultTestCaseThree.data", normalizeOneDimensionalArrayExpectedResultTestCaseThree);
+
+  checkIfEqualArraysCaseOne.minimLimit = assert.assertOneDimensionalArrays<int> (normalizeOneDimensionalArrayTestCaseOne, normalizeOneDimensionalArrayExpectedResultTestCaseOne);
+  checkIfEqualArraysCaseOne.maximLimit = true;
+
+  checkIfEqualArraysCaseTwo.minimLimit = assert.assertOneDimensionalArrays<int> (normalizeOneDimensionalArrayTestCaseTwo, normalizeOneDimensionalArrayExpectedResultTestCaseTwo);
+  checkIfEqualArraysCaseTwo.maximLimit = true;
+
+  checkIfEqualArraysCaseThree.minimLimit = assert.assertOneDimensionalArrays<float> (normalizeOneDimensionalArrayTestCaseThree, normalizeOneDimensionalArrayExpectedResultTestCaseThree);
+  checkIfEqualArraysCaseThree.maximLimit = true;
+}
+
 class testCases : public setParameters {
 
 private:
@@ -470,6 +508,7 @@ public:
   void checkIfSymetricOneDimensionalArrayTestCases ();
   void addValueOneDimensionalArrayTestCases ();
   void isValueInOneDimensionalArrayTestCases ();
+  void normalizeOneDimensionalArrayTestCases ();
 
   virtual ~testCases () {}
 };
@@ -589,6 +628,15 @@ void testCases::isValueInOneDimensionalArrayTestCases () {
   assert.countTest ((char*)"isValueInOneDimensionalArrayTestCaseFour", assert.assertPrimitiveDataTypes<bool> (checkIfEqualODACaseFour));
 }
 
+void testCases::normalizeOneDimensionalArrayTestCases () {
+
+  _setParametersFor_isValueInOneDimensionalArrayTestCases ();
+
+  assert.countTest ((char*)"normalizeOneDimensionalArrayTestCaseOne", assert.assertPrimitiveDataTypes<bool> (checkIfEqualArraysCaseOne));
+  assert.countTest ((char*)"normalizeOneDimensionalArrayTestCaseTwo", assert.assertPrimitiveDataTypes<bool> (checkIfEqualArraysCaseTwo));
+  assert.countTest ((char*)"normalizeOneDimensionalArrayTestCaseThree", assert.assertPrimitiveDataTypes<bool> (checkIfEqualArraysCaseThree));
+}
+
 int main(int argc, char const *argv[]) {
   testCases tests;
   assertions assert;
@@ -604,6 +652,7 @@ int main(int argc, char const *argv[]) {
   tests.checkIfSymetricOneDimensionalArrayTestCases ();
   tests.addValueOneDimensionalArrayTestCases ();
   tests.isValueInOneDimensionalArrayTestCases ();
+  tests.normalizeOneDimensionalArrayTestCases ();
 
   assert.getConclusion ();
 
