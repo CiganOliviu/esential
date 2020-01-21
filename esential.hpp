@@ -543,3 +543,241 @@ template <class Type> void oneDimensionalArraysWorkFlow::reverseOneDimensionalAr
       if (ODAObject.oneDimensionalArray[jiterator] < ODAObject.oneDimensionalArray[jiterator + 1])
       __validations__.interchangeValues (ODAObject.oneDimensionalArray[jiterator], ODAObject.oneDimensionalArray[jiterator + 1]);
 }
+
+template <class Type> Type matricesWorkFlow::sortAndNormalizeNumber (Type parameter) {
+
+  Type parameterRefference, returnResult = 0;
+  bool validationRunTime = true;
+
+  parameterRefference = parameter;
+
+  for (Type iterator = 0; iterator <= 9; iterator++) {
+
+    while (parameterRefference != 0 && validationRunTime) {
+
+      if (parameterRefference % 10 == iterator) {
+
+        returnResult = returnResult * 10 + iterator;
+        validationRunTime = false;
+      }
+
+      parameterRefference /= 10;
+    }
+
+    validationRunTime = true;
+    parameterRefference = parameter;
+  }
+
+  return returnResult;
+}
+
+template <class Type> void matricesWorkFlow::readMatrix (matrixType<Type> & matrixObject) {
+
+  std::cin >> matrixObject.lineRefference >> matrixObject.columnRefference;
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.readMatrixZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.readMatrixNegativeError);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      std::cin >> matrixObject.matrix[iterator][jiterator];
+}
+
+template <class Type> void matricesWorkFlow::readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
+
+  std::ifstream dataStream(fileName, std::ios::in);
+
+  if (dataStream.is_open()) {
+
+    dataStream >> matrixObject.lineRefference >> matrixObject.columnRefference;
+
+    if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.readStaticFileMatrixZeroError);
+    if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.readStaticFileMatrixNegativeError);
+
+    for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+      for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+        dataStream >> matrixObject.matrix[iterator][jiterator];
+
+    dataStream.close();
+  }
+  else throw systemException (__errors__.openFileError);
+}
+
+template <class Type> void matricesWorkFlow::readDynamicFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
+
+  std::ifstream dataStream(fileName, std::ios::in);
+
+  Type data;
+  char endOfLine;
+  int auxColumnLength = matrixObject.columnRefference;
+
+  if (dataStream.is_open()) {
+
+    while (dataStream >> data) {
+
+      matrixObject.matrix[matrixObject.lineRefference][auxColumnLength] = data;
+
+      auxColumnLength += 1;
+
+      dataStream.get (endOfLine);
+
+      if (endOfLine == '\n') {
+        matrixObject.lineRefference += 1;
+        matrixObject.columnRefference = auxColumnLength;
+        auxColumnLength = 0;
+      }
+    }
+
+    if (isZero(matrixObject.lineRefference) || isZero(matrixObject.columnRefference)) throw systemException (__errors__.readDynamicFileMatrixZeroError);
+    if (isNegative(matrixObject.lineRefference) || isNegative(matrixObject.columnRefference)) throw systemException (__errors__.readDynamicFileMatrixNegativeError);
+
+    dataStream.close();
+  }
+  else throw systemException(__errors__.openFileError);
+}
+
+template <class Type> void matricesWorkFlow::outputMatrix (matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.outputMatrixZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.outputMatrixNegativeError);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      std::cout << matrixObject.matrix[iterator][jiterator] << " ";
+
+    std::cout << '\n';
+  }
+}
+
+template <class Type> void matricesWorkFlow::outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.readMatrixZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.readMatrixNegativeError);
+
+  std::ofstream dataStream(fileName, std::ios::out);
+
+  if (dataStream.is_open()) {
+
+    dataStream << matrixObject.line << " " << matrixObject.column << '\n';
+
+    for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
+      for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+        dataStream << matrixObject.matrix[iterator][jiterator] << " ";
+
+    dataStream.close();
+    }
+  }
+}
+
+template <class Type> void matricesWorkFlow::outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.outputDynamicFileMatrixZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.outputDynamicFileMatrixNegativeError);
+
+  std::ofstream dataStream(fileName, std::ios::out);
+
+  if (dataStream.is_open()) {
+
+    for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
+      for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+        dataStream << matrixObject.matrix[iterator][jiterator] << " ";
+
+    dataStream.close();
+    }
+  }
+}
+
+template <class Type> Type matricesWorkFlow::getMaximumValueFromMatrix (matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMaximumValueFromMatrixZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMaximumValueFromMatrixNegativeError);
+
+  Type maximumValue = matrixObject.matrix[0][0];
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (maximumValue < matrixObject.matrix[iterator][jiterator]) maximumValue = matrixObject.matrix[iterator][jiterator];
+
+  return maximumValue;
+}
+
+template <class Type> Type matricesWorkFlow::getMinimumValueFromMatrix (matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMinimumValueFromMatrixZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMinimumValueFromMatrixNegativeError);
+
+  Type minimumValue = matrixObject.matrix[0][0];
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (minimumValue > matrixObject.matrix[iterator][jiterator]) minimumValue = matrixObject.matrix[iterator][jiterator];
+
+  return minimumValue;
+}
+
+template <class Type> Type matricesWorkFlow::getMatrixElementsSum (matrixType<Type> matrixObject)  {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsSumZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsSumNegativeError);
+
+  Type sum = matrixObject.matrix[0][0];
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      sum += matrixObject.matrix[iterator][jiterator];
+
+  return sum;
+}
+
+template <class Type> Type matricesWorkFlow::getMatrixElementsProduct (matrixType<Type> matrixObject)  {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsProductZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsProductNegativeError);
+
+  Type product = matrixObject.matrix[0][0];
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      product *= matrixObject.matrix[iterator][jiterator];
+
+  return product;
+}
+
+template <class Type> Type matricesWorkFlow::getMatrixElementsDifference (matrixType<Type> matrixObject)  {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsDifferenceZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsDifferenceNegativeError);
+
+  Type difference = matrixObject.matrix[0][0];
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      difference -= matrixObject.matrix[iterator][jiterator];
+  }
+
+  return difference;
+}
+
+template <class Type> Type matricesWorkFlow::getMatrixElementsDivision (matrixType<Type> matrixObject)  {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsDivisionZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsDivisionNegativeError);
+
+  Type division = matrixObject.matrix[0][0];
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      division /= matrixObject.matrix[iterator][jiterator];
+
+  return division;
+}
+
+template <class Type> void matricesWorkFlow::normalizeMatrix (matrixType<Type> & matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.normalizeMatrixZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.normalizeMatrixNegativeError);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      matrixObject.matrix[iterator][jiterator] = sortAndNormalizeNumber (matrixObject.matrix[iterator][jiterator]);
+}

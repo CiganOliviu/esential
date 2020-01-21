@@ -73,3 +73,34 @@ public:
 
   virtual ~oneDimensionalArraysWorkFlow () {}
 };
+
+class matricesWorkFlow {
+private:
+  errorsHandler __errors__;
+  validationRules __validations__;
+
+  template <class Type> Type sortAndNormalizeNumber (Type parameter);
+
+public:
+  matricesWorkFlow () {}
+
+  template <class Type> void readMatrix (matrixType<Type> & matrixObject);
+  template <class Type> void readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject);
+  template <class Type> void readDynamicFileMatrix (char * fileName, matrixType<Type> & matrixObject);
+
+  template <class Type> void outputMatrix (matrixType<Type> matrixObject);
+  template <class Type> void outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject);
+  template <class Type> void outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject);
+
+  template <class Type> Type getMaximumValueFromMatrix (matrixType<Type> matrixObject);
+  template <class Type> Type getMinimumValueFromMatrix (matrixType<Type> matrixObject);
+
+  template <class Type> Type getMatrixElementsSum (matrixType<Type> matrixObject);
+  template <class Type> Type getMatrixElementsProduct (matrixType<Type> matrixObject);
+  template <class Type> Type getMatrixElementsDifference (matrixType<Type> matrixObject);
+  template <class Type> Type getMatrixElementsDivision (matrixType<Type> matrixObject);
+
+  template <class Type> void normalizeMatrix (matrixType<Type> & matrixObject);
+
+  virtual ~matricesWorkFlow () {}
+};
