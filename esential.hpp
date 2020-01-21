@@ -791,3 +791,139 @@ template <class Type> void matricesWorkFlow::normalizeMatrix (matrixType<Type> &
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
       matrixObject.matrix[iterator][jiterator] = sortAndNormalizeNumber (matrixObject.matrix[iterator][jiterator]);
 }
+
+template <class Type> matrixType<Type> matricesWorkFlow::getMatricesSum (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo) {
+
+  limits<Type> startLinePoints;
+  startLinePoints.minimLimit = matrixObjectOne.startLinePoint;
+  startLinePoints.maximLimit = matrixObjectTwo.startLinePoint;
+
+  limits<Type> endLinePoints;
+  endLinePoints.minimLimit = matrixObjectOne.endLinePoint;
+  endLinePoints.maximLimit = matrixObjectTwo.endLinePoint;
+
+  limits<Type> startColumnPoints;
+  startColumnPoints.minimLimit = matrixObjectOne.startColumnPoint;
+  startColumnPoints.maximLimit = matrixObjectTwo.startColumnPoint;
+
+  limits<Type> endColumnPoints;
+  endColumnPoints.minimLimit = matrixObjectOne.endLinePoint;
+  endColumnPoints.maximLimit = matrixObjectTwo.endLinePoint;
+
+  if (__validations__.isZero(matrixObjectOne.lineRefference) || __validations__.isZero(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneZeroError);
+  if (__validations__.isNegative(matrixObjectOne.lineRefference) || __validations__.isNegative(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneNegativeError);
+  if (__validations__.isZero(matrixObjectTwo.lineRefference) || __validations__.isZero(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoZeroError);
+  if (__validations__.isNegative(matrixObjectTwo.lineRefference) || __validations__.isNegative(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoNegativeError);
+  if (!__validations__.isEqual(startLinePoints)) throw systemException (__errors__.getMatricesSumStartLinesPointsError);
+  if (!__validations__.isEqual(endLinePoints)) throw systemException (__errors__.getMatricesSumEndLinesPointsError);
+  if (!__validations__.isEqual(startColumnPoints)) throw systemException (__errors__.getMatricesSumStartColumnPointsError);
+  if (!__validations__.isEqual(endColumnPoints)) throw systemException (__errors__.getMatricesSumEndColumnPointsError);
+
+  for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.lineRefference + matrixObjectOne.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference; jiterator++)
+      matrixObjectOne.matrix[iterator][jiterator] += matrixObjectTwo.matrix[iterator][jiterator];
+
+  return matrixObjectOne;
+}
+
+template <class Type> matrixType<Type> matricesWorkFlow::getMatricesProduct (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo) {
+
+  limits<Type> startLinePoints;
+  startLinePoints.minimLimit = matrixObjectOne.startLinePoint;
+  startLinePoints.maximLimit = matrixObjectTwo.startLinePoint;
+
+  limits<Type> endLinePoints;
+  endLinePoints.minimLimit = matrixObjectOne.endLinePoint;
+  endLinePoints.maximLimit = matrixObjectTwo.endLinePoint;
+
+  limits<Type> startColumnPoints;
+  startColumnPoints.minimLimit = matrixObjectOne.startColumnPoint;
+  startColumnPoints.maximLimit = matrixObjectTwo.startColumnPoint;
+
+  limits<Type> endColumnPoints;
+  endColumnPoints.minimLimit = matrixObjectOne.endLinePoint;
+  endColumnPoints.maximLimit = matrixObjectTwo.endLinePoint;
+
+  if (__validations__.isZero(matrixObjectOne.lineRefference) || __validations__.isZero(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneZeroError);
+  if (__validations__.isNegative(matrixObjectOne.lineRefference) || __validations__.isNegative(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneNegativeError);
+  if (__validations__.isZero(matrixObjectTwo.lineRefference) || __validations__.isZero(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoZeroError);
+  if (__validations__.isNegative(matrixObjectTwo.lineRefference) || __validations__.isNegative(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoNegativeError);
+  if (!__validations__.isEqual(startLinePoints)) throw systemException (__errors__.getMatricesSumStartLinesPointsError);
+  if (!__validations__.isEqual(endLinePoints)) throw systemException (__errors__.getMatricesSumEndLinesPointsError);
+  if (!__validations__.isEqual(startColumnPoints)) throw systemException (__errors__.getMatricesSumStartColumnPointsError);
+  if (!__validations__.isEqual(endColumnPoints)) throw systemException (__errors__.getMatricesSumEndColumnPointsError);
+
+  for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.lineRefference + matrixObjectOne.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference; jiterator++)
+      matrixObjectOne.matrix[iterator][jiterator] *= matrixObjectTwo.matrix[iterator][jiterator];
+
+  return matrixObjectOne;
+}
+
+template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDifference (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo) {
+
+  limits<Type> startLinePoints;
+  startLinePoints.minimLimit = matrixObjectOne.startLinePoint;
+  startLinePoints.maximLimit = matrixObjectTwo.startLinePoint;
+
+  limits<Type> endLinePoints;
+  endLinePoints.minimLimit = matrixObjectOne.endLinePoint;
+  endLinePoints.maximLimit = matrixObjectTwo.endLinePoint;
+
+  limits<Type> startColumnPoints;
+  startColumnPoints.minimLimit = matrixObjectOne.startColumnPoint;
+  startColumnPoints.maximLimit = matrixObjectTwo.startColumnPoint;
+
+  limits<Type> endColumnPoints;
+  endColumnPoints.minimLimit = matrixObjectOne.endLinePoint;
+  endColumnPoints.maximLimit = matrixObjectTwo.endLinePoint;
+
+  if (__validations__.isZero(matrixObjectOne.lineRefference) || __validations__.isZero(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneZeroError);
+  if (__validations__.isNegative(matrixObjectOne.lineRefference) || __validations__.isNegative(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneNegativeError);
+  if (__validations__.isZero(matrixObjectTwo.lineRefference) || __validations__.isZero(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoZeroError);
+  if (__validations__.isNegative(matrixObjectTwo.lineRefference) || __validations__.isNegative(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoNegativeError);
+  if (!__validations__.isEqual(startLinePoints)) throw systemException (__errors__.getMatricesSumStartLinesPointsError);
+  if (!__validations__.isEqual(endLinePoints)) throw systemException (__errors__.getMatricesSumEndLinesPointsError);
+  if (!__validations__.isEqual(startColumnPoints)) throw systemException (__errors__.getMatricesSumStartColumnPointsError);
+  if (!__validations__.isEqual(endColumnPoints)) throw systemException (__errors__.getMatricesSumEndColumnPointsError);
+
+  for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.lineRefference + matrixObjectOne.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference; jiterator++)
+      matrixObjectOne.matrix[iterator][jiterator] -= matrixObjectTwo.matrix[iterator][jiterator];
+
+  return matrixObjectOne;
+}
+
+template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo) {
+
+  limits<Type> startLinePoints;
+  startLinePoints.minimLimit = matrixObjectOne.startLinePoint;
+  startLinePoints.maximLimit = matrixObjectTwo.startLinePoint;
+
+  limits<Type> endLinePoints;
+  endLinePoints.minimLimit = matrixObjectOne.endLinePoint;
+  endLinePoints.maximLimit = matrixObjectTwo.endLinePoint;
+
+  limits<Type> startColumnPoints;
+  startColumnPoints.minimLimit = matrixObjectOne.startColumnPoint;
+  startColumnPoints.maximLimit = matrixObjectTwo.startColumnPoint;
+
+  limits<Type> endColumnPoints;
+  endColumnPoints.minimLimit = matrixObjectOne.endLinePoint;
+  endColumnPoints.maximLimit = matrixObjectTwo.endLinePoint;
+
+  if (__validations__.isZero(matrixObjectOne.lineRefference) || __validations__.isZero(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneZeroError);
+  if (__validations__.isNegative(matrixObjectOne.lineRefference) || __validations__.isNegative(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneNegativeError);
+  if (__validations__.isZero(matrixObjectTwo.lineRefference) || __validations__.isZero(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoZeroError);
+  if (__validations__.isNegative(matrixObjectTwo.lineRefference) || __validations__.isNegative(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoNegativeError);
+  if (!__validations__.isEqual(startLinePoints)) throw systemException (__errors__.getMatricesSumStartLinesPointsError);
+  if (!__validations__.isEqual(endLinePoints)) throw systemException (__errors__.getMatricesSumEndLinesPointsError);
+  if (!__validations__.isEqual(startColumnPoints)) throw systemException (__errors__.getMatricesSumStartColumnPointsError);
+  if (!__validations__.isEqual(endColumnPoints)) throw systemException (__errors__.getMatricesSumEndColumnPointsError);
+
+  for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.lineRefference + matrixObjectOne.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference; jiterator++)
+      matrixObjectOne.matrix[iterator][jiterator] /= matrixObjectTwo.matrix[iterator][jiterator];
+
+  return matrixObjectOne;
+}

@@ -109,47 +109,83 @@ public:
   std::string reverseOneDimensionalArrayZeroError = "Unable to process with length as zero in template <class Type> void reverseOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);";
   std::string reverseOneDimensionalArrayNegativeError = "Unable to process with negative length in template <class Type> void reverseOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);";
 
-  std::string readMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void readMatrix (matrixType<Type> & matrixObject);";
-  std::string readMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void readMatrix (matrixType<Type> & matrixObject);";
+  std::string readMatrixZeroError = "Unable to process line or column as zero in template <class Type> void readMatrix (matrixType<Type> & matrixObject);";
+  std::string readMatrixNegativeError = "Unable to process negative line or column in template <class Type> void readMatrix (matrixType<Type> & matrixObject);";
 
-  std::string readStaticFileMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject);";
-  std::string readStaticFileMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject);";
+  std::string readStaticFileMatrixZeroError = "Unable to process line or column as zero in template <class Type> void readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject);";
+  std::string readStaticFileMatrixNegativeError = "Unable to process negative line or column in template <class Type> void readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject);";
 
-  std::string readDynamicFileMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void readMatrix (matrixType<Type> & matrixObject);";
-  std::string readDynamicFileMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void readDynamicFileMatrix (char * fileName, matrixType<Type> & matrixObject);";
+  std::string readDynamicFileMatrixZeroError = "Unable to process line or column as zero in template <class Type> void readMatrix (matrixType<Type> & matrixObject);";
+  std::string readDynamicFileMatrixNegativeError = "Unable to process negative line or column in template <class Type> void readDynamicFileMatrix (char * fileName, matrixType<Type> & matrixObject);";
 
-  std::string outputMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void outputMatrix (matrixType<Type> matrixObject);";
-  std::string outputMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void outputMatrix (matrixType<Type> matrixObject);";
+  std::string outputMatrixZeroError = "Unable to process line or column as zero in template <class Type> void outputMatrix (matrixType<Type> matrixObject);";
+  std::string outputMatrixNegativeError = "Unable to process negative line or column in template <class Type> void outputMatrix (matrixType<Type> matrixObject);";
 
-  std::string outputStaticFileMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject);";
-  std::string outputStaticFileMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject);";
+  std::string outputStaticFileMatrixZeroError = "Unable to process line or column as zero in template <class Type> void outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject);";
+  std::string outputStaticFileMatrixNegativeError = "Unable to process negative line or column in template <class Type> void outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject);";
 
-  std::string outputDynamicFileMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject);";
-  std::string outputDynamicFileMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject);";
+  std::string outputDynamicFileMatrixZeroError = "Unable to process line or column as zero in template <class Type> void outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject);";
+  std::string outputDynamicFileMatrixNegativeError = "Unable to process negative line or column in template <class Type> void outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject);";
 
-  std::string getMaximumValueFromMatrixZeroError = "Unable to handle line or column as zero in template <class Type> Type getMaximumValueFromMatrix (matrixType<Type> matrixObject);";
-  std::string getMaximumValueFromMatrixNegativeError = "Unable to handle negative line or column in template <class Type> Type getMaximumValueFromMatrix (matrixType<Type> matrixObject);";
+  std::string getMaximumValueFromMatrixZeroError = "Unable to process line or column as zero in template <class Type> Type getMaximumValueFromMatrix (matrixType<Type> matrixObject);";
+  std::string getMaximumValueFromMatrixNegativeError = "Unable to process negative line or column in template <class Type> Type getMaximumValueFromMatrix (matrixType<Type> matrixObject);";
 
-  std::string getMinimumValueFromMatrixZeroError = "Unable to handle line or column as zero in template <class Type> Type getMinimumValueFromMatrix (matrixType<Type> matrixObject);";
-  std::string getMinimumValueFromMatrixNegativeError = "Unable to handle negative line or column in template <class Type> Type getMinimumValueFromMatrix (matrixType<Type> matrixObject);";
+  std::string getMinimumValueFromMatrixZeroError = "Unable to process line or column as zero in template <class Type> Type getMinimumValueFromMatrix (matrixType<Type> matrixObject);";
+  std::string getMinimumValueFromMatrixNegativeError = "Unable to process negative line or column in template <class Type> Type getMinimumValueFromMatrix (matrixType<Type> matrixObject);";
 
-  std::string getMatrixElementsSumZeroError = "Unable to handle line or column as zero in template <class Type> Type getMatrixElementsSum (matrixType<Type> matrixObject);";
-  std::string getMatrixElementsSumNegativeError = "Unable to handle negative line or column in template <class Type> Type getMatrixElementsSum (matrixType<Type> matrixObject);";
+  std::string getMatrixElementsSumZeroError = "Unable to process line or column as zero in template <class Type> Type getMatrixElementsSum (matrixType<Type> matrixObject);";
+  std::string getMatrixElementsSumNegativeError = "Unable to process negative line or column in template <class Type> Type getMatrixElementsSum (matrixType<Type> matrixObject);";
 
-  std::string getMatrixElementsProductZeroError = "Unable to handle line or column as zero in template <class Type> Type getMatrixElementsProduct (matrixType<Type> matrixObject);";
-  std::string getMatrixElementsProductNegativeError = "Unable to handle negative line or column in template <class Type> Type getMatrixElementsProduct (matrixType<Type> matrixObject);";
+  std::string getMatrixElementsProductZeroError = "Unable to process line or column as zero in template <class Type> Type getMatrixElementsProduct (matrixType<Type> matrixObject);";
+  std::string getMatrixElementsProductNegativeError = "Unable to process negative line or column in template <class Type> Type getMatrixElementsProduct (matrixType<Type> matrixObject);";
 
-  std::string getMatrixElementsDifferenceZeroError = "Unable to handle line or column as zero in template <class Type> Type getMatrixElementsDifference (matrixType<Type> matrixObject);";
-  std::string getMatrixElementsDifferenceNegativeError = "Unable to handle negative line or column in template <class Type> Type getMatrixElementsDifference (matrixType<Type> matrixObject);";
+  std::string getMatrixElementsDifferenceZeroError = "Unable to process line or column as zero in template <class Type> Type getMatrixElementsDifference (matrixType<Type> matrixObject);";
+  std::string getMatrixElementsDifferenceNegativeError = "Unable to process negative line or column in template <class Type> Type getMatrixElementsDifference (matrixType<Type> matrixObject);";
 
-  std::string getMatrixElementsDivisionZeroError = "Unable to handle line or column as zero in template <class Type> Type getMatrixElementsDivision (matrixType<Type> matrixObject);";
-  std::string getMatrixElementsDivisionNegativeError = "Unable to handle negative line or column in template <class Type> Type getMatrixElementsDivision (matrixType<Type> matrixObject);";
+  std::string getMatrixElementsDivisionZeroError = "Unable to process line or column as zero in template <class Type> Type getMatrixElementsDivision (matrixType<Type> matrixObject);";
+  std::string getMatrixElementsDivisionNegativeError = "Unable to process negative line or column in template <class Type> Type getMatrixElementsDivision (matrixType<Type> matrixObject);";
 
-  std::string matrixInitializationZeroError = "Unable to handle line or column as zero in template <class Type> void matrixInitialization (matrixType<Type> & matrixObject, Type value);";
-  std::string matrixInitializationNegativeError = "Unable to handle negative line or column in template <class Type> void matrixInitialization (matrixType<Type> & matrixObject, Type value);";
-  
-  std::string normalizeMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void normalizeMatrix (matrixType<Type> matrixObject);";
-  std::string normalizeMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void normalizeMatrix (matrixType<Type> matrixObject);";
+  std::string matrixInitializationZeroError = "Unable to process line or column as zero in template <class Type> void matrixInitialization (matrixType<Type> & matrixObject, Type value);";
+  std::string matrixInitializationNegativeError = "Unable to process negative line or column in template <class Type> void matrixInitialization (matrixType<Type> & matrixObject, Type value);";
+
+  std::string normalizeMatrixZeroError = "Unable to process line or column as zero in template <class Type> void normalizeMatrix (matrixType<Type> matrixObject);";
+  std::string normalizeMatrixNegativeError = "Unable to process negative line or column in template <class Type> void normalizeMatrix (matrixType<Type> matrixObject);";
+
+  std::string getMatricesSumMatrixObjectOneZeroError = "Unable to process line or column as zero for matrixObjectOne in template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesSumMatrixObjectOneNegativeError = "Unable to process negative line or column for matrixObjectOne in template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesSumMatrixObjectTwoZeroError = "Unable to process line or column as zero for matrixObjectTwo in template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesSumMatrixObjectTwoNegativeError = "Unable to process negative line or column for matrixObjectTwo in template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesSumStartLinesPointsError = "Unable to process with unequal start line points in template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesSumEndLinesPointsError = "Unable to process with unequal end line points in template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesSumStartColumnPointsError = "Unable to process with unequal start column points in template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesSumEndColumnPointsError = "Unable to process with unequal end column points in template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+
+  std::string getMatricesProductMatrixObjectOneZeroError = "Unable to process line or column as zero for matrixObjectOne in template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesProductMatrixObjectOneNegativeError = "Unable to process negative line or column for matrixObjectOne in template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesProductMatrixObjectTwoZeroError = "Unable to process line or column as zero for matrixObjectTwo in template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesProductMatrixObjectTwoNegativeError = "Unable to process negative line or column for matrixObjectTwo in template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesProductStartLinesPointsError = "Unable to process with unequal start line points in template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesProductEndLinesPointsError = "Unable to process with unequal end line points in template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesProductStartColumnPointsError = "Unable to process with unequal start column points in template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesProductEndColumnPointsError = "Unable to process with unequal end column points in template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+
+  std::string getMatricesDifferenceMatrixObjectOneZeroError = "Unable to process line or column as zero for matrixObjectOne in template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDifferenceMatrixObjectOneNegativeError = "Unable to process negative line or column for matrixObjectOne in template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDifferenceMatrixObjectTwoZeroError = "Unable to process line or column as zero for matrixObjectTwo in template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDifferenceMatrixObjectTwoNegativeError = "Unable to process negative line or column for matrixObjectTwo in template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDifferenceStartLinesPointsError = "Unable to process with unequal start line points in template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDifferenceEndLinesPointsError = "Unable to process with unequal end line points in template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDifferenceStartColumnPointsError = "Unable to process with unequal start column points in template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDifferenceEndColumnPointsError = "Unable to process with unequal end column points in template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+
+  std::string getMatricesDivisionMatrixObjectOneZeroError = "Unable to process line or column as zero for matrixObjectOne in template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDivisionMatrixObjectOneNegativeError = "Unable to process negative line or column for matrixObjectOne in template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDivisionMatrixObjectTwoZeroError = "Unable to process line or column as zero for matrixObjectTwo in template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDivisionMatrixObjectTwoNegativeError = "Unable to process negative line or column for matrixObjectTwo in template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDivisionStartLinesPointsError = "Unable to process with unequal start line points in template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDivisionEndLinesPointsError = "Unable to process with unequal end line points in template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDivisionStartColumnPointsError = "Unable to process with unequal start column points in template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
+  std::string getMatricesDivisionEndColumnPointsError = "Unable to process with unequal end column points in template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
 
   virtual ~errorsHandler () {}
 };
