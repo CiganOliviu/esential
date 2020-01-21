@@ -772,6 +772,16 @@ template <class Type> Type matricesWorkFlow::getMatrixElementsDivision (matrixTy
   return division;
 }
 
+template <class Type> void matricesWorkFlow::matrixInitialization (matrixType<Type> & matrixObject, Type value) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.matrixInitializationZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.matrixInitializationNegativeError);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      matrixObject.matrix[iterator][jiterator] = value;
+}
+
 template <class Type> void matricesWorkFlow::normalizeMatrix (matrixType<Type> & matrixObject) {
 
   if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.normalizeMatrixZeroError);

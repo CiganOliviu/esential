@@ -145,6 +145,9 @@ public:
   std::string getMatrixElementsDivisionZeroError = "Unable to handle line or column as zero in template <class Type> Type getMatrixElementsDivision (matrixType<Type> matrixObject);";
   std::string getMatrixElementsDivisionNegativeError = "Unable to handle negative line or column in template <class Type> Type getMatrixElementsDivision (matrixType<Type> matrixObject);";
 
+  std::string matrixInitializationZeroError = "Unable to handle line or column as zero in template <class Type> void matrixInitialization (matrixType<Type> & matrixObject, Type value);";
+  std::string matrixInitializationNegativeError = "Unable to handle negative line or column in template <class Type> void matrixInitialization (matrixType<Type> & matrixObject, Type value);";
+  
   std::string normalizeMatrixZeroError = "Unable to handle line or column as zero in template <class Type> void normalizeMatrix (matrixType<Type> matrixObject);";
   std::string normalizeMatrixNegativeError = "Unable to handle negative line or column in template <class Type> void normalizeMatrix (matrixType<Type> matrixObject);";
 
