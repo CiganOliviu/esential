@@ -103,10 +103,10 @@ public:
   template <class Type> void matrixInitialization (matrixType<Type> & matrixObject, Type value);
   template <class Type> void normalizeMatrix (matrixType<Type> & matrixObject);
 
-  template <class Type> void matrixType<Type> getMatricesSum (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);
-  template <class Type> void matrixType<Type> getMatricesProduct (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);
-  template <class Type> void matrixType<Type> getMatricesDifference (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);
-  template <class Type> void matrixType<Type> getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);
+  template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);
+  template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);
+  template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);
+  template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);
 
   virtual ~matricesWorkFlow () {}
 };
