@@ -792,7 +792,7 @@ template <class Type> void matricesWorkFlow::normalizeMatrix (matrixType<Type> &
       matrixObject.matrix[iterator][jiterator] = sortAndNormalizeNumber (matrixObject.matrix[iterator][jiterator]);
 }
 
-template <class Type> matrixType<Type> matricesWorkFlow::getMatricesSum (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo) {
+template <class Type> matrixType<Type> matricesWorkFlow::getMatricesSum (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo) {
 
   limits<Type> startLinePoints;
   startLinePoints.minimLimit = matrixObjectOne.startLinePoint;
@@ -826,7 +826,7 @@ template <class Type> matrixType<Type> matricesWorkFlow::getMatricesSum (matrixT
   return matrixObjectOne;
 }
 
-template <class Type> matrixType<Type> matricesWorkFlow::getMatricesProduct (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo) {
+template <class Type> matrixType<Type> matricesWorkFlow::getMatricesProduct (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo) {
 
   limits<Type> startLinePoints;
   startLinePoints.minimLimit = matrixObjectOne.startLinePoint;
@@ -860,7 +860,7 @@ template <class Type> matrixType<Type> matricesWorkFlow::getMatricesProduct (mat
   return matrixObjectOne;
 }
 
-template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDifference (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo) {
+template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDifference (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo) {
 
   limits<Type> startLinePoints;
   startLinePoints.minimLimit = matrixObjectOne.startLinePoint;
@@ -894,7 +894,7 @@ template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDifference (
   return matrixObjectOne;
 }
 
-template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo) {
+template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDivision (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo) {
 
   limits<Type> startLinePoints;
   startLinePoints.minimLimit = matrixObjectOne.startLinePoint;
@@ -926,4 +926,188 @@ template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDivision (ma
       matrixObjectOne.matrix[iterator][jiterator] /= matrixObjectTwo.matrix[iterator][jiterator];
 
   return matrixObjectOne;
+}
+
+template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixMainDiagonal (matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixMainDiagonalZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixMainDiagonalNegativeError);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (iterator == jiterator) {
+        matrixObject.mainDiagonal.oneDimensionalArray[matrixObject.mainDiagonal.length] = matrixObject.matrix[iterator][jiterator];
+        matrixObject.mainDiagonal.length += 1;
+      }
+
+  return matrixObject.mainDiagonal;
+}
+
+template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixAboveMainDiagonal (matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixAboveMainDiagonalZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixAboveMainDiagonalNegativeError);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (iterator < jiterator) {
+        matrixObject.aboveMainDiagonal.oneDimensionalArray[matrixObject.aboveMainDiagonal.length] = matrixObject.matrix[iterator][jiterator];
+        matrixObject.aboveMainDiagonal.length += 1;
+      }
+
+  return matrixObject.aboveMainDiagonal;
+}
+
+template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixUnderMainDiagonal (matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixUnderMainDiagonalZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixUnderMainDiagonalNegativeError);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (iterator > jiterator) {
+        matrixObject.underMainDiagonal.oneDimensionalArray[matrixObject.underMainDiagonal.length] = matrixObject.matrix[iterator][jiterator];
+        matrixObject.underMainDiagonal.length += 1;
+      }
+
+  return matrixObject.underMainDiagonal;
+}
+
+template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixSecondaryDiagonal (matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixSecondaryDiagonalZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixSecondaryDiagonalNegativeError);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (iterator + jiterator == matrixObject.line - 1) {
+        matrixObject.secondaryDiagonal.oneDimensionalArray[matrixObject.secondaryDiagonal.length] = matrixObject.matrix[iterator][jiterator];
+        matrixObject.secondaryDiagonal.length += 1;
+      }
+
+  return matrixObject.secondaryDiagonal;
+}
+
+template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixAboveSecondaryDiagonal (matrixType<Type> matrixObject) {
+
+    if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixAboveSecondaryDiagonalZeroError);
+    if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixAboveSecondaryDiagonalNegativeError);
+
+    for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+      for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+        if (iterator + jiterator < matrixObject.line - 1) {
+          matrixObject.aboveSecondaryDiagonal.oneDimensionalArray[matrixObject.aboveSecondaryDiagonal.length] = matrixObject.matrix[iterator][jiterator];
+          matrixObject.aboveSecondaryDiagonal.length += 1;
+        }
+
+    return matrixObject.aboveSecondaryDiagonal;
+}
+
+template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixUnderSecondaryDiagonal (matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixUnderSecondaryDiagonalZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixUnderSecondaryDiagonalNegativeError);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (iterator + jiterator > matrixObject.line - 1) {
+        matrixObject.underSecondaryDiagonal.oneDimensionalArray[matrixObject.underSecondaryDiagonal.length] = matrixObject.matrix[iterator][jiterator];
+        matrixObject.underSecondaryDiagonal.length += 1;
+      }
+
+  return matrixObject.underSecondaryDiagonal;
+}
+
+template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixNorthElements (matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixNorthElementsZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixNorthElementsNegativeError);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (iterator < jiterator && iterator + jiterator < matrixObject.line - 1) {
+        matrixObject.northElements.oneDimensionalArray[matrixObject.northElements.length] = matrixObject.matrix[iterator][jiterator];
+        matrixObject.northElements.length += 1;
+      }
+
+  return matrixObject.northElements;
+}
+
+template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixSouthElements (matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixSouthElementsZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixSouthElementsNegativeError);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (iterator > jiterator && iterator + jiterator > matrixObject.line - 1) {
+        matrixObject.southElements.oneDimensionalArray[matrixObject.southElements.length] = matrixObject.matrix[iterator][jiterator];
+        matrixObject.southElements.length += 1;
+      }
+
+  return matrixObject.southElements;
+}
+
+template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixEastElements (matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixEastElementsZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixEastElementsNegativeError);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (iterator > jiterator && iterator + jiterator < matrixObject.line - 1) {
+        matrixObject.eastElements.oneDimensionalArray[matrixObject.eastElements.length] = matrixObject.matrix[iterator][jiterator];
+        matrixObject.eastElements.length += 1;
+      }
+
+  return matrixObject.eastElements;
+}
+
+template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixWestElements (matrixType<Type> matrixObject) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixWestElementsZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixWestElementsNegativeError);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (iterator < jiterator && iterator + jiterator > matrixObject.line - 1) {
+        matrixObject.westElements.oneDimensionalArray[matrixObject.westElements.length] = matrixObject.matrix[iterator][jiterator];
+        matrixObject.westElements.length += 1;
+      }
+
+  return matrixObject.westElements;
+}
+
+template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixOrderMainDiagonal (matrixType<Type> matrixObject, int order) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixOrderMainDiagonalZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixOrderMainDiagonalNegativeError);
+
+  oneDimensionalArrayType<Type> oneDimensionalArrayValuesFromOrder;
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (abs(iterator + jiterator) == order) {
+        oneDimensionalArrayValuesFromOrder.oneDimensionalArray[oneDimensionalArrayValuesFromOrder.length] = matrixObject.matrix[iterator][jiterator];
+        oneDimensionalArrayValuesFromOrder.length += 1;
+      }
+
+  return oneDimensionalArrayValuesFromOrder;
+}
+
+template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixOrderSecondaryDiagonal (matrixType<Type> matrixObject, int order) {
+
+  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixOrderSecondaryDiagonalZeroError);
+  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixOrderSecondaryDiagonalNegativeError);
+
+  oneDimensionalArrayType<Type> oneDimensionalArrayValuesFromOrder;
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (abs(iterator + jiterator - matrixObject.line - 1) == order) {
+        oneDimensionalArrayValuesFromOrder.oneDimensionalArray[oneDimensionalArrayValuesFromOrder.length] = matrixObject.matrix[iterator][jiterator];
+        oneDimensionalArrayValuesFromOrder.length += 1;
+      }
+
+  return oneDimensionalArrayValuesFromOrder;
 }

@@ -104,4 +104,29 @@ namespace dataStructures {
 
     virtual ~limits () {}
   };
+
+  class linearEquation {
+
+  public:
+    linearEquation () {};
+
+    float slope;
+    float y_intercept;
+    float root;
+
+    virtual ~linearEquation () {}
+  };
+
+  class quadraticEquation {
+
+  public:
+    quadraticEquation () {}
+
+    float coefficient_a;
+    float coefficient_b;
+    float coefficient_c;
+    limits<float> roots;
+
+    virtual ~quadraticEquation () {}
+  };
 }

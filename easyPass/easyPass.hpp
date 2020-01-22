@@ -79,7 +79,7 @@ template <class Type> Type randomGenerator::staticNumberGenerator (limits<Type> 
 template <class Type> void randomGenerator::oneDimensionalArrayGenerator (oneDimensionalArrayType<Type> ODAObject, limits<Type> limitsObject) {
 
   if (isZero(ODAObject.length)) throw systemException (__error__.oneDimensionalArrayGeneratorZeroError);
-  else if (isNegative(ODAObject.length)) throw systemException (__error__.oneDimensionalArrayGeneratorNegativeError);
+  if (isNegative(ODAObject.length)) throw systemException (__error__.oneDimensionalArrayGeneratorNegativeError);
 
   srand (time(NULL));
 
@@ -90,7 +90,7 @@ template <class Type> void randomGenerator::oneDimensionalArrayGenerator (oneDim
 template <class Type> void randomGenerator::matrixGenerator (matrixType<Type> & MTObject, limits<Type> limitsObject) {
 
   if (isZero(MTObject.line) && isZero(MTObject.column)) throw systemException (__error__.matrixGeneratorZeroError);
-  else if (isNegative(MTObject.line) && isNegative(MTObject.column)) throw systemException (__error__.matrixGeneratorNegativeError);
+  if (isNegative(MTObject.line) && isNegative(MTObject.column)) throw systemException (__error__.matrixGeneratorNegativeError);
 
   srand (time(NULL));
 
@@ -104,7 +104,7 @@ template <class Type> void checkAndSupport::readOneDimensionalArray (oneDimensio
   std::cin >> ODAObject.length;
 
   if (isZero(ODAObject.length)) throw systemException (__error__.readOneDimensionalArrayZeroError);
-  else if (isNegative(ODAObject.length)) throw systemException (__error__.readOneDimensionalArrayNegativeError);
+  if (isNegative(ODAObject.length)) throw systemException (__error__.readOneDimensionalArrayNegativeError);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
     std::cin >> ODAObject.oneDimensionalArray[iterator];
@@ -124,7 +124,7 @@ template <class Type> void checkAndSupport::readDynamicFileDimensionalArray (cha
       }
 
       if (isZero(ODAObject.length)) throw systemException (__error__.readDynamicFileOneDimensionalArrayZeroError);
-      else if (isNegative(ODAObject.length)) throw systemException (__error__.readDynamicFileOneDimensionalArrayNegativeError);
+      if (isNegative(ODAObject.length)) throw systemException (__error__.readDynamicFileOneDimensionalArrayNegativeError);
 
       dataStream.close();
     }
@@ -135,7 +135,7 @@ template <class Type> void checkAndSupport::readDynamicFileDimensionalArray (cha
 template <class Type> void checkAndSupport::putsOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   if (isZero(ODAObject.length)) throw systemException (__error__.putsOneDimensionalArrayZeroError);
-  else if (isNegative(ODAObject.length)) throw systemException (__error__.putsOneDimensionalArrayNegativeError);
+  if (isNegative(ODAObject.length)) throw systemException (__error__.putsOneDimensionalArrayNegativeError);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
     std::cout << ODAObject.oneDimensionalArray[iterator] << " ";
@@ -144,7 +144,7 @@ template <class Type> void checkAndSupport::putsOneDimensionalArray (oneDimensio
 template <class Type> void checkAndSupport::putsFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   if (isZero(ODAObject.length)) throw systemException (__error__.putsFileOneDimensionalArrayZeroError);
-  else if (isNegative(ODAObject.length)) throw systemException (__error__.putsFileOneDimensionalArrayNegativeError);
+  if (isNegative(ODAObject.length)) throw systemException (__error__.putsFileOneDimensionalArrayNegativeError);
 
   std::ofstream dataStream(fileName, std::ios::out);
 
@@ -162,7 +162,7 @@ template <class Type> void checkAndSupport::putsFileOneDimensionalArray (char * 
 template <class Type> void checkAndSupport::readMatrix (matrixType<Type> & MTObject) {
 
   if (isZero(MTObject.line) && isZero(MTObject.column)) throw systemException (__error__.readMatrixZeroError);
-  else if (isNegative(MTObject.line) && isNegative(MTObject.column)) throw systemException (__error__.readMatrixNegativeError);
+  if (isNegative(MTObject.line) && isNegative(MTObject.column)) throw systemException (__error__.readMatrixNegativeError);
 
   for (size_t iterator = MTObject.startLinePoint; iterator < MTObject.line + MTObject.endLinePoint; iterator++)
       for (size_t jiterator = MTObject.startColumnPoint; jiterator < MTObject.column + MTObject.endColumnPoint; jiterator++)
@@ -205,7 +205,7 @@ template <class Type> void checkAndSupport::readDynamicFileMatrix (char * fileNa
 template <class Type> void checkAndSupport::putsMatrix (matrixType<Type> & MTObject) {
 
   if (isZero(MTObject.line) && isZero(MTObject.column)) throw systemException (__error__.putsMatrixZeroError);
-  else if (isNegative(MTObject.line) && isNegative(MTObject.column)) throw systemException (__error__.putsMatrixNegativeError);
+  if (isNegative(MTObject.line) && isNegative(MTObject.column)) throw systemException (__error__.putsMatrixNegativeError);
 
   for (size_t iterator = MTObject.startLinePoint; iterator < MTObject.line + MTObject.endLinePoint; iterator++) {
       for (size_t jiterator = MTObject.startColumnPoint; jiterator < MTObject.column + MTObject.endColumnPoint; jiterator++)
@@ -217,7 +217,7 @@ template <class Type> void checkAndSupport::putsMatrix (matrixType<Type> & MTObj
 template <class Type> void checkAndSupport::putsFileMatrix (char * fileName, matrixType<Type> & MTObject) {
 
   if (isZero(MTObject.line) && isZero(MTObject.column)) throw systemException (__error__.putsFileMatrixZeroError);
-  else if (isNegative(MTObject.line) && isNegative(MTObject.column)) throw systemException (__error__.putsFileMatrixNegativeError);
+  if (isNegative(MTObject.line) && isNegative(MTObject.column)) throw systemException (__error__.putsFileMatrixNegativeError);
 
   std::ofstream dataStream(fileName, std::ios::out);
 
@@ -263,7 +263,7 @@ template <class Type> void checkAndSupport::putsTree (binaryTreeType<Type> * roo
 template <class Type> void portData::portOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
   if (isZero(ODAObjectTwo.length)) throw systemException (__error__.portOneDimensionalArraysZeroError);
-  else if (isNegative(ODAObjectTwo.length)) throw systemException (__error__.portOneDimensionalArraysNegativeError);
+  if (isNegative(ODAObjectTwo.length)) throw systemException (__error__.portOneDimensionalArraysNegativeError);
 
   ODAObjectOne.length = ODAObjectTwo.length;
   ODAObjectOne.startPoint = ODAObjectTwo.startPoint;
@@ -276,7 +276,7 @@ template <class Type> void portData::portOneDimensionalArrays (oneDimensionalArr
 template <class Type> void portData::portMatrices (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo) {
 
   if (isZero(matrixObjectTwo.line) && isZero(matrixObjectTwo.column)) throw systemException (__error__.putsMatrixZeroError);
-  else if (isNegative(matrixObjectTwo.line) && isNegative(matrixObjectTwo.column)) throw systemException (__error__.putsMatrixNegativeError);
+  if (isNegative(matrixObjectTwo.line) && isNegative(matrixObjectTwo.column)) throw systemException (__error__.putsMatrixNegativeError);
 
   matrixObjectOne.line = matrixObjectTwo.line;
   matrixObjectOne.column = matrixObjectTwo.column;
@@ -319,9 +319,9 @@ template <class Type> bool assertions::assertOneDimensionalArrays (oneDimensiona
   endPoints.maximLimit = ODAObjectTwo.endPoint;
 
   if (__rules__.isZero(ODAObjectOne.length)) throw systemException (__error__.assertOneDimensionalArraysZeroError);
-  else if (__rules__.isNegative(ODAObjectOne.length)) throw systemException (__error__.assertOneDimensionalArraysZeroError);
+  if (__rules__.isNegative(ODAObjectOne.length)) throw systemException (__error__.assertOneDimensionalArraysZeroError);
   if (__rules__.isZero(ODAObjectTwo.length)) throw systemException (__error__.assertOneDimensionalArraysZeroError);
-  else if (__rules__.isNegative(ODAObjectTwo.length)) throw systemException (__error__.assertOneDimensionalArraysZeroError);
+  if (__rules__.isNegative(ODAObjectTwo.length)) throw systemException (__error__.assertOneDimensionalArraysZeroError);
   if (!__rules__.isEqual(lengths)) throw systemException (__error__.assertOneDimensionalArraysUnequalLengths);
   if (!__rules__.isEqual(startPoints)) throw systemException (__error__.assertOneDimensionalArraysUnequalStartPoints);
   if (!__rules__.isEqual(endPoints)) throw systemException (__error__.assertOneDimensionalArraysUnequalEndPoints);
@@ -359,9 +359,9 @@ template <class Type> bool assertions::assertMatrix (matrixType<Type> & MTObject
   endColumnPoints.maximLimit = MTObjectTwo.endLinePoint;
 
   if (__rules__.isZero(MTObjectOne.line) && __rules__.isZero(MTObjectOne.column)) throw systemException (__error__.assertMatrixZeroError);
-  else if (__rules__.isNegative(MTObjectOne.line) && __rules__.isNegative(MTObjectOne.column)) throw systemException (__error__.assertMatrixNegativeError);
+  if (__rules__.isNegative(MTObjectOne.line) && __rules__.isNegative(MTObjectOne.column)) throw systemException (__error__.assertMatrixNegativeError);
   if (__rules__.isZero(MTObjectTwo.line) && __rules__.isZero(MTObjectTwo.column)) throw systemException (__error__.readMatrixZeroError);
-  else if (__rules__.isNegative(MTObjectTwo.line) && __rules__.isNegative(MTObjectTwo.column)) throw systemException (__error__.readMatrixNegativeError);
+  if (__rules__.isNegative(MTObjectTwo.line) && __rules__.isNegative(MTObjectTwo.column)) throw systemException (__error__.readMatrixNegativeError);
   if (!__rules__.isEqual(lines)) throw systemException (__error__.assertMatrixUnequalLines);
   if (!__rules__.isEqual(columns)) throw systemException (__error__.assertMatrixUnequalColumns);
   if (!__rules__.isEqual(startLinePoints)) throw systemException (__error__.assertMatrixUnequalStartLinePoints);

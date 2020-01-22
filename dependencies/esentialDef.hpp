@@ -103,10 +103,41 @@ public:
   template <class Type> void matrixInitialization (matrixType<Type> & matrixObject, Type value);
   template <class Type> void normalizeMatrix (matrixType<Type> & matrixObject);
 
-  template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);
-  template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);
-  template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);
-  template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);
+  template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
+  template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
+  template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
+  template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
+
+  template <class Type> oneDimensionalArrayType<Type> getMatrixMainDiagonal (matrixType<Type> matrixObject);
+  template <class Type> oneDimensionalArrayType<Type> getMatrixAboveMainDiagonal (matrixType<Type> matrixObject);
+  template <class Type> oneDimensionalArrayType<Type> getMatrixUnderMainDiagonal (matrixType<Type> matrixObject);
+  template <class Type> oneDimensionalArrayType<Type> getMatrixSecondaryDiagonal (matrixType<Type> matrixObject);
+  template <class Type> oneDimensionalArrayType<Type> getMatrixAboveSecondaryDiagonal (matrixType<Type> matrixObject);
+  template <class Type> oneDimensionalArrayType<Type> getMatrixUnderSecondaryDiagonal (matrixType<Type> matrixObject);
+  template <class Type> oneDimensionalArrayType<Type> getMatrixNorthElements (matrixType<Type> matrixObject);
+  template <class Type> oneDimensionalArrayType<Type> getMatrixSouthElements (matrixType<Type> matrixObject);
+  template <class Type> oneDimensionalArrayType<Type> getMatrixEastElements (matrixType<Type> matrixObject);
+  template <class Type> oneDimensionalArrayType<Type> getMatrixWestElements (matrixType<Type> matrixObject);
+
+  template <class Type> oneDimensionalArrayType<Type> getMatrixOrderMainDiagonal (matrixType<Type> matrixObject, int order);
+  template <class Type> oneDimensionalArrayType<Type> getMatrixOrderSecondaryDiagonal (matrixType<Type> matrixObject, int order);
 
   virtual ~matricesWorkFlow () {}
+};
+
+class fundamentalAlgorithmsWorkFlow {
+private:
+  errorsHandler __errors__;
+  validationRules __validations__;
+
+public:
+  fundamentalAlgorithmsWorkFlow () {}
+
+  float getRootlinearEquation (linearEquation __LEquation__); // in process of implementation
+  float getValueLinearEquation (linearEquation __LEquation__); // in process of implementation
+  limits<float> getRootsQuadraticEquation (quadraticEquation __QEquation__); // in process of implementation
+  float getValueQuadraticEquation (quadraticEquation __QEquation__); // in process of implementation
+  template <class Type> Type getGaussSum (Type limit); // in process of implementation
+
+  virtual ~fundamentalAlgorithmsWorkFlow () {}
 };

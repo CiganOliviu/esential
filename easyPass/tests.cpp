@@ -638,7 +638,7 @@ void testCases::normalizeOneDimensionalArrayTestCases () {
 }
 
 int main(int argc, char const *argv[]) {
-  
+
   testCases tests;
   assertions assert;
 

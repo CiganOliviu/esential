@@ -187,5 +187,41 @@ public:
   std::string getMatricesDivisionStartColumnPointsError = "Unable to process with unequal start column points in template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
   std::string getMatricesDivisionEndColumnPointsError = "Unable to process with unequal end column points in template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> matrixObjectOne, matrixType<Type> matrixObjectTwo);";
 
+  std::string getMatrixMainDiagonalZeroError = "Unable to process line or column as zero in template <class Type> oneDimensionalArrayType<Type> getMatrixMainDiagonal (matrixType<Type> matrixObject);";
+  std::string getMatrixMainDiagonalNegativeError = "Unable to process negative line or column in template <class Type> oneDimensionalArrayType<Type> getMatrixMainDiagonal (matrixType<Type> matrixObject);";
+
+  std::string getMatrixAboveMainDiagonalZeroError = "Unable to process line or column as zero in template <class Type> oneDimensionalArrayType<Type> getMatrixAboveMainDiagonal (matrixType<Type> matrixObject);";
+  std::string getMatrixAboveMainDiagonalNegativeError = "Unable to process negative line or column in template <class Type> oneDimensionalArrayType<Type> getMatrixAboveMainDiagonal (matrixType<Type> matrixObject);";
+
+  std::string getMatrixUnderMainDiagonalZeroError = "Unable to process line or column as zero in template <class Type> oneDimensionalArrayType<Type> getMatrixUnderMainDiagonal (matrixType<Type> matrixObject);";
+  std::string getMatrixUnderMainDiagonalNegativeError = "Unable to process negative line or column in template <class Type> oneDimensionalArrayType<Type> getMatrixUnderMainDiagonal (matrixType<Type> matrixObject);";
+
+  std::string getMatrixSecondaryDiagonalZeroError = "Unable to process line or column as zero in template <class Type> oneDimensionalArrayType<Type> getMatrixSecondaryDiagonal (matrixType<Type> matrixObject);";
+  std::string getMatrixSecondaryDiagonalNegativeError = "Unable to process negative line or column in template <class Type> oneDimensionalArrayType<Type> getMatrixSecondaryDiagonal (matrixType<Type> matrixObject);";
+
+  std::string getMatrixAboveSecondaryDiagonalZeroError = "Unable to process line or column as zero in template <class Type> oneDimensionalArrayType<Type> getMatrixAboveSecondaryDiagonal (matrixType<Type> matrixObject);";
+  std::string getMatrixAboveSecondaryDiagonalNegativeError = "Unable to process negative line or column in template <class Type> oneDimensionalArrayType<Type> getMatrixAboveSecondaryDiagonal (matrixType<Type> matrixObject);";
+
+  std::string getMatrixUnderSecondaryDiagonalZeroError = "Unable to process line or column as zero in template <class Type> oneDimensionalArrayType<Type> getMatrixUnderSecondaryDiagonal (matrixType<Type> matrixObject);";
+  std::string getMatrixUnderSecondaryDiagonalNegativeError = "Unable to process negative line or column in template <class Type> oneDimensionalArrayType<Type> getMatrixUnderSecondaryDiagonal (matrixType<Type> matrixObject);";
+
+  std::string getMatrixNorthElementsZeroError = "Unable to process line or column as zero in template <class Type> oneDimensionalArrayType<Type> getMatrixNorthElements (matrixType<Type> matrixObject);";
+  std::string getMatrixNorthElementsNegativeError = "Unable to process negative line or column in template <class Type> oneDimensionalArrayType<Type> getMatrixNorthElements (matrixType<Type> matrixObject);";
+
+  std::string getMatrixSouthElementsZeroError = "Unable to process line or column as zero in template <class Type> oneDimensionalArrayType<Type> getMatrixSouthElements (matrixType<Type> matrixObject);";
+  std::string getMatrixSouthElementsNegativeError = "Unable to process negative line or column in template <class Type> oneDimensionalArrayType<Type> getMatrixSouthElements (matrixType<Type> matrixObject);";
+
+  std::string getMatrixEastElementsZeroError = "Unable to process line or column as zero in template <class Type> oneDimensionalArrayType<Type> getMatrixEastElements (matrixType<Type> matrixObject);";
+  std::string getMatrixEastElementsNegativeError = "Unable to process negative line or column in template <class Type> oneDimensionalArrayType<Type> getMatrixEastElements (matrixType<Type> matrixObject);";
+
+  std::string getMatrixWestElementsZeroError = "Unable to process line or column as zero in template <class Type> oneDimensionalArrayType<Type> getMatrixWestElements (matrixType<Type> matrixObject);";
+  std::string getMatrixWestElementsNegativeError = "Unable to process negative line or column in template <class Type> oneDimensionalArrayType<Type> getMatrixWestElements (matrixType<Type> matrixObject);";
+
+  std::string getMatrixOrderMainDiagonalZeroError = "Unable to process line or column as zero in template <class Type> oneDimensionalArrayType<Type> getMatrixOrderMainDiagonal (matrixType<Type> matrixObject, int order);";
+  std::string getMatrixOrderMainDiagonalNegativeError = "Unable to process negative line or column in template <class Type> oneDimensionalArrayType<Type> getMatrixOrderMainDiagonal (matrixType<Type> matrixObject, int order);";
+
+  std::string getMatrixOrderSecondaryDiagonalZeroError = "Unable to process line or column as zero in template <class Type> oneDimensionalArrayType<Type> getMatrixOrderSecondaryDiagonal (matrixType<Type> matrixObject, int order);";
+  std::string getMatrixOrderSecondaryDiagonalNegativeError = "Unable to process negative line or column in template <class Type> oneDimensionalArrayType<Type> getMatrixOrderSecondaryDiagonal (matrixType<Type> matrixObject, int order);";
+
   virtual ~errorsHandler () {}
 };
