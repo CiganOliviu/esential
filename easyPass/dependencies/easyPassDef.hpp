@@ -116,8 +116,9 @@ namespace easyPassDefinitions {
 
     template <class Type> void portOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
     template <class Type> void portMatrices (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
-    template <class Type> void portLimits (limits<Type> & limitsObject);
-    
+    template <class Type> void portLimits (limits<Type> & limitsObjectOne, limits<Type> limitsObjectTwo);
+    template <class Type> void portValues (limits<Type> & limitsObject);
+
     virtual ~portData () {}
   };
 
@@ -130,6 +131,7 @@ namespace easyPassDefinitions {
     assertions () {}
 
     template <class Type> bool assertPrimitiveDataTypes (limits<Type> limitsObject);
+    template <class Type> bool assertLimits (limits<Type> limitsObjectOne, limits<Type> limitsObjectTwo);
     template <class Type> bool assertOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
     template <class Type> bool assertMatrix (matrixType<Type> & MTObjectOne, matrixType<Type> & MTObjectTwo);
 

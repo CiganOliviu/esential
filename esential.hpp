@@ -1,33 +1,5 @@
 #include "dependencies/esentialDef.hpp"
 
-template <class Type> Type oneDimensionalArraysWorkFlow::sortAndNormalizeNumber (Type parameter) {
-
-  Type parameterRefference, returnResult = 0;
-  bool validationRunTime = true;
-
-  parameterRefference = parameter;
-
-  for (Type iterator = 0; iterator <= 9; iterator++) {
-
-    while (parameterRefference != 0 && validationRunTime) {
-
-      if (parameterRefference % 10 == iterator) {
-
-        returnResult = returnResult * 10 + iterator;
-        validationRunTime = false;
-      }
-
-      parameterRefference /= 10;
-    }
-
-    validationRunTime = true;
-    parameterRefference = parameter;
-  }
-
-  return returnResult;
-}
-
-
 template <class Type> void oneDimensionalArraysWorkFlow::readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   std::cin >> ODAObject.length;
@@ -348,6 +320,33 @@ template <class Type> bool oneDimensionalArraysWorkFlow::isValueInOneDimensional
   return false;
 }
 
+template <class Type> Type oneDimensionalArraysWorkFlow::sortAndNormalizeNumber (Type parameter) {
+
+  Type parameterRefference, returnResult = 0;
+  bool validationRunTime = true;
+
+  parameterRefference = parameter;
+
+  for (Type iterator = 0; iterator <= 9; iterator++) {
+
+    while (parameterRefference != 0 && validationRunTime) {
+
+      if (parameterRefference % 10 == iterator) {
+
+        returnResult = returnResult * 10 + iterator;
+        validationRunTime = false;
+      }
+
+      parameterRefference /= 10;
+    }
+
+    validationRunTime = true;
+    parameterRefference = parameter;
+  }
+
+  return returnResult;
+}
+
 template <class Type> void oneDimensionalArraysWorkFlow::normalizeOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.normalizeOneDimensionalArrayZeroError);
@@ -542,33 +541,6 @@ template <class Type> void oneDimensionalArraysWorkFlow::reverseOneDimensionalAr
     for (size_t jiterator = ODAObject.startPoint; jiterator < ODAObject.length + ODAObject.endPoint - iterator - 1; jiterator++)
       if (ODAObject.oneDimensionalArray[jiterator] < ODAObject.oneDimensionalArray[jiterator + 1])
       __validations__.interchangeValues (ODAObject.oneDimensionalArray[jiterator], ODAObject.oneDimensionalArray[jiterator + 1]);
-}
-
-template <class Type> Type matricesWorkFlow::sortAndNormalizeNumber (Type parameter) {
-
-  Type parameterRefference, returnResult = 0;
-  bool validationRunTime = true;
-
-  parameterRefference = parameter;
-
-  for (Type iterator = 0; iterator <= 9; iterator++) {
-
-    while (parameterRefference != 0 && validationRunTime) {
-
-      if (parameterRefference % 10 == iterator) {
-
-        returnResult = returnResult * 10 + iterator;
-        validationRunTime = false;
-      }
-
-      parameterRefference /= 10;
-    }
-
-    validationRunTime = true;
-    parameterRefference = parameter;
-  }
-
-  return returnResult;
 }
 
 template <class Type> void matricesWorkFlow::readMatrix (matrixType<Type> & matrixObject) {
@@ -780,6 +752,33 @@ template <class Type> void matricesWorkFlow::matrixInitialization (matrixType<Ty
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
       matrixObject.matrix[iterator][jiterator] = value;
+}
+
+template <class Type> Type matricesWorkFlow::sortAndNormalizeNumber (Type parameter) {
+
+  Type parameterRefference, returnResult = 0;
+  bool validationRunTime = true;
+
+  parameterRefference = parameter;
+
+  for (Type iterator = 0; iterator <= 9; iterator++) {
+
+    while (parameterRefference != 0 && validationRunTime) {
+
+      if (parameterRefference % 10 == iterator) {
+
+        returnResult = returnResult * 10 + iterator;
+        validationRunTime = false;
+      }
+
+      parameterRefference /= 10;
+    }
+
+    validationRunTime = true;
+    parameterRefference = parameter;
+  }
+
+  return returnResult;
 }
 
 template <class Type> void matricesWorkFlow::normalizeMatrix (matrixType<Type> & matrixObject) {
@@ -1110,4 +1109,342 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixO
       }
 
   return oneDimensionalArrayValuesFromOrder;
+}
+
+float fundamentalAlgorithmsWorkFlow::getRootLinearEquation (linearEquation __LEquation__) {
+
+  if (__validations__.isZero(__LEquation__.slope))
+    if (__validations__.isZero(__LEquation__.y_intercept)) throw systemException (__errors__.getRootlinearEquationUndeterminedCompatibleEquation);
+    else throw systemException (__errors__.getRootlinearEquationImcompatibleEquation);
+
+  return float(-__LEquation__.y_intercept / __LEquation__.slope);
+}
+
+float fundamentalAlgorithmsWorkFlow::getValueLinearEquation (linearEquation __LEquation__) {
+
+  if (__validations__.isZero(__LEquation__.slope))
+    if (__validations__.isZero(__LEquation__.y_intercept)) throw systemException (__errors__.getRootlinearEquationUndeterminedCompatibleEquation);
+    else throw systemException (__errors__.getRootlinearEquationImcompatibleEquation);
+
+  return (( __LEquation__.slope * __LEquation__.root) + __LEquation__.y_intercept );
+}
+
+void fundamentalAlgorithmsWorkFlow::processQuadraticEquationWithoutCoefficient_a (limits<float> & roots, quadraticEquation __QEquation__) {
+
+  roots.minimLimit = -__QEquation__.coefficient_c / __QEquation__.coefficient_b;
+  roots.maximLimit = roots.minimLimit;
+}
+
+void fundamentalAlgorithmsWorkFlow::processQuadraticEquationWithoutCoefficient_b (limits<float> & roots, quadraticEquation __QEquation__) {
+
+  roots.minimLimit = sqrt(-__QEquation__.coefficient_c / __QEquation__.coefficient_b);
+  roots.maximLimit = - sqrt(-__QEquation__.coefficient_c / __QEquation__.coefficient_b);
+}
+
+void fundamentalAlgorithmsWorkFlow::processQuadraticEquationWithoutCoefficient_c (limits<float> & roots, quadraticEquation __QEquation__) {
+
+  roots.minimLimit = 0;
+  roots.maximLimit = (-__QEquation__.coefficient_b / __QEquation__.coefficient_a);
+}
+
+void fundamentalAlgorithmsWorkFlow::processQuadraticEquationWithoutCoefficient_b_andCoefficient_c (limits<float> & roots, quadraticEquation __QEquation__) {
+
+    roots.minimLimit = sqrt(__QEquation__.coefficient_a);
+    roots.maximLimit = roots.minimLimit;
+}
+
+void fundamentalAlgorithmsWorkFlow::processingQuadraticEquation (limits<float> & roots, quadraticEquation __QEquation__) {
+
+  float delta;
+
+  delta = pow (__QEquation__.coefficient_b, 2) - 4 * __QEquation__.coefficient_a * __QEquation__.coefficient_c;
+
+  if (__validations__.isNegative<float> (delta)) throw systemException (__errors__.getRootsQuadraticEquationRealValuesError);
+
+  roots.minimLimit = ( (-__QEquation__.coefficient_b + sqrt (delta)) / (2*__QEquation__.coefficient_a ));
+  roots.maximLimit = ( (-__QEquation__.coefficient_b - sqrt (delta)) / (2*__QEquation__.coefficient_a ));
+}
+
+limits<float> fundamentalAlgorithmsWorkFlow::getRootsQuadraticEquation (quadraticEquation __QEquation__) {
+
+  limits<float> roots;
+
+  if (__validations__.isZero(__QEquation__.coefficient_a)) {
+
+    processQuadraticEquationWithoutCoefficient_a (roots, __QEquation__);
+
+    return roots;
+  }
+
+  if (__validations__.isZero(__QEquation__.coefficient_b)) {
+
+    processQuadraticEquationWithoutCoefficient_b (roots, __QEquation__);
+
+    return roots;
+  }
+
+  if (__validations__.isZero(__QEquation__.coefficient_a) && __validations__.isZero(__QEquation__.coefficient_b)) throw systemException (__errors__.getRootsQuadraticEquationIncompatibleEquation);
+
+  if (__validations__.isZero(__QEquation__.coefficient_b) && __validations__.isZero(__QEquation__.coefficient_c)) {
+
+    processQuadraticEquationWithoutCoefficient_b_andCoefficient_c (roots, __QEquation__);
+
+    return roots;
+  }
+
+  processingQuadraticEquation (roots, __QEquation__);
+
+  return roots;
+}
+
+float fundamentalAlgorithmsWorkFlow::getValueQuadraticEquation (quadraticEquation __QEquation__, float root) {
+
+  if (__validations__.isZero(__QEquation__.coefficient_a) && __validations__.isZero(__QEquation__.coefficient_b)) throw systemException (__errors__.getRootsQuadraticEquationIncompatibleEquation);
+
+  return ( __QEquation__.coefficient_a * pow (root, 2) + (__QEquation__.coefficient_b * root) + __QEquation__.coefficient_c);
+}
+
+template <class Type> Type fundamentalAlgorithmsWorkFlow::getGaussSum (Type limit) {
+
+  return (limit * (limit + 1) / 2);
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisor (limits<int> interval) {
+
+  if (__validations__.isNegative(interval.minimLimit) || __validations__.isNegative(interval.maximLimit)) throw systemException (__errors__.getTheLargestCommonDivisorNegativeError);
+
+  unsigned int copyMinimLimit, copyMaximLimit, rest;
+
+  copyMinimLimit = interval.minimLimit;
+  copyMaximLimit = interval.maximLimit;
+
+  if (__validations__.isZero(copyMaximLimit)) copyMinimLimit = copyMaximLimit;
+  else {
+
+    rest = copyMinimLimit % copyMaximLimit;
+
+    while (rest != 0) {
+      copyMinimLimit = copyMaximLimit;
+      copyMaximLimit = rest;
+      rest = copyMinimLimit % copyMaximLimit;
+
+    }
+  }
+
+  return copyMaximLimit;
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisorRecursive (limits<int> interval) {
+
+  if (__validations__.isNegative(interval.minimLimit) || __validations__.isNegative(interval.maximLimit)) throw systemException (__errors__.getTheLargestCommonDivisorRecursiveNegativeError);
+
+  if (__validations__.isZero(interval.maximLimit)) return interval.minimLimit;
+  else if (__validations__.isEqual(interval)) return interval.maximLimit;
+  else if (interval.maximLimit > interval.minimLimit) {
+
+    interval.maximLimit = interval.maximLimit % interval.minimLimit;
+
+    return getTheLargestCommonDivisorRecursive (interval);
+  }
+  else {
+
+    interval.minimLimit = interval.maximLimit;
+    interval.maximLimit = interval.minimLimit % interval.maximLimit;
+
+    return getTheLargestCommonDivisorRecursive (interval);
+  }
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getLeastCommonMultiple (limits<int> interval) {
+
+  return (interval.minimLimit * interval.maximLimit) / getTheLargestCommonDivisor(interval);
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getPrimevalue (int parameter) {
+
+  if (__validations__.isNegativeOrZero(parameter)) return 0;
+  if (parameter == 2) return 2;
+
+  for (size_t iterator = 2; iterator <= parameter / 2; iterator++)
+    if (parameter % iterator == 0) return 0;
+
+  return parameter;
+}
+
+bool fundamentalAlgorithmsWorkFlow::checkIfPrime (int parameter) {
+
+  if (__validations__.isNegativeOrZero(parameter)) return false;
+  if (parameter == 2) return true;
+
+  for (size_t iterator = 2; iterator <= parameter / 2; iterator++)
+    if (parameter % iterator == 0) return true;
+
+  return false;
+}
+
+bool fundamentalAlgorithmsWorkFlow::checkIfOdd (int parameter) {
+
+  if (parameter % 2 == 1) return true;
+
+  return false;
+}
+
+bool fundamentalAlgorithmsWorkFlow::checkIfEven (int parameter) {
+
+  if (parameter % 2 == 0) return true;
+
+  return false;
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::reverseNumber (int parameter) {
+
+    unsigned int reversedValue;
+
+    while (parameter > 0) {
+
+      reversedValue *= 10 + parameter % 10;
+      parameter /= 10;
+    }
+
+    return reversedValue;
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getPalindromValue (int parameter) {
+
+  if (__validations__.isNegativeOrZero(parameter)) return 0;
+
+  if (reverseNumber(parameter) == parameter) return parameter;
+
+  return 0;
+}
+
+bool fundamentalAlgorithmsWorkFlow::checkIfPalindrome (int parameter) {
+
+  if (__validations__.isNegativeOrZero(parameter)) return false;
+
+  if (reverseNumber(parameter) == parameter) return true;
+
+  return false;
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumber (int parameter) {
+
+  if (__validations__.isNegative(parameter)) throw systemException(__errors__.getThe_N_FactorialNumberNegativeError);
+
+  unsigned int factorialNumber = 1;
+
+  for (size_t iterator = 1; iterator <= parameter; iterator++)
+    factorialNumber *= iterator;
+
+  return factorialNumber;
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumberRecursive (int parameter) {
+
+  if (__validations__.isNegative(parameter)) throw systemException(__errors__.getThe_N_FactorialNumberRecursiveNegativeError);
+
+  if (parameter == 0 || parameter == 1) return 1;
+
+  return parameter * getThe_N_FactorialNumberRecursive (parameter - 1);
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_mannaPnueliNumber (int parameter) {
+
+  if (__validations__.isNegative(parameter)) throw systemException(__errors__.getThe_N_mannaPnueliNumberNegativeError);
+
+  if (parameter >= 12) return parameter - 1;
+
+  return getThe_N_mannaPnueliNumber(getThe_N_mannaPnueliNumber(parameter + 2));
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_ackermanNumber (int minimLimit, int maximLimit) {
+
+  if (__validations__.isNegative(minimLimit) || __validations__.isNegative(maximLimit)) throw systemException(__errors__.getThe_N_ackermanNumberNegativeError);
+
+  if (__validations__.isZero(minimLimit)) return maximLimit + 1;
+
+  if (__validations__.isZero(maximLimit)) return getThe_N_ackermanNumber(minimLimit - 1, 1);
+
+  return getThe_N_ackermanNumber(minimLimit - 1, getThe_N_ackermanNumber(minimLimit, maximLimit - 1));
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_stirlingNumber (int minimLimit, int maximLimit) {
+
+  if (__validations__.isNegative(minimLimit) || __validations__.isNegative(maximLimit)) throw systemException(__errors__.getThe_N_stirlingNumberNegativeError);
+
+  if (maximLimit == 1 || minimLimit == maximLimit) return 1;
+
+  return maximLimit * getThe_N_stirlingNumber(minimLimit-1, maximLimit) + getThe_N_stirlingNumber(minimLimit-1, maximLimit-1);
+
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_eulerianNumber (int minimLimit, int maximLimit) {
+
+  if (__validations__.isNegative(minimLimit) || __validations__.isNegative(maximLimit)) throw systemException(__errors__.getThe_N_eulerianNumberNegativeError);
+
+  if (__validations__.isZero(maximLimit) || maximLimit == minimLimit - 1) return 1;
+
+    return (minimLimit - maximLimit) * getThe_N_eulerianNumber(minimLimit - 1, maximLimit - 1) + (maximLimit + 1) * getThe_N_eulerianNumber(minimLimit - 1, maximLimit);
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_catalanNumber (int parameter) {
+
+  if (parameter <= 1) return 1;
+
+  unsigned int res = 0;
+
+  for (size_t iterator = 0; iterator < parameter; iterator++)
+    res += getThe_N_catalanNumber(iterator) * getThe_N_catalanNumber(parameter - iterator - 1);
+
+  return res;
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_fibonacciNumber (int parameter) {
+
+  if (__validations__.isNegative(parameter)) throw systemException(__errors__.getThe_N_fibonacciNumberNegativeError);
+
+  int auxiliarVarOne = 0, auxiliarVarTwo = 1, auxiliarVarThree;
+
+  if (parameter == 0) return auxiliarVarOne;
+
+  for (size_t iterator = 2; iterator <= parameter; iterator++) {
+
+    auxiliarVarThree = auxiliarVarOne + auxiliarVarTwo;
+    auxiliarVarOne = auxiliarVarTwo;
+    auxiliarVarTwo = auxiliarVarThree;
+  }
+
+  return auxiliarVarTwo;
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_fibonacciNumberRecursive (int parameter) {
+
+  if (__validations__.isNegative(parameter)) throw systemException(__errors__.getThe_N_fibonacciNumberRecursiveNegativeError);
+
+  if (parameter == 1 || parameter == 2) return 1;
+
+  return getThe_N_fibonacciNumberRecursive(parameter - 1) + getThe_N_fibonacciNumberRecursive(parameter - 2);
+}
+
+unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_masterTheoremNumber (int parameter) {
+
+  if (parameter == 1) return 1;
+
+  return 2 * getThe_N_masterTheoremNumber (parameter / 2) + parameter;
+}
+
+void fundamentalAlgorithmsWorkFlow::removeCharFromString (char * string, char value) {
+
+  if (NULL == string) return;
+
+  char *stringDest = string;
+
+  while (*string) {
+
+    if (*string != value) *stringDest++ = *string;
+
+    string++;
+  }
+
+  *stringDest = '\0';
 }

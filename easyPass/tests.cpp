@@ -129,16 +129,51 @@ namespace normalizeOneDimensionalArrayDataSets {
   limits<bool> checkIfEqualArraysCaseThree;
 }
 
+namespace linearEquationDataSets {
+
+  linearEquation LEquationOne__;
+  linearEquation LEquationTwo__;
+  linearEquation LEquationThree__;
+  linearEquation LEquationFour__;
+
+  limits<float> expectedResultsCaseOne;
+  limits<float> expectedResultsCaseTwo;
+  limits<float> expectedResultsCaseThree;
+  limits<float> expectedResultsCaseFour;
+}
+
+namespace quadraticEquationDataSets {
+
+  quadraticEquation QEquationOne__;
+  quadraticEquation QEquationTwo__;
+  quadraticEquation QEquationThree__;
+  quadraticEquation QEquationFour__;
+  
+  limits<float> resultRootsTestCaseOne;
+  limits<float> resultRootsTestCaseTwo;
+  limits<float> resultRootsTestCaseThree;
+  limits<float> resultRootsTestCaseFour;
+
+  limits<float> expectedRootsTestCaseOne;
+  limits<float> expectedRootsTestCaseTwo;
+  limits<float> expectedRootsTestCaseThree;
+  limits<float> expectedRootsTestCaseFour;
+}
+
 using namespace maxMinData;
 using namespace sumProductDivisionDifference;
 using namespace initializationSymetricAddValueIsValue;
 using namespace symetricData;
 using namespace normalizeOneDimensionalArrayDataSets;
+using namespace linearEquationDataSets;
+using namespace quadraticEquationDataSets;
 
 class setParameters {
 
 private:
   oneDimensionalArraysWorkFlow ODAWorkFlow;
+  fundamentalAlgorithmsWorkFlow FAWorkFlow;
+  portData __port__;
   assertions assert;
 
 public:
@@ -155,7 +190,9 @@ public:
   void _setParametersFor_checkIfSymetricOneDimensionalArrayTestCases ();
   void _setParametersFor_addValueOneDimensionalArrayTestCases ();
   void _setParametersFor_isValueInOneDimensionalArrayTestCases ();
-  void _setParametersFor_normalizeOneDimensionalArray ();
+  void _setParametersFor_normalizeOneDimensionalArrayTestCases ();
+  void _setParametersFor_getRootLinearEquationTestCases ();
+  void _setParametersFor_getRootsQuadraticEquationTestCases ();
 
   virtual ~setParameters () {}
 };
@@ -468,7 +505,7 @@ void setParameters::_setParametersFor_isValueInOneDimensionalArrayTestCases () {
   checkIfEqualODACaseFour.maximLimit = false;
 }
 
-void setParameters::_setParametersFor_normalizeOneDimensionalArray () {
+void setParameters::_setParametersFor_normalizeOneDimensionalArrayTestCases () {
 
   ODAWorkFlow.readDynamicFileOneDimensionalArray ((char*)"data/normalizeOneDimensionalArrayDataSets/ODATestCaseOne.data", normalizeOneDimensionalArrayTestCaseOne);
   ODAWorkFlow.readDynamicFileOneDimensionalArray ((char*)"data/normalizeOneDimensionalArrayDataSets/ODAResultTestCaseOne.data", normalizeOneDimensionalArrayExpectedResultTestCaseOne);
@@ -487,6 +524,69 @@ void setParameters::_setParametersFor_normalizeOneDimensionalArray () {
 
   checkIfEqualArraysCaseThree.minimLimit = assert.assertOneDimensionalArrays<float> (normalizeOneDimensionalArrayTestCaseThree, normalizeOneDimensionalArrayExpectedResultTestCaseThree);
   checkIfEqualArraysCaseThree.maximLimit = true;
+}
+
+void setParameters::_setParametersFor_getRootLinearEquationTestCases () {
+
+  LEquationOne__.slope = 3;
+  LEquationOne__.y_intercept = 9;
+
+  LEquationTwo__.slope = 5;
+  LEquationTwo__.y_intercept = -10;
+
+  LEquationThree__.slope = 6;
+  LEquationThree__.y_intercept = 30;
+
+  LEquationFour__.slope = 3;
+  LEquationFour__.y_intercept = -90;
+
+  expectedResultsCaseOne.minimLimit = FAWorkFlow.getRootLinearEquation (LEquationOne__);
+  expectedResultsCaseOne.maximLimit = -3;
+
+  expectedResultsCaseTwo.minimLimit = FAWorkFlow.getRootLinearEquation (LEquationTwo__);
+  expectedResultsCaseOne.maximLimit = 2;
+
+  expectedResultsCaseThree.minimLimit = FAWorkFlow.getRootLinearEquation (LEquationThree__);
+  expectedResultsCaseOne.maximLimit = -5;
+
+  expectedResultsCaseFour.minimLimit = FAWorkFlow.getRootLinearEquation (LEquationFour__);
+  expectedResultsCaseOne.maximLimit = 30;
+}
+
+void setParameters::_setParametersFor_getRootsQuadraticEquationTestCases () {
+
+  QEquationOne__.coefficient_a = 1;
+  QEquationOne__.coefficient_b = -4;
+  QEquationOne__.coefficient_c = 4;
+
+  QEquationTwo__.coefficient_a = 1;
+  QEquationTwo__.coefficient_b = -8;
+  QEquationTwo__.coefficient_c = 16;
+
+  QEquationThree__.coefficient_a = 1;
+  QEquationThree__.coefficient_b = -8;
+  QEquationThree__.coefficient_c = 15;
+
+  QEquationFour__.coefficient_a = 4;
+  QEquationFour__.coefficient_b = -12;
+  QEquationFour__.coefficient_c = 0;
+
+  __port__.portLimits<float> (resultRootsTestCaseOne, FAWorkFlow.getRootsQuadraticEquation (QEquationOne__));
+  __port__.portLimits<float> (resultRootsTestCaseTwo, FAWorkFlow.getRootsQuadraticEquation (QEquationTwo__));
+  __port__.portLimits<float> (resultRootsTestCaseThree, FAWorkFlow.getRootsQuadraticEquation (QEquationThree__));
+  __port__.portLimits<float> (resultRootsTestCaseFour, FAWorkFlow.getRootsQuadraticEquation (QEquationFour__));
+
+  expectedRootsTestCaseOne.minimLimit = 2;
+  expectedRootsTestCaseOne.maximLimit = 2;
+
+  expectedRootsTestCaseTwo.minimLimit = 4;
+  expectedRootsTestCaseTwo.maximLimit = 4;
+
+  expectedRootsTestCaseThree.minimLimit = 5;
+  expectedRootsTestCaseThree.maximLimit = 3;
+
+  expectedRootsTestCaseFour.minimLimit = 3;
+  expectedRootsTestCaseFour.maximLimit = 0;
 }
 
 class testCases : public setParameters {
@@ -509,6 +609,8 @@ public:
   void addValueOneDimensionalArrayTestCases ();
   void isValueInOneDimensionalArrayTestCases ();
   void normalizeOneDimensionalArrayTestCases ();
+  void getRootLinearEquationTestCases ();
+  void getRootsQuadraticEquationTestCases ();
 
   virtual ~testCases () {}
 };
@@ -637,6 +739,26 @@ void testCases::normalizeOneDimensionalArrayTestCases () {
   assert.countTest ((char*)"normalizeOneDimensionalArrayTestCaseThree", assert.assertPrimitiveDataTypes<bool> (checkIfEqualArraysCaseThree));
 }
 
+void testCases::getRootsQuadraticEquationTestCases () {
+
+  _setParametersFor_getRootsQuadraticEquationTestCases ();
+
+  assert.countTest ((char*)"getRootsQuadraticEquationTestCaseOne", assert.assertLimits<float> (resultRootsTestCaseOne, expectedRootsTestCaseOne));
+  assert.countTest ((char*)"getRootsQuadraticEquationTestCaseTwo", assert.assertLimits<float> (resultRootsTestCaseTwo, expectedRootsTestCaseTwo));
+  assert.countTest ((char*)"getRootsQuadraticEquationTestCaseThree", assert.assertLimits<float> (resultRootsTestCaseThree, expectedRootsTestCaseThree));
+  assert.countTest ((char*)"getRootsQuadraticEquationTestCaseFour", assert.assertLimits<float> (resultRootsTestCaseFour, expectedRootsTestCaseFour));
+}
+
+void testCases::getRootLinearEquationTestCases () {
+
+  _setParametersFor_getRootLinearEquationTestCases ();
+
+  assert.countTest ((char*)"getRootLinearEquationTestCaseOne", assert.assertPrimitiveDataTypes<float> (expectedRootsTestCaseOne));
+  assert.countTest ((char*)"getRootLinearEquationTestCaseTwo", assert.assertPrimitiveDataTypes<float> (expectedRootsTestCaseTwo));
+  assert.countTest ((char*)"getRootLinearEquationTestCaseThree", assert.assertPrimitiveDataTypes<float> (expectedRootsTestCaseThree));
+  assert.countTest ((char*)"getRootLinearEquationTestCaseFour", assert.assertPrimitiveDataTypes<float> (expectedRootsTestCaseFour));
+}
+
 int main(int argc, char const *argv[]) {
 
   testCases tests;
@@ -654,6 +776,7 @@ int main(int argc, char const *argv[]) {
   tests.addValueOneDimensionalArrayTestCases ();
   tests.isValueInOneDimensionalArrayTestCases ();
   tests.normalizeOneDimensionalArrayTestCases ();
+  tests.getRootsQuadraticEquationTestCases ();
 
   assert.getConclusion ();
 

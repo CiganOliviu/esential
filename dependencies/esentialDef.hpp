@@ -130,14 +130,41 @@ private:
   errorsHandler __errors__;
   validationRules __validations__;
 
+  void processQuadraticEquationWithoutCoefficient_a (limits<float> & roots, quadraticEquation __QEquation__);
+  void processQuadraticEquationWithoutCoefficient_b (limits<float> & roots, quadraticEquation __QEquation__);
+  void processQuadraticEquationWithoutCoefficient_c (limits<float> & roots, quadraticEquation __QEquation__);
+  void processQuadraticEquationWithoutCoefficient_b_andCoefficient_c (limits<float> & roots, quadraticEquation __QEquation__);
+  void processingQuadraticEquation (limits<float> & roots, quadraticEquation __QEquation__);
+
 public:
   fundamentalAlgorithmsWorkFlow () {}
 
-  float getRootlinearEquation (linearEquation __LEquation__); // in process of implementation
-  float getValueLinearEquation (linearEquation __LEquation__); // in process of implementation
-  limits<float> getRootsQuadraticEquation (quadraticEquation __QEquation__); // in process of implementation
-  float getValueQuadraticEquation (quadraticEquation __QEquation__); // in process of implementation
-  template <class Type> Type getGaussSum (Type limit); // in process of implementation
+  float getRootLinearEquation (linearEquation __LEquation__);
+  float getValueLinearEquation (linearEquation __LEquation__);
+  limits<float> getRootsQuadraticEquation (quadraticEquation __QEquation__);
+  float getValueQuadraticEquation (quadraticEquation __QEquation__, float root);
+  template <class Type> Type getGaussSum (Type limit);
+  unsigned int getTheLargestCommonDivisor (limits<int> interval);
+  unsigned int getTheLargestCommonDivisorRecursive (limits<int> interval);
+  unsigned int getLeastCommonMultiple (limits<int> interval);
+  unsigned int getPrimevalue (int parameter);
+  bool checkIfPrime (int parameter);
+  bool checkIfOdd (int parameter);
+  bool checkIfEven (int parameter);
+  unsigned int reverseNumber (int parameter);
+  unsigned int getPalindromValue (int parameter);
+  bool checkIfPalindrome (int parameter);
+  unsigned int getThe_N_FactorialNumber (int parameter);
+  unsigned int getThe_N_FactorialNumberRecursive (int parameter);
+  unsigned int getThe_N_mannaPnueliNumber (int parameter);
+  unsigned int getThe_N_ackermanNumber (int minimLimit, int maximLimit);
+  unsigned int getThe_N_stirlingNumber (int minimLimit, int maximLimit);
+  unsigned int getThe_N_eulerianNumber (int minimLimit, int maximLimit);
+  unsigned int getThe_N_catalanNumber (int parameter);
+  unsigned int getThe_N_fibonacciNumber (int parameter);
+  unsigned int getThe_N_fibonacciNumberRecursive (int parameter);
+  unsigned int getThe_N_masterTheoremNumber (int parameter);
+  void removeCharFromString (char * string, char value);
 
   virtual ~fundamentalAlgorithmsWorkFlow () {}
 };

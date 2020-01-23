@@ -288,7 +288,13 @@ template <class Type> void portData::portMatrices (matrixType<Type> & matrixObje
         matrixObjectOne.matrix[iterator][jiterator] = matrixObjectTwo.matrix[iterator][jiterator];
 }
 
-template <class Type> void portData::portLimits (limits<Type> & limitsObject) {
+template <class Type> void portData::portLimits (limits<Type> & limitsObjectOne, limits<Type> limitsObjectTwo) {
+
+  limitsObjectOne.minimLimit = limitsObjectTwo.minimLimit;
+  limitsObjectOne.maximLimit = limitsObjectTwo.maximLimit;
+}
+
+template <class Type> void portData::portValues (limits<Type> & limitsObject) {
 
     limitsObject.minimLimit = limitsObject.minimLimit + limitsObject.maximLimit;
     limitsObject.maximLimit = limitsObject.minimLimit - limitsObject.maximLimit;
@@ -299,7 +305,18 @@ template <class Type> bool assertions::assertPrimitiveDataTypes (limits<Type> li
 
   if (limitsObject.minimLimit == limitsObject.maximLimit) return true;
 
-  std::cerr << "Get " << limitsObject.maximLimit << ", Expected " << limitsObject.minimLimit << " ";
+  std::cerr << "Get " << limitsObject.maximLimit << ", Expected " << limitsObject.minimLimit << '\n';
+
+  return false;
+}
+
+template <class Type> bool assertions::assertLimits (limits<Type> limitsObjectOne, limits<Type> limitsObjectTwo) {
+
+  if (limitsObjectOne.minimLimit == limitsObjectTwo.minimLimit && limitsObjectOne.maximLimit == limitsObjectTwo.maximLimit) return true;
+
+  std::cerr << "Get " << limitsObjectOne.minimLimit << ", Expected " << limitsObjectTwo.minimLimit << '\n';
+
+  std::cerr << "Get " << limitsObjectOne.maximLimit << ", Expected " << limitsObjectTwo.maximLimit << '\n';
 
   return false;
 }

@@ -223,5 +223,33 @@ public:
   std::string getMatrixOrderSecondaryDiagonalZeroError = "Unable to process line or column as zero in template <class Type> oneDimensionalArrayType<Type> getMatrixOrderSecondaryDiagonal (matrixType<Type> matrixObject, int order);";
   std::string getMatrixOrderSecondaryDiagonalNegativeError = "Unable to process negative line or column in template <class Type> oneDimensionalArrayType<Type> getMatrixOrderSecondaryDiagonal (matrixType<Type> matrixObject, int order);";
 
+  std::string getRootlinearEquationUndeterminedCompatibleEquation = "Undetermined compatible equation in float getRootLinearEquation (linearEquation __LEquation__);";
+  std::string getRootlinearEquationImcompatibleEquation = "Incompatible equation in float getRootLinearEquation (linearEquation __LEquation__);";
+
+  std::string getRootsQuadraticEquationIncompatibleEquation = "Incompatible equation in limits<float> getRootsQuadraticEquation (quadraticEquation __QEquation__);";
+  std::string getRootsQuadraticEquationRealValuesError = "Accepted only real values in limits<float> getRootsQuadraticEquation (quadraticEquation __QEquation__);";
+
+  std::string getTheLargestCommonDivisorNegativeError = "Unable to process negative values in unsigned int getTheLargestCommonDivisor (limits<int> interval);";
+
+  std::string getTheLargestCommonDivisorRecursiveNegativeError = "Unable to process negative values in unsigned int getTheLargestCommonDivisorRecursive (limits<int> interval);";
+
+  std::string getThe_N_FactorialNumberNegativeError = "Unable to process negative values in unsigned int getThe_N_FactorialNumber (int parameter);";
+
+  std::string getThe_N_FactorialNumberRecursiveNegativeError = "Unable to process negative values in unsigned int getThe_N_FactorialNumberRecursive (int parameter);";
+
+  std::string getThe_N_mannaPnueliNumberNegativeError = "Unable to process negative values in unsigned int getThe_N_mannaPnueliNumber (int parameter);";
+
+  std::string getThe_N_ackermanNumberNegativeError = "Unable to proces negative values in unsigned int getThe_N_ackermanNumber (int minimLimit, int maximLimit);";
+
+  std::string getThe_N_stirlingNumberNegativeError = "Unable to process negative values in unsigned int getThe_N_stirlingNumber (int minimLimit, int maximLimit);";
+
+  std::string getThe_N_eulerianNumberNegativeError = "Unable to process negative values in unsigned unsigned int getThe_N_eulerianNumber (int minimLimit, int maximLimit);";
+
+  std::string getThe_N_fibonacciNumberNegativeError = "Unable to process negative values in unsigned int getThe_N_fibonacciNumber (int parameter);";
+
+  std::string getThe_N_fibonacciNumberRecursiveNegativeError = "Unable to process negative values in unsigned int getThe_N_fibonacciNumberRecursive (int parameter);";
+
+  std::string checkIfFibonacciNumberNegativeError = "Unable to process negative values in bool checkIfFibonacciNumber (int parameter);";
+  
   virtual ~errorsHandler () {}
 };
