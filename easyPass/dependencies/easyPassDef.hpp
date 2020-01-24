@@ -60,6 +60,9 @@ namespace easyPassDefinitions {
     template <class Type> bool isNegative (Type parameter);
     template <class Type> bool isZero (Type parameter);
     template <class Type> bool isNegativeOrZero (Type parameter);
+    template <class Type> bool isNull (Type parameter);
+    template <class Type> bool isNotZero (Type parameter);
+    template <class Type> bool isNotNull (Type parameter);
     template <class Type> bool isEqual (limits<Type> limitsObject);
     template <class Type> Type returnTheMaximumParameter (limits<Type> limitsObject);
     template <class Type> Type returnTheMinimumParameter (limits<Type> limitsObject);

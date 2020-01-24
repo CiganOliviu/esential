@@ -9,23 +9,44 @@ const char * systemException::what () const throw () {
 
 template <class Type> bool validationRules::isNegative (Type parameter) {
 
-    if (parameter < 0) return true;
+  if (parameter < 0) return true;
 
-    return false;
+  return false;
 }
 
 template <class Type> bool validationRules::isZero (Type parameter) {
 
-    if (parameter == 0) return true;
+  if (parameter == 0) return true;
 
-    return false;
+  return false;
 }
 
 template <class Type> bool validationRules::isNegativeOrZero (Type parameter) {
 
-    if (parameter <= 0) return true;
+  if (parameter <= 0) return true;
 
-    return false;
+  return false;
+}
+
+template <class Type> bool isNull (Type parameter) {
+
+  if (parameter == NULL) return true;
+
+  return false;
+}
+
+template <class Type> bool validationRules::isNotZero (Type parameter) {
+
+  if (parameter != 0) return true;
+
+  return false;
+}
+
+template <class Type> bool isNotNull (Type parameter) {
+
+  if (parameter != NULL) return true;
+
+  return false;
 }
 
 template <class Type> bool validationRules::isEqual (limits<Type> limitsObject) {

@@ -1448,3 +1448,111 @@ void fundamentalAlgorithmsWorkFlow::removeCharFromString (char * string, char va
 
   *stringDest = '\0';
 }
+
+template <class Type> void treesWorkFlow::createTree (binaryTreeType<Type> * &treeObject) {
+
+  Type value;
+
+  std::cin >> value;
+
+  if (__validations__.isNotZero(value)) {
+
+    treeObject = new binaryTreeType<Type>;
+    treeObject->value = value;
+
+    createTree (treeObject->leftLeaf);
+    createTree (treeObject->rightLeaf);
+
+  } else treeObject = NULL;
+}
+
+template <class Type> void treesWorkFlow::deleteTree (binaryTreeType<Type> * &treeObject) {
+
+  if (__validations__.isNotNull(treeObject)) {
+
+    deleteTree (treeObject->leftLeaf);
+    deleteTree (treeObject->rightLeaf);
+    delete treeObject;
+  }
+}
+
+template <class Type> void treesWorkFlow::RootLeftRightPreOrder (binaryTreeType<Type> * treeObject) {
+
+  if (treeObject != NULL) {
+
+    std::cout << treeObject->value << " ";
+
+    RootLeftRightPreOrder (treeObject->leftLeaf);
+    RootLeftRightPreOrder (treeObject->rightLeaf);
+  }
+}
+
+template <class Type> void treesWorkFlow::LeftRootRightPostOrder (binaryTreeType<Type> * treeObject) {
+
+  if (treeObject != NULL) {
+
+    LeftRootRightPostOrder (treeObject->leftLeaf);
+    LeftRootRightPostOrder (treeObject->rightLeaf);
+
+    std::cout << treeObject->value << " ";
+  }
+}
+
+template <class Type> void treesWorkFlow::LeftRootRightInOrder (binaryTreeType<Type> * treeObject) {
+
+  if (treeObject != NULL) {
+
+    LeftRootRightInOrder (treeObject->leftLeaf);
+
+    std::cout << treeObject->value << " ";
+
+    LeftRootRightInOrder (treeObject->rightLeaf);
+  }
+}
+
+template <class Type> void treesWorkFlow::reachTreeOnLevels (binaryTreeType<Type> * treeObject, int level) {
+
+  if (treeObject != NULL) {
+
+    std::cout << treeObject->value << " - " << level << '\n';
+    reachTreeOnLevels (treeObject->leftLeaf, level + 1);
+    reachTreeOnLevels (treeObject->rightLeaf, level + 1);
+  }
+}
+
+template <class Type> Type treesWorkFlow::getTreeNumberOfNegativeValues (binaryTreeType<Type> * treeObject) {
+
+  if (treeObject == NULL) return 0;
+  else if (__validations__.isNegative(treeObject->value))
+    return 1 + getTreeNegativeValues (treeObject->leftLeaf) + getTreeNegativeValues (treeObject->rightLeaf);
+
+  return getTreeNegativeValues (treeObject->leftLeaf) + getTreeNegativeValues (treeObject->rightLeaf);
+}
+
+template <class Type> Type treesWorkFlow::getTreeSumValues (binaryTreeType<Type> * treeObject) {
+
+  if (treeObject != NULL)
+    return treeObject->value + getTreeSumValues(treeObject->leftLeaf) + getTreeSumValues(treeObject->rightLeaf);
+
+  return 0;
+}
+
+template <class Type> bool treesWorkFlow::checkSimilarityOfTrees (binaryTreeType<Type> * treeObjectOne, binaryTreeType<Type> * treeObjectTwo) {
+
+  if (treeObjectOne == NULL && treeObjectTwo == NULL) return true;
+
+  else if (((treeObjectOne->leftLeaf != NULL) ^ (treeObjectTwo->leftLeaf != NULL)) || ((treeObjectOne->right != NULL) ^ (treeObjectTwo->rightLeaf != NULL)))
+    return false;
+
+  else return checkSimilarityOfTrees (treeObjectOne->leftLeaf, treeObjectTwo->leftLeaf) && checkSimilarityOfTrees (treeObjectOne->rightLeaf, treeObjectTwo->rightLeaf);
+}
+
+template <class Type> bool treesWorkFlow::convertToMirror (binaryTreeType<Type> * treeObject) {
+
+  if (treeObject == NULL) return false;
+
+  convertToMirror (treeObject->leftLeaf);
+  convertToMirror (treeObject->rightLeaf);
+
+  std::swap (treeObject->leftLeaf, treeObject->rightLeaf);
+}

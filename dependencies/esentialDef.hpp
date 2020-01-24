@@ -143,17 +143,21 @@ public:
   float getValueLinearEquation (linearEquation __LEquation__);
   limits<float> getRootsQuadraticEquation (quadraticEquation __QEquation__);
   float getValueQuadraticEquation (quadraticEquation __QEquation__, float root);
+
   template <class Type> Type getGaussSum (Type limit);
   unsigned int getTheLargestCommonDivisor (limits<int> interval);
   unsigned int getTheLargestCommonDivisorRecursive (limits<int> interval);
   unsigned int getLeastCommonMultiple (limits<int> interval);
   unsigned int getPrimevalue (int parameter);
+
   bool checkIfPrime (int parameter);
   bool checkIfOdd (int parameter);
   bool checkIfEven (int parameter);
+
   unsigned int reverseNumber (int parameter);
   unsigned int getPalindromValue (int parameter);
   bool checkIfPalindrome (int parameter);
+
   unsigned int getThe_N_FactorialNumber (int parameter);
   unsigned int getThe_N_FactorialNumberRecursive (int parameter);
   unsigned int getThe_N_mannaPnueliNumber (int parameter);
@@ -164,7 +168,32 @@ public:
   unsigned int getThe_N_fibonacciNumber (int parameter);
   unsigned int getThe_N_fibonacciNumberRecursive (int parameter);
   unsigned int getThe_N_masterTheoremNumber (int parameter);
+  
   void removeCharFromString (char * string, char value);
 
   virtual ~fundamentalAlgorithmsWorkFlow () {}
+};
+
+class treesWorkFlow {
+private:
+  validationRules __validations__;
+  errorsHandler __errors__;
+
+public:
+  treesWorkFlow () {}
+
+  template <class Type> void createTree (binaryTreeType<Type> * &treeObject);
+  template <class Type> void deleteTree (binaryTreeType<Type> * &treeObject);
+
+  template <class Type> void RootLeftRightPreOrder (binaryTreeType<Type> * treeObject);
+  template <class Type> void LeftRootRightPostOrder (binaryTreeType<Type> * treeObject);
+  template <class Type> void LeftRootRightInOrder (binaryTreeType<Type> * treeObject);
+  template <class Type> void reachTreeOnLevels (binaryTreeType<Type> * treeObject, int level);
+
+  template <class Type> Type getTreeNumberOfNegativeValues (binaryTreeType<Type> * treeObject);
+  template <class Type> Type getTreeSumValues (binaryTreeType<Type> * treeObject);
+  template <class Type> bool checkSimilarityOfTrees (binaryTreeType<Type> * treeObjectOne, binaryTreeType<Type> * treeObjectTwo);
+  template <class Type> bool convertToMirror (binaryTreeType<Type> * treeObject);
+
+  virtual ~treesWorkFlow () {}
 };
