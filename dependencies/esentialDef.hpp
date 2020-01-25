@@ -168,7 +168,7 @@ public:
   unsigned int getThe_N_fibonacciNumber (int parameter);
   unsigned int getThe_N_fibonacciNumberRecursive (int parameter);
   unsigned int getThe_N_masterTheoremNumber (int parameter);
-  
+
   void removeCharFromString (char * string, char value);
 
   virtual ~fundamentalAlgorithmsWorkFlow () {}
@@ -182,8 +182,8 @@ private:
 public:
   treesWorkFlow () {}
 
-  template <class Type> void createTree (binaryTreeType<Type> * &treeObject);
-  template <class Type> void deleteTree (binaryTreeType<Type> * &treeObject);
+  template <class Type> void createTree (binaryTreeType<Type> * & treeObject);
+  template <class Type> void deleteTree (binaryTreeType<Type> * & treeObject);
 
   template <class Type> void RootLeftRightPreOrder (binaryTreeType<Type> * treeObject);
   template <class Type> void LeftRootRightPostOrder (binaryTreeType<Type> * treeObject);
@@ -196,4 +196,34 @@ public:
   template <class Type> bool convertToMirror (binaryTreeType<Type> * treeObject);
 
   virtual ~treesWorkFlow () {}
+};
+
+class graphsWorkFlow {
+private:
+  validationRules __validations__;
+  errorsHandler __errors__;
+
+  template <class Type> bool evenValency (graphType<Type> graphObject);
+
+public:
+  graphsWorkFlow () {}
+
+  template <class Type> void readAdjacencyMatrix (graphType<Type> & graphObject);
+  template <class Type> void readFileAdjacencyMatrix (char * fileName, graphType<Type> & graphObject);
+  template <class Type> void readGraphByEdgesList (graphType<Type> & graphObject);
+  template <class Type> void readFileGraphByEdgesList (char * fileName, graphType<Type> & graphObject);
+  template <class Type> void royWarshallAlgo (graphType<Type> & graphObject);
+  template <class Type> bool isConex (graphType<Type> graphObject);
+  template <class Type> bool isEulerian (graphType<Type> graphObject);
+
+  template <class Type> void readDirectedGraphByEdgesList (graphType<Type> & graphObject);
+  template <class Type> void readFileDirectedGraphByEdgesList (char * fileName, graphType<Type> & graphObject);
+
+  template <class Type> unsigned int valencyOfAVertex (graphType<Type> graphObject, unsigned int vertex);
+  template <class Type> void correspondecesOfVertices (graphType<Type> graphObject);
+  template <class Type> unsigned int numberOfEdges (graphType<Type> graphObject);
+  template <class Type> unsigned int maximumValency (graphType<Type> graphObject);
+  template <class Type> void valencyOfVertices (graphType<Type> graphObject);
+
+  virtual ~graphsWorkFlow () {}
 };

@@ -250,6 +250,26 @@ public:
   std::string getThe_N_fibonacciNumberRecursiveNegativeError = "Unable to process negative values in unsigned int getThe_N_fibonacciNumberRecursive (int parameter);";
 
   std::string checkIfFibonacciNumberNegativeError = "Unable to process negative values in bool checkIfFibonacciNumber (int parameter);";
+
+  std::string readAdjacencyMatrixZeroError = "Unable to process with line or column as zero in template <class Type> void readAdjacencyMatrix (graphType<Type> graphObject);";
+  std::string readAdjacencyMatrixNegativeError = "Unable to process negative line or column in template <class Type> void readAdjacencyMatrix (graphType<Type> graphObject);";
+
+  std::string readFileAdjacencyMatrixZeroError = "Unable to process with line or column as zero in template <class Type> void readFileAdjacencyMatrix (char * fileName, graphType<Type> & graphObject);";
+  std::string readFileAdjacencyMatrixNegativeError = "Unable to process negative line or column in template <class Type> void readFileAdjacencyMatrix (char * fileName, graphType<Type> & graphObject);";
+
+  std::string readGraphByEdgesListZeroError = "Unable to process edges or vertices as zero in template <class Type> void readGraphByEdgesList (graphType<Type> & graphObject);";
+  std::string readGraphByEdgesListNegativeError = "Unable to process negative edges or vertices in template <class Type> void readGraphByEdgesList (graphType<Type> & graphObject);";
+
+  std::string readFileGraphByEdgesListZeroError = "Unable to process edges or vertices as zero in template <class Type> void readFileGraphByEdgesList (char * fileName, graphType<Type> & graphObject);";
+  std::string readFileGraphByEdgesListNegativeError = "Unable to process negative edges or vertices in template <class Type> void readFileGraphByEdgesList (char * fileName, graphType<Type> & graphObject);";
+
+  std::string readDirectedGraphByEdgesListZeroError = "Unable to process edges or vertices as zero in template <class Type> void readDirectedGraphByEdgesList (graphType<Type> & graphObject);";
+  std::string readDirectedGraphByEdgesListNegativeError = "Unable to process negative edges or vertices in template <class Type> void readDirectedGraphByEdgesList (graphType<Type> & graphObject);";
+
+  std::string readFileDirectedGraphByEdgesListZeroError = "Unable to process edges or vertices as zero in template <class Type> void readFileDirectedGraphByEdgesList (char * fileName, graphType<Type> & graphObject);";
+  std::string readFileDirectedGraphByEdgesListNegativeError = "Unable to process negative edges or vertices in template <class Type> void readFileDirectedGraphByEdgesList (char * fileName, graphType<Type> & graphObject);";
+
   
+
   virtual ~errorsHandler () {}
 };

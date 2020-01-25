@@ -1449,7 +1449,7 @@ void fundamentalAlgorithmsWorkFlow::removeCharFromString (char * string, char va
   *stringDest = '\0';
 }
 
-template <class Type> void treesWorkFlow::createTree (binaryTreeType<Type> * &treeObject) {
+template <class Type> void treesWorkFlow::createTree (binaryTreeType<Type> * & treeObject) {
 
   Type value;
 
@@ -1466,7 +1466,7 @@ template <class Type> void treesWorkFlow::createTree (binaryTreeType<Type> * &tr
   } else treeObject = NULL;
 }
 
-template <class Type> void treesWorkFlow::deleteTree (binaryTreeType<Type> * &treeObject) {
+template <class Type> void treesWorkFlow::deleteTree (binaryTreeType<Type> * & treeObject) {
 
   if (__validations__.isNotNull(treeObject)) {
 
@@ -1555,4 +1555,242 @@ template <class Type> bool treesWorkFlow::convertToMirror (binaryTreeType<Type> 
   convertToMirror (treeObject->rightLeaf);
 
   std::swap (treeObject->leftLeaf, treeObject->rightLeaf);
+}
+
+template <class Type> void graphsWorkFlow::readAdjacencyMatrix (graphType<Type> & graphObject) {
+
+  if (__validations__.isZero(graphObject.adjacencyMatrix.lineRefference) || __validations__.isZero(graphObject.adjacencyMatrix.columnRefference)) throw systemException (__errors__.readAdjacencyMatrixZeroError);
+  if (__validations__.isNegative(graphObject.adjacencyMatrix.lineRefference) || __validations__.isNegative(graphObject.adjacencyMatrix.columnRefference)) throw systemException (__errors__.readAdjacencyMatrixNegativeError);
+
+  for (size_t iterator = graphObject.adjacencyMatrix.startLinePoint; iterator < graphObject.adjacencyMatrix.line + graphObject.adjacencyMatrix.endLinePoint; iterator++)
+    for (size_t jiterator = graphObject.adjacencyMatrix.startColumnPoint; jiterator < graphObject.adjacencyMatrix.column + graphObject.adjacencyMatrix.endColumnPoint; jiterator++)
+      std::cin >> graphObject.adjacencyMatrix.matrix[iterator][jiterator];
+}
+
+template <class Type> void graphsWorkFlow::readFileAdjacencyMatrix (char * fileName, graphType<Type> & graphObject) {
+
+  std::ifstream dataStream(fileName, std::ios::in);
+  Type data;
+
+  if (dataStream.is_open()) {
+
+    dataStream >> graphObject.adjacencyMatrix.line >> graphObject.adjacencyMatrix.column;
+
+    if (__validations__.isZero(graphObject.adjacencyMatrix.lineRefference) || __validations__.isZero(graphObject.adjacencyMatrix.columnRefference)) throw systemException (__errors__.readFileAdjacencyMatrixZeroError);
+    if (__validations__.isNegative(graphObject.adjacencyMatrix.lineRefference) || __validations__.isNegative(graphObject.adjacencyMatrix.columnRefference)) throw systemException (__errors__.readFileAdjacencyMatrixNegativeError);
+
+    for (size_t iterator = graphObject.adjacencyMatrix.startLinePoint; iterator < graphObject.adjacencyMatrix.line + graphObject.adjacencyMatrix.endLinePoint; iterator++)
+      for (size_t jiterator = graphObject.adjacencyMatrix.startColumnPoint; jiterator < graphObject.adjacencyMatrix.column + graphObject.adjacencyMatrix.endColumnPoint; jiterator++)
+        dataStream >> graphObject.adjacencyMatrix.matrix[iterator][jiterator];
+
+    dataStream.close();
+  }
+  else
+    throw systemException (__errors__.openFileError);
+}
+
+template <class Type> void graphsWorkFlow::readGraphByEdgesList (graphType<Type> & graphObject) {
+
+  Type nodeValueOne, nodeValueTwo;
+
+  std::cin >> graphObject.vertices >> graphObject.edges;
+
+  if (__validations__.isZero(graphObject.vertices) || __validations__.isZero(graphObject.edges))  throw systemException (__errors__.readGraphByEdgesListZeroError);
+  if (__validations__.isNegative(graphObject.vertices) || __validations__.isNegative(graphObject.edges))  throw systemException (__errors__.readGraphByEdgesListNegativeError);
+
+  for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
+
+    do {
+
+      std::cin >> nodeValueOne >> nodeValueTwo;
+
+    } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
+
+    graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = graphObject.adjacencyMatrix.matrix[nodeValueTwo][nodeValueOne] = 1;
+  }
+}
+
+template <class Type> void graphsWorkFlow::readFileGraphByEdgesList (char * fileName, graphType<Type> & graphObject) {
+
+  std::ifstream dataStream(fileName, std::ios::in);
+
+  if (dataStream.is_open()) {
+
+    Type nodeValueOne, nodeValueTwo;
+
+    dataStream >> graphObject.vertices >> graphObject.edges;
+
+    if (__validations__.isZero(graphObject.vertices) || __validations__.isZero(graphObject.edges))  throw systemException (__errors__.readFileGraphByEdgesListZeroError);
+    if (__validations__.isNegative(graphObject.vertices) || __validations__.isNegative(graphObject.edges))  throw systemException (__errors__.readFileGraphByEdgesListNegativeError);
+
+    for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
+
+      do {
+
+        dataStream >> nodeValueOne >> nodeValueTwo;
+
+      } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
+
+      graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = graphObject.adjacencyMatrix.matrix[nodeValueTwo][nodeValueOne] = 1;
+    }
+
+    dataStream.close();
+  }
+  else
+    throw systemException (__errors__.openFileError);
+}
+
+template <class Type> void graphsWorkFlow::royWarshallAlgo (graphType<Type> & graphObject) {
+
+  for (size_t iterator = 1; iterator < graphObject.vertices; iterator++)
+    for (size_t jiterator = 1; jiterator < graphObject.vertices; jiterator++)
+      for (size_t secondIterator = 1; secondIterator < graphObject.vertices; secondIterator++)
+        if (secondIterator != iterator && jiterator != iterator)
+          if (__validations__.isZero(graphObject.adjacencyMatrix.matrix[jiterator][secondIterator]))
+            graphObject.adjacencyMatrix.matrix[jiterator][secondIterator] = graphObject.adjacencyMatrix.matrix[jiterator][iterator] * graphObject.adjacencyMatrix.matrix[iterator][secondIterator];
+}
+
+template <class Type> bool graphsWorkFlow::isConex (graphType<Type> graphObject) {
+
+  bool check = false;
+
+  for (size_t iterator = graphObject.verticesValency.startPoint; iterator < graphObject.vertices; iterator++)
+    for (size_t jiterator = graphObject.verticesValency.startPoint; jiterator < graphObject.vertices; jiterator++)
+      if (iterator != jiterator && __validations__.isNotZero(graphObject.verticesValency.oneDimensionalArray[iterator]) && __validations__.isNotZero(graphObject.verticesValency.oneDimensionalArray[jiterator]))
+        check = true;
+
+  return check;
+}
+
+template <class Type> bool graphsWorkFlow::evenValency (graphType<Type> graphObject) {
+
+  bool check = true;
+
+  for (size_t iterator = graphObject.verticesValency.startPoint; iterator < graphObject.vertices; iterator++)
+    if (graphObject.verticesValency.oneDimensionalArray[iterator] % 2 == 0) check = false;
+
+  return false;
+}
+
+template <class Type> bool graphsWorkFlow::isEulerian (graphType<Type> graphObject) {
+
+  royWarshallAlgo (graphObject);
+
+  if (isConex(graphObject) && evenValency(graphObject)) return true;
+
+  return false;
+}
+
+template <class Type> void graphsWorkFlow::readDirectedGraphByEdgesList (graphType<Type> & graphObject) {
+
+  Type nodeValueOne, nodeValueTwo;
+
+  std::cin >> graphObject.vertices >> graphObject.edges;
+
+  if (__validations__.isZero(graphObject.vertices) || __validations__.isZero(graphObject.edges))  throw systemException (__errors__.readDirectedGraphByEdgesListZeroError);
+  if (__validations__.isNegative(graphObject.vertices) || __validations__.isNegative(graphObject.edges))  throw systemException (__errors__.readDirectedGraphByEdgesListNegativeError);
+
+  for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
+
+    do {
+
+      std::cin >> nodeValueOne >> nodeValueTwo;
+
+    } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
+
+    graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = 1;
+  }
+}
+
+template <class Type> void graphsWorkFlow::readFileDirectedGraphByEdgesList (char * fileName, graphType<Type> & graphObject) {
+
+  std::ifstream dataStream(fileName, std::ios::in);
+
+  if (dataStream.is_open()) {
+
+    Type nodeValueOne, nodeValueTwo;
+
+    dataStream >> graphObject.vertices >> graphObject.edges;
+
+    if (__validations__.isZero(graphObject.vertices) || __validations__.isZero(graphObject.edges))  throw systemException (__errors__.readFileDirectedGraphByEdgesListZeroError);
+    if (__validations__.isNegative(graphObject.vertices) || __validations__.isNegative(graphObject.edges))  throw systemException (__errors__.readFileDirectedGraphByEdgesListNegativeError);
+
+    for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
+
+      do {
+
+        dataStream >> nodeValueOne >> nodeValueTwo;
+
+      } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
+
+      graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = 1;
+    }
+
+    dataStream.close();
+  }
+  else
+    throw systemException (__errors__.openFileError);
+}
+
+template <class Type> unsigned int graphsWorkFlow::valencyOfAVertex (graphType<Type> graphObject, unsigned int vertex) {
+
+  unsigned int valency = 0;
+
+  for (size_t iterator = 0; iterator < graphObject.vertices; iterator++)
+    valency += graphObject.adjacencyMatrix.matrix[graphObject.vertex][iterator];
+
+  return valency;
+}
+
+template <class Type> void graphsWorkFlow::correspondecesOfVertices (graphType<Type> graphObject) {
+
+  for (size_t iterator = 0; iterator < graphObject.vertices; iterator++)
+    for (size_t jiterator = 0; jiterator < graphObject.vertices; jiterator++)
+      if (iterator > jiterator)
+        if (graphObject.adjacencyMatrix.matrix[iterator][jiterator] == 1)
+          std::cout << jiterator + 1 << "->" << iterator + 1 << '\n';
+}
+
+template <class Type> unsigned int graphsWorkFlow::numberOfEdges (graphType<Type> graphObject) {
+
+  unsigned int contor = 0;
+
+  for (size_t iterator = 0; iterator < graphObject.vertices; iterator++)
+   for (size_t jiterator = 0; jiterator < graphObject.vertices; jiterator++)
+     if (iterator > jiterator)
+       if (graphObject.adjacencyMatrix.matrix[iterator][jiterator] == 1) contor++;
+
+  return contor;
+}
+
+template <class Type> unsigned int graphsWorkFlow::maximumValency (graphType<Type> graphObject) {
+
+  unsigned int valency = 0;
+
+  unsigned int maximum = 0;
+
+  for (size_t iterator = 0; iterator < graphObject.vertices; iterator++) {
+    for (size_t jiterator = 0; jiterator < graphObject.vertices; jiterator++)
+      if (graphObject.adjacencyMatrix.matrix[iterator][jiterator] == 1) ++valency;
+
+    if (maximum < valency) maximum = valency;
+    valency = 0;
+  }
+
+  return maximum;
+}
+
+template <class Type> void graphsWorkFlow::valencyOfVertices (graphType<Type> graphObject) {
+
+  unsigned int valency = 0;
+
+  for (size_t iterator= 0; iterator < graphObject.vertices; iterator++) {
+    for (size_t jiterator = 0; jiterator < graphObject.vertices; jiterator++)
+      if (graphObject.adjacencyMatrix.matrix[iterator][jiterator] == 1)
+        ++valency;
+
+      std::cout << iterator + 1 << "->" << valency << '\n';
+      graphObject.verticesValency.oneDimensionalArray[iterator] = valency;
+      valency = 0;
+  }
 }
