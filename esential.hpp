@@ -265,6 +265,13 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getOneDimensionalArrayE
   return division;
 }
 
+template <class Type> float oneDimensionalArraysWorkFlow::getOneDimensionalArrayMean (oneDimensionalArrayType<Type> ODAObject) {
+
+  Type sumODAObject = getOneDimensionalArrayElementsSum<Type> (ODAObject);
+
+  return float (sumODAObject / ODAObject.length);
+}
+
 template <class Type> void oneDimensionalArraysWorkFlow::oneDimensionalArrayInitialization (oneDimensionalArrayType<Type> ODAObject, Type initializator) {
 
   if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.oneDimensionalArrayInitializationZeroError);
@@ -1449,6 +1456,56 @@ void fundamentalAlgorithmsWorkFlow::removeCharFromString (char * string, char va
   *stringDest = '\0';
 }
 
+void fundamentalAlgorithmsWorkFlow::readComplexData (complexNumber * number) {
+
+  for (size_t iterator = 0; iterator < number->complexNumberLength; iterator++) {
+    scanf("%f", &number[iterator].realPart);
+    scanf("%f", &number[iterator].imaginaryPart);
+  }
+}
+
+complexNumber fundamentalAlgorithmsWorkFlow::complexNumbersProduct (complexNumber * numberOne, complexNumber * numberTwo) {
+
+  complexNumber resultedComplexNumber;
+  float realPartProduct, imaginaryPartProduct;
+
+  realPartProduct = numberOne->realPart * numberTwo->realPart;
+  imaginaryPartProduct = numberOne->imaginaryPart * numberTwo->imaginaryPart;
+
+  resultedComplexNumber.realPart = realPartProduct - imaginaryPartProduct;
+  resultedComplexNumber.imaginaryPart = (numberOne->realPart + numberOne->imaginaryPart) * (numberTwo->realPart + numberTwo->imaginaryPart) - realPartProduct - imaginaryPartProduct;
+
+  return resultedComplexNumber;
+}
+
+complexNumber fundamentalAlgorithmsWorkFlow::complexNumberSum (complexNumber * numberOne, complexNumber * numberTwo) {
+
+  complexNumber resultedComplexNumber;
+  float realPartSum, imaginaryPartSum;
+
+  realPartSum = numberOne->realPart + numberTwo->realPart;
+  imaginaryPartSum = numberOne->imaginaryPart + numberTwo->imaginaryPart;
+
+  resultedComplexNumber.realPart = realPartSum;
+  resultedComplexNumber.imaginaryPart = imaginaryPartSum;
+
+  return resultedComplexNumber;
+}
+
+complexNumber fundamentalAlgorithmsWorkFlow::complexNumberDifference (complexNumber * numberOne, complexNumber * numberTwo) {
+
+  complexNumber resultedComplexNumber;
+  float realPartSum, imaginaryPartSum;
+
+  realPartSum = numberOne->realPart - numberTwo->realPart;
+  imaginaryPartSum = numberOne->imaginaryPart - numberTwo->imaginaryPart;
+
+  resultedComplexNumber.realPart = realPartSum;
+  resultedComplexNumber.imaginaryPart = imaginaryPartSum;
+
+  return resultedComplexNumber;
+}
+
 template <class Type> void treesWorkFlow::createTree (binaryTreeType<Type> * & treeObject) {
 
   Type value;
@@ -1533,6 +1590,30 @@ template <class Type> Type treesWorkFlow::getTreeSumValues (binaryTreeType<Type>
 
   if (treeObject != NULL)
     return treeObject->value + getTreeSumValues(treeObject->leftLeaf) + getTreeSumValues(treeObject->rightLeaf);
+
+  return 0;
+}
+
+template <class Type> Type getTreeProductValues (binaryTreeType<Type> * treeObject) {
+
+  if (treeObject != NULL)
+    return treeObject->value * getTreeSumValues(treeObject->leftLeaf) * getTreeSumValues(treeObject->rightLeaf);
+
+  return 0;
+}
+
+template <class Type> Type getTreeDifferenceValues (binaryTreeType<Type> * treeObject) {
+
+  if (treeObject != NULL)
+    return treeObject->value - getTreeSumValues(treeObject->leftLeaf) - getTreeSumValues(treeObject->rightLeaf);
+
+  return 0;
+}
+
+template <class Type> Type getTreeDivisionValues (binaryTreeType<Type> * treeObject) {
+
+  if (treeObject != NULL)
+    return treeObject->value / getTreeSumValues(treeObject->leftLeaf) / getTreeSumValues(treeObject->rightLeaf);
 
   return 0;
 }

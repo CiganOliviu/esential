@@ -129,4 +129,18 @@ namespace dataStructures {
 
     virtual ~quadraticEquation () {}
   };
+
+  class complexNumber {
+  private:
+    float standardComplexNumber = 1;
+
+  public:
+    complexNumber () {}
+
+    unsigned int complexNumberLength = standardComplexNumber;
+    float realPart = standardComplexNumber;
+    float imaginaryPart = standardComplexNumber;
+
+    virtual ~complexNumber () {}
+  };
 }

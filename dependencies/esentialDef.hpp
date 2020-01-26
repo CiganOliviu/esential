@@ -52,7 +52,7 @@ public:
   template <class Type> Type getOneDimensionalArrayElementsProduct (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> Type getOneDimensionalArrayElementsDifference (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> Type getOneDimensionalArrayElementsDivision (oneDimensionalArrayType<Type> ODAObject);
-
+  template <class Type> float getOneDimensionalArrayMean (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void oneDimensionalArrayInitialization (oneDimensionalArrayType<Type> ODAObject, Type initializator);
   template <class Type> bool checkIfSymetricOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void addValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, limits<Type> valueAndPosition);
@@ -171,6 +171,11 @@ public:
 
   void removeCharFromString (char * string, char value);
 
+  void readComplexData (complexNumber * number);
+  complexNumber complexNumbersProduct (complexNumber * numberOne, complexNumber * numberTwo);
+  complexNumber complexNumberSum (complexNumber * numberOne, complexNumber * numberTwo);
+  complexNumber complexNumberDifference (complexNumber * numberOne, complexNumber * numberTwo);
+
   virtual ~fundamentalAlgorithmsWorkFlow () {}
 };
 
@@ -192,6 +197,9 @@ public:
 
   template <class Type> Type getTreeNumberOfNegativeValues (binaryTreeType<Type> * treeObject);
   template <class Type> Type getTreeSumValues (binaryTreeType<Type> * treeObject);
+  template <class Type> Type getTreeProductValues (binaryTreeType<Type> * treeObject);
+  template <class Type> Type getTreeDifferenceValues (binaryTreeType<Type> * treeObject);
+  template <class Type> Type getTreeDivisionValues (binaryTreeType<Type> * treeObject);
   template <class Type> bool checkSimilarityOfTrees (binaryTreeType<Type> * treeObjectOne, binaryTreeType<Type> * treeObjectTwo);
   template <class Type> bool convertToMirror (binaryTreeType<Type> * treeObject);
 
