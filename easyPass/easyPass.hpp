@@ -28,7 +28,7 @@ template <class Type> bool validationRules::isNegativeOrZero (Type parameter) {
   return false;
 }
 
-template <class Type> bool isNull (Type parameter) {
+template <class Type> bool validationRules::isNull (Type parameter) {
 
   if (parameter == NULL) return true;
 
@@ -42,7 +42,7 @@ template <class Type> bool validationRules::isNotZero (Type parameter) {
   return false;
 }
 
-template <class Type> bool isNotNull (Type parameter) {
+template <class Type> bool validationRules::isNotNull (Type parameter) {
 
   if (parameter != NULL) return true;
 
