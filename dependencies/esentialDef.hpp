@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include "../tests/easyPass.hpp"
+#include "../easyPass-WS/easyPass.hpp"
 #include "errorsHandler.hpp"
 
 class oneDimensionalArraysWorkFlow {
