@@ -33,27 +33,6 @@ class dataset_workflow():
         dataset_type.DATASET_SIZE = dataset_size
         dataset_type.STRING_LENGTH = string_length
 
-    def save_data_for_future_procesing(self, dataset_type = dataset_type()) -> list:
-
-        data = []
-
-        fileDataStream = open (dataset_type.FILE_NAME, "r")
-
-        for values in fileDataStream:
-            data.append(values)
-
-        fileDataStream.close()
-
-        return data
-
-    def remove_file(self, file_name):
-        if (os.path.exists(file_name)):
-            os.remove(file_name)
-
-    def create_file(self, file_name):
-
-        fileDataStream = open (file_name, "w")
-        
 class create_dataset():
 
     def __init__(self):

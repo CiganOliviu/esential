@@ -46,6 +46,7 @@ class misha_command_line_interface_system():
 
     def set_templates_cli(self):
         templates_commands = misha_templates_system()
-        self.misha_command_line_interface.add_command(templates_commands.standard_algo_templates)
-        self.misha_command_line_interface.add_command(templates_commands.standard_easyPass_templates)
-        self.misha_command_line_interface.add_command(templates_commands.standard_esential_template)
+        self.misha_command_line_interface.add_command(templates_commands.standard_algo_implementation)
+        self.misha_command_line_interface.add_command(templates_commands.standard_easyPass_implementation)
+        self.misha_command_line_interface.add_command(templates_commands.standard_esential_implementation)
+        self.misha_command_line_interface.add_command(templates_commands.standard_misha_implementation)
