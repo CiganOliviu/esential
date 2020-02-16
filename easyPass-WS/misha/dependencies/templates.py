@@ -46,7 +46,7 @@ class init_templates():
         file_object.write("\t final_data = [] \n\n")
         file_object.write("\t for values in data: \n")
         file_object.write("\t\t if values != '': \n")
-        file_object.write("\t\t\t final_data.append(values)\n\n")
+        file_object.write("\t\t\t final_data.append(int(values))\n\n")
         file_object.write("\t return final_data \n\n")
         file_object.write("data_set = dataset_type() \n")
         file_object.write("data_set_workflow = misha_scripts_dependencies() \n")
