@@ -44,7 +44,7 @@ class create_dataset():
         valueCounter = 0
 
         for values in range(dataset_attributes.DATASET_SIZE):
-            valueCounter += 1;
+            valueCounter += 1
             data = input ("Input value number " + str(valueCounter) + " ")
 
             fileDataStream.write(str(data) + " ")
@@ -59,7 +59,7 @@ class create_dataset():
 
         for iterator in range(dataset_attributes.DATASET_SIZE):
             for jiterator in range(dataset_attributes.DATASET_SIZE):
-                valueCounter += 1;
+                valueCounter += 1
                 data = input ("Input value number " + str(valueCounter) + " ")
 
                 fileDataStream.write(str(data) + " ")

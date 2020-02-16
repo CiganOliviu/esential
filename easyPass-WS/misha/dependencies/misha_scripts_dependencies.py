@@ -1,3 +1,4 @@
+import os
 from create_datasets import dataset_type
 
 class misha_scripts_dependencies():
@@ -5,14 +6,15 @@ class misha_scripts_dependencies():
     def __init__(self):
         super(misha_scripts_dependencies, self).__init__()
 
-    def save_data_for_future_procesing(self, dataset_type = dataset_type()) -> list:
+    def save_data_for_future_procesing(self, dataset_type = dataset_type()) -> str:
 
-        data = []
+        data = ""
 
         fileDataStream = open (dataset_type.FILE_NAME, "r")
 
         for values in fileDataStream:
-            data.append(values)
+            if values != '\n':
+                data += str(values) + " "
 
         fileDataStream.close()
 

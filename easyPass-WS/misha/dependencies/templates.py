@@ -38,7 +38,18 @@ class init_templates():
 
         file_object.write("import sys \n\n")
         file_object.write("sys.path.insert(0, '../dependencies/') \n\n")
+        file_object.write("from create_datasets import dataset_type \n")
         file_object.write("from misha_scripts_dependencies import misha_scripts_dependencies \n\n")
+        file_object.write("def normalize_data(data_set, data_set_workflow) -> list:\n\n")
+        file_object.write("\t data = [] \n")
+        file_object.write("\t data = (data_set_workflow.save_data_for_future_procesing(data_set)).split(" ") \n\n")
+        file_object.write("\t final_data = [] \n\n")
+        file_object.write("\t for values in data: \n")
+        file_object.write("\t\t if values != '': \n")
+        file_object.write("\t\t\t final_data.append(values)\n\n")
+        file_object.write("\t return final_data \n\n")
+        file_object.write("data_set = dataset_type() \n")
+        file_object.write("data_set_workflow = misha_scripts_dependencies() \n")
 
 class templates(init_templates):
 
