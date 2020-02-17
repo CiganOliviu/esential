@@ -157,6 +157,7 @@ public:
   unsigned int reverseNumber (int parameter);
   unsigned int getPalindromValue (int parameter);
   bool checkIfPalindrome (int parameter);
+  float getMeanOfTwoNumbers (float parameterOne, float parameterTwo);
 
   unsigned int getThe_N_FactorialNumber (int parameter);
   unsigned int getThe_N_FactorialNumberRecursive (int parameter);

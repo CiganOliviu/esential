@@ -1334,6 +1334,14 @@ bool fundamentalAlgorithmsWorkFlow::checkIfPalindrome (int parameter) {
   return false;
 }
 
+float fundamentalAlgorithmsWorkFlow::getMeanOfTwoNumbers (float parameterOne, float parameterTwo) {
+
+  if (__validations__.isZero(parameterOne)) return parameterTwo / 2;
+  if (__validations__.isZero(parameterTwo)) return parameterOne / 2;
+
+  return (float)(parameterOne + parameterTwo) / 2;
+}
+
 unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumber (int parameter) {
 
   if (__validations__.isNegative(parameter)) throw systemException(__errors__.getThe_N_FactorialNumberNegativeError);
