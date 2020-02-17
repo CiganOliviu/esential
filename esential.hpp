@@ -1303,6 +1303,22 @@ bool fundamentalAlgorithmsWorkFlow::checkIfEven (int parameter) {
   return false;
 }
 
+bool fundamentalAlgorithmsWorkFlow::isConstantNumber (int parameter) {
+
+  int digit = parameter % 10;
+  parameter /= 10;
+
+  while (parameter != 0) {
+
+    if (digit != parameter % 10) return false;
+
+    digit = parameter % 10;
+    parameter /= 10;
+  }
+
+  return true;
+}
+
 unsigned int fundamentalAlgorithmsWorkFlow::reverseNumber (int parameter) {
 
     unsigned int reversedValue;

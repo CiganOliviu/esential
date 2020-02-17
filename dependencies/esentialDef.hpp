@@ -153,7 +153,8 @@ public:
   bool checkIfPrime (int parameter);
   bool checkIfOdd (int parameter);
   bool checkIfEven (int parameter);
-
+  bool isConstantNumber (int parameter);
+  
   unsigned int reverseNumber (int parameter);
   unsigned int getPalindromValue (int parameter);
   bool checkIfPalindrome (int parameter);
