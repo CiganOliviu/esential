@@ -150,6 +150,12 @@ class matricesTestingWorkFlow {
 public:
 	matricesTestingWorkFlow () {}
 
+	template <class Type> void assertMaximumValueFromMatrix ();
+	template <class Type> void assertMinimumValueFromMatrix ();
+	template <class Type> void assertMatrixElementsSum ();
+	template <class Type> void assertMatrixElementsProduct ();
+	template <class Type> void assertMatrixElementsDifference ();
+
 	virtual ~matricesTestingWorkFlow () {}
 };
 
@@ -165,6 +171,7 @@ int main(int argc, char const *argv[]) {
 
 	assertions __assert__;
 	oneDimensionalArrayTestingWorkflow ODATWF;
+	matricesTestingWorkFlow MTWF;
 
 	ODATWF.assertMinimumValueOneDimensionalArray<int> ();
 	ODATWF.assertMaximumValueOneDimensionalArray<int> ();
