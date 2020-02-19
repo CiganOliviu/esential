@@ -130,7 +130,7 @@ template <class Type> void oneDimensionalArrayTestingWorkflow::assertMaximumValu
 	oneDimensionalArrayType<Type> ODAObject;
 
 	ODAWorkFlow.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
-	ODAWorkFlow.bubbleSort (ODAObject);
+	ODAWorkFlow.minimumValueSort (ODAObject);
 
 	limits<int> interval;
 
