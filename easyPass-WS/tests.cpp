@@ -15,6 +15,9 @@ public:
 	template<class Type> void assertOneDimensionalArrayElementsDifference ();
 	template<class Type> void assertOneDimensionalArrayMean ();
 
+	template <class Type> void assertMinimumValueOneDimensionalArrayDivideEtEmpera ();
+	template <class Type> void assertMaximumValueOneDimensionalArrayDivideEtEmpera ();
+
 	virtual ~oneDimensionalArrayTestingWorkflow () {}
 };
 
@@ -100,7 +103,46 @@ template<class Type> void oneDimensionalArrayTestingWorkflow::assertOneDimension
 	results.maximLimit = -297.838;
 
 	__assert__.countTest ((char*)"getOneDimensionalArrayMean", __assert__.assertPrimitiveDataTypes<Type>(results) );
+}
 
+template <class Type> void oneDimensionalArrayTestingWorkflow::assertMinimumValueOneDimensionalArrayDivideEtEmpera () {
+
+	oneDimensionalArrayType<Type> ODAObject;
+
+	ODAWorkFlow.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	ODAWorkFlow.bubbleSort (ODAObject);
+
+	limits<int> interval;
+
+	interval.minimLimit = 0;
+	interval.maximLimit = ODAObject.length;
+
+	limits<Type> results;
+
+	results.minimLimit = ODAWorkFlow.getMinimumValueOneDimensionalArrayDivideEtEmpera(interval, ODAObject);
+	results.maximLimit = -50000;
+
+	__assert__.countTest ((char*)"getMinimumValueOneDimensionalArrayDivideEtEmpera", __assert__.assertPrimitiveDataTypes<Type>(results) );
+}
+
+template <class Type> void oneDimensionalArrayTestingWorkflow::assertMaximumValueOneDimensionalArrayDivideEtEmpera () {
+
+	oneDimensionalArrayType<Type> ODAObject;
+
+	ODAWorkFlow.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	ODAWorkFlow.bubbleSort (ODAObject);
+
+	limits<int> interval;
+
+	interval.minimLimit = 0;
+	interval.maximLimit = ODAObject.length;
+
+	limits<Type> results;
+
+	results.minimLimit = ODAWorkFlow.getMaximumValueOneDimensionalArrayDivideEtEmpera(interval, ODAObject);
+	results.maximLimit = 50000;
+
+	__assert__.countTest ((char*)"getMaximumValueOneDimensionalArrayDivideEtEmpera", __assert__.assertPrimitiveDataTypes<Type>(results) );
 }
 
 class matricesTestingWorkFlow {
@@ -130,6 +172,8 @@ int main(int argc, char const *argv[]) {
 	ODATWF.assertOneDimensionalArrayElementsProduct<int> ();
 	ODATWF.assertOneDimensionalArrayElementsDifference<int> ();
 	ODATWF.assertOneDimensionalArrayMean<int> ();
+	ODATWF.assertMinimumValueOneDimensionalArrayDivideEtEmpera<int> ();
+	ODATWF.assertMaximumValueOneDimensionalArrayDivideEtEmpera<int> ();
 
 	__assert__.getConclusion();
 
