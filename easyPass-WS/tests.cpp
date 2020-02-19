@@ -164,6 +164,34 @@ class fundamentalAlgorithmsTestingWorkflow {
 public:
 	fundamentalAlgorithmsTestingWorkflow () {}
 
+	void assertRootLinearEquation ();
+	void assertValueLinearEquation ();
+	void assertRootsQuadraticEquation ();
+	void assertValueQuadraticEquation ();
+
+	void assertIfPrime ();
+	void assertIfOdd ();
+	void assertOfEven ();
+	void assertConstantNumber ();
+	void assertReversedNumber ();
+	void assertPalindromeNumber ();
+	void assertMeansOfTwoNumbers ();
+
+	void assertFactorialNumber ();
+	void assertFactorialNumberRecursive ();
+	void assertMannaPnueliNumber ();
+	void assertAckermanNumber ();
+	void assertStirlingNumber ();
+	void assertEulerianNumber ();
+	void assertCatalanNumber ();
+	void assertFibonacciNumber ();
+	void assertFibonacciNumberRecursive ();
+	void assertMasterTheoremNumber ();
+
+	void assertComplexNumbersProduct ();
+	void assertComplexNumbersSum ();
+	void assertComplexNumbersDifference ();
+	
 	virtual ~fundamentalAlgorithmsTestingWorkflow () {}
 };
 
