@@ -607,8 +607,8 @@ template <class Type> void matricesWorkFlow::readDynamicFileMatrix (char * fileN
       }
     }
 
-    if (isZero(matrixObject.lineRefference) || isZero(matrixObject.columnRefference)) throw systemException (__errors__.readDynamicFileMatrixZeroError);
-    if (isNegative(matrixObject.lineRefference) || isNegative(matrixObject.columnRefference)) throw systemException (__errors__.readDynamicFileMatrixNegativeError);
+    if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.readDynamicFileMatrixZeroError);
+    if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.readDynamicFileMatrixNegativeError);
 
     dataStream.close();
   }
