@@ -11,13 +11,7 @@
 class makeAreasNull {
 
 private:
-  validationRules __validations__;
-
-  std::string turnColumnsAreaToNullZeroError = "Unable to process line or column as zero in template <class Type> void turnColumnsToAreaNull (matrixType<Type> & matrixObject) ";
-  std::string turnColumnsAreaToNullNegativeError = "Unable to process negative line or column in template <class Type> void turnColumnsToAreaNull (matrixType<Type> & matrixObject) ";
-
-  std::string turnLinesAreaToNullZeroError = "Unable to process line or column as zero in template <class Type> void turnLinesAreaToNull (matrixType<Type> & matrixObject);";
-  std::string turnLinesAreaToNullNegativeError = "Unable to process negative line or column in template <class Type> void turnLinesAreaToNull (matrixType<Type> & matrixObject);";
+  errorsHandler __handler__;
 
 public:
   makeAreasNull () {}
@@ -33,8 +27,7 @@ public:
 
 template <class Type> void makeAreasNull::turnEvenColumnsAreaToNull (matrixType<Type> & matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (turnColumnsAreaToNullZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (turnColumnsAreaToNullNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -44,8 +37,7 @@ template <class Type> void makeAreasNull::turnEvenColumnsAreaToNull (matrixType<
 
 template <class Type> void makeAreasNull::turnEvenLinesAreaToNull (matrixType<Type> & matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (turnLinesAreaToNullZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (turnLinesAreaToNullNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -55,8 +47,7 @@ template <class Type> void makeAreasNull::turnEvenLinesAreaToNull (matrixType<Ty
 
 template <class Type> void makeAreasNull::turnOddColumnsAreaToNull (matrixType<Type> & matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (turnColumnsAreaToNullZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (turnColumnsAreaToNullNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -66,8 +57,7 @@ template <class Type> void makeAreasNull::turnOddColumnsAreaToNull (matrixType<T
 
 template <class Type> void makeAreasNull::turnOddLinesAreaToNull (matrixType<Type> & matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (turnLinesAreaToNullZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (turnLinesAreaToNullNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
