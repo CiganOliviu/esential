@@ -23,12 +23,11 @@ SOFTWARE.
 */
 
 #include "../easyPass-WS/easyPass.hpp"
-#include "errorsHandler.hpp"
 
 class oneDimensionalArraysWorkFlow {
 private:
-  errorsHandler __errors__;
-  validationRules __validations__;
+  errorsHandler __handler__;
+  checkAndSupport __support__;
 
   template <class Type> Type sortAndNormalizeNumber (Type parameter);
 
@@ -76,8 +75,8 @@ public:
 
 class matricesWorkFlow {
 private:
-  errorsHandler __errors__;
-  validationRules __validations__;
+  errorsHandler __handler__;
+  checkAndSupport __support__;
 
   template <class Type> Type sortAndNormalizeNumber (Type parameter);
 
@@ -127,8 +126,9 @@ public:
 
 class fundamentalAlgorithmsWorkFlow {
 private:
-  errorsHandler __errors__;
+  errorsHandler __handler__;
   validationRules __validations__;
+
 
   void processQuadraticEquationWithoutCoefficient_a (limits<float> & roots, quadraticEquation __QEquation__);
   void processQuadraticEquationWithoutCoefficient_b (limits<float> & roots, quadraticEquation __QEquation__);
@@ -154,7 +154,7 @@ public:
   bool checkIfOdd (int parameter);
   bool checkIfEven (int parameter);
   bool isConstantNumber (int parameter);
-  
+
   unsigned int reverseNumber (int parameter);
   unsigned int getPalindromValue (int parameter);
   bool checkIfPalindrome (int parameter);
@@ -183,8 +183,9 @@ public:
 
 class treesWorkFlow {
 private:
+  errorsHandler __handler__;
   validationRules __validations__;
-  errorsHandler __errors__;
+
 
 public:
   treesWorkFlow () {}
@@ -210,8 +211,8 @@ public:
 
 class graphsWorkFlow {
 private:
+  errorsHandler __handler__;
   validationRules __validations__;
-  errorsHandler __errors__;
 
   template <class Type> bool evenValency (graphType<Type> graphObject);
 

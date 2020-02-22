@@ -1,33 +1,6 @@
-/*
-MIT License
-
-Copyright (c) 2020 Cigan Oliviu David
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-
+#include "coreDependencies.hpp"
 #include "dataStructures.hpp"
-#include "errorHandler.hpp"
-
-#ifndef ZERO
-#define ZERO 0
-#endif
+#include "errorMessages.hpp"
 
 using namespace dataStructures;
 
@@ -59,22 +32,47 @@ namespace easyPassDefinitions {
 
     template <class Type> bool isNegative (Type parameter);
     template <class Type> bool isZero (Type parameter);
-    template <class Type> bool isNegativeOrZero (Type parameter);
-    template <class Type> bool isNull (Type parameter);
+    template <class Type> bool isNotNegative (Type parameter);
     template <class Type> bool isNotZero (Type parameter);
+    template <class Type> bool isNegativeOrZero (Type parameter);
+    template <class Type> bool isNotNegativeOrZero (Type parameter);
+
+    template <class Type> bool isNull (Type parameter);
     template <class Type> bool isNotNull (Type parameter);
-    template <class Type> bool isEqual (limits<Type> limitsObject);
-    template <class Type> Type returnTheMaximumParameter (limits<Type> limitsObject);
-    template <class Type> Type returnTheMinimumParameter (limits<Type> limitsObject);
-    template <class Type> void interchangeValues (Type & parameterOne, Type & parameterTwo);
+
+    template <class Type> bool isEqualObjectBased (limits<Type> limitsObject);
+    template <class Type> bool isEqualParameterBased (Type parameterOne, Type parameterTwo);
+    template <class Type> bool isNotEqualObjectBased (limits<Type> limitsObject);
+    template <class Type> bool isNotEqualParameterBased (Type parameterOne, Type parameterTwo);
 
     virtual ~validationRules () {}
   };
 
-  class randomGenerator {
-
+  class errorsHandler {
   private:
-    errorHandler __error__;
+    errorMessages __errorMessages__;
+    validationRules __validations__;
+
+  public:
+    errorsHandler () {}
+
+    template <class Type> void standardHandlerOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, const char coreFunction[]);
+    template <class Type> void standardHandlerMatrix (matrixType<Type> MTObject, const char coreFunction[]);
+
+    template <class Type> void equalityHandlerOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo, const char coreFunction[]);
+    template <class Type> void equalityHandlerMatrices (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo, const char coreFunction[]);
+
+    void standardFileHandler (std::ifstream & file, const char coreFunction[]);
+
+    template <class Type> void zeroNumberHandler (Type parameter, const char coreFunction[]);
+    template <class Type> void negativeNumberHandler (Type parameter, const char coreFunction[]);
+
+    virtual ~errorsHandler () {}
+  };
+
+  class randomGenerator {
+  private:
+    errorsHandler __handler__;
 
   public:
     randomGenerator () {}
@@ -89,7 +87,7 @@ namespace easyPassDefinitions {
 
   class checkAndSupport {
   private:
-    errorHandler __error__;
+    errorsHandler __handler__;
 
   public:
     checkAndSupport () {}
@@ -107,12 +105,16 @@ namespace easyPassDefinitions {
     template <class Type> void readTree (binaryTreeType<Type> *& root);
     template <class Type> void putsTree (binaryTreeType<Type> * root);
 
+    template <class Type> Type returnTheMaximumParameter (limits<Type> limitsObject);
+    template <class Type> Type returnTheMinimumParameter (limits<Type> limitsObject);
+    template <class Type> void interchangeValues (Type & parameterOne, Type & parameterTwo);
+
     virtual ~checkAndSupport () {}
   };
 
   class portData {
   private:
-    errorHandler __error__;
+    errorsHandler __handler__;
 
   public:
     portData () {};
@@ -127,8 +129,7 @@ namespace easyPassDefinitions {
 
   class assertions {
   private:
-    errorHandler __error__;
-    validationRules __rules__;
+    errorsHandler __handler__;
 
   public:
     assertions () {}

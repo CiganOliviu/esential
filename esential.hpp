@@ -4,8 +4,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::readOneDimensionalArray
 
   std::cin >> ODAObject.length;
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.readOneDimensionalArrayZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.readOneDimensionalArrayNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
     std::cin >> ODAObject.oneDimensionalArray[iterator];
@@ -15,20 +14,16 @@ template <class Type> void oneDimensionalArraysWorkFlow::readStaticFileOneDimens
 
   std::ifstream dataStream(fileName, std::ios::in);
 
-  if (dataStream.is_open()) {
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
 
-    dataStream >> ODAObject.length;
+  dataStream >> ODAObject.length;
 
-    if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.readStaticFileOneDimensionalArrayZeroError);
-    if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.readStaticFileOneDimensionalArrayNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
-    for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
-      dataStream >> ODAObject.oneDimensionalArray[iterator];
+  for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
+    dataStream >> ODAObject.oneDimensionalArray[iterator];
 
-    dataStream.close();
-  }
-  else
-    throw systemException (__errors__.openFileError);
+  dataStream.close();
 }
 
 template <class Type> void oneDimensionalArraysWorkFlow::readDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
@@ -37,30 +32,24 @@ template <class Type> void oneDimensionalArraysWorkFlow::readDynamicFileOneDimen
   Type data;
   int iterator = ODAObject.startPoint;
 
-  if (dataStream.is_open()) {
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
 
-    while (dataStream >> data) {
+  while (dataStream >> data) {
 
-        ODAObject.oneDimensionalArray[iterator] = data;
-        iterator += 1;
-    }
-
-    ODAObject.length = iterator;
-
-    if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.readDynamicFileOneDimensionalArrayZeroError);
-    if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.readDynamicFileOneDimensionalArrayNegativeError);
-
-    dataStream.close();
-
+      ODAObject.oneDimensionalArray[iterator] = data;
+      iterator += 1;
   }
-  else
-    throw systemException (__errors__.openFileError);
+
+  ODAObject.length = iterator;
+
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
+
+  dataStream.close();
 }
 
 template <class Type> void oneDimensionalArraysWorkFlow::outputOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.outputOneDimensionalArrayZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.outputOneDimensionalArrayNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
     std::cout << ODAObject.oneDimensionalArray[iterator] << " ";
@@ -72,47 +61,39 @@ template <class Type> void oneDimensionalArraysWorkFlow::outputStaticFileOneDime
 
   std::ofstream dataStream(fileName, std::ios::out);
 
-  if (dataStream.is_open()) {
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
 
-    if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.outputStaticFileOneDimensionalArrayZeroError);
-    if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.outputStaticFileOneDimensionalArrayNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
-    dataStream << ODAObject.length << " ";
-    for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
-      dataStream << ODAObject.oneDimensionalArray[iterator] << " ";
+  dataStream << ODAObject.length << " ";
 
-    dataStream << '\n';
+  for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
+    dataStream << ODAObject.oneDimensionalArray[iterator] << " ";
 
-    dataStream.close();
-  }
-  else
-    throw systemException (__errors__.openFileError);
+  dataStream << '\n';
+
+  dataStream.close();
 }
 
 template <class Type> void oneDimensionalArraysWorkFlow::outputDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ofstream dataStream(fileName, std::ios::out);
 
-  if (dataStream.is_open()) {
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
 
-    if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.outputDynamicFileOneDimensionalArrayZeroError);
-    if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.outputDynamicFileOneDimensionalArrayNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
-    for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
-      dataStream << ODAObject.oneDimensionalArray[iterator] << " ";
+  for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
+    dataStream << ODAObject.oneDimensionalArray[iterator] << " ";
 
-    dataStream << '\n';
+  dataStream << '\n';
 
-    dataStream.close();
-  }
-  else
-    throw systemException (__errors__.openFileError);
+  dataStream.close();
 }
 
 template <class Type> Type oneDimensionalArraysWorkFlow::getMinimumValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.getMinimumValueOneDimensionalArrayZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.getMinimumValueOneDimensionalArrayNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   Type minimumValue = ODAObject.oneDimensionalArray[0];
 
@@ -125,8 +106,7 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getMinimumValueOneDimen
 
 template <class Type> Type oneDimensionalArraysWorkFlow::getMinimumValueOneDimensionalArrayDivideEtEmpera (limits<Type> interval, oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.getMinimumValueOneDimensionalArrayDivideEtEmperaZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.getMinimumValueOneDimensionalArrayDivideEtEmperaNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   int middle, positionLeft = static_cast<int> (interval.minimLimit), positionRight;
   limits<Type> leftRightLimits;
@@ -143,7 +123,7 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getMinimumValueOneDimen
     returningIntervalCaseOne.minimLimit = ODAObject.oneDimensionalArray[positionLeft];
     returningIntervalCaseOne.maximLimit = ODAObject.oneDimensionalArray[positionRight];
 
-    return __validations__.returnTheMinimumParameter<Type> (returningIntervalCaseOne);
+    return __support__.returnTheMinimumParameter<Type> (returningIntervalCaseOne);
   } else {
 
     middle = (interval.minimLimit + interval.maximLimit) / 2;
@@ -157,14 +137,13 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getMinimumValueOneDimen
     leftRightLimits.minimLimit = getMinimumValueOneDimensionalArrayDivideEtEmpera<Type> (leftWing, ODAObject);
     leftRightLimits.maximLimit = getMinimumValueOneDimensionalArrayDivideEtEmpera<Type> (rightWing, ODAObject);
 
-    return __validations__.returnTheMinimumParameter<Type> (leftRightLimits);
+    return __support__.returnTheMinimumParameter<Type> (leftRightLimits);
   }
 }
 
 template <class Type> Type oneDimensionalArraysWorkFlow::getMaximumValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.getMaximumValueOneDimensionalArrayZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.getMaximumValueOneDimensionalArrayNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   Type maximumValue = ODAObject.oneDimensionalArray[0];
 
@@ -177,8 +156,7 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getMaximumValueOneDimen
 
 template <class Type> Type oneDimensionalArraysWorkFlow::getMaximumValueOneDimensionalArrayDivideEtEmpera (limits<Type> interval, oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.getMaximumValueOneDimensionalArrayDivideEtEmperaZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.getMaximumValueOneDimensionalArrayDivideEtEmperaNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   int middle, positionLeft = static_cast<int> (interval.minimLimit), positionRight;
   limits<Type> leftRightLimits;
@@ -195,7 +173,7 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getMaximumValueOneDimen
     returningIntervalCaseOne.minimLimit = ODAObject.oneDimensionalArray[positionLeft];
     returningIntervalCaseOne.maximLimit = ODAObject.oneDimensionalArray[positionRight];
 
-    return __validations__.returnTheMaximumParameter<Type> (returningIntervalCaseOne);
+    return __support__.returnTheMaximumParameter<Type> (returningIntervalCaseOne);
   } else {
 
     middle = (interval.minimLimit + interval.maximLimit) / 2;
@@ -209,14 +187,13 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getMaximumValueOneDimen
     leftRightLimits.minimLimit = getMaximumValueOneDimensionalArrayDivideEtEmpera<Type> (leftWing, ODAObject);
     leftRightLimits.maximLimit = getMaximumValueOneDimensionalArrayDivideEtEmpera<Type> (rightWing, ODAObject);
 
-    return __validations__.returnTheMaximumParameter<Type> (leftRightLimits);
+    return __support__.returnTheMaximumParameter<Type> (leftRightLimits);
   }
 }
 
 template <class Type> Type oneDimensionalArraysWorkFlow::getOneDimensionalArrayElementsSum (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.getOneDimensionalArrayElementsSumZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.getOneDimensionalArrayElementsSumNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   Type sum = ODAObject.oneDimensionalArray[0];
 
@@ -228,8 +205,7 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getOneDimensionalArrayE
 
 template <class Type> Type oneDimensionalArraysWorkFlow::getOneDimensionalArrayElementsProduct (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.getOneDimensionalArrayElementsProductZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.getOneDimensionalArrayElementsProductNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   Type product = ODAObject.oneDimensionalArray[0];
 
@@ -241,8 +217,7 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getOneDimensionalArrayE
 
 template <class Type> Type oneDimensionalArraysWorkFlow::getOneDimensionalArrayElementsDifference(oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.getOneDimensionalArrayElementsDifferenceZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.getOneDimensionalArrayElementsDifferenceNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   Type difference = ODAObject.oneDimensionalArray[0];
 
@@ -254,8 +229,7 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getOneDimensionalArrayE
 
 template <class Type> Type oneDimensionalArraysWorkFlow::getOneDimensionalArrayElementsDivision (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.getOneDimensionalArrayElementsDivisionZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.getOneDimensionalArrayElementsDivisionNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   Type division = ODAObject.oneDimensionalArray[0];
 
@@ -274,8 +248,7 @@ template <class Type> float oneDimensionalArraysWorkFlow::getOneDimensionalArray
 
 template <class Type> void oneDimensionalArraysWorkFlow::oneDimensionalArrayInitialization (oneDimensionalArrayType<Type> ODAObject, Type initializator) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.oneDimensionalArrayInitializationZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.oneDimensionalArrayInitializationNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
     ODAObject.oneDimensionalArray[iterator] = initializator;
@@ -283,8 +256,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::oneDimensionalArrayInit
 
 template <class Type> bool oneDimensionalArraysWorkFlow::checkIfSymetricOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.checkIfSymetricOneDimensionalArrayZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.checkIfSymetricOneDimensionalArrayNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   int iterator = ODAObject.startPoint, jiterator = ODAObject.length - 1 + ODAObject.endPoint;
   bool checker = false;
@@ -305,8 +277,7 @@ template <class Type> bool oneDimensionalArraysWorkFlow::checkIfSymetricOneDimen
 
 template <class Type> void oneDimensionalArraysWorkFlow::addValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, limits<Type> valueAndPosition) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.addValueOneDimensionalArrayZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.addValueOneDimensionalArrayNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObject.length + ODAObject.endPoint; iterator > valueAndPosition.maximLimit + ODAObject.startPoint; iterator--)
     ODAObject.oneDimensionalArray[iterator + 1] = ODAObject.oneDimensionalArray[iterator];
@@ -318,8 +289,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::addValueOneDimensionalA
 
 template <class Type> bool oneDimensionalArraysWorkFlow::isValueInOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type value) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.isValueInOneDimensionalArrayZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.isValueInOneDimensionalArrayNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
     if (value == ODAObject.oneDimensionalArray[iterator]) return true;
@@ -356,8 +326,7 @@ template <class Type> Type oneDimensionalArraysWorkFlow::sortAndNormalizeNumber 
 
 template <class Type> void oneDimensionalArraysWorkFlow::normalizeOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.normalizeOneDimensionalArrayZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.normalizeOneDimensionalArrayNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
     ODAObject.oneDimensionalArray[iterator] = sortAndNormalizeNumber<int> (ODAObject.oneDimensionalArray[iterator]);
@@ -365,11 +334,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::normalizeOneDimensional
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysSum (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  if (__validations__.isZero(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysSumODAObjectOneZeroError);
-  if (__validations__.isNegative(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysSumODAObjectOneNegativeError);
-
-  if (__validations__.isZero(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysSumODAObjectTwoZeroError);
-  if (__validations__.isNegative(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysSumODAObjectTwoNegativeError);
+  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo);
 
   limits<int> startPointsValueChecker;
   startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
@@ -378,9 +343,6 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
   limits<int> endPointsValueChecker;
   endPointsValueChecker.minimLimit = ODAObjectOne.endPoint;
   endPointsValueChecker.maximLimit = ODAObjectTwo.endPoint;
-
-  if (!__validations__.isEqual(startPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysSumStartPointsError);
-  if (!__validations__.isEqual(endPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysSumEndPointsError);
 
   for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
     ODAObjectOne.oneDimensionalArray[iterator] += ODAObjectTwo.oneDimensionalArray[iterator];
@@ -390,11 +352,7 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysProduct (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  if (__validations__.isZero(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysProductODAObjectOneZeroError);
-  if (__validations__.isNegative(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysProductODAObjectOneNegativeError);
-
-  if (__validations__.isZero(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysProductODAObjectTwoZeroError);
-  if (__validations__.isNegative(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysProductODAObjectTwoNegativeError);
+  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo);
 
   limits<int> startPointsValueChecker;
   startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
@@ -403,9 +361,6 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
   limits<int> endPointsValueChecker;
   endPointsValueChecker.minimLimit = ODAObjectOne.endPoint;
   endPointsValueChecker.maximLimit = ODAObjectTwo.endPoint;
-
-  if (!__validations__.isEqual(startPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysProductStartPointsError);
-  if (!__validations__.isEqual(endPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysProductEndPointsError);
 
   for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
     ODAObjectOne.oneDimensionalArray[iterator] *= ODAObjectTwo.oneDimensionalArray[iterator];
@@ -415,11 +370,7 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysDifference (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  if (__validations__.isZero(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysDifferenceODAObjectOneZeroError);
-  if (__validations__.isNegative(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysDifferenceODAObjectOneNegativeError);
-
-  if (__validations__.isZero(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysDifferenceODAObjectTwoZeroError);
-  if (__validations__.isNegative(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysDifferenceODAObjectTwoNegativeError);
+  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo);
 
   limits<int> startPointsValueChecker;
   startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
@@ -428,9 +379,6 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
   limits<int> endPointsValueChecker;
   endPointsValueChecker.minimLimit = ODAObjectOne.endPoint;
   endPointsValueChecker.maximLimit = ODAObjectTwo.endPoint;
-
-  if (!__validations__.isEqual(startPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysDifferenceStartPointsError);
-  if (!__validations__.isEqual(endPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysDifferenceEndPointsError);
 
   for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
     ODAObjectOne.oneDimensionalArray[iterator] -= ODAObjectTwo.oneDimensionalArray[iterator];
@@ -440,11 +388,7 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysDivision (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  if (__validations__.isZero(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysDivisionODAObjectOneZeroError);
-  if (__validations__.isNegative(ODAObjectOne.length)) throw systemException (__errors__.getOneDimensionalArraysDivisionODAObjectOneNegativeError);
-
-  if (__validations__.isZero(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysDivisionODAObjectTwoZeroError);
-  if (__validations__.isNegative(ODAObjectTwo.length)) throw systemException (__errors__.getOneDimensionalArraysDivisionODAObjectTwoNegativeError);
+  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo);
 
   limits<int> startPointsValueChecker;
   startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
@@ -454,9 +398,6 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
   endPointsValueChecker.minimLimit = ODAObjectOne.endPoint;
   endPointsValueChecker.maximLimit = ODAObjectTwo.endPoint;
 
-  if (!__validations__.isEqual(startPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysDivisionStartPointsError);
-  if (!__validations__.isEqual(endPointsValueChecker)) throw systemException (__errors__.getOneDimensionalArraysDivisionEndPointsError);
-
   for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
     ODAObjectOne.oneDimensionalArray[iterator] /= ODAObjectTwo.oneDimensionalArray[iterator];
 
@@ -465,30 +406,27 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> void oneDimensionalArraysWorkFlow::bubbleSort (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.bubbleSortZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.bubbleSortNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint - 1; iterator++)
     for (size_t jiterator = ODAObject.startPoint; jiterator < ODAObject.length + ODAObject.endPoint - iterator - 1; jiterator++)
       if (ODAObject.oneDimensionalArray[jiterator] > ODAObject.oneDimensionalArray[jiterator + 1])
-      __validations__.interchangeValues (ODAObject.oneDimensionalArray[jiterator], ODAObject.oneDimensionalArray[jiterator + 1]);
+      __support__.interchangeValues (ODAObject.oneDimensionalArray[jiterator], ODAObject.oneDimensionalArray[jiterator + 1]);
 }
 
 template <class Type> void oneDimensionalArraysWorkFlow::minimumValueSort (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.minimumValueSortZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.minimumValueSortNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint - 1; iterator++)
     for (size_t jiterator = iterator + 1; jiterator < ODAObject.length + ODAObject.endPoint; jiterator++)
       if (ODAObject.oneDimensionalArray[iterator] > ODAObject.oneDimensionalArray[jiterator])
-        __validations__.interchangeValues (ODAObject.oneDimensionalArray[iterator], ODAObject.oneDimensionalArray[jiterator]);
+        __support__.interchangeValues (ODAObject.oneDimensionalArray[iterator], ODAObject.oneDimensionalArray[jiterator]);
 }
 
 template <class Type> void oneDimensionalArraysWorkFlow::insertionSort (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.insertionSortZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.insertionSortNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   Type temporarParameter;
   int jiterator;
@@ -507,19 +445,17 @@ template <class Type> void oneDimensionalArraysWorkFlow::insertionSort (oneDimen
 
 template <class Type> void oneDimensionalArraysWorkFlow::selectionSort (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.insertionSortZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.insertionSortNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
     for (size_t jiterator = iterator + 1; jiterator < ODAObject.length + ODAObject.endPoint; jiterator++)
       if (ODAObject.oneDimensionalArray[iterator] > ODAObject.oneDimensionalArray[jiterator])
-        __validations__.interchangeValues (ODAObject.oneDimensionalArray[iterator], ODAObject.oneDimensionalArray[jiterator]);
+        __support__.interchangeValues (ODAObject.oneDimensionalArray[iterator], ODAObject.oneDimensionalArray[jiterator]);
 }
 
 template <class Type> void oneDimensionalArraysWorkFlow::shellSort (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.shellSortZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.shellSortNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   Type jiterator, step;
 
@@ -531,7 +467,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::shellSort (oneDimension
       jiterator = iterator - step;
       while (jiterator >= 0)
         if (ODAObject.oneDimensionalArray[jiterator] > ODAObject.oneDimensionalArray[jiterator + step]) {
-        __validations__.interchangeValues (ODAObject.oneDimensionalArray[jiterator], ODAObject.oneDimensionalArray[jiterator + step]);
+        __support__.interchangeValues (ODAObject.oneDimensionalArray[jiterator], ODAObject.oneDimensionalArray[jiterator + step]);
         jiterator -= step;
       } else jiterator -= 1;
     }
@@ -541,21 +477,19 @@ template <class Type> void oneDimensionalArraysWorkFlow::shellSort (oneDimension
 
 template <class Type> void oneDimensionalArraysWorkFlow::reverseOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
-  if (__validations__.isZero(ODAObject.length)) throw systemException (__errors__.bubbleSortZeroError);
-  if (__validations__.isNegative(ODAObject.length)) throw systemException (__errors__.bubbleSortNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint - 1; iterator++)
     for (size_t jiterator = ODAObject.startPoint; jiterator < ODAObject.length + ODAObject.endPoint - iterator - 1; jiterator++)
       if (ODAObject.oneDimensionalArray[jiterator] < ODAObject.oneDimensionalArray[jiterator + 1])
-      __validations__.interchangeValues (ODAObject.oneDimensionalArray[jiterator], ODAObject.oneDimensionalArray[jiterator + 1]);
+      __support__.interchangeValues (ODAObject.oneDimensionalArray[jiterator], ODAObject.oneDimensionalArray[jiterator + 1]);
 }
 
 template <class Type> void matricesWorkFlow::readMatrix (matrixType<Type> & matrixObject) {
 
   std::cin >> matrixObject.lineRefference >> matrixObject.columnRefference;
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.readMatrixZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.readMatrixNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -566,20 +500,17 @@ template <class Type> void matricesWorkFlow::readStaticFileMatrix (char * fileNa
 
   std::ifstream dataStream(fileName, std::ios::in);
 
-  if (dataStream.is_open()) {
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
 
-    dataStream >> matrixObject.lineRefference >> matrixObject.columnRefference;
+  dataStream >> matrixObject.lineRefference >> matrixObject.columnRefference;
 
-    if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.readStaticFileMatrixZeroError);
-    if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.readStaticFileMatrixNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
-    for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-      for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
-        dataStream >> matrixObject.matrix[iterator][jiterator];
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      dataStream >> matrixObject.matrix[iterator][jiterator];
 
-    dataStream.close();
-  }
-  else throw systemException (__errors__.openFileError);
+  dataStream.close();
 }
 
 template <class Type> void matricesWorkFlow::readDynamicFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
@@ -590,35 +521,31 @@ template <class Type> void matricesWorkFlow::readDynamicFileMatrix (char * fileN
   char endOfLine;
   int auxColumnLength = matrixObject.columnRefference;
 
-  if (dataStream.is_open()) {
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
 
-    while (dataStream >> data) {
+  while (dataStream >> data) {
 
-      matrixObject.matrix[matrixObject.lineRefference][auxColumnLength] = data;
+    matrixObject.matrix[matrixObject.lineRefference][auxColumnLength] = data;
 
-      auxColumnLength += 1;
+    auxColumnLength += 1;
 
-      dataStream.get (endOfLine);
+    dataStream.get (endOfLine);
 
-      if (endOfLine == '\n') {
-        matrixObject.lineRefference += 1;
-        matrixObject.columnRefference = auxColumnLength;
-        auxColumnLength = 0;
-      }
+    if (endOfLine == '\n') {
+      matrixObject.lineRefference += 1;
+      matrixObject.columnRefference = auxColumnLength;
+      auxColumnLength = 0;
     }
-
-    if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.readDynamicFileMatrixZeroError);
-    if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.readDynamicFileMatrixNegativeError);
-
-    dataStream.close();
   }
-  else throw systemException(__errors__.openFileError);
+
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
+
+  dataStream.close();
 }
 
 template <class Type> void matricesWorkFlow::outputMatrix (matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.outputMatrixZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.outputMatrixNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -630,46 +557,43 @@ template <class Type> void matricesWorkFlow::outputMatrix (matrixType<Type> matr
 
 template <class Type> void matricesWorkFlow::outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.readMatrixZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.readMatrixNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   std::ofstream dataStream(fileName, std::ios::out);
 
-  if (dataStream.is_open()) {
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
 
     dataStream << matrixObject.line << " " << matrixObject.column << '\n';
 
     for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
       for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
         dataStream << matrixObject.matrix[iterator][jiterator] << " ";
-
-    dataStream.close();
+      dataStream << " ";
     }
-  }
+
+  dataStream.close();
 }
 
 template <class Type> void matricesWorkFlow::outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.outputDynamicFileMatrixZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.outputDynamicFileMatrixNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   std::ofstream dataStream(fileName, std::ios::out);
 
-  if (dataStream.is_open()) {
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
 
-    for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
-      for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
-        dataStream << matrixObject.matrix[iterator][jiterator] << " ";
-
-    dataStream.close();
-    }
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      dataStream << matrixObject.matrix[iterator][jiterator] << " ";
+    dataStream << " ";
   }
+
+  dataStream.close();
 }
 
 template <class Type> Type matricesWorkFlow::getMaximumValueFromMatrix (matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMaximumValueFromMatrixZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMaximumValueFromMatrixNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   Type maximumValue = matrixObject.matrix[0][0];
 
@@ -682,8 +606,7 @@ template <class Type> Type matricesWorkFlow::getMaximumValueFromMatrix (matrixTy
 
 template <class Type> Type matricesWorkFlow::getMinimumValueFromMatrix (matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMinimumValueFromMatrixZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMinimumValueFromMatrixNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   Type minimumValue = matrixObject.matrix[0][0];
 
@@ -696,8 +619,7 @@ template <class Type> Type matricesWorkFlow::getMinimumValueFromMatrix (matrixTy
 
 template <class Type> Type matricesWorkFlow::getMatrixElementsSum (matrixType<Type> matrixObject)  {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsSumZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsSumNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   Type sum = matrixObject.matrix[0][0];
 
@@ -710,8 +632,7 @@ template <class Type> Type matricesWorkFlow::getMatrixElementsSum (matrixType<Ty
 
 template <class Type> Type matricesWorkFlow::getMatrixElementsProduct (matrixType<Type> matrixObject)  {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsProductZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsProductNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   Type product = matrixObject.matrix[0][0];
 
@@ -724,8 +645,7 @@ template <class Type> Type matricesWorkFlow::getMatrixElementsProduct (matrixTyp
 
 template <class Type> Type matricesWorkFlow::getMatrixElementsDifference (matrixType<Type> matrixObject)  {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsDifferenceZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsDifferenceNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   Type difference = matrixObject.matrix[0][0];
 
@@ -739,8 +659,7 @@ template <class Type> Type matricesWorkFlow::getMatrixElementsDifference (matrix
 
 template <class Type> Type matricesWorkFlow::getMatrixElementsDivision (matrixType<Type> matrixObject)  {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsDivisionZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixElementsDivisionNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   Type division = matrixObject.matrix[0][0];
 
@@ -753,8 +672,7 @@ template <class Type> Type matricesWorkFlow::getMatrixElementsDivision (matrixTy
 
 template <class Type> void matricesWorkFlow::matrixInitialization (matrixType<Type> & matrixObject, Type value) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.matrixInitializationZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.matrixInitializationNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -790,8 +708,7 @@ template <class Type> Type matricesWorkFlow::sortAndNormalizeNumber (Type parame
 
 template <class Type> void matricesWorkFlow::normalizeMatrix (matrixType<Type> & matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.normalizeMatrixZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.normalizeMatrixNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -800,30 +717,7 @@ template <class Type> void matricesWorkFlow::normalizeMatrix (matrixType<Type> &
 
 template <class Type> matrixType<Type> matricesWorkFlow::getMatricesSum (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo) {
 
-  limits<Type> startLinePoints;
-  startLinePoints.minimLimit = matrixObjectOne.startLinePoint;
-  startLinePoints.maximLimit = matrixObjectTwo.startLinePoint;
-
-  limits<Type> endLinePoints;
-  endLinePoints.minimLimit = matrixObjectOne.endLinePoint;
-  endLinePoints.maximLimit = matrixObjectTwo.endLinePoint;
-
-  limits<Type> startColumnPoints;
-  startColumnPoints.minimLimit = matrixObjectOne.startColumnPoint;
-  startColumnPoints.maximLimit = matrixObjectTwo.startColumnPoint;
-
-  limits<Type> endColumnPoints;
-  endColumnPoints.minimLimit = matrixObjectOne.endLinePoint;
-  endColumnPoints.maximLimit = matrixObjectTwo.endLinePoint;
-
-  if (__validations__.isZero(matrixObjectOne.lineRefference) || __validations__.isZero(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneZeroError);
-  if (__validations__.isNegative(matrixObjectOne.lineRefference) || __validations__.isNegative(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneNegativeError);
-  if (__validations__.isZero(matrixObjectTwo.lineRefference) || __validations__.isZero(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoZeroError);
-  if (__validations__.isNegative(matrixObjectTwo.lineRefference) || __validations__.isNegative(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoNegativeError);
-  if (!__validations__.isEqual(startLinePoints)) throw systemException (__errors__.getMatricesSumStartLinesPointsError);
-  if (!__validations__.isEqual(endLinePoints)) throw systemException (__errors__.getMatricesSumEndLinesPointsError);
-  if (!__validations__.isEqual(startColumnPoints)) throw systemException (__errors__.getMatricesSumStartColumnPointsError);
-  if (!__validations__.isEqual(endColumnPoints)) throw systemException (__errors__.getMatricesSumEndColumnPointsError);
+  __handler__.equalityHandlerMatrices (matrixObjectOne, matrixObjectTwo);
 
   for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.lineRefference + matrixObjectOne.endLinePoint; iterator++)
     for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference; jiterator++)
@@ -834,30 +728,7 @@ template <class Type> matrixType<Type> matricesWorkFlow::getMatricesSum (matrixT
 
 template <class Type> matrixType<Type> matricesWorkFlow::getMatricesProduct (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo) {
 
-  limits<Type> startLinePoints;
-  startLinePoints.minimLimit = matrixObjectOne.startLinePoint;
-  startLinePoints.maximLimit = matrixObjectTwo.startLinePoint;
-
-  limits<Type> endLinePoints;
-  endLinePoints.minimLimit = matrixObjectOne.endLinePoint;
-  endLinePoints.maximLimit = matrixObjectTwo.endLinePoint;
-
-  limits<Type> startColumnPoints;
-  startColumnPoints.minimLimit = matrixObjectOne.startColumnPoint;
-  startColumnPoints.maximLimit = matrixObjectTwo.startColumnPoint;
-
-  limits<Type> endColumnPoints;
-  endColumnPoints.minimLimit = matrixObjectOne.endLinePoint;
-  endColumnPoints.maximLimit = matrixObjectTwo.endLinePoint;
-
-  if (__validations__.isZero(matrixObjectOne.lineRefference) || __validations__.isZero(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneZeroError);
-  if (__validations__.isNegative(matrixObjectOne.lineRefference) || __validations__.isNegative(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneNegativeError);
-  if (__validations__.isZero(matrixObjectTwo.lineRefference) || __validations__.isZero(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoZeroError);
-  if (__validations__.isNegative(matrixObjectTwo.lineRefference) || __validations__.isNegative(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoNegativeError);
-  if (!__validations__.isEqual(startLinePoints)) throw systemException (__errors__.getMatricesSumStartLinesPointsError);
-  if (!__validations__.isEqual(endLinePoints)) throw systemException (__errors__.getMatricesSumEndLinesPointsError);
-  if (!__validations__.isEqual(startColumnPoints)) throw systemException (__errors__.getMatricesSumStartColumnPointsError);
-  if (!__validations__.isEqual(endColumnPoints)) throw systemException (__errors__.getMatricesSumEndColumnPointsError);
+  __handler__.equalityHandlerMatrices (matrixObjectOne, matrixObjectTwo);
 
   for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.lineRefference + matrixObjectOne.endLinePoint; iterator++)
     for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference; jiterator++)
@@ -868,30 +739,7 @@ template <class Type> matrixType<Type> matricesWorkFlow::getMatricesProduct (mat
 
 template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDifference (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo) {
 
-  limits<Type> startLinePoints;
-  startLinePoints.minimLimit = matrixObjectOne.startLinePoint;
-  startLinePoints.maximLimit = matrixObjectTwo.startLinePoint;
-
-  limits<Type> endLinePoints;
-  endLinePoints.minimLimit = matrixObjectOne.endLinePoint;
-  endLinePoints.maximLimit = matrixObjectTwo.endLinePoint;
-
-  limits<Type> startColumnPoints;
-  startColumnPoints.minimLimit = matrixObjectOne.startColumnPoint;
-  startColumnPoints.maximLimit = matrixObjectTwo.startColumnPoint;
-
-  limits<Type> endColumnPoints;
-  endColumnPoints.minimLimit = matrixObjectOne.endLinePoint;
-  endColumnPoints.maximLimit = matrixObjectTwo.endLinePoint;
-
-  if (__validations__.isZero(matrixObjectOne.lineRefference) || __validations__.isZero(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneZeroError);
-  if (__validations__.isNegative(matrixObjectOne.lineRefference) || __validations__.isNegative(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneNegativeError);
-  if (__validations__.isZero(matrixObjectTwo.lineRefference) || __validations__.isZero(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoZeroError);
-  if (__validations__.isNegative(matrixObjectTwo.lineRefference) || __validations__.isNegative(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoNegativeError);
-  if (!__validations__.isEqual(startLinePoints)) throw systemException (__errors__.getMatricesSumStartLinesPointsError);
-  if (!__validations__.isEqual(endLinePoints)) throw systemException (__errors__.getMatricesSumEndLinesPointsError);
-  if (!__validations__.isEqual(startColumnPoints)) throw systemException (__errors__.getMatricesSumStartColumnPointsError);
-  if (!__validations__.isEqual(endColumnPoints)) throw systemException (__errors__.getMatricesSumEndColumnPointsError);
+  __handler__.equalityHandlerMatrices (matrixObjectOne, matrixObjectTwo);
 
   for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.lineRefference + matrixObjectOne.endLinePoint; iterator++)
     for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference; jiterator++)
@@ -902,30 +750,7 @@ template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDifference (
 
 template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDivision (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo) {
 
-  limits<Type> startLinePoints;
-  startLinePoints.minimLimit = matrixObjectOne.startLinePoint;
-  startLinePoints.maximLimit = matrixObjectTwo.startLinePoint;
-
-  limits<Type> endLinePoints;
-  endLinePoints.minimLimit = matrixObjectOne.endLinePoint;
-  endLinePoints.maximLimit = matrixObjectTwo.endLinePoint;
-
-  limits<Type> startColumnPoints;
-  startColumnPoints.minimLimit = matrixObjectOne.startColumnPoint;
-  startColumnPoints.maximLimit = matrixObjectTwo.startColumnPoint;
-
-  limits<Type> endColumnPoints;
-  endColumnPoints.minimLimit = matrixObjectOne.endLinePoint;
-  endColumnPoints.maximLimit = matrixObjectTwo.endLinePoint;
-
-  if (__validations__.isZero(matrixObjectOne.lineRefference) || __validations__.isZero(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneZeroError);
-  if (__validations__.isNegative(matrixObjectOne.lineRefference) || __validations__.isNegative(matrixObjectOne.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectOneNegativeError);
-  if (__validations__.isZero(matrixObjectTwo.lineRefference) || __validations__.isZero(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoZeroError);
-  if (__validations__.isNegative(matrixObjectTwo.lineRefference) || __validations__.isNegative(matrixObjectTwo.columnRefference)) throw systemException(__errors__.getMatricesSumMatrixObjectTwoNegativeError);
-  if (!__validations__.isEqual(startLinePoints)) throw systemException (__errors__.getMatricesSumStartLinesPointsError);
-  if (!__validations__.isEqual(endLinePoints)) throw systemException (__errors__.getMatricesSumEndLinesPointsError);
-  if (!__validations__.isEqual(startColumnPoints)) throw systemException (__errors__.getMatricesSumStartColumnPointsError);
-  if (!__validations__.isEqual(endColumnPoints)) throw systemException (__errors__.getMatricesSumEndColumnPointsError);
+  __handler__.equalityHandlerMatrices (matrixObjectOne, matrixObjectTwo);
 
   for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.lineRefference + matrixObjectOne.endLinePoint; iterator++)
     for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference; jiterator++)
@@ -936,8 +761,7 @@ template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDivision (ma
 
 template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixMainDiagonal (matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixMainDiagonalZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixMainDiagonalNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -951,8 +775,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixM
 
 template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixAboveMainDiagonal (matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixAboveMainDiagonalZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixAboveMainDiagonalNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -966,8 +789,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixA
 
 template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixUnderMainDiagonal (matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixUnderMainDiagonalZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixUnderMainDiagonalNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -981,8 +803,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixU
 
 template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixSecondaryDiagonal (matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixSecondaryDiagonalZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixSecondaryDiagonalNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -996,23 +817,21 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixS
 
 template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixAboveSecondaryDiagonal (matrixType<Type> matrixObject) {
 
-    if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixAboveSecondaryDiagonalZeroError);
-    if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixAboveSecondaryDiagonalNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
-    for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-      for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
-        if (iterator + jiterator < matrixObject.line - 1) {
-          matrixObject.aboveSecondaryDiagonal.oneDimensionalArray[matrixObject.aboveSecondaryDiagonal.length] = matrixObject.matrix[iterator][jiterator];
-          matrixObject.aboveSecondaryDiagonal.length += 1;
-        }
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      if (iterator + jiterator < matrixObject.line - 1) {
+        matrixObject.aboveSecondaryDiagonal.oneDimensionalArray[matrixObject.aboveSecondaryDiagonal.length] = matrixObject.matrix[iterator][jiterator];
+        matrixObject.aboveSecondaryDiagonal.length += 1;
+      }
 
-    return matrixObject.aboveSecondaryDiagonal;
+  return matrixObject.aboveSecondaryDiagonal;
 }
 
 template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixUnderSecondaryDiagonal (matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixUnderSecondaryDiagonalZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixUnderSecondaryDiagonalNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -1026,8 +845,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixU
 
 template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixNorthElements (matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixNorthElementsZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixNorthElementsNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -1041,8 +859,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixN
 
 template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixSouthElements (matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixSouthElementsZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixSouthElementsNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -1056,8 +873,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixS
 
 template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixEastElements (matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixEastElementsZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixEastElementsNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -1071,8 +887,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixE
 
 template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixWestElements (matrixType<Type> matrixObject) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixWestElementsZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixWestElementsNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
@@ -1086,8 +901,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixW
 
 template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixOrderMainDiagonal (matrixType<Type> matrixObject, int order) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixOrderMainDiagonalZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixOrderMainDiagonalNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   oneDimensionalArrayType<Type> oneDimensionalArrayValuesFromOrder;
 
@@ -1103,8 +917,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixO
 
 template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixOrderSecondaryDiagonal (matrixType<Type> matrixObject, int order) {
 
-  if (__validations__.isZero(matrixObject.lineRefference) || __validations__.isZero(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixOrderSecondaryDiagonalZeroError);
-  if (__validations__.isNegative(matrixObject.lineRefference) || __validations__.isNegative(matrixObject.columnRefference)) throw systemException (__errors__.getMatrixOrderSecondaryDiagonalNegativeError);
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   oneDimensionalArrayType<Type> oneDimensionalArrayValuesFromOrder;
 
@@ -1121,8 +934,8 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixO
 float fundamentalAlgorithmsWorkFlow::getRootLinearEquation (linearEquation __LEquation__) {
 
   if (__validations__.isZero(__LEquation__.slope))
-    if (__validations__.isZero(__LEquation__.y_intercept)) throw systemException (__errors__.getRootlinearEquationUndeterminedCompatibleEquation);
-    else throw systemException (__errors__.getRootlinearEquationImcompatibleEquation);
+    if (__validations__.isZero(__LEquation__.y_intercept)) throw systemException ("Undetermined compatible equation in float fundamentalAlgorithmsWorkFlow::getRootLinearEquation (linearEquation __LEquation__);");
+    else throw systemException ("Imcompatible equation in float fundamentalAlgorithmsWorkFlow::getRootLinearEquation (linearEquation __LEquation__);");
 
   return float(-__LEquation__.y_intercept / __LEquation__.slope);
 }
@@ -1130,8 +943,8 @@ float fundamentalAlgorithmsWorkFlow::getRootLinearEquation (linearEquation __LEq
 float fundamentalAlgorithmsWorkFlow::getValueLinearEquation (linearEquation __LEquation__) {
 
   if (__validations__.isZero(__LEquation__.slope))
-    if (__validations__.isZero(__LEquation__.y_intercept)) throw systemException (__errors__.getRootlinearEquationUndeterminedCompatibleEquation);
-    else throw systemException (__errors__.getRootlinearEquationImcompatibleEquation);
+    if (__validations__.isZero(__LEquation__.y_intercept)) throw systemException ("");
+    else throw systemException ("Imcompatible equation in float fundamentalAlgorithmsWorkFlow::getValueLinearEquation (linearEquation __LEquation__);");
 
   return (( __LEquation__.slope * __LEquation__.root) + __LEquation__.y_intercept );
 }
@@ -1166,7 +979,7 @@ void fundamentalAlgorithmsWorkFlow::processingQuadraticEquation (limits<float> &
 
   delta = pow (__QEquation__.coefficient_b, 2) - 4 * __QEquation__.coefficient_a * __QEquation__.coefficient_c;
 
-  if (__validations__.isNegative<float> (delta)) throw systemException (__errors__.getRootsQuadraticEquationRealValuesError);
+  __handler__.negativeNumberHandler<float> (delta, __PRETTY_FUNCTION__);
 
   roots.minimLimit = ( (-__QEquation__.coefficient_b + sqrt (delta)) / (2*__QEquation__.coefficient_a ));
   roots.maximLimit = ( (-__QEquation__.coefficient_b - sqrt (delta)) / (2*__QEquation__.coefficient_a ));
@@ -1190,7 +1003,8 @@ limits<float> fundamentalAlgorithmsWorkFlow::getRootsQuadraticEquation (quadrati
     return roots;
   }
 
-  if (__validations__.isZero(__QEquation__.coefficient_a) && __validations__.isZero(__QEquation__.coefficient_b)) throw systemException (__errors__.getRootsQuadraticEquationIncompatibleEquation);
+  __handler__.zeroNumberHandler (__QEquation__.coefficient_a, __PRETTY_FUNCTION__);
+  __handler__.zeroNumberHandler (__QEquation__.coefficient_b, __PRETTY_FUNCTION__);
 
   if (__validations__.isZero(__QEquation__.coefficient_b) && __validations__.isZero(__QEquation__.coefficient_c)) {
 
@@ -1206,7 +1020,8 @@ limits<float> fundamentalAlgorithmsWorkFlow::getRootsQuadraticEquation (quadrati
 
 float fundamentalAlgorithmsWorkFlow::getValueQuadraticEquation (quadraticEquation __QEquation__, float root) {
 
-  if (__validations__.isZero(__QEquation__.coefficient_a) && __validations__.isZero(__QEquation__.coefficient_b)) throw systemException (__errors__.getRootsQuadraticEquationIncompatibleEquation);
+  __handler__.zeroNumberHandler (__QEquation__.coefficient_a, __PRETTY_FUNCTION__);
+  __handler__.zeroNumberHandler (__QEquation__.coefficient_b, __PRETTY_FUNCTION__);
 
   return ( __QEquation__.coefficient_a * pow (root, 2) + (__QEquation__.coefficient_b * root) + __QEquation__.coefficient_c);
 }
@@ -1218,7 +1033,8 @@ template <class Type> Type fundamentalAlgorithmsWorkFlow::getGaussSum (Type limi
 
 unsigned int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisor (limits<int> interval) {
 
-  if (__validations__.isNegative(interval.minimLimit) || __validations__.isNegative(interval.maximLimit)) throw systemException (__errors__.getTheLargestCommonDivisorNegativeError);
+  __handler__.negativeNumberHandler (interval.minimLimit, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (interval.maximLimit, __PRETTY_FUNCTION__);
 
   unsigned int copyMinimLimit, copyMaximLimit, rest;
 
@@ -1243,10 +1059,11 @@ unsigned int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisor (limits<i
 
 unsigned int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisorRecursive (limits<int> interval) {
 
-  if (__validations__.isNegative(interval.minimLimit) || __validations__.isNegative(interval.maximLimit)) throw systemException (__errors__.getTheLargestCommonDivisorRecursiveNegativeError);
+  __handler__.negativeNumberHandler (interval.minimLimit, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (interval.maximLimit, __PRETTY_FUNCTION__);
 
   if (__validations__.isZero(interval.maximLimit)) return interval.minimLimit;
-  else if (__validations__.isEqual(interval)) return interval.maximLimit;
+  else if (__validations__.isEqualObjectBased(interval)) return interval.maximLimit;
   else if (interval.maximLimit > interval.minimLimit) {
 
     interval.maximLimit = interval.maximLimit % interval.minimLimit;
@@ -1360,7 +1177,7 @@ float fundamentalAlgorithmsWorkFlow::getMeanOfTwoNumbers (float parameterOne, fl
 
 unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumber (int parameter) {
 
-  if (__validations__.isNegative(parameter)) throw systemException(__errors__.getThe_N_FactorialNumberNegativeError);
+  __handler__.negativeNumberHandler(parameter, __PRETTY_FUNCTION__);
 
   unsigned int factorialNumber = 1;
 
@@ -1372,7 +1189,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumber (int parame
 
 unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumberRecursive (int parameter) {
 
-  if (__validations__.isNegative(parameter)) throw systemException(__errors__.getThe_N_FactorialNumberRecursiveNegativeError);
+  __handler__.negativeNumberHandler(parameter, __PRETTY_FUNCTION__);
 
   if (parameter == 0 || parameter == 1) return 1;
 
@@ -1381,7 +1198,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumberRecursive (i
 
 unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_mannaPnueliNumber (int parameter) {
 
-  if (__validations__.isNegative(parameter)) throw systemException(__errors__.getThe_N_mannaPnueliNumberNegativeError);
+  __handler__.negativeNumberHandler(parameter, __PRETTY_FUNCTION__);
 
   if (parameter >= 12) return parameter - 1;
 
@@ -1390,7 +1207,8 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_mannaPnueliNumber (int para
 
 unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_ackermanNumber (int minimLimit, int maximLimit) {
 
-  if (__validations__.isNegative(minimLimit) || __validations__.isNegative(maximLimit)) throw systemException(__errors__.getThe_N_ackermanNumberNegativeError);
+  __handler__.negativeNumberHandler(minimLimit, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler(maximLimit, __PRETTY_FUNCTION__);
 
   if (__validations__.isZero(minimLimit)) return maximLimit + 1;
 
@@ -1401,7 +1219,8 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_ackermanNumber (int minimLi
 
 unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_stirlingNumber (int minimLimit, int maximLimit) {
 
-  if (__validations__.isNegative(minimLimit) || __validations__.isNegative(maximLimit)) throw systemException(__errors__.getThe_N_stirlingNumberNegativeError);
+  __handler__.negativeNumberHandler(minimLimit, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler(maximLimit, __PRETTY_FUNCTION__);
 
   if (maximLimit == 1 || minimLimit == maximLimit) return 1;
 
@@ -1411,7 +1230,8 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_stirlingNumber (int minimLi
 
 unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_eulerianNumber (int minimLimit, int maximLimit) {
 
-  if (__validations__.isNegative(minimLimit) || __validations__.isNegative(maximLimit)) throw systemException(__errors__.getThe_N_eulerianNumberNegativeError);
+  __handler__.negativeNumberHandler(minimLimit, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler(maximLimit, __PRETTY_FUNCTION__);
 
   if (__validations__.isZero(maximLimit) || maximLimit == minimLimit - 1) return 1;
 
@@ -1432,7 +1252,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_catalanNumber (int paramete
 
 unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_fibonacciNumber (int parameter) {
 
-  if (__validations__.isNegative(parameter)) throw systemException(__errors__.getThe_N_fibonacciNumberNegativeError);
+  __handler__.negativeNumberHandler(parameter, __PRETTY_FUNCTION__);
 
   int auxiliarVarOne = 0, auxiliarVarTwo = 1, auxiliarVarThree;
 
@@ -1450,7 +1270,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_fibonacciNumber (int parame
 
 unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_fibonacciNumberRecursive (int parameter) {
 
-  if (__validations__.isNegative(parameter)) throw systemException(__errors__.getThe_N_fibonacciNumberRecursiveNegativeError);
+  __handler__.negativeNumberHandler(parameter, __PRETTY_FUNCTION__);
 
   if (parameter == 1 || parameter == 2) return 1;
 
@@ -1664,8 +1484,7 @@ template <class Type> bool treesWorkFlow::convertToMirror (binaryTreeType<Type> 
 
 template <class Type> void graphsWorkFlow::readAdjacencyMatrix (graphType<Type> & graphObject) {
 
-  if (__validations__.isZero(graphObject.adjacencyMatrix.lineRefference) || __validations__.isZero(graphObject.adjacencyMatrix.columnRefference)) throw systemException (__errors__.readAdjacencyMatrixZeroError);
-  if (__validations__.isNegative(graphObject.adjacencyMatrix.lineRefference) || __validations__.isNegative(graphObject.adjacencyMatrix.columnRefference)) throw systemException (__errors__.readAdjacencyMatrixNegativeError);
+  __handler__.standardHandlerMatrix (graphObject.adjacencyMatrix, __PRETTY_FUNCTION__);
 
   for (size_t iterator = graphObject.adjacencyMatrix.startLinePoint; iterator < graphObject.adjacencyMatrix.line + graphObject.adjacencyMatrix.endLinePoint; iterator++)
     for (size_t jiterator = graphObject.adjacencyMatrix.startColumnPoint; jiterator < graphObject.adjacencyMatrix.column + graphObject.adjacencyMatrix.endColumnPoint; jiterator++)
@@ -1677,21 +1496,17 @@ template <class Type> void graphsWorkFlow::readFileAdjacencyMatrix (char * fileN
   std::ifstream dataStream(fileName, std::ios::in);
   Type data;
 
-  if (dataStream.is_open()) {
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
 
-    dataStream >> graphObject.adjacencyMatrix.line >> graphObject.adjacencyMatrix.column;
+  dataStream >> graphObject.adjacencyMatrix.line >> graphObject.adjacencyMatrix.column;
 
-    if (__validations__.isZero(graphObject.adjacencyMatrix.lineRefference) || __validations__.isZero(graphObject.adjacencyMatrix.columnRefference)) throw systemException (__errors__.readFileAdjacencyMatrixZeroError);
-    if (__validations__.isNegative(graphObject.adjacencyMatrix.lineRefference) || __validations__.isNegative(graphObject.adjacencyMatrix.columnRefference)) throw systemException (__errors__.readFileAdjacencyMatrixNegativeError);
+  __handler__.standardHandlerOneDimensionalArray (graphObject.adjacencyMatrix);
 
-    for (size_t iterator = graphObject.adjacencyMatrix.startLinePoint; iterator < graphObject.adjacencyMatrix.line + graphObject.adjacencyMatrix.endLinePoint; iterator++)
-      for (size_t jiterator = graphObject.adjacencyMatrix.startColumnPoint; jiterator < graphObject.adjacencyMatrix.column + graphObject.adjacencyMatrix.endColumnPoint; jiterator++)
-        dataStream >> graphObject.adjacencyMatrix.matrix[iterator][jiterator];
+  for (size_t iterator = graphObject.adjacencyMatrix.startLinePoint; iterator < graphObject.adjacencyMatrix.line + graphObject.adjacencyMatrix.endLinePoint; iterator++)
+    for (size_t jiterator = graphObject.adjacencyMatrix.startColumnPoint; jiterator < graphObject.adjacencyMatrix.column + graphObject.adjacencyMatrix.endColumnPoint; jiterator++)
+      dataStream >> graphObject.adjacencyMatrix.matrix[iterator][jiterator];
 
-    dataStream.close();
-  }
-  else
-    throw systemException (__errors__.openFileError);
+  dataStream.close();
 }
 
 template <class Type> void graphsWorkFlow::readGraphByEdgesList (graphType<Type> & graphObject) {
@@ -1700,8 +1515,11 @@ template <class Type> void graphsWorkFlow::readGraphByEdgesList (graphType<Type>
 
   std::cin >> graphObject.vertices >> graphObject.edges;
 
-  if (__validations__.isZero(graphObject.vertices) || __validations__.isZero(graphObject.edges))  throw systemException (__errors__.readGraphByEdgesListZeroError);
-  if (__validations__.isNegative(graphObject.vertices) || __validations__.isNegative(graphObject.edges))  throw systemException (__errors__.readGraphByEdgesListNegativeError);
+  __handler__.zeroNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.zeroNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
+
+  __handler__.negativeNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
 
   for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
 
@@ -1719,30 +1537,30 @@ template <class Type> void graphsWorkFlow::readFileGraphByEdgesList (char * file
 
   std::ifstream dataStream(fileName, std::ios::in);
 
-  if (dataStream.is_open()) {
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
 
-    Type nodeValueOne, nodeValueTwo;
+  Type nodeValueOne, nodeValueTwo;
 
-    dataStream >> graphObject.vertices >> graphObject.edges;
+  dataStream >> graphObject.vertices >> graphObject.edges;
 
-    if (__validations__.isZero(graphObject.vertices) || __validations__.isZero(graphObject.edges))  throw systemException (__errors__.readFileGraphByEdgesListZeroError);
-    if (__validations__.isNegative(graphObject.vertices) || __validations__.isNegative(graphObject.edges))  throw systemException (__errors__.readFileGraphByEdgesListNegativeError);
+  __handler__.zeroNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.zeroNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
 
-    for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
+  __handler__.negativeNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
 
-      do {
+  for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
 
-        dataStream >> nodeValueOne >> nodeValueTwo;
+    do {
 
-      } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
+      dataStream >> nodeValueOne >> nodeValueTwo;
 
-      graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = graphObject.adjacencyMatrix.matrix[nodeValueTwo][nodeValueOne] = 1;
-    }
+    } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
 
-    dataStream.close();
+    graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = graphObject.adjacencyMatrix.matrix[nodeValueTwo][nodeValueOne] = 1;
   }
-  else
-    throw systemException (__errors__.openFileError);
+
+  dataStream.close();
 }
 
 template <class Type> void graphsWorkFlow::royWarshallAlgo (graphType<Type> & graphObject) {
@@ -1792,8 +1610,11 @@ template <class Type> void graphsWorkFlow::readDirectedGraphByEdgesList (graphTy
 
   std::cin >> graphObject.vertices >> graphObject.edges;
 
-  if (__validations__.isZero(graphObject.vertices) || __validations__.isZero(graphObject.edges))  throw systemException (__errors__.readDirectedGraphByEdgesListZeroError);
-  if (__validations__.isNegative(graphObject.vertices) || __validations__.isNegative(graphObject.edges))  throw systemException (__errors__.readDirectedGraphByEdgesListNegativeError);
+  __handler__.zeroNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.zeroNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
+
+  __handler__.negativeNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
 
   for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
 
@@ -1811,30 +1632,30 @@ template <class Type> void graphsWorkFlow::readFileDirectedGraphByEdgesList (cha
 
   std::ifstream dataStream(fileName, std::ios::in);
 
-  if (dataStream.is_open()) {
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
 
-    Type nodeValueOne, nodeValueTwo;
+  Type nodeValueOne, nodeValueTwo;
 
-    dataStream >> graphObject.vertices >> graphObject.edges;
+  dataStream >> graphObject.vertices >> graphObject.edges;
 
-    if (__validations__.isZero(graphObject.vertices) || __validations__.isZero(graphObject.edges))  throw systemException (__errors__.readFileDirectedGraphByEdgesListZeroError);
-    if (__validations__.isNegative(graphObject.vertices) || __validations__.isNegative(graphObject.edges))  throw systemException (__errors__.readFileDirectedGraphByEdgesListNegativeError);
+  __handler__.zeroNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.zeroNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
 
-    for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
+  __handler__.negativeNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
 
-      do {
+  for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
 
-        dataStream >> nodeValueOne >> nodeValueTwo;
+    do {
 
-      } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
+      dataStream >> nodeValueOne >> nodeValueTwo;
 
-      graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = 1;
-    }
+    } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
 
-    dataStream.close();
+    graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = 1;
   }
-  else
-    throw systemException (__errors__.openFileError);
+
+  dataStream.close();
 }
 
 template <class Type> unsigned int graphsWorkFlow::valencyOfAVertex (graphType<Type> graphObject, unsigned int vertex) {
