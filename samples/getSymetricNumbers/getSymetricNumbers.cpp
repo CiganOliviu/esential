@@ -1,3 +1,8 @@
+/*
+  Tasks:
+    * print all symetric numbers between a specific interval
+*/
+
 #include "../../esential.hpp"
 
 class symetricNumbersProcessor {
