@@ -367,7 +367,7 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysSum (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo);
+  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
 
   limits<int> startPointsValueChecker;
   startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
@@ -385,7 +385,7 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysProduct (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo);
+  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
 
   limits<int> startPointsValueChecker;
   startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
@@ -403,7 +403,7 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysDifference (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo);
+  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
 
   limits<int> startPointsValueChecker;
   startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
@@ -421,7 +421,7 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysDivision (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo);
+  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
 
   limits<int> startPointsValueChecker;
   startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
