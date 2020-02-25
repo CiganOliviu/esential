@@ -1,2 +1,2 @@
 # esential
-A standard algo C++ library for quick algo implementations.
+A standard C++ library for quick algorithms implementations.
