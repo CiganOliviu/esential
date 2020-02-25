@@ -332,6 +332,39 @@ template <class Type> void oneDimensionalArraysWorkFlow::normalizeOneDimensional
     ODAObject.oneDimensionalArray[iterator] = sortAndNormalizeNumber<int> (ODAObject.oneDimensionalArray[iterator]);
 }
 
+int oneDimensionalArraysWorkFlow::getNumberLength (int number) {
+
+  __handler__.zeroNumberHandler(number, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler(number, __PRETTY_FUNCTION__);
+
+  int length = 0;
+
+  while (number != 0) {
+
+    length += 1;
+    number /= 10;
+  }
+
+  return length;
+}
+
+template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::convertNumberToOneDimensionalArray (int number) {
+
+  __handler__.zeroNumberHandler(number, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler(number, __PRETTY_FUNCTION__);
+
+  oneDimensionalArrayType<Type> numberElementsOneDimensionalArray;
+
+  numberElementsOneDimensionalArray.length = getNumberLength(number);
+
+  for (size_t iterator = numberElementsOneDimensionalArray.startPoint; iterator < numberElementsOneDimensionalArray.length + numberElementsOneDimensionalArray.endPoint; iterator++) {
+    numberElementsOneDimensionalArray.oneDimensionalArray[iterator] = number % 10;
+    number /= 10;
+  }
+
+  return numberElementsOneDimensionalArray;
+}
+
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysSum (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
   __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo);

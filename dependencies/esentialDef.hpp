@@ -30,6 +30,7 @@ private:
   checkAndSupport __support__;
 
   template <class Type> Type sortAndNormalizeNumber (Type parameter);
+  int getNumberLength (int number);
 
 public:
   oneDimensionalArraysWorkFlow () {}
@@ -57,6 +58,7 @@ public:
   template <class Type> void addValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, limits<Type> valueAndPosition);
   template <class Type> bool isValueInOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type value);
   template <class Type> void normalizeOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
+  template <class Type> oneDimensionalArrayType<Type> convertNumberToOneDimensionalArray (int number);
 
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysSum (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysProduct (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
