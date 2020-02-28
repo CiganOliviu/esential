@@ -64,7 +64,7 @@ public:
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysProduct (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDifference (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDivision (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
-  
+
   template <class Type> void bubbleSort (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void minimumValueSort (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void insertionSort (oneDimensionalArrayType<Type> ODAObject);
@@ -157,21 +157,21 @@ public:
   bool checkIfEven (int parameter);
   bool isConstantNumber (int parameter);
 
-  unsigned int reverseNumber (int parameter);
-  unsigned int getPalindromValue (int parameter);
+  int reverseNumber (int parameter);
+  int getPalindromValue (int parameter);
   bool checkIfPalindrome (int parameter);
   float getMeanOfTwoNumbers (float parameterOne, float parameterTwo);
 
-  unsigned int getThe_N_FactorialNumber (int parameter);
-  unsigned int getThe_N_FactorialNumberRecursive (int parameter);
-  unsigned int getThe_N_mannaPnueliNumber (int parameter);
-  unsigned int getThe_N_ackermanNumber (int minimLimit, int maximLimit);
-  unsigned int getThe_N_stirlingNumber (int minimLimit, int maximLimit);
-  unsigned int getThe_N_eulerianNumber (int minimLimit, int maximLimit);
-  unsigned int getThe_N_catalanNumber (int parameter);
-  unsigned int getThe_N_fibonacciNumber (int parameter);
-  unsigned int getThe_N_fibonacciNumberRecursive (int parameter);
-  unsigned int getThe_N_masterTheoremNumber (int parameter);
+  int getThe_N_FactorialNumber (int parameter);
+  int getThe_N_FactorialNumberRecursive (int parameter);
+  int getThe_N_mannaPnueliNumber (int parameter);
+  int getThe_N_ackermanNumber (int minimLimit, int maximLimit);
+  int getThe_N_stirlingNumber (int minimLimit, int maximLimit);
+  int getThe_N_eulerianNumber (int minimLimit, int maximLimit);
+  int getThe_N_catalanNumber (int parameter);
+  int getThe_N_fibonacciNumber (int parameter);
+  int getThe_N_fibonacciNumberRecursive (int parameter);
+  int getThe_N_masterTheoremNumber (int parameter);
 
   void removeCharFromString (char * string, char value);
 

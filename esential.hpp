@@ -1169,20 +1169,20 @@ bool fundamentalAlgorithmsWorkFlow::isConstantNumber (int parameter) {
   return true;
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::reverseNumber (int parameter) {
+int fundamentalAlgorithmsWorkFlow::reverseNumber (int parameter) {
 
-    unsigned int reversedValue;
+    int reversedValue = 0;
 
-    while (parameter > 0) {
+    while (parameter != 0) {
 
-      reversedValue *= 10 + parameter % 10;
+      reversedValue = (reversedValue * 10) + parameter % 10;
       parameter /= 10;
     }
 
     return reversedValue;
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getPalindromValue (int parameter) {
+int fundamentalAlgorithmsWorkFlow::getPalindromValue (int parameter) {
 
   if (__validations__.isNegativeOrZero(parameter)) return 0;
 
@@ -1208,11 +1208,11 @@ float fundamentalAlgorithmsWorkFlow::getMeanOfTwoNumbers (float parameterOne, fl
   return (float)(parameterOne + parameterTwo) / 2;
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumber (int parameter) {
+int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumber (int parameter) {
 
   __handler__.negativeNumberHandler(parameter, __PRETTY_FUNCTION__);
 
-  unsigned int factorialNumber = 1;
+  int factorialNumber = 1;
 
   for (size_t iterator = 1; iterator <= parameter; iterator++)
     factorialNumber *= iterator;
@@ -1220,7 +1220,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumber (int parame
   return factorialNumber;
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumberRecursive (int parameter) {
+int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumberRecursive (int parameter) {
 
   __handler__.negativeNumberHandler(parameter, __PRETTY_FUNCTION__);
 
@@ -1229,7 +1229,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumberRecursive (i
   return parameter * getThe_N_FactorialNumberRecursive (parameter - 1);
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_mannaPnueliNumber (int parameter) {
+int fundamentalAlgorithmsWorkFlow::getThe_N_mannaPnueliNumber (int parameter) {
 
   __handler__.negativeNumberHandler(parameter, __PRETTY_FUNCTION__);
 
@@ -1238,7 +1238,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_mannaPnueliNumber (int para
   return getThe_N_mannaPnueliNumber(getThe_N_mannaPnueliNumber(parameter + 2));
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_ackermanNumber (int minimLimit, int maximLimit) {
+int fundamentalAlgorithmsWorkFlow::getThe_N_ackermanNumber (int minimLimit, int maximLimit) {
 
   __handler__.negativeNumberHandler(minimLimit, __PRETTY_FUNCTION__);
   __handler__.negativeNumberHandler(maximLimit, __PRETTY_FUNCTION__);
@@ -1250,7 +1250,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_ackermanNumber (int minimLi
   return getThe_N_ackermanNumber(minimLimit - 1, getThe_N_ackermanNumber(minimLimit, maximLimit - 1));
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_stirlingNumber (int minimLimit, int maximLimit) {
+int fundamentalAlgorithmsWorkFlow::getThe_N_stirlingNumber (int minimLimit, int maximLimit) {
 
   __handler__.negativeNumberHandler(minimLimit, __PRETTY_FUNCTION__);
   __handler__.negativeNumberHandler(maximLimit, __PRETTY_FUNCTION__);
@@ -1261,7 +1261,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_stirlingNumber (int minimLi
 
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_eulerianNumber (int minimLimit, int maximLimit) {
+int fundamentalAlgorithmsWorkFlow::getThe_N_eulerianNumber (int minimLimit, int maximLimit) {
 
   __handler__.negativeNumberHandler(minimLimit, __PRETTY_FUNCTION__);
   __handler__.negativeNumberHandler(maximLimit, __PRETTY_FUNCTION__);
@@ -1271,11 +1271,11 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_eulerianNumber (int minimLi
     return (minimLimit - maximLimit) * getThe_N_eulerianNumber(minimLimit - 1, maximLimit - 1) + (maximLimit + 1) * getThe_N_eulerianNumber(minimLimit - 1, maximLimit);
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_catalanNumber (int parameter) {
+int fundamentalAlgorithmsWorkFlow::getThe_N_catalanNumber (int parameter) {
 
   if (parameter <= 1) return 1;
 
-  unsigned int res = 0;
+  int res = 0;
 
   for (size_t iterator = 0; iterator < parameter; iterator++)
     res += getThe_N_catalanNumber(iterator) * getThe_N_catalanNumber(parameter - iterator - 1);
@@ -1283,7 +1283,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_catalanNumber (int paramete
   return res;
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_fibonacciNumber (int parameter) {
+int fundamentalAlgorithmsWorkFlow::getThe_N_fibonacciNumber (int parameter) {
 
   __handler__.negativeNumberHandler(parameter, __PRETTY_FUNCTION__);
 
@@ -1301,7 +1301,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_fibonacciNumber (int parame
   return auxiliarVarTwo;
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_fibonacciNumberRecursive (int parameter) {
+int fundamentalAlgorithmsWorkFlow::getThe_N_fibonacciNumberRecursive (int parameter) {
 
   __handler__.negativeNumberHandler(parameter, __PRETTY_FUNCTION__);
 
@@ -1310,7 +1310,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_fibonacciNumberRecursive (i
   return getThe_N_fibonacciNumberRecursive(parameter - 1) + getThe_N_fibonacciNumberRecursive(parameter - 2);
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getThe_N_masterTheoremNumber (int parameter) {
+  int fundamentalAlgorithmsWorkFlow::getThe_N_masterTheoremNumber (int parameter) {
 
   if (parameter == 1) return 1;
 
