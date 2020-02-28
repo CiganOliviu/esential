@@ -2,7 +2,7 @@
   Tasks:
     * read from file one dimensional array;
     * print one dimensional array
-    * get the three minimum values who are multiple with 3
+    * get the three minimum values who are multiple of 3
 */
 
 #include "../../esential.hpp"
@@ -24,7 +24,7 @@ public:
 
 bool multipleOfThree::isMultipleOfThree (int number) {
 
-  if (__validations__.isNegativeOrZero (number)) return false; 
+  if (__validations__.isNegativeOrZero (number)) return false;
 
   if (number % 3 == 0) return true;
 
