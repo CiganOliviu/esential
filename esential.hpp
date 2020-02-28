@@ -525,7 +525,7 @@ template <class Type> void matricesWorkFlow::readMatrix (matrixType<Type> & matr
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       std::cin >> matrixObject.matrix[iterator][jiterator];
 }
 
@@ -540,7 +540,7 @@ template <class Type> void matricesWorkFlow::readStaticFileMatrix (char * fileNa
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       dataStream >> matrixObject.matrix[iterator][jiterator];
 
   dataStream.close();
@@ -581,7 +581,7 @@ template <class Type> void matricesWorkFlow::outputMatrix (matrixType<Type> matr
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       std::cout << matrixObject.matrix[iterator][jiterator] << " ";
 
     std::cout << '\n';
@@ -599,7 +599,7 @@ template <class Type> void matricesWorkFlow::outputStaticFileMatrix (char * file
     dataStream << matrixObject.line << " " << matrixObject.column << '\n';
 
     for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
-      for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
         dataStream << matrixObject.matrix[iterator][jiterator] << " ";
       dataStream << " ";
     }
@@ -616,7 +616,7 @@ template <class Type> void matricesWorkFlow::outputDynamicFileMatrix (char * fil
   __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       dataStream << matrixObject.matrix[iterator][jiterator] << " ";
     dataStream << " ";
   }
@@ -631,7 +631,7 @@ template <class Type> Type matricesWorkFlow::getMaximumValueFromMatrix (matrixTy
   Type maximumValue = matrixObject.matrix[0][0];
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (maximumValue < matrixObject.matrix[iterator][jiterator]) maximumValue = matrixObject.matrix[iterator][jiterator];
 
   return maximumValue;
@@ -644,7 +644,7 @@ template <class Type> Type matricesWorkFlow::getMinimumValueFromMatrix (matrixTy
   Type minimumValue = matrixObject.matrix[0][0];
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (minimumValue > matrixObject.matrix[iterator][jiterator]) minimumValue = matrixObject.matrix[iterator][jiterator];
 
   return minimumValue;
@@ -657,7 +657,7 @@ template <class Type> Type matricesWorkFlow::getMatrixElementsSum (matrixType<Ty
   Type sum = matrixObject.matrix[0][0];
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       sum += matrixObject.matrix[iterator][jiterator];
 
   return sum;
@@ -670,7 +670,7 @@ template <class Type> Type matricesWorkFlow::getMatrixElementsProduct (matrixTyp
   Type product = matrixObject.matrix[0][0];
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       product *= matrixObject.matrix[iterator][jiterator];
 
   return product;
@@ -683,7 +683,7 @@ template <class Type> Type matricesWorkFlow::getMatrixElementsDifference (matrix
   Type difference = matrixObject.matrix[0][0];
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       difference -= matrixObject.matrix[iterator][jiterator];
   }
 
@@ -697,7 +697,7 @@ template <class Type> Type matricesWorkFlow::getMatrixElementsDivision (matrixTy
   Type division = matrixObject.matrix[0][0];
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       division /= matrixObject.matrix[iterator][jiterator];
 
   return division;
@@ -708,7 +708,7 @@ template <class Type> void matricesWorkFlow::matrixInitialization (matrixType<Ty
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       matrixObject.matrix[iterator][jiterator] = value;
 }
 
@@ -744,7 +744,7 @@ template <class Type> void matricesWorkFlow::normalizeMatrix (matrixType<Type> &
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       matrixObject.matrix[iterator][jiterator] = sortAndNormalizeNumber (matrixObject.matrix[iterator][jiterator]);
 }
 
@@ -753,7 +753,7 @@ template <class Type> matrixType<Type> matricesWorkFlow::getMatricesSum (matrixT
   __handler__.equalityHandlerMatrices (matrixObjectOne, matrixObjectTwo);
 
   for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.lineRefference + matrixObjectOne.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference + matrixObjectOne.endColumnPoint; jiterator++)
       matrixObjectOne.matrix[iterator][jiterator] += matrixObjectTwo.matrix[iterator][jiterator];
 
   return matrixObjectOne;
@@ -764,7 +764,7 @@ template <class Type> matrixType<Type> matricesWorkFlow::getMatricesProduct (mat
   __handler__.equalityHandlerMatrices (matrixObjectOne, matrixObjectTwo);
 
   for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.lineRefference + matrixObjectOne.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference + matrixObjectOne.endColumnPoint; jiterator++)
       matrixObjectOne.matrix[iterator][jiterator] *= matrixObjectTwo.matrix[iterator][jiterator];
 
   return matrixObjectOne;
@@ -775,7 +775,7 @@ template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDifference (
   __handler__.equalityHandlerMatrices (matrixObjectOne, matrixObjectTwo);
 
   for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.lineRefference + matrixObjectOne.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference + matrixObjectOne.endColumnPoint; jiterator++)
       matrixObjectOne.matrix[iterator][jiterator] -= matrixObjectTwo.matrix[iterator][jiterator];
 
   return matrixObjectOne;
@@ -786,7 +786,7 @@ template <class Type> matrixType<Type> matricesWorkFlow::getMatricesDivision (ma
   __handler__.equalityHandlerMatrices (matrixObjectOne, matrixObjectTwo);
 
   for (size_t iterator = matrixObjectOne.startLinePoint; iterator < matrixObjectOne.lineRefference + matrixObjectOne.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObjectOne.startColumnPoint; jiterator < matrixObjectOne.columnRefference + matrixObjectOne.endColumnPoint; jiterator++)
       matrixObjectOne.matrix[iterator][jiterator] /= matrixObjectTwo.matrix[iterator][jiterator];
 
   return matrixObjectOne;
@@ -797,7 +797,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixM
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (iterator == jiterator) {
         matrixObject.mainDiagonal.oneDimensionalArray[matrixObject.mainDiagonal.length] = matrixObject.matrix[iterator][jiterator];
         matrixObject.mainDiagonal.length += 1;
@@ -811,7 +811,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixA
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (iterator < jiterator) {
         matrixObject.aboveMainDiagonal.oneDimensionalArray[matrixObject.aboveMainDiagonal.length] = matrixObject.matrix[iterator][jiterator];
         matrixObject.aboveMainDiagonal.length += 1;
@@ -825,7 +825,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixU
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (iterator > jiterator) {
         matrixObject.underMainDiagonal.oneDimensionalArray[matrixObject.underMainDiagonal.length] = matrixObject.matrix[iterator][jiterator];
         matrixObject.underMainDiagonal.length += 1;
@@ -839,7 +839,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixS
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (iterator + jiterator == matrixObject.line - 1) {
         matrixObject.secondaryDiagonal.oneDimensionalArray[matrixObject.secondaryDiagonal.length] = matrixObject.matrix[iterator][jiterator];
         matrixObject.secondaryDiagonal.length += 1;
@@ -853,7 +853,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixA
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (iterator + jiterator < matrixObject.line - 1) {
         matrixObject.aboveSecondaryDiagonal.oneDimensionalArray[matrixObject.aboveSecondaryDiagonal.length] = matrixObject.matrix[iterator][jiterator];
         matrixObject.aboveSecondaryDiagonal.length += 1;
@@ -867,7 +867,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixU
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (iterator + jiterator > matrixObject.line - 1) {
         matrixObject.underSecondaryDiagonal.oneDimensionalArray[matrixObject.underSecondaryDiagonal.length] = matrixObject.matrix[iterator][jiterator];
         matrixObject.underSecondaryDiagonal.length += 1;
@@ -881,7 +881,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixN
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (iterator < jiterator && iterator + jiterator < matrixObject.line - 1) {
         matrixObject.northElements.oneDimensionalArray[matrixObject.northElements.length] = matrixObject.matrix[iterator][jiterator];
         matrixObject.northElements.length += 1;
@@ -895,7 +895,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixS
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (iterator > jiterator && iterator + jiterator > matrixObject.line - 1) {
         matrixObject.southElements.oneDimensionalArray[matrixObject.southElements.length] = matrixObject.matrix[iterator][jiterator];
         matrixObject.southElements.length += 1;
@@ -909,7 +909,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixE
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (iterator > jiterator && iterator + jiterator < matrixObject.line - 1) {
         matrixObject.eastElements.oneDimensionalArray[matrixObject.eastElements.length] = matrixObject.matrix[iterator][jiterator];
         matrixObject.eastElements.length += 1;
@@ -923,7 +923,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixW
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (iterator < jiterator && iterator + jiterator > matrixObject.line - 1) {
         matrixObject.westElements.oneDimensionalArray[matrixObject.westElements.length] = matrixObject.matrix[iterator][jiterator];
         matrixObject.westElements.length += 1;
@@ -939,7 +939,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixO
   oneDimensionalArrayType<Type> oneDimensionalArrayValuesFromOrder;
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (abs(iterator + jiterator) == order) {
         oneDimensionalArrayValuesFromOrder.oneDimensionalArray[oneDimensionalArrayValuesFromOrder.length] = matrixObject.matrix[iterator][jiterator];
         oneDimensionalArrayValuesFromOrder.length += 1;
@@ -955,7 +955,7 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixO
   oneDimensionalArrayType<Type> oneDimensionalArrayValuesFromOrder;
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (abs(iterator + jiterator - matrixObject.line - 1) == order) {
         oneDimensionalArrayValuesFromOrder.oneDimensionalArray[oneDimensionalArrayValuesFromOrder.length] = matrixObject.matrix[iterator][jiterator];
         oneDimensionalArrayValuesFromOrder.length += 1;
@@ -1134,9 +1134,9 @@ bool fundamentalAlgorithmsWorkFlow::isPrime (int parameter) {
   if (parameter == 2) return true;
 
   for (size_t iterator = 2; iterator <= parameter / 2; iterator++)
-    if (parameter % iterator == 0) return true;
+    if (parameter % iterator == 0) return false;
 
-  return false;
+  return true;
 }
 
 bool fundamentalAlgorithmsWorkFlow::isOdd (int parameter) {
