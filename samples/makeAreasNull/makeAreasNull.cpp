@@ -75,12 +75,12 @@ int main(int argc, char const *argv[]) {
   matricesWF.readDynamicFileMatrix ((char*)"makeAreasNull.data", matrix);
   matricesWF.outputMatrix (matrix);
 
-  if (fundamentalWF.checkIfOdd(matrix.lineRefference)) {
+  if (fundamentalWF.isOdd(matrix.lineRefference)) {
     turnInNull.turnOddColumnsAreaToNull (matrix);
     turnInNull.turnOddLinesAreaToNull (matrix);
   }
 
-  if (fundamentalWF.checkIfEven(matrix.lineRefference)) {
+  if (fundamentalWF.isEven(matrix.lineRefference)) {
     turnInNull.turnEvenColumnsAreaToNull (matrix);
     turnInNull.turnEvenLinesAreaToNull (matrix);
   }

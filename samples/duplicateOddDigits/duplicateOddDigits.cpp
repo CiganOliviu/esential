@@ -29,9 +29,9 @@ int duplicationsProcessor::realiseNumberDuplication (int number) {
 
     duplicatedNumber = duplicatedNumber * 10 + number % 10;
 
-    if (__fundamentalAlgo__.checkIfOdd(number % 10))
+    if (__fundamentalAlgo__.isOdd(number % 10))
       duplicatedNumber = duplicatedNumber * 10 + (number % 10) / 2;
-      
+
     number /= 10;
   }
 

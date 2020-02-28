@@ -1064,12 +1064,12 @@ template <class Type> Type fundamentalAlgorithmsWorkFlow::getGaussSum (Type limi
   return (limit * (limit + 1) / 2);
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisor (limits<int> interval) {
+int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisor (limits<int> interval) {
 
   __handler__.negativeNumberHandler (interval.minimLimit, __PRETTY_FUNCTION__);
   __handler__.negativeNumberHandler (interval.maximLimit, __PRETTY_FUNCTION__);
 
-  unsigned int copyMinimLimit, copyMaximLimit, rest;
+  int copyMinimLimit, copyMaximLimit, rest;
 
   copyMinimLimit = interval.minimLimit;
   copyMaximLimit = interval.maximLimit;
@@ -1090,7 +1090,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisor (limits<i
   return copyMaximLimit;
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisorRecursive (limits<int> interval) {
+int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisorRecursive (limits<int> interval) {
 
   __handler__.negativeNumberHandler (interval.minimLimit, __PRETTY_FUNCTION__);
   __handler__.negativeNumberHandler (interval.maximLimit, __PRETTY_FUNCTION__);
@@ -1112,12 +1112,12 @@ unsigned int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisorRecursive 
   }
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getLeastCommonMultiple (limits<int> interval) {
+int fundamentalAlgorithmsWorkFlow::getLeastCommonMultiple (limits<int> interval) {
 
   return (interval.minimLimit * interval.maximLimit) / getTheLargestCommonDivisor(interval);
 }
 
-unsigned int fundamentalAlgorithmsWorkFlow::getPrimevalue (int parameter) {
+int fundamentalAlgorithmsWorkFlow::getPrimevalue (int parameter) {
 
   if (__validations__.isNegativeOrZero(parameter)) return 0;
   if (parameter == 2) return 2;
@@ -1128,7 +1128,7 @@ unsigned int fundamentalAlgorithmsWorkFlow::getPrimevalue (int parameter) {
   return parameter;
 }
 
-bool fundamentalAlgorithmsWorkFlow::checkIfPrime (int parameter) {
+bool fundamentalAlgorithmsWorkFlow::isPrime (int parameter) {
 
   if (__validations__.isNegativeOrZero(parameter)) return false;
   if (parameter == 2) return true;
@@ -1139,14 +1139,14 @@ bool fundamentalAlgorithmsWorkFlow::checkIfPrime (int parameter) {
   return false;
 }
 
-bool fundamentalAlgorithmsWorkFlow::checkIfOdd (int parameter) {
+bool fundamentalAlgorithmsWorkFlow::isOdd (int parameter) {
 
   if (parameter % 2 == 1) return true;
 
   return false;
 }
 
-bool fundamentalAlgorithmsWorkFlow::checkIfEven (int parameter) {
+bool fundamentalAlgorithmsWorkFlow::isEven (int parameter) {
 
   if (parameter % 2 == 0) return true;
 
