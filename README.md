@@ -1,2 +1,2 @@
 # esential
-A standard C++ library for quick algorithms implementations.
+A standard C++ library for algorithms implementations.
