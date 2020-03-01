@@ -367,15 +367,8 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysSum (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
-
-  limits<int> startPointsValueChecker;
-  startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
-  startPointsValueChecker.maximLimit = ODAObjectTwo.startPoint;
-
-  limits<int> endPointsValueChecker;
-  endPointsValueChecker.minimLimit = ODAObjectOne.endPoint;
-  endPointsValueChecker.maximLimit = ODAObjectTwo.endPoint;
+  __handler__.standardHandlerOneDimensionalArray (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
+  __handler__.startEndPointsHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
     ODAObjectOne.oneDimensionalArray[iterator] += ODAObjectTwo.oneDimensionalArray[iterator];
@@ -385,15 +378,8 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysProduct (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
-
-  limits<int> startPointsValueChecker;
-  startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
-  startPointsValueChecker.maximLimit = ODAObjectTwo.startPoint;
-
-  limits<int> endPointsValueChecker;
-  endPointsValueChecker.minimLimit = ODAObjectOne.endPoint;
-  endPointsValueChecker.maximLimit = ODAObjectTwo.endPoint;
+  __handler__.standardHandlerOneDimensionalArray (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
+  __handler__.startEndPointsHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
     ODAObjectOne.oneDimensionalArray[iterator] *= ODAObjectTwo.oneDimensionalArray[iterator];
@@ -403,15 +389,8 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysDifference (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
-
-  limits<int> startPointsValueChecker;
-  startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
-  startPointsValueChecker.maximLimit = ODAObjectTwo.startPoint;
-
-  limits<int> endPointsValueChecker;
-  endPointsValueChecker.minimLimit = ODAObjectOne.endPoint;
-  endPointsValueChecker.maximLimit = ODAObjectTwo.endPoint;
+  __handler__.standardHandlerOneDimensionalArray (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
+  __handler__.startEndPointsHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
     ODAObjectOne.oneDimensionalArray[iterator] -= ODAObjectTwo.oneDimensionalArray[iterator];
@@ -421,15 +400,8 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysDivision (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  __handler__.equalityHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
-
-  limits<int> startPointsValueChecker;
-  startPointsValueChecker.minimLimit = ODAObjectOne.startPoint;
-  startPointsValueChecker.maximLimit = ODAObjectTwo.startPoint;
-
-  limits<int> endPointsValueChecker;
-  endPointsValueChecker.minimLimit = ODAObjectOne.endPoint;
-  endPointsValueChecker.maximLimit = ODAObjectTwo.endPoint;
+  __handler__.standardHandlerOneDimensionalArray (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
+  __handler__.startEndPointsHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
     ODAObjectOne.oneDimensionalArray[iterator] /= ODAObjectTwo.oneDimensionalArray[iterator];

@@ -59,6 +59,9 @@ namespace easyPassDefinitions {
     template <class Type> void standardHandlerOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, const char coreFunction[]);
     template <class Type> void standardHandlerMatrix (matrixType<Type> MTObject, const char coreFunction[]);
 
+    template <class Type> void startEndPointsHandlerOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo, const char coreFunction[]);
+    template <class Type> void startEndPointsHandlerMatrices (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo, const char coreFunction[]);
+
     template <class Type> void equalityHandlerOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo, const char coreFunction[]);
     template <class Type> void equalityHandlerMatrices (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo, const char coreFunction[]);
 

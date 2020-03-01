@@ -114,6 +114,28 @@ template <class Type> void errorsHandler::standardHandlerMatrix (matrixType<Type
   if (__validations__.isNegative<Type>(MTObject.columnRefference)) throw systemException (__errorMessages__.matrixNegativeColumnError);
 }
 
+template <class Type> void startEndPointsHandlerOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo, const char coreFunction[]) {
+
+  __errorMessages__.unequalStartPointsError += coreFunction;
+  __errorMessages__.unequalEndPointsError += coreFunction;
+
+  if (__validations__.isEqualParameterBased<Type>(ODAObjectOne.startPoint, ODAObjectTwo.startPoint)) throw systemException(__errorMessages__.unequalStartPointsError);
+  if (__validations__.isEqualParameterBased<Type>(ODAObjectOne.endPoint, ODAObjectTwo.endPoint)) throw systemException(__errorMessages__.unequalEndPointsError);
+}
+
+template <class Type> void startEndPointsHandlerMatrices (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo, const char coreFunction[]) {
+
+  __errorMessages__.unequalStartLinePointsError += coreFunction;
+  __errorMessages__.unequalEndLinePointsError += coreFunction;
+  __errorMessages__.unequalStartColumnPointsError += coreFunction;
+  __errorMessages__.unequalEndColumnPointsError += coreFunction;
+
+  if (__validations__.isNotEqualParameterBased<Type>(MTObjectOne.startLinePoint, MTObjectTwo.startLinePoint)) throw systemException (__errorMessages__.unequalStartLinePointsError);
+  if (__validations__.isNotEqualParameterBased<Type>(MTObjectOne.endLinePoint, MTObjectTwo.endLinePoint)) throw systemException (__errorMessages__.unequalEndLinePointsError);
+  if (__validations__.isNotEqualParameterBased<Type>(MTObjectOne.startColumnPoint, MTObjectTwo.startColumnPoint)) throw systemException (__errorMessages__.unequalStartColumnPointsError);
+  if (__validations__.isNotEqualParameterBased<Type>(MTObjectOne.endColumnPoint, MTObjectTwo.endColumnPoint)) throw systemException (__errorMessages__.unequalEndColumnPointsError);
+}
+
 template <class Type> void errorsHandler::equalityHandlerOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo, const char coreFunction[]) {
 
   __errorMessages__.oneDimensionalArrayZeroLengthError += coreFunction;
@@ -129,8 +151,8 @@ template <class Type> void errorsHandler::equalityHandlerOneDimensionalArrays (o
   if (__validations__.isNegative<Type>(ODAObjectTwo.length)) throw systemException (__errorMessages__.oneDimensionalArrayNegativeLengthError);
 
   if (__validations__.isNotEqualParameterBased<Type>(ODAObjectOne.length, ODAObjectTwo.length)) throw systemException (__errorMessages__.unequalLengthError);
-  if (__validations__.isNotEqualParameterBased<Type>(ODAObjectOne.length, ODAObjectTwo.length)) throw systemException (__errorMessages__.unequalStartPointsError);
-  if (__validations__.isNotEqualParameterBased<Type>(ODAObjectOne.length, ODAObjectTwo.length)) throw systemException (__errorMessages__.unequalEndPointsError);
+  if (__validations__.isNotEqualParameterBased<Type>(ODAObjectOne.startPoint, ODAObjectTwo.startPoint)) throw systemException (__errorMessages__.unequalStartPointsError);
+  if (__validations__.isNotEqualParameterBased<Type>(ODAObjectOne.endPoint, ODAObjectTwo.endPoint)) throw systemException (__errorMessages__.unequalEndPointsError);
 }
 
 template <class Type> void errorsHandler::equalityHandlerMatrices (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo, const char coreFunction[]) {
