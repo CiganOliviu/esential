@@ -1191,7 +1191,7 @@ int fundamentalAlgorithmsWorkFlow::getPalindromValue (int parameter) {
   return 0;
 }
 
-bool fundamentalAlgorithmsWorkFlow::checkIfPalindrome (int parameter) {
+bool fundamentalAlgorithmsWorkFlow::isPalindrome (int parameter) {
 
   if (__validations__.isNegativeOrZero(parameter)) return false;
 

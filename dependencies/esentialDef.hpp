@@ -147,19 +147,19 @@ public:
   float getValueQuadraticEquation (quadraticEquation __QEquation__, float root);
 
   template <class Type> Type getGaussSum (Type limit);
-  unsigned int getTheLargestCommonDivisor (limits<int> interval);
-  unsigned int getTheLargestCommonDivisorRecursive (limits<int> interval);
-  unsigned int getLeastCommonMultiple (limits<int> interval);
-  unsigned int getPrimevalue (int parameter);
+  int getTheLargestCommonDivisor (limits<int> interval);
+  int getTheLargestCommonDivisorRecursive (limits<int> interval);
+  int getLeastCommonMultiple (limits<int> interval);
+  int getPrimevalue (int parameter);
 
-  bool checkIfPrime (int parameter);
-  bool checkIfOdd (int parameter);
-  bool checkIfEven (int parameter);
+  bool isPrime (int parameter);
+  bool isOdd (int parameter);
+  bool isEven (int parameter);
   bool isConstantNumber (int parameter);
 
   int reverseNumber (int parameter);
   int getPalindromValue (int parameter);
-  bool checkIfPalindrome (int parameter);
+  bool isPalindrome (int parameter);
   float getMeanOfTwoNumbers (float parameterOne, float parameterTwo);
 
   int getThe_N_FactorialNumber (int parameter);
