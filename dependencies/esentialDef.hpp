@@ -72,6 +72,8 @@ public:
   template <class Type> void shellSort (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void reverseOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
 
+  template <class Type> bool binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch); 
+
   virtual ~oneDimensionalArraysWorkFlow () {}
 };
 
@@ -156,10 +158,10 @@ public:
   bool isOdd (int parameter);
   bool isEven (int parameter);
   bool isConstantNumber (int parameter);
+  bool isPalindrome (int parameter);
 
   int reverseNumber (int parameter);
   int getPalindromValue (int parameter);
-  bool isPalindrome (int parameter);
   float getMeanOfTwoNumbers (float parameterOne, float parameterTwo);
 
   int getThe_N_FactorialNumber (int parameter);

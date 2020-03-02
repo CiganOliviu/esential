@@ -490,6 +490,25 @@ template <class Type> void oneDimensionalArraysWorkFlow::reverseOneDimensionalAr
       __support__.interchangeValues (ODAObject.oneDimensionalArray[jiterator], ODAObject.oneDimensionalArray[jiterator + 1]);
 }
 
+template <class Type> bool oneDimensionalArraysWorkFlow::binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
+
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
+
+  int leftIndex = ODAObject.startPoint;
+  int rightIndex = ODAObject.length - 1;
+
+  while (leftIndex <= rightIndex) {
+
+    int middleIndex = (leftIndex + rightIndex) / 2;
+
+    if (valueToSearch == ODAObject.oneDimensionalArray[middleIndex]) return true;
+    if (valueToSearch < ODAObject.oneDimensionalArray[middleIndex]) rightIndex = middleIndex - 1;
+    if (valueToSearch > ODAObject.oneDimensionalArray[middleIndex]) leftIndex = middleIndex + 1;
+  }
+
+  return false;
+}
+
 template <class Type> void matricesWorkFlow::readMatrix (matrixType<Type> & matrixObject) {
 
   std::cin >> matrixObject.lineRefference >> matrixObject.columnRefference;

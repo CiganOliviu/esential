@@ -114,7 +114,7 @@ template <class Type> void errorsHandler::standardHandlerMatrix (matrixType<Type
   if (__validations__.isNegative<Type>(MTObject.columnRefference)) throw systemException (__errorMessages__.matrixNegativeColumnError);
 }
 
-template <class Type> void startEndPointsHandlerOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo, const char coreFunction[]) {
+template <class Type> void errorsHandler::startEndPointsHandlerOneDimensionalArrays (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo, const char coreFunction[]) {
 
   __errorMessages__.unequalStartPointsError += coreFunction;
   __errorMessages__.unequalEndPointsError += coreFunction;
@@ -123,7 +123,7 @@ template <class Type> void startEndPointsHandlerOneDimensionalArrays (oneDimensi
   if (__validations__.isEqualParameterBased<Type>(ODAObjectOne.endPoint, ODAObjectTwo.endPoint)) throw systemException(__errorMessages__.unequalEndPointsError);
 }
 
-template <class Type> void startEndPointsHandlerMatrices (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo, const char coreFunction[]) {
+template <class Type> void errorsHandler::startEndPointsHandlerMatrices (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo, const char coreFunction[]) {
 
   __errorMessages__.unequalStartLinePointsError += coreFunction;
   __errorMessages__.unequalEndLinePointsError += coreFunction;
