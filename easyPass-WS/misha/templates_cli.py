@@ -13,28 +13,35 @@ class misha_templates_system():
         super(misha_templates_system, self).__init__()
 
     @click.command()
-    @click.option('--file_name', help='Path where the dataset should be created and the file name')
-    def standard_algo_implementation(file_name):
+    @click.option('--file_name', help='Path where the file should be created and the file name')
+    def standard_cpp_algo_data_structures_implementation(file_name):
         template = templates()
 
-        template.standard_algo_data_structures_templates(file_name)
+        template.standard_cpp_algo_data_structures_templates(file_name)
+    
+    @click.command()
+    @click.option('--file_name', help='Path where the file should be created and the file name')
+    def standard_c_algo_data_structures_implementation(file_name):
+        template = templates()
+
+        template.standard_c_algo_data_structures_templates(file_name)
 
     @click.command()
-    @click.option('--file_name', help='Path where the dataset should be created and the file name')
+    @click.option('--file_name', help='Path where the file should be created and the file name')
     def standard_easyPass_implementation(file_name):
         template = templates()
 
         template.standard_easyPass_templates(file_name)
 
     @click.command()
-    @click.option('--file_name', help='Path where the dataset should be created and the file name')
+    @click.option('--file_name', help='Path where the file should be created and the file name')
     def standard_esential_implementation(file_name):
         template = templates()
 
         template.standard_esential_template(file_name)
 
     @click.command()
-    @click.option('--file_name', help='Path where the dataset should be created and the file name')
+    @click.option('--file_name', help='Path where the file should be created and the file name')
     def standard_misha_implementation(file_name):
         template = templates()
 
