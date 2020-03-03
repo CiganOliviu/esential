@@ -82,8 +82,8 @@ namespace easyPassDefinitions {
 
     template <class Type> Type numberGenerator (limits<Type> limitsObject);
     template <class Type> Type staticNumberGenerator (limits<Type> limitsObject);
-    template <class Type> void oneDimensionalArrayGenerator (oneDimensionalArrayType<Type> ODAObject, limits<Type> limitsObject);
-    template <class Type> void matrixGenerator (matrixType<Type> & MTObject, limits<Type> limitsObject);
+    template <class Type> void oneDimensionalArrayGenerator (oneDimensionalArrayType<Type> ODAObject, limits<int> limitsObject);
+    template <class Type> void matrixGenerator (matrixType<Type> & MTObject, limits<int> limitsObject);
 
     virtual ~randomGenerator () {}
   };

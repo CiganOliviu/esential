@@ -119,8 +119,8 @@ template <class Type> void errorsHandler::startEndPointsHandlerOneDimensionalArr
   __errorMessages__.unequalStartPointsError += coreFunction;
   __errorMessages__.unequalEndPointsError += coreFunction;
 
-  if (__validations__.isEqualParameterBased<Type>(ODAObjectOne.startPoint, ODAObjectTwo.startPoint)) throw systemException(__errorMessages__.unequalStartPointsError);
-  if (__validations__.isEqualParameterBased<Type>(ODAObjectOne.endPoint, ODAObjectTwo.endPoint)) throw systemException(__errorMessages__.unequalEndPointsError);
+  if (__validations__.isNotEqualParameterBased<Type>(ODAObjectOne.startPoint, ODAObjectTwo.startPoint)) throw systemException(__errorMessages__.unequalStartPointsError);
+  if (__validations__.isNotEqualParameterBased<Type>(ODAObjectOne.endPoint, ODAObjectTwo.endPoint)) throw systemException(__errorMessages__.unequalEndPointsError);
 }
 
 template <class Type> void errorsHandler::startEndPointsHandlerMatrices (matrixType<Type> MTObjectOne, matrixType<Type> MTObjectTwo, const char coreFunction[]) {
@@ -229,7 +229,7 @@ template <class Type> Type randomGenerator::staticNumberGenerator (limits<Type> 
   return distribution(gen);
 }
 
-template <class Type> void randomGenerator::oneDimensionalArrayGenerator (oneDimensionalArrayType<Type> ODAObject, limits<Type> limitsObject) {
+template <class Type> void randomGenerator::oneDimensionalArrayGenerator (oneDimensionalArrayType<Type> ODAObject, limits<int> limitsObject) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
@@ -239,7 +239,7 @@ template <class Type> void randomGenerator::oneDimensionalArrayGenerator (oneDim
     ODAObject.oneDimensionalArray[iterator] = (rand() % (limitsObject.maximLimit - limitsObject.minimLimit + 1)) + limitsObject.minimLimit;
 }
 
-template <class Type> void randomGenerator::matrixGenerator (matrixType<Type> & MTObject, limits<Type> limitsObject) {
+template <class Type> void randomGenerator::matrixGenerator (matrixType<Type> & MTObject, limits<int> limitsObject) {
 
   __handler__.standardHandlerMatrix (MTObject, __PRETTY_FUNCTION__);
 
