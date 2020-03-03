@@ -367,7 +367,6 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysSum (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  __handler__.standardHandlerOneDimensionalArray (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
   __handler__.startEndPointsHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
@@ -378,7 +377,6 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysProduct (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  __handler__.standardHandlerOneDimensionalArray (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
   __handler__.startEndPointsHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
@@ -389,7 +387,6 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysDifference (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  __handler__.standardHandlerOneDimensionalArray (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
   __handler__.startEndPointsHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
@@ -400,7 +397,6 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysDivision (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
-  __handler__.standardHandlerOneDimensionalArray (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
   __handler__.startEndPointsHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObjectOne.startPoint; iterator < ODAObjectOne.length + ODAObjectOne.endPoint; iterator++)
