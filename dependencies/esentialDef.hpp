@@ -24,6 +24,33 @@ SOFTWARE.
 
 #include "../easyPass-WS/easyPass.hpp"
 
+class IOSysten {
+private:
+  errorsHandler __handler__;
+  checkAndSupport __support__;
+  
+public:
+  IOSysten () {}
+
+  template <class Type> void readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
+  template <class Type> void readStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
+  template <class Type> void readDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
+
+  template <class Type> void outputOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
+  template <class Type> void outputStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
+  template <class Type> void outputDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
+
+  template <class Type> void readMatrix (matrixType<Type> & matrixObject);
+  template <class Type> void readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject);
+  template <class Type> void readDynamicFileMatrix (char * fileName, matrixType<Type> & matrixObject);
+
+  template <class Type> void outputMatrix (matrixType<Type> matrixObject);
+  template <class Type> void outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject);
+  template <class Type> void outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject);
+
+  virtual ~IOSysten () {}
+};
+
 class oneDimensionalArraysWorkFlow {
 private:
   errorsHandler __handler__;
@@ -34,14 +61,6 @@ private:
 
 public:
   oneDimensionalArraysWorkFlow () {}
-
-  template <class Type> void readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
-  template <class Type> void readStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
-  template <class Type> void readDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
-
-  template <class Type> void outputOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
-  template <class Type> void outputStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
-  template <class Type> void outputDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
 
   template <class Type> Type getMinimumValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> Type getMinimumValueOneDimensionalArrayDivideEtEmpera (limits<Type> interval, oneDimensionalArrayType<Type> ODAObject);
@@ -72,7 +91,7 @@ public:
   template <class Type> void shellSort (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void reverseOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
 
-  template <class Type> bool binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch); 
+  template <class Type> bool binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
 
   virtual ~oneDimensionalArraysWorkFlow () {}
 };
@@ -86,14 +105,6 @@ private:
 
 public:
   matricesWorkFlow () {}
-
-  template <class Type> void readMatrix (matrixType<Type> & matrixObject);
-  template <class Type> void readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject);
-  template <class Type> void readDynamicFileMatrix (char * fileName, matrixType<Type> & matrixObject);
-
-  template <class Type> void outputMatrix (matrixType<Type> matrixObject);
-  template <class Type> void outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject);
-  template <class Type> void outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject);
 
   template <class Type> Type getMaximumValueFromMatrix (matrixType<Type> matrixObject);
   template <class Type> Type getMinimumValueFromMatrix (matrixType<Type> matrixObject);

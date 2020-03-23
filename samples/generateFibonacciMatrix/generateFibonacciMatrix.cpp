@@ -52,6 +52,7 @@ void matrixGenerator::generateFibonacciMatrix (matrixType<int> & fiboMatrix) {
 int main(int argc, char const *argv[]) {
 
   matricesWorkFlow MWorkFlow;
+  IOSysten io;
   matrixType <int> matrixRefference;
   matrixGenerator __generator_init__;
 
@@ -59,7 +60,7 @@ int main(int argc, char const *argv[]) {
 
   __generator_init__.generateFibonacciMatrix(matrixRefference);
 
-  MWorkFlow.outputMatrix(matrixRefference);
+  io.outputMatrix(matrixRefference);
 
   return 0;
 }

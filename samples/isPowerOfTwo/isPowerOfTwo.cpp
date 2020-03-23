@@ -63,10 +63,11 @@ int main(int argc, char const *argv[]) {
 
   oneDimensionalArrayType<int> ODAObject;
   oneDimensionalArraysWorkFlow ODAWorkFlow;
+  IOSysten io;
   powerOfTwoProcesses powerOfTwoProcessesWorkFlow;
 
-  ODAWorkFlow.readDynamicFileOneDimensionalArray ((char*)"isPowerOfTwoData.data", ODAObject);
-  ODAWorkFlow.outputOneDimensionalArray (ODAObject);
+  io.readDynamicFileOneDimensionalArray ((char*)"isPowerOfTwoData.data", ODAObject);
+  io.outputOneDimensionalArray (ODAObject);
   powerOfTwoProcessesWorkFlow.getAllValuesPowerOfTwo (ODAObject);
 
   return 0;

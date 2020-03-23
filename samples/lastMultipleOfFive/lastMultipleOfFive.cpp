@@ -44,11 +44,12 @@ int main(int argc, char const *argv[]) {
   oneDimensionalArrayType<int> ODAObject;
   limits<int> valueAndIndex;
   oneDimensionalArraysWorkFlow ODAWorkFlow;
+  IOSysten io;
   lastMultipleOfFive lastMultipleOfFiveWorkFlow;
   portData __port__;
 
-  ODAWorkFlow.readDynamicFileOneDimensionalArray ((char*)"lastMultipleOfFiveData.data", ODAObject);
-  ODAWorkFlow.outputOneDimensionalArray (ODAObject);
+  io.readDynamicFileOneDimensionalArray ((char*)"lastMultipleOfFiveData.data", ODAObject);
+  io.outputOneDimensionalArray (ODAObject);
 
   __port__.portLimits (valueAndIndex, lastMultipleOfFiveWorkFlow.getLastMultipleOfFiveODA (ODAObject));
 

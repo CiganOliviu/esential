@@ -1,6 +1,6 @@
 #include "dependencies/esentialDef.hpp"
 
-template <class Type> void oneDimensionalArraysWorkFlow::readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSysten::readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   std::cin >> ODAObject.length;
 
@@ -10,7 +10,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::readOneDimensionalArray
     std::cin >> ODAObject.oneDimensionalArray[iterator];
 }
 
-template <class Type> void oneDimensionalArraysWorkFlow::readStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSysten::readStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ifstream dataStream(fileName, std::ios::in);
 
@@ -26,7 +26,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::readStaticFileOneDimens
   dataStream.close();
 }
 
-template <class Type> void oneDimensionalArraysWorkFlow::readDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSysten::readDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ifstream dataStream(fileName, std::ios::in);
   Type data;
@@ -47,7 +47,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::readDynamicFileOneDimen
   dataStream.close();
 }
 
-template <class Type> void oneDimensionalArraysWorkFlow::outputOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSysten::outputOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
@@ -57,7 +57,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::outputOneDimensionalArr
   std::cout << '\n';
 }
 
-template <class Type> void oneDimensionalArraysWorkFlow::outputStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSysten::outputStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ofstream dataStream(fileName, std::ios::out);
 
@@ -75,7 +75,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::outputStaticFileOneDime
   dataStream.close();
 }
 
-template <class Type> void oneDimensionalArraysWorkFlow::outputDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSysten::outputDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ofstream dataStream(fileName, std::ios::out);
 
@@ -87,6 +87,112 @@ template <class Type> void oneDimensionalArraysWorkFlow::outputDynamicFileOneDim
     dataStream << ODAObject.oneDimensionalArray[iterator] << " ";
 
   dataStream << '\n';
+
+  dataStream.close();
+}
+
+template <class Type> void IOSysten::readMatrix (matrixType<Type> & matrixObject) {
+
+  std::cin >> matrixObject.lineRefference >> matrixObject.columnRefference;
+
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
+      std::cin >> matrixObject.matrix[iterator][jiterator];
+}
+
+template <class Type> void IOSysten::readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
+
+  std::ifstream dataStream(fileName, std::ios::in);
+
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
+
+  dataStream >> matrixObject.lineRefference >> matrixObject.columnRefference;
+
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
+      dataStream >> matrixObject.matrix[iterator][jiterator];
+
+  dataStream.close();
+}
+
+template <class Type> void IOSysten::readDynamicFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
+
+  std::ifstream dataStream(fileName, std::ios::in);
+
+  Type data;
+  char endOfLine;
+  int auxColumnLength = matrixObject.columnRefference;
+
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
+
+  while (dataStream >> data) {
+
+    matrixObject.matrix[matrixObject.lineRefference][auxColumnLength] = data;
+
+    auxColumnLength += 1;
+
+    dataStream.get (endOfLine);
+
+    if (endOfLine == '\n') {
+      matrixObject.lineRefference += 1;
+      matrixObject.columnRefference = auxColumnLength;
+      auxColumnLength = 0;
+    }
+  }
+
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
+
+  dataStream.close();
+}
+
+template <class Type> void IOSysten::outputMatrix (matrixType<Type> matrixObject) {
+
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
+      std::cout << matrixObject.matrix[iterator][jiterator] << " ";
+
+    std::cout << '\n';
+  }
+}
+
+template <class Type> void IOSysten::outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject) {
+
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
+
+  std::ofstream dataStream(fileName, std::ios::out);
+
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
+
+    dataStream << matrixObject.line << " " << matrixObject.column << '\n';
+
+    for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
+      for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
+        dataStream << matrixObject.matrix[iterator][jiterator] << " ";
+      dataStream << " ";
+    }
+
+  dataStream.close();
+}
+
+template <class Type> void IOSysten::outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject) {
+
+  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
+
+  std::ofstream dataStream(fileName, std::ios::out);
+
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
+      dataStream << matrixObject.matrix[iterator][jiterator] << " ";
+    dataStream << " ";
+  }
 
   dataStream.close();
 }
@@ -503,112 +609,6 @@ template <class Type> bool oneDimensionalArraysWorkFlow::binarySearch (oneDimens
   }
 
   return false;
-}
-
-template <class Type> void matricesWorkFlow::readMatrix (matrixType<Type> & matrixObject) {
-
-  std::cin >> matrixObject.lineRefference >> matrixObject.columnRefference;
-
-  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
-
-  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
-      std::cin >> matrixObject.matrix[iterator][jiterator];
-}
-
-template <class Type> void matricesWorkFlow::readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
-
-  std::ifstream dataStream(fileName, std::ios::in);
-
-  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
-
-  dataStream >> matrixObject.lineRefference >> matrixObject.columnRefference;
-
-  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
-
-  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
-      dataStream >> matrixObject.matrix[iterator][jiterator];
-
-  dataStream.close();
-}
-
-template <class Type> void matricesWorkFlow::readDynamicFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
-
-  std::ifstream dataStream(fileName, std::ios::in);
-
-  Type data;
-  char endOfLine;
-  int auxColumnLength = matrixObject.columnRefference;
-
-  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
-
-  while (dataStream >> data) {
-
-    matrixObject.matrix[matrixObject.lineRefference][auxColumnLength] = data;
-
-    auxColumnLength += 1;
-
-    dataStream.get (endOfLine);
-
-    if (endOfLine == '\n') {
-      matrixObject.lineRefference += 1;
-      matrixObject.columnRefference = auxColumnLength;
-      auxColumnLength = 0;
-    }
-  }
-
-  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
-
-  dataStream.close();
-}
-
-template <class Type> void matricesWorkFlow::outputMatrix (matrixType<Type> matrixObject) {
-
-  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
-
-  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
-      std::cout << matrixObject.matrix[iterator][jiterator] << " ";
-
-    std::cout << '\n';
-  }
-}
-
-template <class Type> void matricesWorkFlow::outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject) {
-
-  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
-
-  std::ofstream dataStream(fileName, std::ios::out);
-
-  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
-
-    dataStream << matrixObject.line << " " << matrixObject.column << '\n';
-
-    for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
-      for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
-        dataStream << matrixObject.matrix[iterator][jiterator] << " ";
-      dataStream << " ";
-    }
-
-  dataStream.close();
-}
-
-template <class Type> void matricesWorkFlow::outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject) {
-
-  __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
-
-  std::ofstream dataStream(fileName, std::ios::out);
-
-  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
-
-  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++) {
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
-      dataStream << matrixObject.matrix[iterator][jiterator] << " ";
-    dataStream << " ";
-  }
-
-  dataStream.close();
 }
 
 template <class Type> Type matricesWorkFlow::getMaximumValueFromMatrix (matrixType<Type> matrixObject) {

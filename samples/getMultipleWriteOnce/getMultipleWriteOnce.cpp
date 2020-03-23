@@ -32,10 +32,11 @@ int main(int argc, char const *argv[]) {
 
   oneDimensionalArrayType<int> ODAObject;
   oneDimensionalArraysWorkFlow ODAWorkFlow;
+  IOSysten io;
   getMultipleWriteOnce getMultipleWriteOnceWorkFlow;
 
-  ODAWorkFlow.readDynamicFileOneDimensionalArray ((char*)"getMultipleWriteOnceData.data", ODAObject);
-  ODAWorkFlow.outputOneDimensionalArray (ODAObject);
+  io.readDynamicFileOneDimensionalArray ((char*)"getMultipleWriteOnceData.data", ODAObject);
+  io.outputOneDimensionalArray (ODAObject);
   getMultipleWriteOnceWorkFlow.writeValuesFromODAOnce (ODAObject);
 
   return 0;

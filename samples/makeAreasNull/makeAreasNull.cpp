@@ -70,10 +70,11 @@ int main(int argc, char const *argv[]) {
   matrixType <int> matrix;
   matricesWorkFlow matricesWF;
   fundamentalAlgorithmsWorkFlow fundamentalWF;
+  IOSysten io;
   makeAreasNull turnInNull;
 
-  matricesWF.readDynamicFileMatrix ((char*)"makeAreasNull.data", matrix);
-  matricesWF.outputMatrix (matrix);
+  io.readDynamicFileMatrix ((char*)"makeAreasNull.data", matrix);
+  io.outputMatrix (matrix);
 
   if (fundamentalWF.isOdd(matrix.lineRefference)) {
     turnInNull.turnOddColumnsAreaToNull (matrix);
@@ -86,7 +87,7 @@ int main(int argc, char const *argv[]) {
   }
 
   std::cout << '\n' << '\n';
-  matricesWF.outputMatrix(matrix);
+  io.outputMatrix(matrix);
 
   return 0;
 }
