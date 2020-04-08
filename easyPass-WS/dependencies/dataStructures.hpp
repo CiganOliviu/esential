@@ -144,14 +144,26 @@ namespace dataStructures {
     virtual ~complexNumber () {}
   };
 
-  template <class Type> class centrum {
+  template <class Type> class linkedCentrum {
 
   public:
-    centrum () {}
+    linkedCentrum () {}
 
     Type data;
-    centrum<Type> * nextLinkedValue;
+    linkedCentrum<Type> * nextLinkedValue;
 
-    virtual ~centrum () {}
+    virtual ~linkedCentrum () {}
+  };
+
+  template <class Type> class doubleLinkedCentrum {
+
+  public:
+    doubleLinkedCentrum () {}
+
+    Type data;
+    doubleLinkedCentrum<Type> * nextDoubleLinkedValue;
+    doubleLinkedCentrum<Type> * previoustDoubleLinkedValue;
+
+    virtual ~doubleLinkedCentrum () {}
   };
 }

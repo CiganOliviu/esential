@@ -3,6 +3,7 @@
 class oneDimensionalArrayTestingWorkflow {
 private:
 	oneDimensionalArraysWorkFlow ODAWorkFlow;
+	IOSysten io;
 	assertions __assert__;
 
 public:
@@ -25,7 +26,7 @@ template<class Type> void oneDimensionalArrayTestingWorkflow::assertMinimumValue
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	ODAWorkFlow.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 
 	limits<Type> results;
 
@@ -39,7 +40,7 @@ template<class Type> void oneDimensionalArrayTestingWorkflow::assertMaximumValue
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	ODAWorkFlow.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 
 	limits<Type> results;
 
@@ -53,7 +54,7 @@ template<class Type> void oneDimensionalArrayTestingWorkflow::assertOneDimension
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	ODAWorkFlow.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 
 	limits<Type> results;
 
@@ -67,7 +68,7 @@ template<class Type> void oneDimensionalArrayTestingWorkflow::assertOneDimension
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	ODAWorkFlow.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 
 	limits<Type> results;
 
@@ -81,7 +82,7 @@ template<class Type> void oneDimensionalArrayTestingWorkflow::assertOneDimension
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	ODAWorkFlow.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 
 	limits<Type> results;
 
@@ -95,7 +96,7 @@ template<class Type> void oneDimensionalArrayTestingWorkflow::assertOneDimension
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	ODAWorkFlow.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 
 	limits<Type> results;
 
@@ -109,7 +110,7 @@ template <class Type> void oneDimensionalArrayTestingWorkflow::assertMinimumValu
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	ODAWorkFlow.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 	ODAWorkFlow.bubbleSort (ODAObject);
 
 	limits<int> interval;
@@ -129,7 +130,7 @@ template <class Type> void oneDimensionalArrayTestingWorkflow::assertMaximumValu
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	ODAWorkFlow.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 	ODAWorkFlow.minimumValueSort (ODAObject);
 
 	limits<int> interval;
@@ -147,6 +148,11 @@ template <class Type> void oneDimensionalArrayTestingWorkflow::assertMaximumValu
 
 class matricesTestingWorkFlow {
 
+private:
+	matricesWorkFlow MWorkFlow;
+	IOSysten io;
+	assertions __assert__;
+
 public:
 	matricesTestingWorkFlow () {}
 
@@ -158,6 +164,76 @@ public:
 
 	virtual ~matricesTestingWorkFlow () {}
 };
+
+template <class Type> void matricesTestingWorkFlow::assertMaximumValueFromMatrix () {
+
+		matrixType<Type> matrixObject;
+
+		io.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
+
+		limits<Type> results;
+
+		results.minimLimit = MWorkFlow.getMaximumValueFromMatrix(matrixObject);
+		results.maximLimit = 54645;
+
+		__assert__.countTest ((char*)"getMaximumValueFromMatrix", __assert__.assertPrimitiveDataTypes<Type>(results) );
+}
+
+template <class Type> void matricesTestingWorkFlow::assertMinimumValueFromMatrix () {
+
+		matrixType<Type> matrixObject;
+
+		io.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
+
+		limits<Type> results;
+
+		results.minimLimit = MWorkFlow.getMinimumValueFromMatrix(matrixObject);
+		results.maximLimit = -342534;
+
+		__assert__.countTest ((char*)"getMinimumValueFromMatrix", __assert__.assertPrimitiveDataTypes<Type>(results) );
+}
+
+template <class Type> void matricesTestingWorkFlow::assertMatrixElementsSum () {
+
+		matrixType<Type> matrixObject;
+
+		io.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
+
+		limits<Type> results;
+
+		results.minimLimit = MWorkFlow.getMatrixElementsSum(matrixObject);
+		results.maximLimit = -250646;
+
+	  __assert__.countTest ((char*)"getMatrixElementsSum", __assert__.assertPrimitiveDataTypes<Type>(results) );
+}
+
+template <class Type> void matricesTestingWorkFlow::assertMatrixElementsProduct () {
+
+		matrixType<Type> matrixObject;
+
+		io.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
+
+		limits<Type> results;
+
+		results.minimLimit = MWorkFlow.getMatrixElementsProduct(matrixObject);
+		results.maximLimit = 0;
+
+		__assert__.countTest ((char*)"getMatrixElementsProduct", __assert__.assertPrimitiveDataTypes<Type>(results) );
+}
+
+template <class Type> void matricesTestingWorkFlow::assertMatrixElementsDifference () {
+
+		matrixType<Type> matrixObject;
+
+		io.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
+
+		limits<Type> results;
+
+		results.minimLimit = MWorkFlow.getMatrixElementsDifference(matrixObject);
+		results.maximLimit = 250902;
+
+		__assert__.countTest ((char*)"getMatrixElementsDifference", __assert__.assertPrimitiveDataTypes<Type>(results) );
+}
 
 class fundamentalAlgorithmsTestingWorkflow {
 
@@ -191,7 +267,7 @@ public:
 	void assertComplexNumbersProduct ();
 	void assertComplexNumbersSum ();
 	void assertComplexNumbersDifference ();
-	
+
 	virtual ~fundamentalAlgorithmsTestingWorkflow () {}
 };
 
@@ -209,6 +285,12 @@ int main(int argc, char const *argv[]) {
 	ODATWF.assertOneDimensionalArrayMean<int> ();
 	ODATWF.assertMinimumValueOneDimensionalArrayDivideEtEmpera<int> ();
 	ODATWF.assertMaximumValueOneDimensionalArrayDivideEtEmpera<int> ();
+
+	MTWF.assertMaximumValueFromMatrix<int> ();
+	MTWF.assertMinimumValueFromMatrix<int> ();
+	MTWF.assertMatrixElementsSum<int> ();
+	MTWF.assertMatrixElementsProduct<int> ();
+	MTWF.assertMatrixElementsDifference<int> ();
 
 	__assert__.getConclusion();
 
