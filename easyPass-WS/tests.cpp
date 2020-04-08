@@ -237,6 +237,11 @@ template <class Type> void matricesTestingWorkFlow::assertMatrixElementsDifferen
 
 class fundamentalAlgorithmsTestingWorkflow {
 
+private:
+	fundamentalAlgorithmsWorkFlow fundamentalAlgosWorkFlow;
+	assertions __assert__;
+	portData port;
+
 public:
 	fundamentalAlgorithmsTestingWorkflow () {}
 
@@ -271,11 +276,63 @@ public:
 	virtual ~fundamentalAlgorithmsTestingWorkflow () {}
 };
 
+void fundamentalAlgorithmsTestingWorkflow::assertRootLinearEquation () {
+
+	linearEquation __LEquation__;
+
+	__LEquation__.y_intercept = 4;
+	__LEquation__.slope = 2;
+	__LEquation__.root = -2;
+
+	limits<float> results;
+
+	results.minimLimit = fundamentalAlgosWorkFlow.getRootLinearEquation(__LEquation__);
+	results.maximLimit = -2;
+
+	__assert__.countTest ((char*)"getRootLinearEquation", __assert__.assertPrimitiveDataTypes<float>(results) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertValueLinearEquation () {
+
+	linearEquation __LEquation__;
+
+	__LEquation__.y_intercept = 4;
+	__LEquation__.slope = 2;
+	__LEquation__.root = 2;
+
+	limits<float> results;
+
+	results.minimLimit = fundamentalAlgosWorkFlow.getValueLinearEquation(__LEquation__);
+	results.maximLimit = 8;
+
+	__assert__.countTest ((char*)"getValueLinearEquation", __assert__.assertPrimitiveDataTypes<float>(results) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertRootsQuadraticEquation () {
+
+	quadraticEquation __QEquation__;
+
+	__QEquation__.coefficient_a = 1;
+	__QEquation__.coefficient_b = 3;
+	__QEquation__.coefficient_c = 2;
+
+	limits<float> roots;
+	port.portLimits (roots, fundamentalAlgosWorkFlow.getRootsQuadraticEquation (__QEquation__));
+
+	limits<float> results;
+
+	results.minimLimit = -1;
+	results.maximLimit = -2;
+
+	__assert__.countTest ((char*)"getRootsQuadraticEquation", __assert__.assertLimits<float>(roots, results) );
+}
+
 int main(int argc, char const *argv[]) {
 
 	assertions __assert__;
 	oneDimensionalArrayTestingWorkflow ODATWF;
 	matricesTestingWorkFlow MTWF;
+	fundamentalAlgorithmsTestingWorkflow FAWF;
 
 	ODATWF.assertMinimumValueOneDimensionalArray<int> ();
 	ODATWF.assertMaximumValueOneDimensionalArray<int> ();
@@ -292,7 +349,11 @@ int main(int argc, char const *argv[]) {
 	MTWF.assertMatrixElementsProduct<int> ();
 	MTWF.assertMatrixElementsDifference<int> ();
 
-	__assert__.getConclusion();
+	FAWF.assertRootLinearEquation ();
+	FAWF.assertValueLinearEquation ();
+	FAWF.assertRootsQuadraticEquation ();
+
+ 	__assert__.getConclusion();
 
 	return 0;
 }
