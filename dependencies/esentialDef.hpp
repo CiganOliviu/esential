@@ -28,7 +28,7 @@ class IOSysten {
 private:
   errorsHandler __handler__;
   checkAndSupport __support__;
-  
+
 public:
   IOSysten () {}
 
@@ -179,7 +179,6 @@ public:
   int getThe_N_FactorialNumberRecursive (int parameter);
   int getThe_N_mannaPnueliNumber (int parameter);
   int getThe_N_ackermanNumber (int minimLimit, int maximLimit);
-  int getThe_N_stirlingNumber (int minimLimit, int maximLimit);
   int getThe_N_eulerianNumber (int minimLimit, int maximLimit);
   int getThe_N_catalanNumber (int parameter);
   int getThe_N_fibonacciNumber (int parameter);

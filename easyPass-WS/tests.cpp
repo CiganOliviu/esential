@@ -250,9 +250,12 @@ public:
 	void assertRootsQuadraticEquation ();
 	void assertValueQuadraticEquation ();
 
+	void assertGaussSum ();
+	void assertTheLargestCommonDivisor();
+	void assertTheLargestCommonDivisorRecursive ();
 	void assertIfPrime ();
 	void assertIfOdd ();
-	void assertOfEven ();
+	void assertIfEven ();
 	void assertConstantNumber ();
 	void assertReversedNumber ();
 	void assertPalindromeNumber ();
@@ -260,18 +263,15 @@ public:
 
 	void assertFactorialNumber ();
 	void assertFactorialNumberRecursive ();
-	void assertMannaPnueliNumber ();
+
 	void assertAckermanNumber ();
-	void assertStirlingNumber ();
 	void assertEulerianNumber ();
 	void assertCatalanNumber ();
+
 	void assertFibonacciNumber ();
 	void assertFibonacciNumberRecursive ();
-	void assertMasterTheoremNumber ();
 
-	void assertComplexNumbersProduct ();
-	void assertComplexNumbersSum ();
-	void assertComplexNumbersDifference ();
+	void assertMannaPnueliNumber ();
 
 	virtual ~fundamentalAlgorithmsTestingWorkflow () {}
 };
@@ -327,6 +327,274 @@ void fundamentalAlgorithmsTestingWorkflow::assertRootsQuadraticEquation () {
 	__assert__.countTest ((char*)"getRootsQuadraticEquation", __assert__.assertLimits<float>(roots, results) );
 }
 
+void fundamentalAlgorithmsTestingWorkflow::assertValueQuadraticEquation () {
+
+	quadraticEquation __QEquation__;
+
+	__QEquation__.coefficient_a = 1;
+	__QEquation__.coefficient_b = -3;
+	__QEquation__.coefficient_c = 2;
+	float roots = 5;
+
+	limits<float> results;
+
+	results.minimLimit = fundamentalAlgosWorkFlow.getValueQuadraticEquation (__QEquation__, roots);
+	results.maximLimit = 12;
+
+	__assert__.countTest ((char*)"getValueQuadraticEquation", __assert__.assertPrimitiveDataTypes<float>(results) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertGaussSum () {
+
+	limits<float> results;
+
+	results.minimLimit = fundamentalAlgosWorkFlow.getGaussSum (5);
+	results.maximLimit = 15;
+
+	__assert__.countTest ((char*)"getGaussSum", __assert__.assertPrimitiveDataTypes<float>(results) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertTheLargestCommonDivisor () {
+
+	limits<int> interval;
+
+	interval.minimLimit = 12;
+	interval.maximLimit = 36;
+
+	limits<int> results;
+
+	results.minimLimit = fundamentalAlgosWorkFlow.getTheLargestCommonDivisor (interval);
+	results.maximLimit = 12;
+
+	__assert__.countTest ((char*)"getTheLargestCommonDivisor", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertTheLargestCommonDivisorRecursive () {
+
+	limits<int> interval;
+
+	interval.minimLimit = 12;
+	interval.maximLimit = 36;
+
+	limits<int> results;
+
+	results.minimLimit = fundamentalAlgosWorkFlow.getTheLargestCommonDivisorRecursive (interval);
+	results.maximLimit = 12;
+
+	__assert__.countTest ((char*)"getTheLargestCommonDivisorRecursive", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertIfPrime () {
+
+	limits<bool> resultsSetOne;
+	limits<bool> resultsSetTwo;
+
+	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.isPrime(13);
+	resultsSetOne.maximLimit = true;
+
+	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.isPrime(14);
+	resultsSetTwo.maximLimit = false;
+
+	__assert__.countTest ((char*)"assertIfPrimeSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
+	__assert__.countTest ((char*)"assertIfPrimeSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
+}
+
+
+void fundamentalAlgorithmsTestingWorkflow::assertIfOdd () {
+
+	limits<bool> resultsSetOne;
+	limits<bool> resultsSetTwo;
+
+	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.isOdd(12);
+	resultsSetOne.maximLimit = false;
+
+	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.isOdd(13);
+	resultsSetTwo.maximLimit = true;
+
+	__assert__.countTest ((char*)"isOddSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
+	__assert__.countTest ((char*)"isOddSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertIfEven () {
+
+	limits<bool> resultsSetOne;
+	limits<bool> resultsSetTwo;
+
+	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.isEven(57);
+	resultsSetOne.maximLimit = false;
+
+	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.isEven(12);
+	resultsSetTwo.maximLimit = true;
+
+	__assert__.countTest ((char*)"isEvenSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
+	__assert__.countTest ((char*)"isEvenSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertConstantNumber () {
+
+	limits<bool> resultsSetOne;
+	limits<bool> resultsSetTwo;
+
+	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.isConstantNumber(12345);
+	resultsSetOne.maximLimit = false;
+
+	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.isConstantNumber(4444);
+	resultsSetTwo.maximLimit = true;
+
+	__assert__.countTest ((char*)"isConstantNumberSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
+	__assert__.countTest ((char*)"isConstantNumberSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertReversedNumber () {
+
+	limits<int> resultsSetOne;
+	limits<int> resultsSetTwo;
+
+	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.reverseNumber(12321);
+	resultsSetOne.maximLimit = 12321;
+
+	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.reverseNumber(65);
+	resultsSetTwo.maximLimit = 56;
+
+	__assert__.countTest ((char*)"assertReversedNumberSetOne", __assert__.assertPrimitiveDataTypes<int>(resultsSetOne) );
+	__assert__.countTest ((char*)"assertReversedNumberSetTwo", __assert__.assertPrimitiveDataTypes<int>(resultsSetTwo) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertPalindromeNumber () {
+
+	limits<int> resultsSetOne;
+	limits<int> resultsSetTwo;
+
+	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.getPalindromValue(123421);
+	resultsSetOne.maximLimit = 0;
+
+	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.getPalindromValue(8);
+	resultsSetTwo.maximLimit = 8;
+
+	__assert__.countTest ((char*)"assertPalindromeNumberSetOne", __assert__.assertPrimitiveDataTypes<int>(resultsSetOne) );
+	__assert__.countTest ((char*)"assertPalindromeNumberSetTwo", __assert__.assertPrimitiveDataTypes<int>(resultsSetTwo) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertMeansOfTwoNumbers () {
+
+	limits<float> resultsSetOne;
+	limits<float> resultsSetTwo;
+
+	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.getMeanOfTwoNumbers(12, 24);
+	resultsSetOne.maximLimit = 18;
+
+	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.getMeanOfTwoNumbers(13, 3);
+	resultsSetTwo.maximLimit = 8;
+
+	__assert__.countTest ((char*)"getMeanOfTwoNumbersSetOne", __assert__.assertPrimitiveDataTypes<float>(resultsSetOne) );
+	__assert__.countTest ((char*)"getMeanOfTwoNumbersSetTwo", __assert__.assertPrimitiveDataTypes<float>(resultsSetTwo) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertFactorialNumber () {
+
+	limits<int> resultsSetOne;
+	limits<int> resultsSetTwo;
+
+	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.getThe_N_FactorialNumber(5);
+	resultsSetOne.maximLimit = 120;
+
+	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.getThe_N_FactorialNumber(7);
+	resultsSetTwo.maximLimit = 5040;
+
+	__assert__.countTest ((char*)"getThe_N_FactorialNumber", __assert__.assertPrimitiveDataTypes<int>(resultsSetOne) );
+	__assert__.countTest ((char*)"getThe_N_FactorialNumber", __assert__.assertPrimitiveDataTypes<int>(resultsSetTwo) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertFactorialNumberRecursive () {
+
+	limits<int> resultsSetOne;
+	limits<int> resultsSetTwo;
+
+	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.getThe_N_FactorialNumberRecursive(5);
+	resultsSetOne.maximLimit = 120;
+
+	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.getThe_N_FactorialNumberRecursive(7);
+	resultsSetTwo.maximLimit = 5040;
+
+	__assert__.countTest ((char*)"getThe_N_FactorialNumberRecursive", __assert__.assertPrimitiveDataTypes<int>(resultsSetOne) );
+	__assert__.countTest ((char*)"getThe_N_FactorialNumberRecursive", __assert__.assertPrimitiveDataTypes<int>(resultsSetTwo) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertAckermanNumber () {
+
+	limits<int> results;
+
+	results.minimLimit = fundamentalAlgosWorkFlow.getThe_N_ackermanNumber(1, 2);
+	results.maximLimit = 4;
+
+	__assert__.countTest ((char*)"getThe_N_ackermanNumber", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertEulerianNumber () {
+
+	limits<int> results;
+
+	results.minimLimit = fundamentalAlgosWorkFlow.getThe_N_eulerianNumber(3, 1);
+	results.maximLimit = 4;
+
+	__assert__.countTest ((char*)"getThe_N_eulerianNumber", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertCatalanNumber () {
+
+	limits<int> results;
+
+	results.minimLimit = fundamentalAlgosWorkFlow.getThe_N_catalanNumber(3);
+	results.maximLimit = 5;
+
+	__assert__.countTest ((char*)"getThe_N_catalanNumber", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertFibonacciNumber () {
+
+	limits<int> resultsSetOne;
+	limits<int> resultsSetTwo;
+
+	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.getThe_N_fibonacciNumber(5);
+	resultsSetOne.maximLimit = 5;
+
+	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.getThe_N_fibonacciNumber(7);
+	resultsSetTwo.maximLimit = 13;
+
+	__assert__.countTest ((char*)"getThe_N_fibonacciNumber", __assert__.assertPrimitiveDataTypes<int>(resultsSetOne) );
+	__assert__.countTest ((char*)"getThe_N_fibonacciNumber", __assert__.assertPrimitiveDataTypes<int>(resultsSetTwo) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertFibonacciNumberRecursive () {
+
+	limits<int> resultsSetOne;
+	limits<int> resultsSetTwo;
+
+	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.getThe_N_fibonacciNumberRecursive(5);
+	resultsSetOne.maximLimit = 5;
+
+	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.getThe_N_fibonacciNumberRecursive(7);
+	resultsSetTwo.maximLimit = 13;
+
+	__assert__.countTest ((char*)"getThe_N_fibonacciNumberRecursive", __assert__.assertPrimitiveDataTypes<int>(resultsSetOne) );
+	__assert__.countTest ((char*)"getThe_N_fibonacciNumberRecursive", __assert__.assertPrimitiveDataTypes<int>(resultsSetTwo) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertMannaPnueliNumber () {
+
+	limits<int> resultsSetOne;
+	limits<int> resultsSetTwo;
+
+	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.getThe_N_mannaPnueliNumber(8);
+	resultsSetOne.maximLimit = 11;
+
+	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.getThe_N_mannaPnueliNumber(15);
+	resultsSetTwo.maximLimit = 14;
+
+	__assert__.countTest ((char*)"getThe_N_mannaPnueliNumber", __assert__.assertPrimitiveDataTypes<int>(resultsSetOne) );
+	__assert__.countTest ((char*)"getThe_N_mannaPnueliNumber", __assert__.assertPrimitiveDataTypes<int>(resultsSetTwo) );
+}
+
 int main(int argc, char const *argv[]) {
 
 	assertions __assert__;
@@ -352,7 +620,26 @@ int main(int argc, char const *argv[]) {
 	FAWF.assertRootLinearEquation ();
 	FAWF.assertValueLinearEquation ();
 	FAWF.assertRootsQuadraticEquation ();
-
+	FAWF.assertValueQuadraticEquation ();
+	FAWF.assertGaussSum ();
+	FAWF.assertTheLargestCommonDivisor ();
+	FAWF.assertTheLargestCommonDivisorRecursive ();
+	FAWF.assertIfPrime ();
+	FAWF.assertIfOdd ();
+	FAWF.assertIfEven ();
+	FAWF.assertConstantNumber ();
+	FAWF.assertReversedNumber ();
+	FAWF.assertPalindromeNumber ();
+	FAWF.assertMeansOfTwoNumbers ();
+	FAWF.assertFactorialNumber ();
+	FAWF.assertFactorialNumberRecursive ();
+	FAWF.assertAckermanNumber ();
+	FAWF.assertEulerianNumber ();
+	FAWF.assertCatalanNumber ();
+	FAWF.assertFibonacciNumber ();
+	FAWF.assertFibonacciNumberRecursive ();
+	FAWF.assertMannaPnueliNumber ();
+	
  	__assert__.getConclusion();
 
 	return 0;

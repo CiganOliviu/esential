@@ -641,7 +641,7 @@ template <class Type> Type matricesWorkFlow::getMatrixElementsSum (matrixType<Ty
 
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
-  Type sum = matrixObject.matrix[0][0];
+  Type sum = 0;
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
@@ -654,7 +654,7 @@ template <class Type> Type matricesWorkFlow::getMatrixElementsProduct (matrixTyp
 
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
-  Type product = matrixObject.matrix[0][0];
+  Type product = 1;
 
   for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
@@ -1235,17 +1235,6 @@ int fundamentalAlgorithmsWorkFlow::getThe_N_ackermanNumber (int minimLimit, int 
   if (__validations__.isZero(maximLimit)) return getThe_N_ackermanNumber(minimLimit - 1, 1);
 
   return getThe_N_ackermanNumber(minimLimit - 1, getThe_N_ackermanNumber(minimLimit, maximLimit - 1));
-}
-
-int fundamentalAlgorithmsWorkFlow::getThe_N_stirlingNumber (int minimLimit, int maximLimit) {
-
-  __handler__.negativeNumberHandler(minimLimit, __PRETTY_FUNCTION__);
-  __handler__.negativeNumberHandler(maximLimit, __PRETTY_FUNCTION__);
-
-  if (maximLimit == 1 || minimLimit == maximLimit) return 1;
-
-  return maximLimit * getThe_N_stirlingNumber(minimLimit-1, maximLimit) + getThe_N_stirlingNumber(minimLimit-1, maximLimit-1);
-
 }
 
 int fundamentalAlgorithmsWorkFlow::getThe_N_eulerianNumber (int minimLimit, int maximLimit) {
