@@ -70,7 +70,7 @@ int main(int argc, char const *argv[]) {
   matrixType <int> matrix;
   matricesWorkFlow matricesWF;
   fundamentalAlgorithmsWorkFlow fundamentalWF;
-  IOSysten io;
+  IOSystem io;
   makeAreasNull turnInNull;
 
   io.readDynamicFileMatrix ((char*)"makeAreasNull.data", matrix);

@@ -62,7 +62,7 @@ int main(int argc, char const *argv[]) {
 
   matrixType<int> matrixRefference;
   matricesWorkFlow MWorkFlow;
-  IOSysten io;
+  IOSystem io;
   matrixGenerator __matrixGenerator_init__;
 
   std::cin >> matrixRefference.lineRefference;

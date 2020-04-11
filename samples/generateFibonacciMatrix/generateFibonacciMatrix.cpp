@@ -52,7 +52,7 @@ void matrixGenerator::generateFibonacciMatrix (matrixType<int> & fiboMatrix) {
 int main(int argc, char const *argv[]) {
 
   matricesWorkFlow MWorkFlow;
-  IOSysten io;
+  IOSystem io;
   matrixType <int> matrixRefference;
   matrixGenerator __generator_init__;
 

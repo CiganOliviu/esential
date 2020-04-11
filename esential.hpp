@@ -1,6 +1,6 @@
 #include "dependencies/esentialDef.hpp"
 
-template <class Type> void IOSysten::readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSystem::readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   std::cin >> ODAObject.length;
 
@@ -10,7 +10,7 @@ template <class Type> void IOSysten::readOneDimensionalArray (oneDimensionalArra
     std::cin >> ODAObject.oneDimensionalArray[iterator];
 }
 
-template <class Type> void IOSysten::readStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSystem::readStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ifstream dataStream(fileName, std::ios::in);
 
@@ -26,7 +26,7 @@ template <class Type> void IOSysten::readStaticFileOneDimensionalArray (char * f
   dataStream.close();
 }
 
-template <class Type> void IOSysten::readDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSystem::readDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ifstream dataStream(fileName, std::ios::in);
   Type data;
@@ -47,7 +47,7 @@ template <class Type> void IOSysten::readDynamicFileOneDimensionalArray (char * 
   dataStream.close();
 }
 
-template <class Type> void IOSysten::outputOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSystem::outputOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
@@ -57,7 +57,7 @@ template <class Type> void IOSysten::outputOneDimensionalArray (oneDimensionalAr
   std::cout << '\n';
 }
 
-template <class Type> void IOSysten::outputStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSystem::outputStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ofstream dataStream(fileName, std::ios::out);
 
@@ -75,7 +75,7 @@ template <class Type> void IOSysten::outputStaticFileOneDimensionalArray (char *
   dataStream.close();
 }
 
-template <class Type> void IOSysten::outputDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSystem::outputDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ofstream dataStream(fileName, std::ios::out);
 
@@ -91,7 +91,7 @@ template <class Type> void IOSysten::outputDynamicFileOneDimensionalArray (char 
   dataStream.close();
 }
 
-template <class Type> void IOSysten::readMatrix (matrixType<Type> & matrixObject) {
+template <class Type> void IOSystem::readMatrix (matrixType<Type> & matrixObject) {
 
   std::cin >> matrixObject.lineRefference >> matrixObject.columnRefference;
 
@@ -102,7 +102,7 @@ template <class Type> void IOSysten::readMatrix (matrixType<Type> & matrixObject
       std::cin >> matrixObject.matrix[iterator][jiterator];
 }
 
-template <class Type> void IOSysten::readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
+template <class Type> void IOSystem::readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
 
   std::ifstream dataStream(fileName, std::ios::in);
 
@@ -119,7 +119,7 @@ template <class Type> void IOSysten::readStaticFileMatrix (char * fileName, matr
   dataStream.close();
 }
 
-template <class Type> void IOSysten::readDynamicFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
+template <class Type> void IOSystem::readDynamicFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
 
   std::ifstream dataStream(fileName, std::ios::in);
 
@@ -149,7 +149,7 @@ template <class Type> void IOSysten::readDynamicFileMatrix (char * fileName, mat
   dataStream.close();
 }
 
-template <class Type> void IOSysten::outputMatrix (matrixType<Type> matrixObject) {
+template <class Type> void IOSystem::outputMatrix (matrixType<Type> matrixObject) {
 
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
@@ -161,7 +161,7 @@ template <class Type> void IOSysten::outputMatrix (matrixType<Type> matrixObject
   }
 }
 
-template <class Type> void IOSysten::outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject) {
+template <class Type> void IOSystem::outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject) {
 
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
@@ -180,7 +180,7 @@ template <class Type> void IOSysten::outputStaticFileMatrix (char * fileName, ma
   dataStream.close();
 }
 
-template <class Type> void IOSysten::outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject) {
+template <class Type> void IOSystem::outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject) {
 
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 

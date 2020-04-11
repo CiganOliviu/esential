@@ -44,7 +44,7 @@ int main(int argc, char const *argv[]) {
   oneDimensionalArrayType<int> ODAObject;
   limits<int> valueAndIndex;
   oneDimensionalArraysWorkFlow ODAWorkFlow;
-  IOSysten io;
+  IOSystem io;
   lastMultipleOfFive lastMultipleOfFiveWorkFlow;
   portData __port__;
 

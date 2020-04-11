@@ -24,13 +24,13 @@ SOFTWARE.
 
 #include "../easyPass-WS/easyPass.hpp"
 
-class IOSysten {
+class IOSystem {
 private:
   errorsHandler __handler__;
   checkAndSupport __support__;
 
 public:
-  IOSysten () {}
+  IOSystem () {}
 
   template <class Type> void readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void readStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
@@ -48,7 +48,7 @@ public:
   template <class Type> void outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject);
   template <class Type> void outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject);
 
-  virtual ~IOSysten () {}
+  virtual ~IOSystem () {}
 };
 
 class oneDimensionalArraysWorkFlow {
@@ -160,7 +160,7 @@ public:
   float getValueQuadraticEquation (quadraticEquation __QEquation__, float root);
 
   template <class Type> Type getGaussSum (Type limit);
-  
+
   int getTheLargestCommonDivisor (limits<int> interval);
   int getTheLargestCommonDivisorRecursive (limits<int> interval);
   int getTheLargestCommonDivisorOfTwoNumbers (int numberOne, int numberTwo);
