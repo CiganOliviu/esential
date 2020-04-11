@@ -3,7 +3,7 @@
 class oneDimensionalArrayTestingWorkflow {
 private:
 	oneDimensionalArraysWorkFlow ODAWorkFlow;
-	IOSysten io;
+	IOSystem io;
 	assertions __assert__;
 
 public:
@@ -150,7 +150,7 @@ class matricesTestingWorkFlow {
 
 private:
 	matricesWorkFlow MWorkFlow;
-	IOSysten io;
+	IOSystem io;
 	assertions __assert__;
 
 public:
@@ -636,54 +636,60 @@ void fundamentalAlgorithmsTestingWorkflow::assertMannaPnueliNumber () {
 	__assert__.countTest ((char*)"getThe_N_mannaPnueliNumber", __assert__.assertPrimitiveDataTypes<int>(resultsSetTwo) );
 }
 
-int main(int argc, char const *argv[]) {
+class RunTests {
+private:
+		assertions __assert__;
+		oneDimensionalArrayTestingWorkflow ODATWF;
+		matricesTestingWorkFlow MTWF;
+		fundamentalAlgorithmsTestingWorkflow FAWF;
 
-	assertions __assert__;
-	oneDimensionalArrayTestingWorkflow ODATWF;
-	matricesTestingWorkFlow MTWF;
-	fundamentalAlgorithmsTestingWorkflow FAWF;
+public:
+	RunTests () {}
 
-	ODATWF.assertMinimumValueOneDimensionalArray<int> ();
-	ODATWF.assertMaximumValueOneDimensionalArray<int> ();
-	ODATWF.assertOneDimensionalArrayElementsSum<int> ();
-	ODATWF.assertOneDimensionalArrayElementsProduct<int> ();
-	ODATWF.assertOneDimensionalArrayElementsDifference<int> ();
-	ODATWF.assertOneDimensionalArrayMean<int> ();
-	ODATWF.assertMinimumValueOneDimensionalArrayDivideEtEmpera<int> ();
-	ODATWF.assertMaximumValueOneDimensionalArrayDivideEtEmpera<int> ();
+	void run () {
 
-	MTWF.assertMaximumValueFromMatrix<int> ();
-	MTWF.assertMinimumValueFromMatrix<int> ();
-	MTWF.assertMatrixElementsSum<int> ();
-	MTWF.assertMatrixElementsProduct<int> ();
-	MTWF.assertMatrixElementsDifference<int> ();
+		ODATWF.assertMinimumValueOneDimensionalArray<int> ();
+		ODATWF.assertMaximumValueOneDimensionalArray<int> ();
+		ODATWF.assertOneDimensionalArrayElementsSum<int> ();
+		ODATWF.assertOneDimensionalArrayElementsProduct<int> ();
+		ODATWF.assertOneDimensionalArrayElementsDifference<int> ();
+		ODATWF.assertOneDimensionalArrayMean<int> ();
+		ODATWF.assertMinimumValueOneDimensionalArrayDivideEtEmpera<int> ();
+		ODATWF.assertMaximumValueOneDimensionalArrayDivideEtEmpera<int> ();
 
-	FAWF.assertRootLinearEquation ();
-	FAWF.assertValueLinearEquation ();
-	FAWF.assertRootsQuadraticEquation ();
-	FAWF.assertValueQuadraticEquation ();
-	FAWF.assertGaussSum ();
-	FAWF.assertTheLargestCommonDivisor ();
-	FAWF.assertTheLargestCommonDivisorRecursive ();
-	FAWF.assertLeastCommonMultipleOfTwoNumbers ();
-	FAWF.assertLeastCommonMultiple ();
-	FAWF.assertIfPrime ();
-	FAWF.assertIfOdd ();
-	FAWF.assertIfEven ();
-	FAWF.assertConstantNumber ();
-	FAWF.assertReversedNumber ();
-	FAWF.assertPalindromeNumber ();
-	FAWF.assertMeansOfTwoNumbers ();
-	FAWF.assertFactorialNumber ();
-	FAWF.assertFactorialNumberRecursive ();
-	FAWF.assertAckermanNumber ();
-	FAWF.assertEulerianNumber ();
-	FAWF.assertCatalanNumber ();
-	FAWF.assertFibonacciNumber ();
-	FAWF.assertFibonacciNumberRecursive ();
-	FAWF.assertMannaPnueliNumber ();
+		MTWF.assertMaximumValueFromMatrix<int> ();
+		MTWF.assertMinimumValueFromMatrix<int> ();
+		MTWF.assertMatrixElementsSum<int> ();
+		MTWF.assertMatrixElementsProduct<int> ();
+		MTWF.assertMatrixElementsDifference<int> ();
 
- 	__assert__.getConclusion();
+		FAWF.assertRootLinearEquation ();
+		FAWF.assertValueLinearEquation ();
+		FAWF.assertRootsQuadraticEquation ();
+		FAWF.assertValueQuadraticEquation ();
+		FAWF.assertGaussSum ();
+		FAWF.assertTheLargestCommonDivisor ();
+		FAWF.assertTheLargestCommonDivisorRecursive ();
+		FAWF.assertLeastCommonMultipleOfTwoNumbers ();
+		FAWF.assertLeastCommonMultiple ();
+		FAWF.assertIfPrime ();
+		FAWF.assertIfOdd ();
+		FAWF.assertIfEven ();
+		FAWF.assertConstantNumber ();
+		FAWF.assertReversedNumber ();
+		FAWF.assertPalindromeNumber ();
+		FAWF.assertMeansOfTwoNumbers ();
+		FAWF.assertFactorialNumber ();
+		FAWF.assertFactorialNumberRecursive ();
+		FAWF.assertAckermanNumber ();
+		FAWF.assertEulerianNumber ();
+		FAWF.assertCatalanNumber ();
+		FAWF.assertFibonacciNumber ();
+		FAWF.assertFibonacciNumberRecursive ();
+		FAWF.assertMannaPnueliNumber ();
 
-	return 0;
-}
+		__assert__.getConclusion();
+	}
+
+	virtual ~RunTests () {}
+};
