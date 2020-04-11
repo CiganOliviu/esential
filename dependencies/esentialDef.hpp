@@ -160,9 +160,14 @@ public:
   float getValueQuadraticEquation (quadraticEquation __QEquation__, float root);
 
   template <class Type> Type getGaussSum (Type limit);
+  
   int getTheLargestCommonDivisor (limits<int> interval);
   int getTheLargestCommonDivisorRecursive (limits<int> interval);
+  int getTheLargestCommonDivisorOfTwoNumbers (int numberOne, int numberTwo);
+
   int getLeastCommonMultiple (limits<int> interval);
+  int getLeastCommonMultipleOfTwoNumbers (int numberOne, int numberTwo);
+
   int getPrimevalue (int parameter);
 
   bool isPrime (int parameter);

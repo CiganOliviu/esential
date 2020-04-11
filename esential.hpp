@@ -1099,9 +1099,29 @@ int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisorRecursive (limits<i
   }
 }
 
+int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisorOfTwoNumbers (int numberOne, int numberTwo) {
+
+  __handler__.negativeNumberHandler (numberOne, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (numberTwo, __PRETTY_FUNCTION__);
+
+  while (numberOne != numberTwo) {
+    if (numberOne > numberTwo)
+      numberOne -= numberTwo;
+    else
+      numberTwo -= numberOne;
+  }
+
+  return numberOne;
+}
+
 int fundamentalAlgorithmsWorkFlow::getLeastCommonMultiple (limits<int> interval) {
 
   return (interval.minimLimit * interval.maximLimit) / getTheLargestCommonDivisor(interval);
+}
+
+int fundamentalAlgorithmsWorkFlow::getLeastCommonMultipleOfTwoNumbers (int numberOne, int numberTwo) {
+
+  return (numberOne * numberTwo) / getTheLargestCommonDivisorOfTwoNumbers (numberOne, numberTwo);
 }
 
 int fundamentalAlgorithmsWorkFlow::getPrimevalue (int parameter) {

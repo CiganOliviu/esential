@@ -251,8 +251,14 @@ public:
 	void assertValueQuadraticEquation ();
 
 	void assertGaussSum ();
-	void assertTheLargestCommonDivisor();
+
+	void assertTheLargestCommonDivisor ();
 	void assertTheLargestCommonDivisorRecursive ();
+	void assertTheLargestCommonDivisorOfTwoNumbers ();
+
+	void assertLeastCommonMultiple ();
+	void assertLeastCommonMultipleOfTwoNumbers ();
+
 	void assertIfPrime ();
 	void assertIfOdd ();
 	void assertIfEven ();
@@ -382,6 +388,41 @@ void fundamentalAlgorithmsTestingWorkflow::assertTheLargestCommonDivisorRecursiv
 	results.maximLimit = 12;
 
 	__assert__.countTest ((char*)"getTheLargestCommonDivisorRecursive", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertTheLargestCommonDivisorOfTwoNumbers () {
+
+	limits<int> results;
+
+	results.minimLimit = fundamentalAlgosWorkFlow.getTheLargestCommonDivisorOfTwoNumbers (12, 36);
+	results.maximLimit = 12;
+
+	__assert__.countTest ((char*)"getTheLargestCommonDivisorOfTwoNumbers", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertLeastCommonMultiple () {
+
+	limits<int> interval;
+
+	interval.minimLimit = 12;
+	interval.maximLimit = 36;
+
+	limits<int> results;
+
+	results.minimLimit = fundamentalAlgosWorkFlow.getLeastCommonMultiple (interval);
+	results.maximLimit = 36;
+
+	__assert__.countTest ((char*)"getLeastCommonMultiple", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void fundamentalAlgorithmsTestingWorkflow::assertLeastCommonMultipleOfTwoNumbers () {
+
+	limits<int> results;
+
+	results.minimLimit = fundamentalAlgosWorkFlow.getLeastCommonMultipleOfTwoNumbers (12, 36);
+	results.maximLimit = 36;
+
+	__assert__.countTest ((char*)"getLeastCommonMultipleOfTwoNumbers", __assert__.assertPrimitiveDataTypes<int>(results) );
 }
 
 void fundamentalAlgorithmsTestingWorkflow::assertIfPrime () {
@@ -624,6 +665,8 @@ int main(int argc, char const *argv[]) {
 	FAWF.assertGaussSum ();
 	FAWF.assertTheLargestCommonDivisor ();
 	FAWF.assertTheLargestCommonDivisorRecursive ();
+	FAWF.assertLeastCommonMultipleOfTwoNumbers ();
+	FAWF.assertLeastCommonMultiple ();
 	FAWF.assertIfPrime ();
 	FAWF.assertIfOdd ();
 	FAWF.assertIfEven ();
@@ -639,7 +682,7 @@ int main(int argc, char const *argv[]) {
 	FAWF.assertFibonacciNumber ();
 	FAWF.assertFibonacciNumberRecursive ();
 	FAWF.assertMannaPnueliNumber ();
-	
+
  	__assert__.getConclusion();
 
 	return 0;
