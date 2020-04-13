@@ -257,3 +257,96 @@ public:
 
   virtual ~graphsWorkFlow () {}
 };
+
+template <class Type> class singleLinkedList {
+private:
+  linkedCentrum<Type> * head;
+  linkedCentrum<Type> * tail;
+
+public:
+  singleLinkedList () {
+
+    head = nullptr;
+    tail = nullptr;
+  }
+
+  void displayList () {
+
+    linkedCentrum<Type> * temporar = new linkedCentrum<Type>;
+    temporar = head;
+
+    while (temporar != nullptr) {
+      std::cout << temporar->data << " ";
+      temporar = temporar->nextLinkedValue;
+      }
+    }
+
+  void insertDataStart (Type value) {
+
+    linkedCentrum<Type> * temporar = new linkedCentrum<Type>;
+    temporar -> data = value;
+    temporar -> nextLinkedValue = head;
+    head = temporar;
+  }
+
+  void insertDataLast (Type value) {
+
+    linkedCentrum<Type> * temporar = new linkedCentrum<Type>;
+    temporar -> data = value;
+    temporar -> nextLinkedValue = nullptr;
+
+    if (head == nullptr) {
+
+      head = temporar;
+      tail = temporar;
+      temporar = nullptr;
+    }
+    else {
+
+      tail -> nextLinkedValue = temporar;
+      tail = temporar;
+    }
+  }
+
+  void deleteFirstElement () {
+
+    linkedCentrum<Type> * temporar = new linkedCentrum<Type>;
+    temporar = head;
+    head = head -> nextLinkedValue;
+
+    delete temporar;
+  }
+
+  void deleteLastElement () {
+
+    linkedCentrum<Type> * current = new linkedCentrum<Type>;
+    linkedCentrum<Type> * previous = new linkedCentrum<Type>;
+    current = head;
+
+    while (current -> nextLinkedValue != nullptr) {
+      previous = current;
+      current = current -> nextLinkedValue;
+    }
+
+    tail = previous;
+    previous -> nextLinkedValue = nullptr;
+
+    delete current;
+  }
+
+  void deleteElementFromPosition (int position) {
+
+    linkedCentrum<Type> * current = new linkedCentrum<Type>;
+    linkedCentrum<Type> * previous = new linkedCentrum<Type>;
+    current = head;
+
+    for (int iterator = 1; iterator < position; iterator++) {
+      previous = current;
+      current = current -> nextLinkedValue;
+    }
+
+    previous -> nextLinkedValue = current -> nextLinkedValue;
+  }
+
+  virtual ~singleLinkedList () {}
+};
