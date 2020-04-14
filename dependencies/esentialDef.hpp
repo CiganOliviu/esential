@@ -48,6 +48,8 @@ public:
   template <class Type> void outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject);
   template <class Type> void outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject);
 
+  bool classResponse () { return true; }
+
   virtual ~IOSystem () {}
 };
 
@@ -93,6 +95,8 @@ public:
 
   template <class Type> bool binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
 
+  bool classResponse () { return true; }
+
   virtual ~oneDimensionalArraysWorkFlow () {}
 };
 
@@ -135,6 +139,8 @@ public:
 
   template <class Type> oneDimensionalArrayType<Type> getMatrixOrderMainDiagonal (matrixType<Type> matrixObject, int order);
   template <class Type> oneDimensionalArrayType<Type> getMatrixOrderSecondaryDiagonal (matrixType<Type> matrixObject, int order);
+
+  bool classResponse () { return true; }
 
   virtual ~matricesWorkFlow () {}
 };
@@ -197,6 +203,8 @@ public:
   complexNumber complexNumberSum (complexNumber * numberOne, complexNumber * numberTwo);
   complexNumber complexNumberDifference (complexNumber * numberOne, complexNumber * numberTwo);
 
+  bool classResponse () { return true; }
+
   virtual ~fundamentalAlgorithmsWorkFlow () {}
 };
 
@@ -224,6 +232,8 @@ public:
   template <class Type> Type getTreeDivisionValues (binaryTreeType<Type> * treeObject);
   template <class Type> bool checkSimilarityOfTrees (binaryTreeType<Type> * treeObjectOne, binaryTreeType<Type> * treeObjectTwo);
   template <class Type> bool convertToMirror (binaryTreeType<Type> * treeObject);
+
+  bool classResponse () { return true; }
 
   virtual ~treesWorkFlow () {}
 };
@@ -255,98 +265,7 @@ public:
   template <class Type> unsigned int maximumValency (graphType<Type> graphObject);
   template <class Type> void valencyOfVertices (graphType<Type> graphObject);
 
+  bool classResponse () { return true; }
+  
   virtual ~graphsWorkFlow () {}
-};
-
-template <class Type> class singleLinkedList {
-private:
-  linkedCentrum<Type> * head;
-  linkedCentrum<Type> * tail;
-
-public:
-  singleLinkedList () {
-
-    head = nullptr;
-    tail = nullptr;
-  }
-
-  void displayList () {
-
-    linkedCentrum<Type> * temporar = new linkedCentrum<Type>;
-    temporar = head;
-
-    while (temporar != nullptr) {
-      std::cout << temporar->data << " ";
-      temporar = temporar->nextLinkedValue;
-      }
-    }
-
-  void insertDataStart (Type value) {
-
-    linkedCentrum<Type> * temporar = new linkedCentrum<Type>;
-    temporar -> data = value;
-    temporar -> nextLinkedValue = head;
-    head = temporar;
-  }
-
-  void insertDataLast (Type value) {
-
-    linkedCentrum<Type> * temporar = new linkedCentrum<Type>;
-    temporar -> data = value;
-    temporar -> nextLinkedValue = nullptr;
-
-    if (head == nullptr) {
-
-      head = temporar;
-      tail = temporar;
-      temporar = nullptr;
-    }
-    else {
-
-      tail -> nextLinkedValue = temporar;
-      tail = temporar;
-    }
-  }
-
-  void deleteFirstElement () {
-
-    linkedCentrum<Type> * temporar = new linkedCentrum<Type>;
-    temporar = head;
-    head = head -> nextLinkedValue;
-
-    delete temporar;
-  }
-
-  void deleteLastElement () {
-
-    linkedCentrum<Type> * current = new linkedCentrum<Type>;
-    linkedCentrum<Type> * previous = new linkedCentrum<Type>;
-    current = head;
-
-    while (current -> nextLinkedValue != nullptr) {
-      previous = current;
-      current = current -> nextLinkedValue;
-    }
-
-    tail = previous;
-    previous -> nextLinkedValue = nullptr;
-
-    delete current;
-  }
-
-  void deleteElementFromPosition (int position) {
-
-    linkedCentrum<Type> * current = new linkedCentrum<Type>;
-    linkedCentrum<Type> * previous = new linkedCentrum<Type>;
-    current = head;
-
-    for (int iterator = 1; iterator < position; iterator++) {
-      previous = current;
-      current = current -> nextLinkedValue;
-    }
-
-    previous -> nextLinkedValue = current -> nextLinkedValue;
-  }
-
-  virtual ~singleLinkedList () {}
 };
