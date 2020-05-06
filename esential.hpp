@@ -471,7 +471,7 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
   return numberElementsOneDimensionalArray;
 }
 
-template <class Type> void boostOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type factor) {
+template <class Type> void oneDimensionalArraysWorkFlow::boostOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type factor) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
@@ -743,7 +743,7 @@ template <class Type> void matricesWorkFlow::normalizeMatrix (matrixType<Type> &
       matrixObject.matrix[iterator][jiterator] = sortAndNormalizeNumber (matrixObject.matrix[iterator][jiterator]);
 }
 
-template <class Type> void boostMatrix (matrixType<Type> & matrixObject, Type factor) {
+template <class Type> void matricesWorkFlow::boostMatrix (matrixType<Type> & matrixObject, Type factor) {
 
     __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
@@ -942,8 +942,8 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixO
 
   oneDimensionalArrayType<Type> oneDimensionalArrayValuesFromOrder;
 
-  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
+  for (int iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (int jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (abs(iterator + jiterator) == order) {
         oneDimensionalArrayValuesFromOrder.oneDimensionalArray[oneDimensionalArrayValuesFromOrder.length] = matrixObject.matrix[iterator][jiterator];
         oneDimensionalArrayValuesFromOrder.length += 1;
@@ -958,8 +958,8 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixO
 
   oneDimensionalArrayType<Type> oneDimensionalArrayValuesFromOrder;
 
-  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
-    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
+  for (int iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+    for (int jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       if (abs(iterator + jiterator - matrixObject.line - 1) == order) {
         oneDimensionalArrayValuesFromOrder.oneDimensionalArray[oneDimensionalArrayValuesFromOrder.length] = matrixObject.matrix[iterator][jiterator];
         oneDimensionalArrayValuesFromOrder.length += 1;

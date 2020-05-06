@@ -250,7 +250,7 @@ template <class Type> void randomGenerator::matrixGenerator (matrixType<Type> & 
       MTObject.matrix[iterator][jiterator] = (rand() % (limitsObject.maximLimit - limitsObject.minimLimit + 1)) + limitsObject.minimLimit;
 }
 
-template <class Type> void checkAndSupport::readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void lowLevelSupport::readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   std::cin >> ODAObject.length;
 
@@ -260,7 +260,7 @@ template <class Type> void checkAndSupport::readOneDimensionalArray (oneDimensio
     std::cin >> ODAObject.oneDimensionalArray[iterator];
 }
 
-template <class Type> void checkAndSupport::readDynamicFileDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void lowLevelSupport::readDynamicFileDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ifstream dataStream(fileName, std::ios::in);
   Type data;
@@ -278,7 +278,7 @@ template <class Type> void checkAndSupport::readDynamicFileDimensionalArray (cha
   dataStream.close();
 }
 
-template <class Type> void checkAndSupport::putsOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void lowLevelSupport::putsOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray(ODAObject, __PRETTY_FUNCTION__);
 
@@ -286,7 +286,7 @@ template <class Type> void checkAndSupport::putsOneDimensionalArray (oneDimensio
     std::cout << ODAObject.oneDimensionalArray[iterator] << " ";
 }
 
-template <class Type> void checkAndSupport::putsFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void lowLevelSupport::putsFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray(ODAObject, __PRETTY_FUNCTION__);
 
@@ -300,7 +300,7 @@ template <class Type> void checkAndSupport::putsFileOneDimensionalArray (char * 
   dataStream.close();
 }
 
-template <class Type> void checkAndSupport::readMatrix (matrixType<Type> & MTObject) {
+template <class Type> void lowLevelSupport::readMatrix (matrixType<Type> & MTObject) {
 
   std::cin >> MTObject.lineRefference >> MTObject.columnRefference;
 
@@ -311,7 +311,7 @@ template <class Type> void checkAndSupport::readMatrix (matrixType<Type> & MTObj
         std::cin >> MTObject.matrix[iterator][jiterator];
 }
 
-template <class Type> void checkAndSupport::readDynamicFileMatrix (char * fileName, matrixType<Type> & MTObject) {
+template <class Type> void lowLevelSupport::readDynamicFileMatrix (char * fileName, matrixType<Type> & MTObject) {
 
   std::ifstream dataStream(fileName, std::ios::in);
 
@@ -341,7 +341,7 @@ template <class Type> void checkAndSupport::readDynamicFileMatrix (char * fileNa
   dataStream.close();
 }
 
-template <class Type> void checkAndSupport::putsMatrix (matrixType<Type> & MTObject) {
+template <class Type> void lowLevelSupport::putsMatrix (matrixType<Type> & MTObject) {
 
   __handler__.standardHandlerMatrix (MTObject, __PRETTY_FUNCTION__);
 
@@ -352,7 +352,7 @@ template <class Type> void checkAndSupport::putsMatrix (matrixType<Type> & MTObj
   }
 }
 
-template <class Type> void checkAndSupport::putsFileMatrix (char * fileName, matrixType<Type> & MTObject) {
+template <class Type> void lowLevelSupport::putsFileMatrix (char * fileName, matrixType<Type> & MTObject) {
 
   __handler__.standardHandlerMatrix (MTObject, __PRETTY_FUNCTION__);
 
@@ -369,7 +369,7 @@ template <class Type> void checkAndSupport::putsFileMatrix (char * fileName, mat
   dataStream.close();
 }
 
-template <class Type> void checkAndSupport::readTree (binaryTreeType<Type> *& root) {
+template <class Type> void lowLevelSupport::readTree (binaryTreeType<Type> *& root) {
 
   Type value;
 
@@ -386,7 +386,7 @@ template <class Type> void checkAndSupport::readTree (binaryTreeType<Type> *& ro
   } else root = NULL;
 }
 
-template <class Type> void checkAndSupport::putsTree (binaryTreeType<Type> * root) {
+template <class Type> void lowLevelSupport::putsTree (binaryTreeType<Type> * root) {
 
   if (root != NULL) {
 
