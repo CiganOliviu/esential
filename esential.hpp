@@ -968,268 +968,9 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixO
   return oneDimensionalArrayValuesFromOrder;
 }
 
-float fundamentalAlgorithmsWorkFlow::getRootLinearEquation (linearEquation __LEquation__) {
-
-  if (__validations__.isZero(__LEquation__.slope))
-    if (__validations__.isZero(__LEquation__.y_intercept)) throw systemException ("Undetermined compatible equation in float fundamentalAlgorithmsWorkFlow::getRootLinearEquation (linearEquation __LEquation__);");
-    else throw systemException ("Imcompatible equation in float fundamentalAlgorithmsWorkFlow::getRootLinearEquation (linearEquation __LEquation__);");
-
-  return float(-__LEquation__.y_intercept / __LEquation__.slope);
-}
-
-float fundamentalAlgorithmsWorkFlow::getValueLinearEquation (linearEquation __LEquation__) {
-
-  if (__validations__.isZero(__LEquation__.slope))
-    if (__validations__.isZero(__LEquation__.y_intercept)) throw systemException ("");
-    else throw systemException ("Imcompatible equation in float fundamentalAlgorithmsWorkFlow::getValueLinearEquation (linearEquation __LEquation__);");
-
-  return (( __LEquation__.slope * __LEquation__.root) + __LEquation__.y_intercept );
-}
-
-void fundamentalAlgorithmsWorkFlow::processQuadraticEquationWithoutCoefficient_a (limits<float> & roots, quadraticEquation __QEquation__) {
-
-  roots.minimLimit = -__QEquation__.coefficient_c / __QEquation__.coefficient_b;
-  roots.maximLimit = roots.minimLimit;
-}
-
-void fundamentalAlgorithmsWorkFlow::processQuadraticEquationWithoutCoefficient_b (limits<float> & roots, quadraticEquation __QEquation__) {
-
-  roots.minimLimit = sqrt(-__QEquation__.coefficient_c / __QEquation__.coefficient_b);
-  roots.maximLimit = - sqrt(-__QEquation__.coefficient_c / __QEquation__.coefficient_b);
-}
-
-void fundamentalAlgorithmsWorkFlow::processQuadraticEquationWithoutCoefficient_c (limits<float> & roots, quadraticEquation __QEquation__) {
-
-  roots.minimLimit = 0;
-  roots.maximLimit = (-__QEquation__.coefficient_b / __QEquation__.coefficient_a);
-}
-
-void fundamentalAlgorithmsWorkFlow::processQuadraticEquationWithoutCoefficient_b_andCoefficient_c (limits<float> & roots, quadraticEquation __QEquation__) {
-
-    roots.minimLimit = sqrt(__QEquation__.coefficient_a);
-    roots.maximLimit = roots.minimLimit;
-}
-
-void fundamentalAlgorithmsWorkFlow::processingQuadraticEquation (limits<float> & roots, quadraticEquation __QEquation__) {
-
-  float delta;
-
-  delta = pow (__QEquation__.coefficient_b, 2) - 4 * __QEquation__.coefficient_a * __QEquation__.coefficient_c;
-
-  __handler__.negativeNumberHandler<float> (delta, __PRETTY_FUNCTION__);
-
-  roots.minimLimit = ( (-__QEquation__.coefficient_b + sqrt (delta)) / (2*__QEquation__.coefficient_a ));
-  roots.maximLimit = ( (-__QEquation__.coefficient_b - sqrt (delta)) / (2*__QEquation__.coefficient_a ));
-}
-
-limits<float> fundamentalAlgorithmsWorkFlow::getRootsQuadraticEquation (quadraticEquation __QEquation__) {
-
-  limits<float> roots;
-
-  if (__validations__.isZero(__QEquation__.coefficient_a)) {
-
-    processQuadraticEquationWithoutCoefficient_a (roots, __QEquation__);
-
-    return roots;
-  }
-
-  if (__validations__.isZero(__QEquation__.coefficient_b)) {
-
-    processQuadraticEquationWithoutCoefficient_b (roots, __QEquation__);
-
-    return roots;
-  }
-
-  __handler__.zeroNumberHandler (__QEquation__.coefficient_a, __PRETTY_FUNCTION__);
-  __handler__.zeroNumberHandler (__QEquation__.coefficient_b, __PRETTY_FUNCTION__);
-
-  if (__validations__.isZero(__QEquation__.coefficient_b) && __validations__.isZero(__QEquation__.coefficient_c)) {
-
-    processQuadraticEquationWithoutCoefficient_b_andCoefficient_c (roots, __QEquation__);
-
-    return roots;
-  }
-
-  processingQuadraticEquation (roots, __QEquation__);
-
-  return roots;
-}
-
-float fundamentalAlgorithmsWorkFlow::getValueQuadraticEquation (quadraticEquation __QEquation__, float root) {
-
-  __handler__.zeroNumberHandler (__QEquation__.coefficient_a, __PRETTY_FUNCTION__);
-  __handler__.zeroNumberHandler (__QEquation__.coefficient_b, __PRETTY_FUNCTION__);
-
-  return ( __QEquation__.coefficient_a * pow (root, 2) + (__QEquation__.coefficient_b * root) + __QEquation__.coefficient_c);
-}
-
 template <class Type> Type fundamentalAlgorithmsWorkFlow::getGaussSum (Type limit) {
 
   return (limit * (limit + 1) / 2);
-}
-
-int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisor (limits<int> interval) {
-
-  __handler__.negativeNumberHandler (interval.minimLimit, __PRETTY_FUNCTION__);
-  __handler__.negativeNumberHandler (interval.maximLimit, __PRETTY_FUNCTION__);
-
-  int copyMinimLimit, copyMaximLimit, rest;
-
-  copyMinimLimit = interval.minimLimit;
-  copyMaximLimit = interval.maximLimit;
-
-  if (__validations__.isZero(copyMaximLimit)) copyMinimLimit = copyMaximLimit;
-  else {
-
-    rest = copyMinimLimit % copyMaximLimit;
-
-    while (rest != 0) {
-      copyMinimLimit = copyMaximLimit;
-      copyMaximLimit = rest;
-      rest = copyMinimLimit % copyMaximLimit;
-
-    }
-  }
-
-  return copyMaximLimit;
-}
-
-int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisorRecursive (limits<int> interval) {
-
-  __handler__.negativeNumberHandler (interval.minimLimit, __PRETTY_FUNCTION__);
-  __handler__.negativeNumberHandler (interval.maximLimit, __PRETTY_FUNCTION__);
-
-  if (__validations__.isZero(interval.maximLimit)) return interval.minimLimit;
-  else if (__validations__.isEqualObjectBased(interval)) return interval.maximLimit;
-  else if (interval.maximLimit > interval.minimLimit) {
-
-    interval.maximLimit = interval.maximLimit % interval.minimLimit;
-
-    return getTheLargestCommonDivisorRecursive (interval);
-  }
-  else {
-
-    interval.minimLimit = interval.maximLimit;
-    interval.maximLimit = interval.minimLimit % interval.maximLimit;
-
-    return getTheLargestCommonDivisorRecursive (interval);
-  }
-}
-
-int fundamentalAlgorithmsWorkFlow::getTheLargestCommonDivisorOfTwoNumbers (int numberOne, int numberTwo) {
-
-  __handler__.negativeNumberHandler (numberOne, __PRETTY_FUNCTION__);
-  __handler__.negativeNumberHandler (numberTwo, __PRETTY_FUNCTION__);
-
-  while (numberOne != numberTwo) {
-    if (numberOne > numberTwo)
-      numberOne -= numberTwo;
-    else
-      numberTwo -= numberOne;
-  }
-
-  return numberOne;
-}
-
-int fundamentalAlgorithmsWorkFlow::getLeastCommonMultiple (limits<int> interval) {
-
-  return (interval.minimLimit * interval.maximLimit) / getTheLargestCommonDivisor(interval);
-}
-
-int fundamentalAlgorithmsWorkFlow::getLeastCommonMultipleOfTwoNumbers (int numberOne, int numberTwo) {
-
-  return (numberOne * numberTwo) / getTheLargestCommonDivisorOfTwoNumbers (numberOne, numberTwo);
-}
-
-int fundamentalAlgorithmsWorkFlow::getPrimevalue (int parameter) {
-
-  if (__validations__.isNegativeOrZero(parameter)) return 0;
-  if (parameter == 2) return 2;
-
-  for (size_t iterator = 2; iterator <= parameter / 2; iterator++)
-    if (parameter % iterator == 0) return 0;
-
-  return parameter;
-}
-
-bool fundamentalAlgorithmsWorkFlow::isPrime (int parameter) {
-
-  if (__validations__.isNegativeOrZero(parameter)) return false;
-  if (parameter == 2) return true;
-
-  for (size_t iterator = 2; iterator <= parameter / 2; iterator++)
-    if (parameter % iterator == 0) return false;
-
-  return true;
-}
-
-bool fundamentalAlgorithmsWorkFlow::isOdd (int parameter) {
-
-  if (parameter % 2 == 1) return true;
-
-  return false;
-}
-
-bool fundamentalAlgorithmsWorkFlow::isEven (int parameter) {
-
-  if (parameter % 2 == 0) return true;
-
-  return false;
-}
-
-bool fundamentalAlgorithmsWorkFlow::isConstantNumber (int parameter) {
-
-  int digit = parameter % 10;
-  parameter /= 10;
-
-  while (parameter != 0) {
-
-    if (digit != parameter % 10) return false;
-
-    digit = parameter % 10;
-    parameter /= 10;
-  }
-
-  return true;
-}
-
-int fundamentalAlgorithmsWorkFlow::reverseNumber (int parameter) {
-
-    int reversedValue = 0;
-
-    while (parameter != 0) {
-
-      reversedValue = (reversedValue * 10) + parameter % 10;
-      parameter /= 10;
-    }
-
-    return reversedValue;
-}
-
-int fundamentalAlgorithmsWorkFlow::getPalindromValue (int parameter) {
-
-  if (__validations__.isNegativeOrZero(parameter)) return 0;
-
-  if (reverseNumber(parameter) == parameter) return parameter;
-
-  return 0;
-}
-
-bool fundamentalAlgorithmsWorkFlow::isPalindrome (int parameter) {
-
-  if (__validations__.isNegativeOrZero(parameter)) return false;
-
-  if (reverseNumber(parameter) == parameter) return true;
-
-  return false;
-}
-
-float fundamentalAlgorithmsWorkFlow::getMeanOfTwoNumbers (float parameterOne, float parameterTwo) {
-
-  if (__validations__.isZero(parameterOne)) return parameterTwo / 2;
-  if (__validations__.isZero(parameterTwo)) return parameterOne / 2;
-
-  return (float)(parameterOne + parameterTwo) / 2;
 }
 
 int fundamentalAlgorithmsWorkFlow::getThe_N_FactorialNumber (int parameter) {
@@ -1346,7 +1087,7 @@ void fundamentalAlgorithmsWorkFlow::removeCharFromString (char * string, char va
   *stringDest = '\0';
 }
 
-void fundamentalAlgorithmsWorkFlow::readComplexData (complexNumber * number) {
+void complexNumbersWorkFlow::readComplexData (complexNumber * number) {
 
   for (size_t iterator = 0; iterator < number->complexNumberLength; iterator++) {
     scanf("%f", &number[iterator].realPart);
@@ -1354,7 +1095,7 @@ void fundamentalAlgorithmsWorkFlow::readComplexData (complexNumber * number) {
   }
 }
 
-complexNumber fundamentalAlgorithmsWorkFlow::complexNumbersProduct (complexNumber * numberOne, complexNumber * numberTwo) {
+complexNumber complexNumbersWorkFlow::complexNumbersProduct (complexNumber * numberOne, complexNumber * numberTwo) {
 
   complexNumber resultedComplexNumber;
   float realPartProduct, imaginaryPartProduct;
@@ -1368,7 +1109,7 @@ complexNumber fundamentalAlgorithmsWorkFlow::complexNumbersProduct (complexNumbe
   return resultedComplexNumber;
 }
 
-complexNumber fundamentalAlgorithmsWorkFlow::complexNumberSum (complexNumber * numberOne, complexNumber * numberTwo) {
+complexNumber complexNumbersWorkFlow::complexNumberSum (complexNumber * numberOne, complexNumber * numberTwo) {
 
   complexNumber resultedComplexNumber;
   float realPartSum, imaginaryPartSum;
@@ -1382,7 +1123,7 @@ complexNumber fundamentalAlgorithmsWorkFlow::complexNumberSum (complexNumber * n
   return resultedComplexNumber;
 }
 
-complexNumber fundamentalAlgorithmsWorkFlow::complexNumberDifference (complexNumber * numberOne, complexNumber * numberTwo) {
+complexNumber complexNumbersWorkFlow::complexNumberDifference (complexNumber * numberOne, complexNumber * numberTwo) {
 
   complexNumber resultedComplexNumber;
   float realPartSum, imaginaryPartSum;
@@ -1394,6 +1135,266 @@ complexNumber fundamentalAlgorithmsWorkFlow::complexNumberDifference (complexNum
   resultedComplexNumber.imaginaryPart = imaginaryPartSum;
 
   return resultedComplexNumber;
+}
+
+
+int numbersPropertiesWorkFlow::getTheLargestCommonDivisor (limits<int> interval) {
+
+  __handler__.negativeNumberHandler (interval.minimLimit, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (interval.maximLimit, __PRETTY_FUNCTION__);
+
+  int copyMinimLimit, copyMaximLimit, rest;
+
+  copyMinimLimit = interval.minimLimit;
+  copyMaximLimit = interval.maximLimit;
+
+  if (__validations__.isZero(copyMaximLimit)) copyMinimLimit = copyMaximLimit;
+  else {
+
+    rest = copyMinimLimit % copyMaximLimit;
+
+    while (rest != 0) {
+      copyMinimLimit = copyMaximLimit;
+      copyMaximLimit = rest;
+      rest = copyMinimLimit % copyMaximLimit;
+
+    }
+  }
+
+  return copyMaximLimit;
+}
+
+int numbersPropertiesWorkFlow::getTheLargestCommonDivisorRecursive (limits<int> interval) {
+
+  __handler__.negativeNumberHandler (interval.minimLimit, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (interval.maximLimit, __PRETTY_FUNCTION__);
+
+  if (__validations__.isZero(interval.maximLimit)) return interval.minimLimit;
+  else if (__validations__.isEqualObjectBased(interval)) return interval.maximLimit;
+  else if (interval.maximLimit > interval.minimLimit) {
+
+    interval.maximLimit = interval.maximLimit % interval.minimLimit;
+
+    return getTheLargestCommonDivisorRecursive (interval);
+  }
+  else {
+
+    interval.minimLimit = interval.maximLimit;
+    interval.maximLimit = interval.minimLimit % interval.maximLimit;
+
+    return getTheLargestCommonDivisorRecursive (interval);
+  }
+}
+
+int numbersPropertiesWorkFlow::getTheLargestCommonDivisorOfTwoNumbers (int numberOne, int numberTwo) {
+
+  __handler__.negativeNumberHandler (numberOne, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (numberTwo, __PRETTY_FUNCTION__);
+
+  while (numberOne != numberTwo) {
+    if (numberOne > numberTwo)
+      numberOne -= numberTwo;
+    else
+      numberTwo -= numberOne;
+  }
+
+  return numberOne;
+}
+
+int numbersPropertiesWorkFlow::getLeastCommonMultiple (limits<int> interval) {
+
+  return (interval.minimLimit * interval.maximLimit) / getTheLargestCommonDivisor(interval);
+}
+
+int numbersPropertiesWorkFlow::getLeastCommonMultipleOfTwoNumbers (int numberOne, int numberTwo) {
+
+  return (numberOne * numberTwo) / getTheLargestCommonDivisorOfTwoNumbers (numberOne, numberTwo);
+}
+
+int numbersPropertiesWorkFlow::getPrimevalue (int parameter) {
+
+  if (__validations__.isNegativeOrZero(parameter)) return 0;
+  if (parameter == 2) return 2;
+
+  for (size_t iterator = 2; iterator <= parameter / 2; iterator++)
+    if (parameter % iterator == 0) return 0;
+
+  return parameter;
+}
+
+int numbersPropertiesWorkFlow::reverseNumber (int parameter) {
+
+    int reversedValue = 0;
+
+    while (parameter != 0) {
+
+      reversedValue = (reversedValue * 10) + parameter % 10;
+      parameter /= 10;
+    }
+
+    return reversedValue;
+}
+
+int numbersPropertiesWorkFlow::getPalindromValue (int parameter) {
+
+  if (__validations__.isNegativeOrZero(parameter)) return 0;
+
+  if (reverseNumber(parameter) == parameter) return parameter;
+
+  return 0;
+}
+
+float numbersPropertiesWorkFlow::getMeanOfTwoNumbers (float parameterOne, float parameterTwo) {
+
+  if (__validations__.isZero(parameterOne)) return parameterTwo / 2;
+  if (__validations__.isZero(parameterTwo)) return parameterOne / 2;
+
+  return (float)(parameterOne + parameterTwo) / 2;
+}
+
+float equationsWorkFlow::getRootLinearEquation (linearEquation __LEquation__) {
+
+  if (__validations__.isZero(__LEquation__.slope))
+    if (__validations__.isZero(__LEquation__.y_intercept)) throw systemException ("Undetermined compatible equation in float fundamentalAlgorithmsWorkFlow::getRootLinearEquation (linearEquation __LEquation__);");
+    else throw systemException ("Imcompatible equation in float fundamentalAlgorithmsWorkFlow::getRootLinearEquation (linearEquation __LEquation__);");
+
+  return float(-__LEquation__.y_intercept / __LEquation__.slope);
+}
+
+float equationsWorkFlow::getValueLinearEquation (linearEquation __LEquation__) {
+
+  if (__validations__.isZero(__LEquation__.slope))
+    if (__validations__.isZero(__LEquation__.y_intercept)) throw systemException ("");
+    else throw systemException ("Imcompatible equation in float fundamentalAlgorithmsWorkFlow::getValueLinearEquation (linearEquation __LEquation__);");
+
+  return (( __LEquation__.slope * __LEquation__.root) + __LEquation__.y_intercept );
+}
+
+void equationsWorkFlow::processQuadraticEquationWithoutCoefficient_a (limits<float> & roots, quadraticEquation __QEquation__) {
+
+  roots.minimLimit = -__QEquation__.coefficient_c / __QEquation__.coefficient_b;
+  roots.maximLimit = roots.minimLimit;
+}
+
+void equationsWorkFlow::processQuadraticEquationWithoutCoefficient_b (limits<float> & roots, quadraticEquation __QEquation__) {
+
+  roots.minimLimit = sqrt(-__QEquation__.coefficient_c / __QEquation__.coefficient_b);
+  roots.maximLimit = - sqrt(-__QEquation__.coefficient_c / __QEquation__.coefficient_b);
+}
+
+void equationsWorkFlow::processQuadraticEquationWithoutCoefficient_c (limits<float> & roots, quadraticEquation __QEquation__) {
+
+  roots.minimLimit = 0;
+  roots.maximLimit = (-__QEquation__.coefficient_b / __QEquation__.coefficient_a);
+}
+
+void equationsWorkFlow::processQuadraticEquationWithoutCoefficient_b_andCoefficient_c (limits<float> & roots, quadraticEquation __QEquation__) {
+
+    roots.minimLimit = sqrt(__QEquation__.coefficient_a);
+    roots.maximLimit = roots.minimLimit;
+}
+
+void equationsWorkFlow::processingQuadraticEquation (limits<float> & roots, quadraticEquation __QEquation__) {
+
+  float delta;
+
+  delta = pow (__QEquation__.coefficient_b, 2) - 4 * __QEquation__.coefficient_a * __QEquation__.coefficient_c;
+
+  __handler__.negativeNumberHandler<float> (delta, __PRETTY_FUNCTION__);
+
+  roots.minimLimit = ( (-__QEquation__.coefficient_b + sqrt (delta)) / (2*__QEquation__.coefficient_a ));
+  roots.maximLimit = ( (-__QEquation__.coefficient_b - sqrt (delta)) / (2*__QEquation__.coefficient_a ));
+}
+
+limits<float> equationsWorkFlow::getRootsQuadraticEquation (quadraticEquation __QEquation__) {
+
+  limits<float> roots;
+
+  if (__validations__.isZero(__QEquation__.coefficient_a)) {
+
+    processQuadraticEquationWithoutCoefficient_a (roots, __QEquation__);
+
+    return roots;
+  }
+
+  if (__validations__.isZero(__QEquation__.coefficient_b)) {
+
+    processQuadraticEquationWithoutCoefficient_b (roots, __QEquation__);
+
+    return roots;
+  }
+
+  __handler__.zeroNumberHandler (__QEquation__.coefficient_a, __PRETTY_FUNCTION__);
+  __handler__.zeroNumberHandler (__QEquation__.coefficient_b, __PRETTY_FUNCTION__);
+
+  if (__validations__.isZero(__QEquation__.coefficient_b) && __validations__.isZero(__QEquation__.coefficient_c)) {
+
+    processQuadraticEquationWithoutCoefficient_b_andCoefficient_c (roots, __QEquation__);
+
+    return roots;
+  }
+
+  processingQuadraticEquation (roots, __QEquation__);
+
+  return roots;
+}
+
+float equationsWorkFlow::getValueQuadraticEquation (quadraticEquation __QEquation__, float root) {
+
+  __handler__.zeroNumberHandler (__QEquation__.coefficient_a, __PRETTY_FUNCTION__);
+  __handler__.zeroNumberHandler (__QEquation__.coefficient_b, __PRETTY_FUNCTION__);
+
+  return ( __QEquation__.coefficient_a * pow (root, 2) + (__QEquation__.coefficient_b * root) + __QEquation__.coefficient_c);
+}
+
+bool checkersWorkFlow::isPrime (int parameter) {
+
+  if (__validations__.isNegativeOrZero(parameter)) return false;
+  if (parameter == 2) return true;
+
+  for (size_t iterator = 2; iterator <= parameter / 2; iterator++)
+    if (parameter % iterator == 0) return false;
+
+  return true;
+}
+
+bool checkersWorkFlow::isOdd (int parameter) {
+
+  if (parameter % 2 == 1) return true;
+
+  return false;
+}
+
+bool checkersWorkFlow::isEven (int parameter) {
+
+  if (parameter % 2 == 0) return true;
+
+  return false;
+}
+
+bool checkersWorkFlow::isConstantNumber (int parameter) {
+
+  int digit = parameter % 10;
+  parameter /= 10;
+
+  while (parameter != 0) {
+
+    if (digit != parameter % 10) return false;
+
+    digit = parameter % 10;
+    parameter /= 10;
+  }
+
+  return true;
+}
+
+bool checkersWorkFlow::isPalindrome (int parameter) {
+
+  if (__validations__.isNegativeOrZero(parameter)) return false;
+
+  if (__numberProperties__.reverseNumber(parameter) == parameter) return true;
+
+  return false;
 }
 
 template <class Type> void treesWorkFlow::createTree (binaryTreeType<Type> * & treeObject) {

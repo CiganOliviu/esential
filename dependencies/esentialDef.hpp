@@ -152,41 +152,10 @@ private:
   errorsHandler __handler__;
   validationRules __validations__;
 
-
-  void processQuadraticEquationWithoutCoefficient_a (limits<float> & roots, quadraticEquation __QEquation__);
-  void processQuadraticEquationWithoutCoefficient_b (limits<float> & roots, quadraticEquation __QEquation__);
-  void processQuadraticEquationWithoutCoefficient_c (limits<float> & roots, quadraticEquation __QEquation__);
-  void processQuadraticEquationWithoutCoefficient_b_andCoefficient_c (limits<float> & roots, quadraticEquation __QEquation__);
-  void processingQuadraticEquation (limits<float> & roots, quadraticEquation __QEquation__);
-
 public:
   fundamentalAlgorithmsWorkFlow () {}
 
-  float getRootLinearEquation (linearEquation __LEquation__);
-  float getValueLinearEquation (linearEquation __LEquation__);
-  limits<float> getRootsQuadraticEquation (quadraticEquation __QEquation__);
-  float getValueQuadraticEquation (quadraticEquation __QEquation__, float root);
-
   template <class Type> Type getGaussSum (Type limit);
-
-  int getTheLargestCommonDivisor (limits<int> interval);
-  int getTheLargestCommonDivisorRecursive (limits<int> interval);
-  int getTheLargestCommonDivisorOfTwoNumbers (int numberOne, int numberTwo);
-
-  int getLeastCommonMultiple (limits<int> interval);
-  int getLeastCommonMultipleOfTwoNumbers (int numberOne, int numberTwo);
-
-  int getPrimevalue (int parameter);
-
-  bool isPrime (int parameter);
-  bool isOdd (int parameter);
-  bool isEven (int parameter);
-  bool isConstantNumber (int parameter);
-  bool isPalindrome (int parameter);
-
-  int reverseNumber (int parameter);
-  int getPalindromValue (int parameter);
-  float getMeanOfTwoNumbers (float parameterOne, float parameterTwo);
 
   int getThe_N_FactorialNumber (int parameter);
   int getThe_N_FactorialNumberRecursive (int parameter);
@@ -200,6 +169,19 @@ public:
 
   void removeCharFromString (char * string, char value);
 
+  bool classResponse () { return true; }
+
+  virtual ~fundamentalAlgorithmsWorkFlow () {}
+};
+
+class complexNumbersWorkFlow {
+private:
+  errorsHandler __handler__;
+  validationRules __validations__;
+
+public:
+  complexNumbersWorkFlow () {}
+
   void readComplexData (complexNumber * number);
   complexNumber complexNumbersProduct (complexNumber * numberOne, complexNumber * numberTwo);
   complexNumber complexNumberSum (complexNumber * numberOne, complexNumber * numberTwo);
@@ -207,7 +189,80 @@ public:
 
   bool classResponse () { return true; }
 
-  virtual ~fundamentalAlgorithmsWorkFlow () {}
+  virtual ~complexNumbersWorkFlow () {}
+};
+
+class numbersPropertiesWorkFlow {
+  private:
+    errorsHandler __handler__;
+    validationRules __validations__;
+    fundamentalAlgorithmsWorkFlow __algos__;
+
+  public:
+
+    numbersPropertiesWorkFlow () {}
+
+    int getTheLargestCommonDivisor (limits<int> interval);
+    int getTheLargestCommonDivisorRecursive (limits<int> interval);
+    int getTheLargestCommonDivisorOfTwoNumbers (int numberOne, int numberTwo);
+
+    int getLeastCommonMultiple (limits<int> interval);
+    int getLeastCommonMultipleOfTwoNumbers (int numberOne, int numberTwo);
+
+    int getPrimevalue (int parameter);
+
+    int reverseNumber (int parameter);
+    int getPalindromValue (int parameter);
+    float getMeanOfTwoNumbers (float parameterOne, float parameterTwo);
+
+    bool classResponse () { return true; };
+
+    virtual ~numbersPropertiesWorkFlow () {}
+};
+
+class equationsWorkFlow {
+private:
+  errorsHandler __handler__;
+  validationRules __validations__;
+
+  void processQuadraticEquationWithoutCoefficient_a (limits<float> & roots, quadraticEquation __QEquation__);
+  void processQuadraticEquationWithoutCoefficient_b (limits<float> & roots, quadraticEquation __QEquation__);
+  void processQuadraticEquationWithoutCoefficient_c (limits<float> & roots, quadraticEquation __QEquation__);
+  void processQuadraticEquationWithoutCoefficient_b_andCoefficient_c (limits<float> & roots, quadraticEquation __QEquation__);
+  void processingQuadraticEquation (limits<float> & roots, quadraticEquation __QEquation__);
+
+public:
+  equationsWorkFlow () {}
+
+  float getRootLinearEquation (linearEquation __LEquation__);
+  float getValueLinearEquation (linearEquation __LEquation__);
+  limits<float> getRootsQuadraticEquation (quadraticEquation __QEquation__);
+  float getValueQuadraticEquation (quadraticEquation __QEquation__, float root);
+
+  bool classResponse () { return true; }
+
+  virtual ~equationsWorkFlow () {}
+};
+
+class checkersWorkFlow {
+
+private:
+  errorsHandler __handler__;
+  validationRules __validations__;
+  numbersPropertiesWorkFlow __numberProperties__;
+
+public:
+  checkersWorkFlow () {}
+
+  bool isPrime (int parameter);
+  bool isOdd (int parameter);
+  bool isEven (int parameter);
+  bool isConstantNumber (int parameter);
+  bool isPalindrome (int parameter);
+
+  bool classResponse () { return true; }
+  
+  virtual ~checkersWorkFlow () {}
 };
 
 class treesWorkFlow {

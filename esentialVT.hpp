@@ -8,6 +8,10 @@ private:
   oneDimensionalArraysWorkFlow ODAWorkFlow;
   matricesWorkFlow MatricesWorkFlow;
   fundamentalAlgorithmsWorkFlow fundamentalAlgosWorkFlow;
+  complexNumbersWorkFlow ComplexNumbers;
+  numbersPropertiesWorkFlow NumberProperties;
+  equationsWorkFlow Equations;
+  checkersWorkFlow Checkers;
   treesWorkFlow TWorkFlow;
   graphsWorkFlow GWorkFlow;
 
@@ -18,6 +22,10 @@ public:
   void assertOneDimensionalArraysWorkFlow ();
   void assertMatricesWorkFlow ();
   void assertFundamentalAlgorithmsWorkFlow ();
+  void assertComplexNumbersWorkFlow ();
+  void assertNumbersPropertiesWorkFlow ();
+  void assertEquationsWorkFlow ();
+  void assertCheckersWorkFlow ();
   void assertTreesWorkFlow ();
   void assertGraphsWorkFlow ();
 
@@ -64,6 +72,47 @@ void systemTestingWorkflow::assertFundamentalAlgorithmsWorkFlow () {
     __assert__.countTest ((char*)"assertFundamentalAlgorithmsWorkFlow", __assert__.assertPrimitiveDataTypes<bool>(results) );
 }
 
+void systemTestingWorkflow::assertComplexNumbersWorkFlow () {
+
+    limits<bool> results;
+
+    results.minimLimit = ComplexNumbers.classResponse();
+    results.maximLimit = true;
+
+    __assert__.countTest ((char*)"assertComplexNumbersWorkFlow", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
+void systemTestingWorkflow::assertNumbersPropertiesWorkFlow () {
+
+    limits<bool> results;
+
+    results.minimLimit = NumberProperties.classResponse();
+    results.maximLimit = true;
+
+    __assert__.countTest ((char*)"assertNumbersPropertiesWorkFlow", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
+void systemTestingWorkflow::assertEquationsWorkFlow () {
+
+    limits<bool> results;
+
+    results.minimLimit = Equations.classResponse();
+    results.maximLimit = true;
+
+    __assert__.countTest ((char*)"assertEquationsWorkFlow", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
+void systemTestingWorkflow::assertCheckersWorkFlow () {
+
+    limits<bool> results;
+
+    results.minimLimit = Checkers.classResponse();
+    results.maximLimit = true;
+
+    __assert__.countTest ((char*)"assertCheckersWorkFlow", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
+
 void systemTestingWorkflow::assertTreesWorkFlow () {
 
     limits<bool> results;
@@ -102,6 +151,10 @@ void RunSystemTests::run () {
   testingObject.assertOneDimensionalArraysWorkFlow ();
   testingObject.assertMatricesWorkFlow ();
   testingObject.assertFundamentalAlgorithmsWorkFlow ();
+  testingObject.assertComplexNumbersWorkFlow ();
+  testingObject.assertNumbersPropertiesWorkFlow ();
+  testingObject.assertEquationsWorkFlow ();
+  testingObject.assertCheckersWorkFlow ();
   testingObject.assertTreesWorkFlow ();
   testingObject.assertGraphsWorkFlow ();
 }

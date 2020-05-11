@@ -256,6 +256,9 @@ template <class Type> void matricesTestingWorkFlow::assertMatrixElementsDifferen
 class fundamentalAlgorithmsTestingWorkflow {
 
 private:
+	numbersPropertiesWorkFlow __numberProperties__;
+	equationsWorkFlow equations;	
+	checkersWorkFlow checks;
 	fundamentalAlgorithmsWorkFlow fundamentalAlgosWorkFlow;
 	assertions __assert__;
 	portData port;
@@ -281,6 +284,7 @@ public:
 	void assertIfOdd ();
 	void assertIfEven ();
 	void assertConstantNumber ();
+
 	void assertReversedNumber ();
 	void assertPalindromeNumber ();
 	void assertMeansOfTwoNumbers ();
@@ -310,7 +314,7 @@ void fundamentalAlgorithmsTestingWorkflow::assertRootLinearEquation () {
 
 	limits<float> results;
 
-	results.minimLimit = fundamentalAlgosWorkFlow.getRootLinearEquation(__LEquation__);
+	results.minimLimit = equations.getRootLinearEquation(__LEquation__);
 	results.maximLimit = -2;
 
 	__assert__.countTest ((char*)"getRootLinearEquation", __assert__.assertPrimitiveDataTypes<float>(results) );
@@ -326,7 +330,7 @@ void fundamentalAlgorithmsTestingWorkflow::assertValueLinearEquation () {
 
 	limits<float> results;
 
-	results.minimLimit = fundamentalAlgosWorkFlow.getValueLinearEquation(__LEquation__);
+	results.minimLimit = equations.getValueLinearEquation(__LEquation__);
 	results.maximLimit = 8;
 
 	__assert__.countTest ((char*)"getValueLinearEquation", __assert__.assertPrimitiveDataTypes<float>(results) );
@@ -341,7 +345,7 @@ void fundamentalAlgorithmsTestingWorkflow::assertRootsQuadraticEquation () {
 	__QEquation__.coefficient_c = 2;
 
 	limits<float> roots;
-	port.portLimits (roots, fundamentalAlgosWorkFlow.getRootsQuadraticEquation (__QEquation__));
+	port.portLimits (roots, equations.getRootsQuadraticEquation (__QEquation__));
 
 	limits<float> results;
 
@@ -362,7 +366,7 @@ void fundamentalAlgorithmsTestingWorkflow::assertValueQuadraticEquation () {
 
 	limits<float> results;
 
-	results.minimLimit = fundamentalAlgosWorkFlow.getValueQuadraticEquation (__QEquation__, roots);
+	results.minimLimit = equations.getValueQuadraticEquation (__QEquation__, roots);
 	results.maximLimit = 12;
 
 	__assert__.countTest ((char*)"getValueQuadraticEquation", __assert__.assertPrimitiveDataTypes<float>(results) );
@@ -387,7 +391,7 @@ void fundamentalAlgorithmsTestingWorkflow::assertTheLargestCommonDivisor () {
 
 	limits<int> results;
 
-	results.minimLimit = fundamentalAlgosWorkFlow.getTheLargestCommonDivisor (interval);
+	results.minimLimit = __numberProperties__.getTheLargestCommonDivisor (interval);
 	results.maximLimit = 12;
 
 	__assert__.countTest ((char*)"getTheLargestCommonDivisor", __assert__.assertPrimitiveDataTypes<int>(results) );
@@ -402,7 +406,7 @@ void fundamentalAlgorithmsTestingWorkflow::assertTheLargestCommonDivisorRecursiv
 
 	limits<int> results;
 
-	results.minimLimit = fundamentalAlgosWorkFlow.getTheLargestCommonDivisorRecursive (interval);
+	results.minimLimit = __numberProperties__.getTheLargestCommonDivisorRecursive (interval);
 	results.maximLimit = 12;
 
 	__assert__.countTest ((char*)"getTheLargestCommonDivisorRecursive", __assert__.assertPrimitiveDataTypes<int>(results) );
@@ -412,7 +416,7 @@ void fundamentalAlgorithmsTestingWorkflow::assertTheLargestCommonDivisorOfTwoNum
 
 	limits<int> results;
 
-	results.minimLimit = fundamentalAlgosWorkFlow.getTheLargestCommonDivisorOfTwoNumbers (12, 36);
+	results.minimLimit = __numberProperties__.getTheLargestCommonDivisorOfTwoNumbers (12, 36);
 	results.maximLimit = 12;
 
 	__assert__.countTest ((char*)"getTheLargestCommonDivisorOfTwoNumbers", __assert__.assertPrimitiveDataTypes<int>(results) );
@@ -427,7 +431,7 @@ void fundamentalAlgorithmsTestingWorkflow::assertLeastCommonMultiple () {
 
 	limits<int> results;
 
-	results.minimLimit = fundamentalAlgosWorkFlow.getLeastCommonMultiple (interval);
+	results.minimLimit = __numberProperties__.getLeastCommonMultiple (interval);
 	results.maximLimit = 36;
 
 	__assert__.countTest ((char*)"getLeastCommonMultiple", __assert__.assertPrimitiveDataTypes<int>(results) );
@@ -437,7 +441,7 @@ void fundamentalAlgorithmsTestingWorkflow::assertLeastCommonMultipleOfTwoNumbers
 
 	limits<int> results;
 
-	results.minimLimit = fundamentalAlgosWorkFlow.getLeastCommonMultipleOfTwoNumbers (12, 36);
+	results.minimLimit = __numberProperties__.getLeastCommonMultipleOfTwoNumbers (12, 36);
 	results.maximLimit = 36;
 
 	__assert__.countTest ((char*)"getLeastCommonMultipleOfTwoNumbers", __assert__.assertPrimitiveDataTypes<int>(results) );
@@ -448,10 +452,10 @@ void fundamentalAlgorithmsTestingWorkflow::assertIfPrime () {
 	limits<bool> resultsSetOne;
 	limits<bool> resultsSetTwo;
 
-	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.isPrime(13);
+	resultsSetOne.minimLimit = checks.isPrime(13);
 	resultsSetOne.maximLimit = true;
 
-	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.isPrime(14);
+	resultsSetTwo.minimLimit = checks.isPrime(14);
 	resultsSetTwo.maximLimit = false;
 
 	__assert__.countTest ((char*)"assertIfPrimeSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
@@ -464,10 +468,10 @@ void fundamentalAlgorithmsTestingWorkflow::assertIfOdd () {
 	limits<bool> resultsSetOne;
 	limits<bool> resultsSetTwo;
 
-	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.isOdd(12);
+	resultsSetOne.minimLimit = checks.isOdd(12);
 	resultsSetOne.maximLimit = false;
 
-	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.isOdd(13);
+	resultsSetTwo.minimLimit = checks.isOdd(13);
 	resultsSetTwo.maximLimit = true;
 
 	__assert__.countTest ((char*)"isOddSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
@@ -479,10 +483,10 @@ void fundamentalAlgorithmsTestingWorkflow::assertIfEven () {
 	limits<bool> resultsSetOne;
 	limits<bool> resultsSetTwo;
 
-	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.isEven(57);
+	resultsSetOne.minimLimit = checks.isEven(57);
 	resultsSetOne.maximLimit = false;
 
-	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.isEven(12);
+	resultsSetTwo.minimLimit = checks.isEven(12);
 	resultsSetTwo.maximLimit = true;
 
 	__assert__.countTest ((char*)"isEvenSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
@@ -494,10 +498,10 @@ void fundamentalAlgorithmsTestingWorkflow::assertConstantNumber () {
 	limits<bool> resultsSetOne;
 	limits<bool> resultsSetTwo;
 
-	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.isConstantNumber(12345);
+	resultsSetOne.minimLimit = checks.isConstantNumber(12345);
 	resultsSetOne.maximLimit = false;
 
-	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.isConstantNumber(4444);
+	resultsSetTwo.minimLimit = checks.isConstantNumber(4444);
 	resultsSetTwo.maximLimit = true;
 
 	__assert__.countTest ((char*)"isConstantNumberSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
@@ -509,10 +513,10 @@ void fundamentalAlgorithmsTestingWorkflow::assertReversedNumber () {
 	limits<int> resultsSetOne;
 	limits<int> resultsSetTwo;
 
-	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.reverseNumber(12321);
+	resultsSetOne.minimLimit = __numberProperties__.reverseNumber(12321);
 	resultsSetOne.maximLimit = 12321;
 
-	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.reverseNumber(65);
+	resultsSetTwo.minimLimit = __numberProperties__.reverseNumber(65);
 	resultsSetTwo.maximLimit = 56;
 
 	__assert__.countTest ((char*)"assertReversedNumberSetOne", __assert__.assertPrimitiveDataTypes<int>(resultsSetOne) );
@@ -524,10 +528,10 @@ void fundamentalAlgorithmsTestingWorkflow::assertPalindromeNumber () {
 	limits<int> resultsSetOne;
 	limits<int> resultsSetTwo;
 
-	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.getPalindromValue(123421);
+	resultsSetOne.minimLimit = __numberProperties__.getPalindromValue(123421);
 	resultsSetOne.maximLimit = 0;
 
-	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.getPalindromValue(8);
+	resultsSetTwo.minimLimit = __numberProperties__.getPalindromValue(8);
 	resultsSetTwo.maximLimit = 8;
 
 	__assert__.countTest ((char*)"assertPalindromeNumberSetOne", __assert__.assertPrimitiveDataTypes<int>(resultsSetOne) );
@@ -539,10 +543,10 @@ void fundamentalAlgorithmsTestingWorkflow::assertMeansOfTwoNumbers () {
 	limits<float> resultsSetOne;
 	limits<float> resultsSetTwo;
 
-	resultsSetOne.minimLimit = fundamentalAlgosWorkFlow.getMeanOfTwoNumbers(12, 24);
+	resultsSetOne.minimLimit = __numberProperties__.getMeanOfTwoNumbers(12, 24);
 	resultsSetOne.maximLimit = 18;
 
-	resultsSetTwo.minimLimit = fundamentalAlgosWorkFlow.getMeanOfTwoNumbers(13, 3);
+	resultsSetTwo.minimLimit = __numberProperties__.getMeanOfTwoNumbers(13, 3);
 	resultsSetTwo.maximLimit = 8;
 
 	__assert__.countTest ((char*)"getMeanOfTwoNumbersSetOne", __assert__.assertPrimitiveDataTypes<float>(resultsSetOne) );
