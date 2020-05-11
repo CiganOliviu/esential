@@ -24,13 +24,13 @@ SOFTWARE.
 
 #include "../easyPass-WS/easyPass.hpp"
 
-class IOSystem {
+class IOSystemOneDimensionalArray {
 private:
   errorsHandler __handler__;
   checkAndSupport __support__;
 
 public:
-  IOSystem () {}
+  IOSystemOneDimensionalArray () {}
 
   template <class Type> void readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void readStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
@@ -39,6 +39,20 @@ public:
   template <class Type> void outputOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void outputStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void outputDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject);
+
+  bool classResponse () { return true; }
+
+  virtual ~IOSystemOneDimensionalArray () {}
+};
+
+class IOSystemMatrices {
+private:
+  errorsHandler __handler__;
+  checkAndSupport __support__;
+
+public:
+
+  IOSystemMatrices () {}
 
   template <class Type> void readMatrix (matrixType<Type> & matrixObject);
   template <class Type> void readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject);
@@ -50,7 +64,52 @@ public:
 
   bool classResponse () { return true; }
 
-  virtual ~IOSystem () {}
+  virtual ~IOSystemMatrices () {}
+};
+
+class IOSystemTrees {
+private:
+  errorsHandler __handler__;
+  checkAndSupport __support__;
+  validationRules __validations__;
+
+public:
+
+  IOSystemTrees () {}
+
+  template <class Type> void createTree (binaryTreeType<Type> * & treeObject);
+  template <class Type> void deleteTree (binaryTreeType<Type> * & treeObject);
+
+  template <class Type> void RootLeftRightPreOrder (binaryTreeType<Type> * treeObject);
+  template <class Type> void LeftRootRightPostOrder (binaryTreeType<Type> * treeObject);
+  template <class Type> void LeftRootRightInOrder (binaryTreeType<Type> * treeObject);
+  template <class Type> void reachTreeOnLevels (binaryTreeType<Type> * treeObject, int level);
+
+  bool classResponse () { return true; }
+
+  virtual ~IOSystemTrees () {}
+};
+
+class IOSystemGraphs {
+private:
+  errorsHandler __handler__;
+  checkAndSupport __support__;
+
+public:
+
+  IOSystemGraphs () {}
+
+  template <class Type> void readAdjacencyMatrix (graphType<Type> & graphObject);
+  template <class Type> void readFileAdjacencyMatrix (char * fileName, graphType<Type> & graphObject);
+  template <class Type> void readGraphByEdgesList (graphType<Type> & graphObject);
+  template <class Type> void readFileGraphByEdgesList (char * fileName, graphType<Type> & graphObject);
+
+  template <class Type> void readDirectedGraphByEdgesList (graphType<Type> & graphObject);
+  template <class Type> void readFileDirectedGraphByEdgesList (char * fileName, graphType<Type> & graphObject);
+
+  bool classResponse () { return true; }
+
+  virtual ~IOSystemGraphs () {}
 };
 
 class oneDimensionalArraysWorkFlow {
@@ -274,14 +333,6 @@ private:
 public:
   treesWorkFlow () {}
 
-  template <class Type> void createTree (binaryTreeType<Type> * & treeObject);
-  template <class Type> void deleteTree (binaryTreeType<Type> * & treeObject);
-
-  template <class Type> void RootLeftRightPreOrder (binaryTreeType<Type> * treeObject);
-  template <class Type> void LeftRootRightPostOrder (binaryTreeType<Type> * treeObject);
-  template <class Type> void LeftRootRightInOrder (binaryTreeType<Type> * treeObject);
-  template <class Type> void reachTreeOnLevels (binaryTreeType<Type> * treeObject, int level);
-
   template <class Type> Type getTreeNumberOfNegativeValues (binaryTreeType<Type> * treeObject);
   template <class Type> Type getTreeSumValues (binaryTreeType<Type> * treeObject);
   template <class Type> Type getTreeProductValues (binaryTreeType<Type> * treeObject);
@@ -305,17 +356,9 @@ private:
 public:
   graphsWorkFlow () {}
 
-  template <class Type> void readAdjacencyMatrix (graphType<Type> & graphObject);
-  template <class Type> void readFileAdjacencyMatrix (char * fileName, graphType<Type> & graphObject);
-  template <class Type> void readGraphByEdgesList (graphType<Type> & graphObject);
-  template <class Type> void readFileGraphByEdgesList (char * fileName, graphType<Type> & graphObject);
   template <class Type> void royWarshallAlgo (graphType<Type> & graphObject);
   template <class Type> bool isConex (graphType<Type> graphObject);
   template <class Type> bool isEulerian (graphType<Type> graphObject);
-
-  template <class Type> void readDirectedGraphByEdgesList (graphType<Type> & graphObject);
-  template <class Type> void readFileDirectedGraphByEdgesList (char * fileName, graphType<Type> & graphObject);
-
   template <class Type> unsigned int valencyOfAVertex (graphType<Type> graphObject, unsigned int vertex);
   template <class Type> void correspondecesOfVertices (graphType<Type> graphObject);
   template <class Type> unsigned int numberOfEdges (graphType<Type> graphObject);

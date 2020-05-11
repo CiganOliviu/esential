@@ -4,21 +4,37 @@ class systemTestingWorkflow {
 private:
   assertions __assert__;
 
-  IOSystem inputOutputSystem;
+  IOSystemOneDimensionalArray inputOutputSystemODA;
+  IOSystemMatrices inputOutputSystemMatrices;
+  IOSystemTrees inputOutputSystemTrees;
+  IOSystemGraphs inputOutputSystemGraphs;
+
   oneDimensionalArraysWorkFlow ODAWorkFlow;
+
   matricesWorkFlow MatricesWorkFlow;
+
   fundamentalAlgorithmsWorkFlow fundamentalAlgosWorkFlow;
+
   complexNumbersWorkFlow ComplexNumbers;
+
   numbersPropertiesWorkFlow NumberProperties;
+
   equationsWorkFlow Equations;
+
   checkersWorkFlow Checkers;
+
   treesWorkFlow TWorkFlow;
+
   graphsWorkFlow GWorkFlow;
 
 public:
   systemTestingWorkflow () {}
 
-  void assertIOSystem ();
+  void assertIOSystemOneDimensionaArray ();
+  void assertIOSystemMatrices ();
+  void assertIOSystemTrees ();
+  void assertIOSystemGraphs ();
+
   void assertOneDimensionalArraysWorkFlow ();
   void assertMatricesWorkFlow ();
   void assertFundamentalAlgorithmsWorkFlow ();
@@ -32,14 +48,44 @@ public:
   virtual ~systemTestingWorkflow () {}
 };
 
-void systemTestingWorkflow::assertIOSystem () {
+void systemTestingWorkflow::assertIOSystemOneDimensionaArray () {
 
   limits<bool> results;
 
-  results.minimLimit = inputOutputSystem.classResponse();
+  results.minimLimit = inputOutputSystemODA.classResponse();
   results.maximLimit = true;
 
-  __assert__.countTest ((char*)"assertIOSystem", __assert__.assertPrimitiveDataTypes<bool>(results) );
+  __assert__.countTest ((char*)"assertIOSystemOneDimensionaArray", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
+void systemTestingWorkflow::assertIOSystemMatrices () {
+
+  limits<bool> results;
+
+  results.minimLimit = inputOutputSystemMatrices.classResponse();
+  results.maximLimit = true;
+
+  __assert__.countTest ((char*)"assertIOSystemMatrices", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
+void systemTestingWorkflow::assertIOSystemTrees () {
+
+  limits<bool> results;
+
+  results.minimLimit = inputOutputSystemTrees.classResponse();
+  results.maximLimit = true;
+
+  __assert__.countTest ((char*)"assertIOSystemTrees", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
+void systemTestingWorkflow::assertIOSystemGraphs () {
+
+  limits<bool> results;
+
+  results.minimLimit = inputOutputSystemGraphs.classResponse();
+  results.maximLimit = true;
+
+  __assert__.countTest ((char*)"assertIOSystemGraphs", __assert__.assertPrimitiveDataTypes<bool>(results) );
 }
 
 void systemTestingWorkflow::assertOneDimensionalArraysWorkFlow () {
@@ -147,14 +193,26 @@ public:
 
 void RunSystemTests::run () {
 
-  testingObject.assertIOSystem ();
+  testingObject.assertIOSystemOneDimensionaArray ();
+  testingObject.assertIOSystemMatrices ();
+  testingObject.assertIOSystemTrees ();
+  testingObject.assertIOSystemGraphs ();
+
   testingObject.assertOneDimensionalArraysWorkFlow ();
+
   testingObject.assertMatricesWorkFlow ();
+
   testingObject.assertFundamentalAlgorithmsWorkFlow ();
+
   testingObject.assertComplexNumbersWorkFlow ();
+
   testingObject.assertNumbersPropertiesWorkFlow ();
+
   testingObject.assertEquationsWorkFlow ();
+
   testingObject.assertCheckersWorkFlow ();
+
   testingObject.assertTreesWorkFlow ();
+  
   testingObject.assertGraphsWorkFlow ();
 }

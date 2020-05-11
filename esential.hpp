@@ -1,6 +1,6 @@
 #include "dependencies/esentialDef.hpp"
 
-template <class Type> void IOSystem::readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSystemOneDimensionalArray::readOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   std::cin >> ODAObject.length;
 
@@ -10,7 +10,7 @@ template <class Type> void IOSystem::readOneDimensionalArray (oneDimensionalArra
     std::cin >> ODAObject.oneDimensionalArray[iterator];
 }
 
-template <class Type> void IOSystem::readStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSystemOneDimensionalArray::readStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ifstream dataStream(fileName, std::ios::in);
 
@@ -26,7 +26,7 @@ template <class Type> void IOSystem::readStaticFileOneDimensionalArray (char * f
   dataStream.close();
 }
 
-template <class Type> void IOSystem::readDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSystemOneDimensionalArray::readDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ifstream dataStream(fileName, std::ios::in);
   Type data;
@@ -47,7 +47,7 @@ template <class Type> void IOSystem::readDynamicFileOneDimensionalArray (char * 
   dataStream.close();
 }
 
-template <class Type> void IOSystem::outputOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSystemOneDimensionalArray::outputOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
@@ -57,7 +57,7 @@ template <class Type> void IOSystem::outputOneDimensionalArray (oneDimensionalAr
   std::cout << '\n';
 }
 
-template <class Type> void IOSystem::outputStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSystemOneDimensionalArray::outputStaticFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ofstream dataStream(fileName, std::ios::out);
 
@@ -75,7 +75,7 @@ template <class Type> void IOSystem::outputStaticFileOneDimensionalArray (char *
   dataStream.close();
 }
 
-template <class Type> void IOSystem::outputDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void IOSystemOneDimensionalArray::outputDynamicFileOneDimensionalArray (char * fileName, oneDimensionalArrayType<Type> ODAObject) {
 
   std::ofstream dataStream(fileName, std::ios::out);
 
@@ -91,7 +91,7 @@ template <class Type> void IOSystem::outputDynamicFileOneDimensionalArray (char 
   dataStream.close();
 }
 
-template <class Type> void IOSystem::readMatrix (matrixType<Type> & matrixObject) {
+template <class Type> void IOSystemMatrices::readMatrix (matrixType<Type> & matrixObject) {
 
   std::cin >> matrixObject.lineRefference >> matrixObject.columnRefference;
 
@@ -102,7 +102,7 @@ template <class Type> void IOSystem::readMatrix (matrixType<Type> & matrixObject
       std::cin >> matrixObject.matrix[iterator][jiterator];
 }
 
-template <class Type> void IOSystem::readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
+template <class Type> void IOSystemMatrices::readStaticFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
 
   std::ifstream dataStream(fileName, std::ios::in);
 
@@ -119,7 +119,7 @@ template <class Type> void IOSystem::readStaticFileMatrix (char * fileName, matr
   dataStream.close();
 }
 
-template <class Type> void IOSystem::readDynamicFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
+template <class Type> void IOSystemMatrices::readDynamicFileMatrix (char * fileName, matrixType<Type> & matrixObject) {
 
   std::ifstream dataStream(fileName, std::ios::in);
 
@@ -149,7 +149,7 @@ template <class Type> void IOSystem::readDynamicFileMatrix (char * fileName, mat
   dataStream.close();
 }
 
-template <class Type> void IOSystem::outputMatrix (matrixType<Type> matrixObject) {
+template <class Type> void IOSystemMatrices::outputMatrix (matrixType<Type> matrixObject) {
 
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
@@ -161,7 +161,7 @@ template <class Type> void IOSystem::outputMatrix (matrixType<Type> matrixObject
   }
 }
 
-template <class Type> void IOSystem::outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject) {
+template <class Type> void IOSystemMatrices::outputStaticFileMatrix (char * fileName, matrixType<Type> matrixObject) {
 
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
@@ -180,7 +180,7 @@ template <class Type> void IOSystem::outputStaticFileMatrix (char * fileName, ma
   dataStream.close();
 }
 
-template <class Type> void IOSystem::outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject) {
+template <class Type> void IOSystemMatrices::outputDynamicFileMatrix (char * fileName, matrixType<Type> matrixObject) {
 
   __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
 
@@ -192,6 +192,212 @@ template <class Type> void IOSystem::outputDynamicFileMatrix (char * fileName, m
     for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
       dataStream << matrixObject.matrix[iterator][jiterator] << " ";
     dataStream << " ";
+  }
+
+  dataStream.close();
+}
+
+template <class Type> void IOSystemTrees::createTree (binaryTreeType<Type> * & treeObject) {
+
+  Type value;
+
+  std::cin >> value;
+
+  if (__validations__.isNotZero(value)) {
+
+    treeObject = new binaryTreeType<Type>;
+    treeObject->value = value;
+
+    createTree (treeObject->leftLeaf);
+    createTree (treeObject->rightLeaf);
+
+  } else treeObject = NULL;
+}
+
+template <class Type> void IOSystemTrees::deleteTree (binaryTreeType<Type> * & treeObject) {
+
+  if (__validations__.isNotNull(treeObject)) {
+
+    deleteTree (treeObject->leftLeaf);
+    deleteTree (treeObject->rightLeaf);
+    delete treeObject;
+  }
+}
+
+template <class Type> void IOSystemTrees::RootLeftRightPreOrder (binaryTreeType<Type> * treeObject) {
+
+  if (treeObject != NULL) {
+
+    std::cout << treeObject->value << " ";
+
+    RootLeftRightPreOrder (treeObject->leftLeaf);
+    RootLeftRightPreOrder (treeObject->rightLeaf);
+  }
+}
+
+template <class Type> void IOSystemTrees::LeftRootRightPostOrder (binaryTreeType<Type> * treeObject) {
+
+  if (treeObject != NULL) {
+
+    LeftRootRightPostOrder (treeObject->leftLeaf);
+    LeftRootRightPostOrder (treeObject->rightLeaf);
+
+    std::cout << treeObject->value << " ";
+  }
+}
+
+template <class Type> void IOSystemTrees::LeftRootRightInOrder (binaryTreeType<Type> * treeObject) {
+
+  if (treeObject != NULL) {
+
+    LeftRootRightInOrder (treeObject->leftLeaf);
+
+    std::cout << treeObject->value << " ";
+
+    LeftRootRightInOrder (treeObject->rightLeaf);
+  }
+}
+
+template <class Type> void IOSystemTrees::reachTreeOnLevels (binaryTreeType<Type> * treeObject, int level) {
+
+  if (treeObject != NULL) {
+
+    std::cout << treeObject->value << " - " << level << '\n';
+    reachTreeOnLevels (treeObject->leftLeaf, level + 1);
+    reachTreeOnLevels (treeObject->rightLeaf, level + 1);
+  }
+}
+
+template <class Type> void IOSystemGraphs::readAdjacencyMatrix (graphType<Type> & graphObject) {
+
+  __handler__.standardHandlerMatrix (graphObject.adjacencyMatrix, __PRETTY_FUNCTION__);
+
+  for (size_t iterator = graphObject.adjacencyMatrix.startLinePoint; iterator < graphObject.adjacencyMatrix.line + graphObject.adjacencyMatrix.endLinePoint; iterator++)
+    for (size_t jiterator = graphObject.adjacencyMatrix.startColumnPoint; jiterator < graphObject.adjacencyMatrix.column + graphObject.adjacencyMatrix.endColumnPoint; jiterator++)
+      std::cin >> graphObject.adjacencyMatrix.matrix[iterator][jiterator];
+}
+
+template <class Type> void IOSystemGraphs::readFileAdjacencyMatrix (char * fileName, graphType<Type> & graphObject) {
+
+  std::ifstream dataStream(fileName, std::ios::in);
+  Type data;
+
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
+
+  dataStream >> graphObject.adjacencyMatrix.line >> graphObject.adjacencyMatrix.column;
+
+  __handler__.standardHandlerOneDimensionalArray (graphObject.adjacencyMatrix);
+
+  for (size_t iterator = graphObject.adjacencyMatrix.startLinePoint; iterator < graphObject.adjacencyMatrix.line + graphObject.adjacencyMatrix.endLinePoint; iterator++)
+    for (size_t jiterator = graphObject.adjacencyMatrix.startColumnPoint; jiterator < graphObject.adjacencyMatrix.column + graphObject.adjacencyMatrix.endColumnPoint; jiterator++)
+      dataStream >> graphObject.adjacencyMatrix.matrix[iterator][jiterator];
+
+  dataStream.close();
+}
+
+template <class Type> void IOSystemGraphs::readGraphByEdgesList (graphType<Type> & graphObject) {
+
+  Type nodeValueOne, nodeValueTwo;
+
+  std::cin >> graphObject.vertices >> graphObject.edges;
+
+  __handler__.zeroNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.zeroNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
+
+  __handler__.negativeNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
+
+  for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
+
+    do {
+
+      std::cin >> nodeValueOne >> nodeValueTwo;
+
+    } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
+
+    graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = graphObject.adjacencyMatrix.matrix[nodeValueTwo][nodeValueOne] = 1;
+  }
+}
+
+template <class Type> void IOSystemGraphs::readFileGraphByEdgesList (char * fileName, graphType<Type> & graphObject) {
+
+  std::ifstream dataStream(fileName, std::ios::in);
+
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
+
+  Type nodeValueOne, nodeValueTwo;
+
+  dataStream >> graphObject.vertices >> graphObject.edges;
+
+  __handler__.zeroNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.zeroNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
+
+  __handler__.negativeNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
+
+  for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
+
+    do {
+
+      dataStream >> nodeValueOne >> nodeValueTwo;
+
+    } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
+
+    graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = graphObject.adjacencyMatrix.matrix[nodeValueTwo][nodeValueOne] = 1;
+  }
+
+  dataStream.close();
+}
+
+template <class Type> void IOSystemGraphs::readDirectedGraphByEdgesList (graphType<Type> & graphObject) {
+
+  Type nodeValueOne, nodeValueTwo;
+
+  std::cin >> graphObject.vertices >> graphObject.edges;
+
+  __handler__.zeroNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.zeroNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
+
+  __handler__.negativeNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
+
+  for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
+
+    do {
+
+      std::cin >> nodeValueOne >> nodeValueTwo;
+
+    } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
+
+    graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = 1;
+  }
+}
+
+template <class Type> void IOSystemGraphs::readFileDirectedGraphByEdgesList (char * fileName, graphType<Type> & graphObject) {
+
+  std::ifstream dataStream(fileName, std::ios::in);
+
+  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
+
+  Type nodeValueOne, nodeValueTwo;
+
+  dataStream >> graphObject.vertices >> graphObject.edges;
+
+  __handler__.zeroNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.zeroNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
+
+  __handler__.negativeNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
+
+  for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
+
+    do {
+
+      dataStream >> nodeValueOne >> nodeValueTwo;
+
+    } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
+
+    graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = 1;
   }
 
   dataStream.close();
@@ -1397,77 +1603,6 @@ bool checkersWorkFlow::isPalindrome (int parameter) {
   return false;
 }
 
-template <class Type> void treesWorkFlow::createTree (binaryTreeType<Type> * & treeObject) {
-
-  Type value;
-
-  std::cin >> value;
-
-  if (__validations__.isNotZero(value)) {
-
-    treeObject = new binaryTreeType<Type>;
-    treeObject->value = value;
-
-    createTree (treeObject->leftLeaf);
-    createTree (treeObject->rightLeaf);
-
-  } else treeObject = NULL;
-}
-
-template <class Type> void treesWorkFlow::deleteTree (binaryTreeType<Type> * & treeObject) {
-
-  if (__validations__.isNotNull(treeObject)) {
-
-    deleteTree (treeObject->leftLeaf);
-    deleteTree (treeObject->rightLeaf);
-    delete treeObject;
-  }
-}
-
-template <class Type> void treesWorkFlow::RootLeftRightPreOrder (binaryTreeType<Type> * treeObject) {
-
-  if (treeObject != NULL) {
-
-    std::cout << treeObject->value << " ";
-
-    RootLeftRightPreOrder (treeObject->leftLeaf);
-    RootLeftRightPreOrder (treeObject->rightLeaf);
-  }
-}
-
-template <class Type> void treesWorkFlow::LeftRootRightPostOrder (binaryTreeType<Type> * treeObject) {
-
-  if (treeObject != NULL) {
-
-    LeftRootRightPostOrder (treeObject->leftLeaf);
-    LeftRootRightPostOrder (treeObject->rightLeaf);
-
-    std::cout << treeObject->value << " ";
-  }
-}
-
-template <class Type> void treesWorkFlow::LeftRootRightInOrder (binaryTreeType<Type> * treeObject) {
-
-  if (treeObject != NULL) {
-
-    LeftRootRightInOrder (treeObject->leftLeaf);
-
-    std::cout << treeObject->value << " ";
-
-    LeftRootRightInOrder (treeObject->rightLeaf);
-  }
-}
-
-template <class Type> void treesWorkFlow::reachTreeOnLevels (binaryTreeType<Type> * treeObject, int level) {
-
-  if (treeObject != NULL) {
-
-    std::cout << treeObject->value << " - " << level << '\n';
-    reachTreeOnLevels (treeObject->leftLeaf, level + 1);
-    reachTreeOnLevels (treeObject->rightLeaf, level + 1);
-  }
-}
-
 template <class Type> Type treesWorkFlow::getTreeNumberOfNegativeValues (binaryTreeType<Type> * treeObject) {
 
   if (treeObject == NULL) return 0;
@@ -1529,87 +1664,6 @@ template <class Type> bool treesWorkFlow::convertToMirror (binaryTreeType<Type> 
   std::swap (treeObject->leftLeaf, treeObject->rightLeaf);
 }
 
-template <class Type> void graphsWorkFlow::readAdjacencyMatrix (graphType<Type> & graphObject) {
-
-  __handler__.standardHandlerMatrix (graphObject.adjacencyMatrix, __PRETTY_FUNCTION__);
-
-  for (size_t iterator = graphObject.adjacencyMatrix.startLinePoint; iterator < graphObject.adjacencyMatrix.line + graphObject.adjacencyMatrix.endLinePoint; iterator++)
-    for (size_t jiterator = graphObject.adjacencyMatrix.startColumnPoint; jiterator < graphObject.adjacencyMatrix.column + graphObject.adjacencyMatrix.endColumnPoint; jiterator++)
-      std::cin >> graphObject.adjacencyMatrix.matrix[iterator][jiterator];
-}
-
-template <class Type> void graphsWorkFlow::readFileAdjacencyMatrix (char * fileName, graphType<Type> & graphObject) {
-
-  std::ifstream dataStream(fileName, std::ios::in);
-  Type data;
-
-  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
-
-  dataStream >> graphObject.adjacencyMatrix.line >> graphObject.adjacencyMatrix.column;
-
-  __handler__.standardHandlerOneDimensionalArray (graphObject.adjacencyMatrix);
-
-  for (size_t iterator = graphObject.adjacencyMatrix.startLinePoint; iterator < graphObject.adjacencyMatrix.line + graphObject.adjacencyMatrix.endLinePoint; iterator++)
-    for (size_t jiterator = graphObject.adjacencyMatrix.startColumnPoint; jiterator < graphObject.adjacencyMatrix.column + graphObject.adjacencyMatrix.endColumnPoint; jiterator++)
-      dataStream >> graphObject.adjacencyMatrix.matrix[iterator][jiterator];
-
-  dataStream.close();
-}
-
-template <class Type> void graphsWorkFlow::readGraphByEdgesList (graphType<Type> & graphObject) {
-
-  Type nodeValueOne, nodeValueTwo;
-
-  std::cin >> graphObject.vertices >> graphObject.edges;
-
-  __handler__.zeroNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
-  __handler__.zeroNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
-
-  __handler__.negativeNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
-  __handler__.negativeNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
-
-  for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
-
-    do {
-
-      std::cin >> nodeValueOne >> nodeValueTwo;
-
-    } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
-
-    graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = graphObject.adjacencyMatrix.matrix[nodeValueTwo][nodeValueOne] = 1;
-  }
-}
-
-template <class Type> void graphsWorkFlow::readFileGraphByEdgesList (char * fileName, graphType<Type> & graphObject) {
-
-  std::ifstream dataStream(fileName, std::ios::in);
-
-  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
-
-  Type nodeValueOne, nodeValueTwo;
-
-  dataStream >> graphObject.vertices >> graphObject.edges;
-
-  __handler__.zeroNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
-  __handler__.zeroNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
-
-  __handler__.negativeNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
-  __handler__.negativeNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
-
-  for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
-
-    do {
-
-      dataStream >> nodeValueOne >> nodeValueTwo;
-
-    } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
-
-    graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = graphObject.adjacencyMatrix.matrix[nodeValueTwo][nodeValueOne] = 1;
-  }
-
-  dataStream.close();
-}
-
 template <class Type> void graphsWorkFlow::royWarshallAlgo (graphType<Type> & graphObject) {
 
   for (size_t iterator = 1; iterator < graphObject.vertices; iterator++)
@@ -1649,60 +1703,6 @@ template <class Type> bool graphsWorkFlow::isEulerian (graphType<Type> graphObje
   if (isConex(graphObject) && evenValency(graphObject)) return true;
 
   return false;
-}
-
-template <class Type> void graphsWorkFlow::readDirectedGraphByEdgesList (graphType<Type> & graphObject) {
-
-  Type nodeValueOne, nodeValueTwo;
-
-  std::cin >> graphObject.vertices >> graphObject.edges;
-
-  __handler__.zeroNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
-  __handler__.zeroNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
-
-  __handler__.negativeNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
-  __handler__.negativeNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
-
-  for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
-
-    do {
-
-      std::cin >> nodeValueOne >> nodeValueTwo;
-
-    } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
-
-    graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = 1;
-  }
-}
-
-template <class Type> void graphsWorkFlow::readFileDirectedGraphByEdgesList (char * fileName, graphType<Type> & graphObject) {
-
-  std::ifstream dataStream(fileName, std::ios::in);
-
-  __handler__.standardFileHandler (dataStream, __PRETTY_FUNCTION__);
-
-  Type nodeValueOne, nodeValueTwo;
-
-  dataStream >> graphObject.vertices >> graphObject.edges;
-
-  __handler__.zeroNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
-  __handler__.zeroNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
-
-  __handler__.negativeNumberHandler (graphObject.vertices, __PRETTY_FUNCTION__);
-  __handler__.negativeNumberHandler (graphObject.edges, __PRETTY_FUNCTION__);
-
-  for (size_t iterator = 0; iterator < graphObject.edges; iterator++) {
-
-    do {
-
-      dataStream >> nodeValueOne >> nodeValueTwo;
-
-    } while(nodeValueOne < 1 || nodeValueOne > graphObject.vertices || nodeValueTwo < 1 || nodeValueTwo > graphObject.vertices);
-
-    graphObject.adjacencyMatrix.matrix[nodeValueOne][nodeValueTwo] = 1;
-  }
-
-  dataStream.close();
 }
 
 template <class Type> unsigned int graphsWorkFlow::valencyOfAVertex (graphType<Type> graphObject, unsigned int vertex) {

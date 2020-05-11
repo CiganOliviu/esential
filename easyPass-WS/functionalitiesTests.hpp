@@ -3,7 +3,7 @@
 class oneDimensionalArrayTestingWorkflow {
 private:
 	oneDimensionalArraysWorkFlow ODAWorkFlow;
-	IOSystem io;
+	IOSystemOneDimensionalArray ioODA;
 	assertions __assert__;
 
 public:
@@ -28,7 +28,7 @@ template<class Type> void oneDimensionalArrayTestingWorkflow::assertMinimumValue
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	ioODA.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 
 	limits<Type> results;
 
@@ -42,7 +42,7 @@ template<class Type> void oneDimensionalArrayTestingWorkflow::assertMaximumValue
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	ioODA.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 
 	limits<Type> results;
 
@@ -56,7 +56,7 @@ template<class Type> void oneDimensionalArrayTestingWorkflow::assertOneDimension
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	ioODA.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 
 	limits<Type> results;
 
@@ -70,7 +70,7 @@ template<class Type> void oneDimensionalArrayTestingWorkflow::assertOneDimension
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	ioODA.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 
 	limits<Type> results;
 
@@ -84,7 +84,7 @@ template<class Type> void oneDimensionalArrayTestingWorkflow::assertOneDimension
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	ioODA.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 
 	limits<Type> results;
 
@@ -98,7 +98,7 @@ template<class Type> void oneDimensionalArrayTestingWorkflow::assertOneDimension
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	ioODA.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 
 	limits<Type> results;
 
@@ -112,7 +112,7 @@ template <class Type> void oneDimensionalArrayTestingWorkflow::assertMinimumValu
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	ioODA.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 	ODAWorkFlow.bubbleSort (ODAObject);
 
 	limits<int> interval;
@@ -132,7 +132,7 @@ template <class Type> void oneDimensionalArrayTestingWorkflow::assertMaximumValu
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	io.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
+	ioODA.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
 	ODAWorkFlow.minimumValueSort (ODAObject);
 
 	limits<int> interval;
@@ -152,7 +152,7 @@ template <class Type> void oneDimensionalArrayTestingWorkflow::assertBinarySearc
 
 	oneDimensionalArrayType<Type> ODAObject;
 
-	io.readDynamicFileOneDimensionalArray ((char*)"data/arrayDataSet.data", ODAObject);
+	ioODA.readDynamicFileOneDimensionalArray ((char*)"data/arrayDataSet.data", ODAObject);
 
 	ODAWorkFlow.bubbleSort (ODAObject);
 	
@@ -168,7 +168,7 @@ class matricesTestingWorkFlow {
 
 private:
 	matricesWorkFlow MWorkFlow;
-	IOSystem io;
+	IOSystemMatrices ioM;
 	assertions __assert__;
 
 public:
@@ -187,7 +187,7 @@ template <class Type> void matricesTestingWorkFlow::assertMaximumValueFromMatrix
 
 		matrixType<Type> matrixObject;
 
-		io.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
+		ioM.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
 
 		limits<Type> results;
 
@@ -201,7 +201,7 @@ template <class Type> void matricesTestingWorkFlow::assertMinimumValueFromMatrix
 
 		matrixType<Type> matrixObject;
 
-		io.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
+		ioM.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
 
 		limits<Type> results;
 
@@ -215,7 +215,7 @@ template <class Type> void matricesTestingWorkFlow::assertMatrixElementsSum () {
 
 		matrixType<Type> matrixObject;
 
-		io.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
+		ioM.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
 
 		limits<Type> results;
 
@@ -229,7 +229,7 @@ template <class Type> void matricesTestingWorkFlow::assertMatrixElementsProduct 
 
 		matrixType<Type> matrixObject;
 
-		io.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
+		ioM.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
 
 		limits<Type> results;
 
@@ -243,7 +243,7 @@ template <class Type> void matricesTestingWorkFlow::assertMatrixElementsDifferen
 
 		matrixType<Type> matrixObject;
 
-		io.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
+		ioM.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", matrixObject);
 
 		limits<Type> results;
 
