@@ -32,11 +32,11 @@ int main(int argc, char const *argv[]) {
 
   oneDimensionalArrayType<int> ODAObject;
   oneDimensionalArraysWorkFlow ODAWorkFlow;
-  IOSystem io;
+  IOSystemOneDimensionalArray ioODA;
   getMultipleWriteOnce getMultipleWriteOnceWorkFlow;
 
-  io.readDynamicFileOneDimensionalArray ((char*)"getMultipleWriteOnceData.data", ODAObject);
-  io.outputOneDimensionalArray (ODAObject);
+  ioODA.readDynamicFileOneDimensionalArray ((char*)"getMultipleWriteOnceData.data", ODAObject);
+  ioODA.outputOneDimensionalArray (ODAObject);
   getMultipleWriteOnceWorkFlow.writeValuesFromODAOnce (ODAObject);
 
   return 0;

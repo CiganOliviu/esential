@@ -3,7 +3,7 @@
 class commonDivisorInArray {
 private:
   errorsHandler __handler__;
-  fundamentalAlgorithmsWorkFlow algorithms;
+  numbersPropertiesWorkFlow properties;
 
 public:
   commonDivisorInArray () {}
@@ -20,7 +20,7 @@ int commonDivisorInArray::getCommonDivisorInArray (oneDimensionalArrayType<int> 
   int theBiggestCommonDivisor = ODAObject.oneDimensionalArray[0];
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++) {
-    theBiggestCommonDivisor = algorithms.getTheLargestCommonDivisorOfTwoNumbers (theBiggestCommonDivisor, ODAObject.oneDimensionalArray[iterator]);
+    theBiggestCommonDivisor = properties.getTheLargestCommonDivisorOfTwoNumbers (theBiggestCommonDivisor, ODAObject.oneDimensionalArray[iterator]);
   }
 
   return theBiggestCommonDivisor;
@@ -29,11 +29,11 @@ int commonDivisorInArray::getCommonDivisorInArray (oneDimensionalArrayType<int> 
 int main(int argc, char const *argv[]) {
 
   oneDimensionalArrayType<int> ODAObject;
-  IOSystem io;
+  IOSystemOneDimensionalArray ioODA;
   commonDivisorInArray commonDivisorODA;
 
-  io.readOneDimensionalArray (ODAObject);
-  io.outputOneDimensionalArray (ODAObject);
+  ioODA.readOneDimensionalArray (ODAObject);
+  ioODA.outputOneDimensionalArray (ODAObject);
 
   std::cout << commonDivisorODA.getCommonDivisorInArray (ODAObject);
 

@@ -69,25 +69,25 @@ int main(int argc, char const *argv[]) {
 
   matrixType <int> matrix;
   matricesWorkFlow matricesWF;
-  fundamentalAlgorithmsWorkFlow fundamentalWF;
-  IOSystem io;
+  IOSystemMatrices ioM;
+  checkersWorkFlow __checks__;
   makeAreasNull turnInNull;
 
-  io.readDynamicFileMatrix ((char*)"makeAreasNull.data", matrix);
-  io.outputMatrix (matrix);
+  ioM.readDynamicFileMatrix ((char*)"makeAreasNull.data", matrix);
+  ioM.outputMatrix (matrix);
 
-  if (fundamentalWF.isOdd(matrix.lineRefference)) {
+  if (__checks__.isOdd(matrix.lineRefference)) {
     turnInNull.turnOddColumnsAreaToNull (matrix);
     turnInNull.turnOddLinesAreaToNull (matrix);
   }
 
-  if (fundamentalWF.isEven(matrix.lineRefference)) {
+  if (__checks__.isEven(matrix.lineRefference)) {
     turnInNull.turnEvenColumnsAreaToNull (matrix);
     turnInNull.turnEvenLinesAreaToNull (matrix);
   }
 
   std::cout << '\n' << '\n';
-  io.outputMatrix(matrix);
+  ioM.outputMatrix(matrix);
 
   return 0;
 }

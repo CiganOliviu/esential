@@ -10,7 +10,7 @@
 
 class matrixGenerator {
 private:
-  fundamentalAlgorithmsWorkFlow __fundamental_algo__;
+  checkersWorkFlow __checks__;
   errorsHandler __handler__;
 
   int the_N_palindromeNumber (int number);
@@ -31,7 +31,7 @@ int matrixGenerator::the_N_palindromeNumber (int number) {
 
   while (index < number) {
 
-    if (__fundamental_algo__.isPalindrome(contor)) {
+    if (__checks__.isPalindrome(contor)) {
       thePrimeNumber = contor;
       index += 1;
     }
@@ -62,14 +62,14 @@ int main(int argc, char const *argv[]) {
 
   matrixType<int> matrixRefference;
   matricesWorkFlow MWorkFlow;
-  IOSystem io;
+  IOSystemMatrices ioM;
   matrixGenerator __matrixGenerator_init__;
 
   std::cin >> matrixRefference.lineRefference;
 
   __matrixGenerator_init__.generateMatrix (matrixRefference);
 
-  io.outputMatrix(matrixRefference);
+  ioM.outputMatrix(matrixRefference);
 
   return 0;
 }

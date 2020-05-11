@@ -49,12 +49,12 @@ int main(int argc, char const *argv[]) {
   oneDimensionalArrayType<int> ODARefference;
   oneDimensionalArraysWorkFlow ODAWorkFlow;
   multipleOfThree multipleOfThreeRefference;
-  IOSystem io;
+  IOSystemOneDimensionalArray ioODA;
 
-  io.readDynamicFileOneDimensionalArray ((char*)"multipleOfThreeData.data", ODARefference);
-  io.outputOneDimensionalArray (ODARefference);
+  ioODA.readDynamicFileOneDimensionalArray ((char*)"multipleOfThreeData.data", ODARefference);
+  ioODA.outputOneDimensionalArray (ODARefference);
   ODAWorkFlow.shellSort (ODARefference);
-  io.outputOneDimensionalArray (ODARefference);
+  ioODA.outputOneDimensionalArray (ODARefference);
   multipleOfThreeRefference.getMultipleOfThreeNumbersFromODA (ODARefference);
 
   return 0;

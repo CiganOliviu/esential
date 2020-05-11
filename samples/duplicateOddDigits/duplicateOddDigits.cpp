@@ -7,7 +7,8 @@
 class duplicationsProcessor {
 private:
   errorsHandler __handler__;
-  fundamentalAlgorithmsWorkFlow __fundamentalAlgo__;
+  numbersPropertiesWorkFlow __properties__;
+  checkersWorkFlow __checks__;
 
 public:
   duplicationsProcessor () {}
@@ -21,7 +22,7 @@ int duplicationsProcessor::realiseNumberDuplication (int number) {
 
   __handler__.negativeNumberHandler (number, __PRETTY_FUNCTION__);
 
-  number = __fundamentalAlgo__.reverseNumber(number);
+  number = __properties__.reverseNumber(number);
 
   int  duplicatedNumber = 0;
 
@@ -29,7 +30,7 @@ int duplicationsProcessor::realiseNumberDuplication (int number) {
 
     duplicatedNumber = duplicatedNumber * 10 + number % 10;
 
-    if (__fundamentalAlgo__.isOdd(number % 10))
+    if (__checks__.isOdd(number % 10))
       duplicatedNumber = duplicatedNumber * 10 + (number % 10) / 2;
 
     number /= 10;

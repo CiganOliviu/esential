@@ -14,6 +14,7 @@ class matrixGenerator {
 private:
   errorsHandler __handler__;
   fundamentalAlgorithmsWorkFlow __fundamental_algo__;
+  checkersWorkFlow __checks__;
 
 public:
   matrixGenerator () {}
@@ -33,13 +34,13 @@ void matrixGenerator::generateFibonacciMatrix (matrixType<int> & fiboMatrix) {
   int fiboIndexEven = 0;
 
   for (size_t iterator = fiboMatrix.startLinePoint; iterator < fiboMatrix.lineRefference + fiboMatrix.endLinePoint; iterator++) {
-      if (__fundamental_algo__.isOdd(iterator + 1)) {
+      if (__checks__.isOdd(iterator + 1)) {
         fiboIndexOdd += fiboIndexEven;
         for (size_t jiterator = fiboMatrix.startColumnPoint; jiterator < fiboMatrix.columnRefference + fiboMatrix.endColumnPoint; jiterator++) {
           fiboMatrix.matrix[iterator][jiterator] = __fundamental_algo__.getThe_N_fibonacciNumber(fiboIndexOdd);
           fiboIndexOdd += 1;
         }
-      } else if (__fundamental_algo__.isEven(iterator + 1)) {
+      } else if (__checks__.isEven(iterator + 1)) {
           fiboIndexEven = fiboIndexOdd + fiboMatrix.lineRefference;
           for (size_t jiterator = fiboMatrix.startColumnPoint; jiterator < fiboMatrix.columnRefference + fiboMatrix.endColumnPoint; jiterator++) {
             fiboMatrix.matrix[iterator][jiterator] = __fundamental_algo__.getThe_N_fibonacciNumber(fiboIndexEven);
@@ -52,7 +53,7 @@ void matrixGenerator::generateFibonacciMatrix (matrixType<int> & fiboMatrix) {
 int main(int argc, char const *argv[]) {
 
   matricesWorkFlow MWorkFlow;
-  IOSystem io;
+  IOSystemMatrices ioM;
   matrixType <int> matrixRefference;
   matrixGenerator __generator_init__;
 
@@ -60,7 +61,7 @@ int main(int argc, char const *argv[]) {
 
   __generator_init__.generateFibonacciMatrix(matrixRefference);
 
-  io.outputMatrix(matrixRefference);
+  ioM.outputMatrix(matrixRefference);
 
   return 0;
 }

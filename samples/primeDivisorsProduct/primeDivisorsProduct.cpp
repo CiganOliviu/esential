@@ -8,7 +8,7 @@
 class DataProcessor {
 private:
 	validationRules __validations__;
-	fundamentalAlgorithmsWorkFlow __algos__;
+	checkersWorkFlow __checks__;
 
 public:
 	DataProcessor() {}
@@ -28,7 +28,7 @@ int DataProcessor::GetDivisorsProduct (int Number) {
 
 	for (int iterator = 2; iterator <= Number / 2; iterator++)
 		if (Number % iterator == 0)
-			if (__algos__.isPrime(iterator))
+			if (__checks__.isPrime(iterator))
 				Result *= iterator;
 
 	return Result;

@@ -5,7 +5,7 @@ private:
   oneDimensionalArraysWorkFlow ODAWorkFlow;
   errorsHandler __handler__;
   portData __port__;
-  fundamentalAlgorithmsWorkFlow fundamentalWorkFlow;
+  equationsWorkFlow equations;
 
 public:
   linearRegression () {}
@@ -63,7 +63,7 @@ void linearRegression::saveRegression (oneDimensionalArrayType<float> regression
 
   for (size_t iterator = regressionArray.startPoint; iterator < regressionArray.length + regressionArray.endPoint; iterator++) {
     __LEquation__.root = iterator + 1;
-    regressionArray.oneDimensionalArray[iterator] = fundamentalWorkFlow.getValueLinearEquation(__LEquation__);
+    regressionArray.oneDimensionalArray[iterator] = equations.getValueLinearEquation(__LEquation__);
   }
 }
 

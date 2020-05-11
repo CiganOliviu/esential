@@ -3,7 +3,7 @@
 class smallestPrimeDivisorProcessor {
 private:
   errorsHandler __handler__;
-  fundamentalAlgorithmsWorkFlow __fundamental_algo__;
+  checkersWorkFlow __checks__;
 
 public:
   smallestPrimeDivisorProcessor () {}
@@ -18,7 +18,7 @@ int smallestPrimeDivisorProcessor::getTheSmallestPrimeDivisor (int number) {
   __handler__.negativeNumberHandler (number, __PRETTY_FUNCTION__);
 
   for (size_t iterator = 2; iterator <= number; iterator++)
-    if (number % iterator == 0 && __fundamental_algo__.isPrime(iterator))
+    if (number % iterator == 0 && __checks__.isPrime(iterator))
       return iterator;
 
   return 0;
