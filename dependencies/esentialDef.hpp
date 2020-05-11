@@ -242,9 +242,12 @@ public:
   complexNumbersWorkFlow () {}
 
   void readComplexData (complexNumber * number);
+
   complexNumber complexNumbersProduct (complexNumber * numberOne, complexNumber * numberTwo);
   complexNumber complexNumberSum (complexNumber * numberOne, complexNumber * numberTwo);
   complexNumber complexNumberDifference (complexNumber * numberOne, complexNumber * numberTwo);
+
+  void outputComplexData (complexNumber * number);
 
   bool classResponse () { return true; }
 

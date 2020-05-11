@@ -1343,6 +1343,10 @@ complexNumber complexNumbersWorkFlow::complexNumberDifference (complexNumber * n
   return resultedComplexNumber;
 }
 
+void complexNumbersWorkFlow::outputComplexData (complexNumber *number) {
+
+    std::cout << number->realPart << " " << number->imaginaryPart << '\n';
+}
 
 int numbersPropertiesWorkFlow::getTheLargestCommonDivisor (limits<int> interval) {
 
