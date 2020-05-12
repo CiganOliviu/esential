@@ -1468,7 +1468,9 @@ float equationsWorkFlow::getRootLinearEquation (linearEquation __LEquation__) {
     if (__validations__.isZero(__LEquation__.y_intercept)) throw systemException ("Undetermined compatible equation in float fundamentalAlgorithmsWorkFlow::getRootLinearEquation (linearEquation __LEquation__);");
     else throw systemException ("Imcompatible equation in float fundamentalAlgorithmsWorkFlow::getRootLinearEquation (linearEquation __LEquation__);");
 
-  return float(-__LEquation__.y_intercept / __LEquation__.slope);
+  float result = float(-__LEquation__.y_intercept / __LEquation__.slope);
+  
+  return result;
 }
 
 float equationsWorkFlow::getValueLinearEquation (linearEquation __LEquation__) {
@@ -1477,7 +1479,9 @@ float equationsWorkFlow::getValueLinearEquation (linearEquation __LEquation__) {
     if (__validations__.isZero(__LEquation__.y_intercept)) throw systemException ("");
     else throw systemException ("Imcompatible equation in float fundamentalAlgorithmsWorkFlow::getValueLinearEquation (linearEquation __LEquation__);");
 
-  return (( __LEquation__.slope * __LEquation__.root) + __LEquation__.y_intercept );
+  float result = (( __LEquation__.slope * __LEquation__.root) + __LEquation__.y_intercept );
+  
+  return result;
 }
 
 void equationsWorkFlow::processQuadraticEquationWithoutCoefficient_a (limits<float> & roots, quadraticEquation __QEquation__) {
@@ -1554,7 +1558,9 @@ float equationsWorkFlow::getValueQuadraticEquation (quadraticEquation __QEquatio
   __handler__.zeroNumberHandler (__QEquation__.coefficient_a, __PRETTY_FUNCTION__);
   __handler__.zeroNumberHandler (__QEquation__.coefficient_b, __PRETTY_FUNCTION__);
 
-  return ( __QEquation__.coefficient_a * pow (root, 2) + (__QEquation__.coefficient_b * root) + __QEquation__.coefficient_c);
+  float result = ( __QEquation__.coefficient_a * pow (root, 2) + (__QEquation__.coefficient_b * root) + __QEquation__.coefficient_c);
+  
+  return result;
 }
 
 bool checkersWorkFlow::isPrime (int parameter) {
