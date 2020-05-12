@@ -143,20 +143,18 @@ public:
   template <class Type> Type getMinimumValueOneDimensionalArrayDivideEtEmpera (limits<Type> interval, oneDimensionalArrayType<Type> ODAObject);
   template <class Type> Type getMaximumValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> Type getMaximumValueOneDimensionalArrayDivideEtEmpera (limits<Type> interval, oneDimensionalArrayType<Type> ODAObject);
-
   template <class Type> Type getOneDimensionalArrayElementsSum (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> Type getOneDimensionalArrayElementsProduct (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> Type getOneDimensionalArrayElementsDifference (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> Type getOneDimensionalArrayElementsDivision (oneDimensionalArrayType<Type> ODAObject);
-  template <class Type> float getOneDimensionalArrayMean (oneDimensionalArrayType<Type> ODAObject);
-  template <class Type> void oneDimensionalArrayInitialization (oneDimensionalArrayType<Type> ODAObject, Type initializator);
+  template <class Type> float getOneDimensionalArrayMean (oneDimensionalArrayType<Type> ODAObject);  
+  template <class Type> void oneDimensionalArrayInitialization (oneDimensionalArrayType<Type> ODAObject, Type initializator); 
   template <class Type> bool checkIfSymetricOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void addValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, limits<Type> valueAndPosition);
   template <class Type> bool isValueInOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type value);
   template <class Type> void normalizeOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> oneDimensionalArrayType<Type> convertNumberToOneDimensionalArray (int number);
   template <class Type> void boostOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type factor);
-
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysSum (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysProduct (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDifference (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
@@ -202,21 +200,17 @@ public:
 
   template <class Type> Type getMaximumValueFromMatrix (matrixType<Type> matrixObject);
   template <class Type> Type getMinimumValueFromMatrix (matrixType<Type> matrixObject);
-
   template <class Type> Type getMatrixElementsSum (matrixType<Type> matrixObject);
   template <class Type> Type getMatrixElementsProduct (matrixType<Type> matrixObject);
   template <class Type> Type getMatrixElementsDifference (matrixType<Type> matrixObject);
   template <class Type> Type getMatrixElementsDivision (matrixType<Type> matrixObject);
-
   template <class Type> void matrixInitialization (matrixType<Type> & matrixObject, Type value);
   template <class Type> void normalizeMatrix (matrixType<Type> & matrixObject);
   template <class Type> void boostMatrix (matrixType<Type> & matrixObject, Type factor); 
-
   template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
   template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
   template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
   template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
-
   template <class Type> oneDimensionalArrayType<Type> getMatrixMainDiagonal (matrixType<Type> matrixObject);
   template <class Type> oneDimensionalArrayType<Type> getMatrixAboveMainDiagonal (matrixType<Type> matrixObject);
   template <class Type> oneDimensionalArrayType<Type> getMatrixUnderMainDiagonal (matrixType<Type> matrixObject);
@@ -245,7 +239,6 @@ public:
   fundamentalAlgorithmsWorkFlow () {}
 
   template <class Type> Type getGaussSum (Type limit);
-
   int getThe_N_FactorialNumber (int parameter);
   int getThe_N_FactorialNumberRecursive (int parameter);
   int getThe_N_mannaPnueliNumber (int parameter);
@@ -255,7 +248,6 @@ public:
   int getThe_N_fibonacciNumber (int parameter);
   int getThe_N_fibonacciNumberRecursive (int parameter);
   int getThe_N_masterTheoremNumber (int parameter);
-
   void removeCharFromString (char * string, char value);
 
   bool classResponse () { return true; }
@@ -293,12 +285,9 @@ class numbersPropertiesWorkFlow {
     int getTheLargestCommonDivisor (limits<int> interval);
     int getTheLargestCommonDivisorRecursive (limits<int> interval);
     int getTheLargestCommonDivisorOfTwoNumbers (int numberOne, int numberTwo);
-
     int getLeastCommonMultiple (limits<int> interval);
     int getLeastCommonMultipleOfTwoNumbers (int numberOne, int numberTwo);
-
     int getPrimevalue (int parameter);
-
     int reverseNumber (int parameter);
     int getPalindromValue (int parameter);
     float getMeanOfTwoNumbers (float parameterOne, float parameterTwo);
