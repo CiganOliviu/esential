@@ -11,6 +11,8 @@ private:
 
   oneDimensionalArraysWorkFlow ODAWorkFlow;
 
+  sortAlgorithmsOneDimensionalArray SortWorkFlow;
+
   matricesWorkFlow MatricesWorkFlow;
 
   fundamentalAlgorithmsWorkFlow fundamentalAlgosWorkFlow;
@@ -36,6 +38,7 @@ public:
   void assertIOSystemGraphs ();
 
   void assertOneDimensionalArraysWorkFlow ();
+  void assertsortAlgorithmsOneDimensionalArray ();
   void assertMatricesWorkFlow ();
   void assertFundamentalAlgorithmsWorkFlow ();
   void assertComplexNumbersWorkFlow ();
@@ -96,6 +99,16 @@ void systemTestingWorkflow::assertOneDimensionalArraysWorkFlow () {
     results.maximLimit = true;
 
     __assert__.countTest ((char*)"assertOneDimensionalArraysWorkFlow", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
+void systemTestingWorkflow::assertsortAlgorithmsOneDimensionalArray () {
+
+    limits<bool> results;
+
+    results.minimLimit = ODAWorkFlow.classResponse();
+    results.maximLimit = true;
+
+    __assert__.countTest ((char*)"assertsortAlgorithmsOneDimensionalArray", __assert__.assertPrimitiveDataTypes<bool>(results) );
 }
 
 void systemTestingWorkflow::assertMatricesWorkFlow () {

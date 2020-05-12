@@ -725,7 +725,26 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
   return ODAObjectOne;
 }
 
-template <class Type> void oneDimensionalArraysWorkFlow::bubbleSort (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> bool oneDimensionalArraysWorkFlow::binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
+
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
+
+  int leftIndex = ODAObject.startPoint;
+  int rightIndex = ODAObject.length - 1;
+
+  while (leftIndex <= rightIndex) {
+
+    int middleIndex = (leftIndex + rightIndex) / 2;
+
+    if (valueToSearch == ODAObject.oneDimensionalArray[middleIndex]) return true;
+    if (valueToSearch < ODAObject.oneDimensionalArray[middleIndex]) rightIndex = middleIndex - 1;
+    if (valueToSearch > ODAObject.oneDimensionalArray[middleIndex]) leftIndex = middleIndex + 1;
+  }
+
+  return false;
+}
+
+template <class Type> void sortAlgorithmsOneDimensionalArray::bubbleSort (oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
@@ -735,7 +754,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::bubbleSort (oneDimensio
       __support__.interchangeValues (ODAObject.oneDimensionalArray[jiterator], ODAObject.oneDimensionalArray[jiterator + 1]);
 }
 
-template <class Type> void oneDimensionalArraysWorkFlow::minimumValueSort (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void sortAlgorithmsOneDimensionalArray::minimumValueSort (oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
@@ -745,7 +764,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::minimumValueSort (oneDi
         __support__.interchangeValues (ODAObject.oneDimensionalArray[iterator], ODAObject.oneDimensionalArray[jiterator]);
 }
 
-template <class Type> void oneDimensionalArraysWorkFlow::insertionSort (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void sortAlgorithmsOneDimensionalArray::insertionSort (oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
@@ -764,7 +783,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::insertionSort (oneDimen
   }
 }
 
-template <class Type> void oneDimensionalArraysWorkFlow::selectionSort (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void sortAlgorithmsOneDimensionalArray::selectionSort (oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
@@ -774,7 +793,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::selectionSort (oneDimen
         __support__.interchangeValues (ODAObject.oneDimensionalArray[iterator], ODAObject.oneDimensionalArray[jiterator]);
 }
 
-template <class Type> void oneDimensionalArraysWorkFlow::shellSort (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void sortAlgorithmsOneDimensionalArray::shellSort (oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
@@ -796,7 +815,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::shellSort (oneDimension
   }
 }
 
-template <class Type> void oneDimensionalArraysWorkFlow::reverseOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
+template <class Type> void sortAlgorithmsOneDimensionalArray::reverseOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
@@ -804,25 +823,6 @@ template <class Type> void oneDimensionalArraysWorkFlow::reverseOneDimensionalAr
     for (size_t jiterator = ODAObject.startPoint; jiterator < ODAObject.length + ODAObject.endPoint - iterator - 1; jiterator++)
       if (ODAObject.oneDimensionalArray[jiterator] < ODAObject.oneDimensionalArray[jiterator + 1])
       __support__.interchangeValues (ODAObject.oneDimensionalArray[jiterator], ODAObject.oneDimensionalArray[jiterator + 1]);
-}
-
-template <class Type> bool oneDimensionalArraysWorkFlow::binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
-
-  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
-
-  int leftIndex = ODAObject.startPoint;
-  int rightIndex = ODAObject.length - 1;
-
-  while (leftIndex <= rightIndex) {
-
-    int middleIndex = (leftIndex + rightIndex) / 2;
-
-    if (valueToSearch == ODAObject.oneDimensionalArray[middleIndex]) return true;
-    if (valueToSearch < ODAObject.oneDimensionalArray[middleIndex]) rightIndex = middleIndex - 1;
-    if (valueToSearch > ODAObject.oneDimensionalArray[middleIndex]) leftIndex = middleIndex + 1;
-  }
-
-  return false;
 }
 
 template <class Type> Type matricesWorkFlow::getMaximumValueFromMatrix (matrixType<Type> matrixObject) {
@@ -1559,7 +1559,7 @@ float equationsWorkFlow::getValueQuadraticEquation (quadraticEquation __QEquatio
   __handler__.zeroNumberHandler (__QEquation__.coefficient_b, __PRETTY_FUNCTION__);
 
   float result = ( __QEquation__.coefficient_a * pow (root, 2) + (__QEquation__.coefficient_b * root) + __QEquation__.coefficient_c);
-  
+
   return result;
 }
 

@@ -146,6 +146,22 @@ public:
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDifference (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDivision (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
 
+  template <class Type> bool binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
+
+  bool classResponse () { return true; }
+
+  virtual ~oneDimensionalArraysWorkFlow () {}
+};
+
+class sortAlgorithmsOneDimensionalArray {
+private:
+  errorsHandler __handler__;
+  checkAndSupport __support__;
+
+public:
+
+  sortAlgorithmsOneDimensionalArray () {}
+
   template <class Type> void bubbleSort (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void minimumValueSort (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void insertionSort (oneDimensionalArrayType<Type> ODAObject);
@@ -153,11 +169,9 @@ public:
   template <class Type> void shellSort (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void reverseOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
 
-  template <class Type> bool binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
-
   bool classResponse () { return true; }
-
-  virtual ~oneDimensionalArraysWorkFlow () {}
+  
+  virtual ~sortAlgorithmsOneDimensionalArray () {}
 };
 
 class matricesWorkFlow {

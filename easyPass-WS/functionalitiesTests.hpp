@@ -3,6 +3,7 @@
 class oneDimensionalArrayTestingWorkflow {
 private:
 	oneDimensionalArraysWorkFlow ODAWorkFlow;
+	sortAlgorithmsOneDimensionalArray SortWorkFlow;
 	IOSystemOneDimensionalArray ioODA;
 	assertions __assert__;
 
@@ -113,7 +114,7 @@ template <class Type> void oneDimensionalArrayTestingWorkflow::assertMinimumValu
 	oneDimensionalArrayType<Type> ODAObject;
 
 	ioODA.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
-	ODAWorkFlow.bubbleSort (ODAObject);
+	SortWorkFlow.bubbleSort (ODAObject);
 
 	limits<int> interval;
 
@@ -133,7 +134,7 @@ template <class Type> void oneDimensionalArrayTestingWorkflow::assertMaximumValu
 	oneDimensionalArrayType<Type> ODAObject;
 
 	ioODA.readDynamicFileOneDimensionalArray((char*)"data/arrayDataSet.data", ODAObject);
-	ODAWorkFlow.minimumValueSort (ODAObject);
+	SortWorkFlow.minimumValueSort (ODAObject);
 
 	limits<int> interval;
 
@@ -154,7 +155,7 @@ template <class Type> void oneDimensionalArrayTestingWorkflow::assertBinarySearc
 
 	ioODA.readDynamicFileOneDimensionalArray ((char*)"data/arrayDataSet.data", ODAObject);
 
-	ODAWorkFlow.bubbleSort (ODAObject);
+	SortWorkFlow.bubbleSort (ODAObject);
 	
 	limits<bool> interval;
 
