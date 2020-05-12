@@ -112,6 +112,22 @@ public:
   virtual ~IOSystemGraphs () {}
 };
 
+class IOSystemComplexNumbers {
+private:
+  errorsHandler __handler__;
+  validationRules __validations__;
+
+public:
+  IOSystemComplexNumbers () {}
+
+  void readComplexData (complexNumber * number);
+  void outputComplexData (complexNumber * number);
+
+  bool classResponse () { return true; };
+
+  virtual ~IOSystemComplexNumbers () {}
+};
+
 class oneDimensionalArraysWorkFlow {
 private:
   errorsHandler __handler__;
@@ -170,7 +186,7 @@ public:
   template <class Type> void reverseOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
 
   bool classResponse () { return true; }
-  
+
   virtual ~sortAlgorithmsOneDimensionalArray () {}
 };
 
@@ -255,13 +271,9 @@ private:
 public:
   complexNumbersWorkFlow () {}
 
-  void readComplexData (complexNumber * number);
-
   complexNumber complexNumbersProduct (complexNumber * numberOne, complexNumber * numberTwo);
   complexNumber complexNumberSum (complexNumber * numberOne, complexNumber * numberTwo);
   complexNumber complexNumberDifference (complexNumber * numberOne, complexNumber * numberTwo);
-
-  void outputComplexData (complexNumber * number);
 
   bool classResponse () { return true; }
 

@@ -403,6 +403,18 @@ template <class Type> void IOSystemGraphs::readFileDirectedGraphByEdgesList (cha
   dataStream.close();
 }
 
+void IOSystemComplexNumbers::readComplexData (complexNumber * number) {
+
+  for (size_t iterator = 0; iterator < number->complexNumberLength; iterator++) {
+    scanf("%f", &number[iterator].realPart);
+    scanf("%f", &number[iterator].imaginaryPart);
+  }
+}
+void IOSystemComplexNumbers::outputComplexData (complexNumber *number) {
+
+    std::cout << number->realPart << " " << number->imaginaryPart << '\n';
+}
+
 template <class Type> Type oneDimensionalArraysWorkFlow::getMinimumValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
@@ -1293,14 +1305,6 @@ void fundamentalAlgorithmsWorkFlow::removeCharFromString (char * string, char va
   *stringDest = '\0';
 }
 
-void complexNumbersWorkFlow::readComplexData (complexNumber * number) {
-
-  for (size_t iterator = 0; iterator < number->complexNumberLength; iterator++) {
-    scanf("%f", &number[iterator].realPart);
-    scanf("%f", &number[iterator].imaginaryPart);
-  }
-}
-
 complexNumber complexNumbersWorkFlow::complexNumbersProduct (complexNumber * numberOne, complexNumber * numberTwo) {
 
   complexNumber resultedComplexNumber;
@@ -1341,11 +1345,6 @@ complexNumber complexNumbersWorkFlow::complexNumberDifference (complexNumber * n
   resultedComplexNumber.imaginaryPart = imaginaryPartSum;
 
   return resultedComplexNumber;
-}
-
-void complexNumbersWorkFlow::outputComplexData (complexNumber *number) {
-
-    std::cout << number->realPart << " " << number->imaginaryPart << '\n';
 }
 
 int numbersPropertiesWorkFlow::getTheLargestCommonDivisor (limits<int> interval) {

@@ -8,6 +8,7 @@ private:
   IOSystemMatrices inputOutputSystemMatrices;
   IOSystemTrees inputOutputSystemTrees;
   IOSystemGraphs inputOutputSystemGraphs;
+  IOSystemComplexNumbers inputOutputSystemComplexNumbers;
 
   oneDimensionalArraysWorkFlow ODAWorkFlow;
 
@@ -36,6 +37,7 @@ public:
   void assertIOSystemMatrices ();
   void assertIOSystemTrees ();
   void assertIOSystemGraphs ();
+  void assertIOSystemComplexNumbers ();
 
   void assertOneDimensionalArraysWorkFlow ();
   void assertsortAlgorithmsOneDimensionalArray ();
@@ -91,6 +93,16 @@ void systemTestingWorkflow::assertIOSystemGraphs () {
   __assert__.countTest ((char*)"assertIOSystemGraphs", __assert__.assertPrimitiveDataTypes<bool>(results) );
 }
 
+void systemTestingWorkflow::assertIOSystemComplexNumbers () {
+
+  limits<bool> results;
+
+  results.minimLimit = inputOutputSystemComplexNumbers.classResponse();
+  results.maximLimit = true;
+
+  __assert__.countTest ((char*)"assertIOSystemComplexNumbers", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
 void systemTestingWorkflow::assertOneDimensionalArraysWorkFlow () {
 
     limits<bool> results;
@@ -105,7 +117,7 @@ void systemTestingWorkflow::assertsortAlgorithmsOneDimensionalArray () {
 
     limits<bool> results;
 
-    results.minimLimit = ODAWorkFlow.classResponse();
+    results.minimLimit = SortWorkFlow.classResponse();
     results.maximLimit = true;
 
     __assert__.countTest ((char*)"assertsortAlgorithmsOneDimensionalArray", __assert__.assertPrimitiveDataTypes<bool>(results) );
