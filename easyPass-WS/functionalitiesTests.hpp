@@ -303,6 +303,7 @@ public:
 	void assertIfEven ();
 	void assertConstantNumber ();
 	void assertPerfectSquare ();
+	void assertIsFibonacciNumber ();
 
 	void assertReversedNumber ();
 	void assertPalindromeNumber ();
@@ -542,6 +543,21 @@ void fundamentalAlgorithmsTestingWorkflow::assertPerfectSquare () {
 	__assert__.countTest ((char*)"isPerfectSquareSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
 }
 
+void fundamentalAlgorithmsTestingWorkflow::assertIsFibonacciNumber () {
+
+	limits<bool> resultsSetOne;
+	limits<bool> resultsSetTwo;
+
+	resultsSetOne.minimLimit = checks.isFibonacci(13);
+	resultsSetOne.maximLimit = true;
+
+	resultsSetTwo.minimLimit = checks.isFibonacci(12);
+	resultsSetTwo.maximLimit = false;
+
+	__assert__.countTest ((char*)"isFibonacciNumberSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
+	__assert__.countTest ((char*)"isFibonacciNumberSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
+}
+
 void fundamentalAlgorithmsTestingWorkflow::assertReversedNumber () {
 
 	limits<int> resultsSetOne;
@@ -714,7 +730,7 @@ public:
 		ODATWF.assertMaximumValueOneDimensionalArrayDivideEtEmpera<int> ();
 		ODATWF.assertBinarySearch<int> ();
 		ODATWF.assertLinearSearch<int> ();
-		
+
 		MTWF.assertMaximumValueFromMatrix<int> ();
 		MTWF.assertMinimumValueFromMatrix<int> ();
 		MTWF.assertMatrixElementsSum<int> ();
@@ -733,8 +749,10 @@ public:
 		FAWF.assertIfPrime ();
 		FAWF.assertIfOdd ();
 		FAWF.assertIfEven ();
-		FAWF.assertPerfectSquare ();
 		FAWF.assertConstantNumber ();
+		FAWF.assertPerfectSquare ();
+		FAWF.assertIsFibonacciNumber ();
+		
 		FAWF.assertReversedNumber ();
 		FAWF.assertPalindromeNumber ();
 		FAWF.assertMeansOfTwoNumbers ();

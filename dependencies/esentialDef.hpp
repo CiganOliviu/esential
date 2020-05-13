@@ -162,7 +162,7 @@ public:
 
   template <class Type> bool binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
   template <class Type> bool linearSearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
-  
+
   bool classResponse () { return true; }
 
   virtual ~oneDimensionalArraysWorkFlow () {}
@@ -329,6 +329,7 @@ private:
   errorsHandler __handler__;
   validationRules __validations__;
   numbersPropertiesWorkFlow __numberProperties__;
+  fundamentalAlgorithmsWorkFlow __fundamental__;
 
 public:
   checkersWorkFlow () {}
@@ -339,6 +340,7 @@ public:
   bool isConstantNumber (int parameter);
   bool isPalindrome (int parameter);
   bool isPerfectSquare (int parameter);
+  bool isFibonacci (int parameter);
 
   bool classResponse () { return true; }
   

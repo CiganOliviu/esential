@@ -1640,6 +1640,18 @@ bool checkersWorkFlow::isPerfectSquare (int parameter) {
   return false;
 }
 
+bool checkersWorkFlow::isFibonacci (int parameter) {
+
+  if (__validations__.isNegative(parameter)) throw systemException ("Unable to process negative values");
+  if (__validations__.isZero(parameter)) throw systemException ("Unable to process value as zero");
+
+  for (int iterator = 1; iterator <= parameter; iterator++)
+    if (__fundamental__.getThe_N_fibonacciNumber (iterator) == parameter)
+      return true;
+
+  return false;
+}
+
 template <class Type> Type treesWorkFlow::getTreeNumberOfNegativeValues (binaryTreeType<Type> * treeObject) {
 
   if (treeObject == NULL) return 0;
