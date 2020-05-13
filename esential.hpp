@@ -1461,6 +1461,13 @@ float numbersPropertiesWorkFlow::getMeanOfTwoNumbers (float parameterOne, float 
   return (float)(parameterOne + parameterTwo) / 2;
 }
 
+void numbersPropertiesWorkFlow::interchangeValuesViaPointers (int * parameterOne, int * parameterTwo) {
+
+  * parameterOne = * parameterOne + * parameterTwo;
+  * parameterTwo = * parameterOne - * parameterTwo;
+  * parameterOne = * parameterOne - * parameterTwo;
+}
+
 float equationsWorkFlow::getRootLinearEquation (linearEquation __LEquation__) {
 
   if (__validations__.isZero(__LEquation__.slope))
