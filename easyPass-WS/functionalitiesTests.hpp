@@ -21,6 +21,7 @@ public:
 	template <class Type> void assertMaximumValueOneDimensionalArrayDivideEtEmpera ();
 
 	template <class Type> void assertBinarySearch ();
+	template <class Type> void assertLinearSearch ();
 
 	virtual ~oneDimensionalArrayTestingWorkflow () {}
 };
@@ -163,6 +164,22 @@ template <class Type> void oneDimensionalArrayTestingWorkflow::assertBinarySearc
 	interval.maximLimit = true;
 
 	__assert__.countTest ((char*)"binarySearch", __assert__.assertPrimitiveDataTypes<bool> (interval));
+}
+
+template <class Type> void oneDimensionalArrayTestingWorkflow::assertLinearSearch () {
+	
+	oneDimensionalArrayType<Type> ODAObject;
+
+	ioODA.readDynamicFileOneDimensionalArray ((char*)"data/arrayDataSet.data", ODAObject);
+
+	SortWorkFlow.bubbleSort (ODAObject);
+	
+	limits<bool> interval;
+
+	interval.minimLimit = ODAWorkFlow.linearSearch<Type> (ODAObject, -3009);
+	interval.maximLimit = true;
+
+	__assert__.countTest ((char*)"linearSearch", __assert__.assertPrimitiveDataTypes<bool> (interval));
 }
 
 class matricesTestingWorkFlow {
@@ -696,7 +713,8 @@ public:
 		ODATWF.assertMinimumValueOneDimensionalArrayDivideEtEmpera<int> ();
 		ODATWF.assertMaximumValueOneDimensionalArrayDivideEtEmpera<int> ();
 		ODATWF.assertBinarySearch<int> ();
-
+		ODATWF.assertLinearSearch<int> ();
+		
 		MTWF.assertMaximumValueFromMatrix<int> ();
 		MTWF.assertMinimumValueFromMatrix<int> ();
 		MTWF.assertMatrixElementsSum<int> ();

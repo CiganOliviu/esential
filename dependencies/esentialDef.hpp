@@ -161,7 +161,8 @@ public:
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDivision (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
 
   template <class Type> bool binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
-
+  template <class Type> bool linearSearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
+  
   bool classResponse () { return true; }
 
   virtual ~oneDimensionalArraysWorkFlow () {}

@@ -756,6 +756,17 @@ template <class Type> bool oneDimensionalArraysWorkFlow::binarySearch (oneDimens
   return false;
 }
 
+template <class Type> bool oneDimensionalArraysWorkFlow::linearSearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
+  
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
+
+  for (int iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++) 
+      if (valueToSearch == ODAObject.oneDimensionalArray[iterator])
+        return true;
+
+  return false;
+}
+
 template <class Type> void sortAlgorithmsOneDimensionalArray::bubbleSort (oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
