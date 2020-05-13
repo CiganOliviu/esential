@@ -1612,6 +1612,16 @@ bool checkersWorkFlow::isPalindrome (int parameter) {
   return false;
 }
 
+bool checkersWorkFlow::isPerfectSquare (int parameter) {
+
+  if (__validations__.isNegative(parameter)) throw systemException ("Unable to process negative values");
+  if (__validations__.isZero(parameter)) throw systemException ("Unable to process value as zero");
+
+  if ((int)sqrt(parameter) == sqrt(parameter)) return true;
+
+  return false;
+}
+
 template <class Type> Type treesWorkFlow::getTreeNumberOfNegativeValues (binaryTreeType<Type> * treeObject) {
 
   if (treeObject == NULL) return 0;

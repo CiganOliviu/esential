@@ -336,6 +336,7 @@ public:
   bool isEven (int parameter);
   bool isConstantNumber (int parameter);
   bool isPalindrome (int parameter);
+  bool isPerfectSquare (int parameter);
 
   bool classResponse () { return true; }
   

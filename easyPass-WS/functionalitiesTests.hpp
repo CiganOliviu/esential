@@ -285,6 +285,7 @@ public:
 	void assertIfOdd ();
 	void assertIfEven ();
 	void assertConstantNumber ();
+	void assertPerfectSquare ();
 
 	void assertReversedNumber ();
 	void assertPalindromeNumber ();
@@ -509,6 +510,21 @@ void fundamentalAlgorithmsTestingWorkflow::assertConstantNumber () {
 	__assert__.countTest ((char*)"isConstantNumberSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
 }
 
+void fundamentalAlgorithmsTestingWorkflow::assertPerfectSquare () {
+
+	limits<bool> resultsSetOne;
+	limits<bool> resultsSetTwo;
+
+	resultsSetOne.minimLimit = checks.isPerfectSquare(25);
+	resultsSetOne.maximLimit = true;
+
+	resultsSetTwo.minimLimit = checks.isPerfectSquare(34);
+	resultsSetTwo.maximLimit = false;
+
+	__assert__.countTest ((char*)"isPerfectSquareSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
+	__assert__.countTest ((char*)"isPerfectSquareSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
+}
+
 void fundamentalAlgorithmsTestingWorkflow::assertReversedNumber () {
 
 	limits<int> resultsSetOne;
@@ -699,6 +715,7 @@ public:
 		FAWF.assertIfPrime ();
 		FAWF.assertIfOdd ();
 		FAWF.assertIfEven ();
+		FAWF.assertPerfectSquare ();
 		FAWF.assertConstantNumber ();
 		FAWF.assertReversedNumber ();
 		FAWF.assertPalindromeNumber ();
