@@ -697,6 +697,14 @@ template <class Type> void oneDimensionalArraysWorkFlow::boostUpOneDimensionalAr
     ODAObject.oneDimensionalArray[iterator] *= factor;
 }
 
+template <class Type> void oneDimensionalArraysWorkFlow::boostDownOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type factor) {
+
+   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
+
+  for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
+    ODAObject.oneDimensionalArray[iterator] /= factor; 
+}
+
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysSum (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
 
   __handler__.startEndPointsHandlerOneDimensionalArrays (ODAObjectOne, ODAObjectTwo, __PRETTY_FUNCTION__);
@@ -990,6 +998,15 @@ template <class Type> void matricesWorkFlow::boostUpMatrix (matrixType<Type> & m
     for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
       for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
         matrixObject.matrix[iterator][jiterator] *= factor;
+}
+
+template <class Type> void matricesWorkFlow::boostDownMatrix (matrixType<Type> & matrixObject, Type factor) {
+
+    __handler__.standardHandlerMatrix (matrixObject, __PRETTY_FUNCTION__);
+
+    for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference + matrixObject.endLinePoint; iterator++)
+      for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference + matrixObject.endColumnPoint; jiterator++)
+        matrixObject.matrix[iterator][jiterator] /= factor;
 }
 
 template <class Type> matrixType<Type> matricesWorkFlow::getMatricesSum (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo) {

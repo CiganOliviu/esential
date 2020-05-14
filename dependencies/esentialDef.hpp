@@ -155,6 +155,7 @@ public:
   template <class Type> void normalizeOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> oneDimensionalArrayType<Type> convertNumberToOneDimensionalArray (int number);
   template <class Type> void boostUpOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type factor);
+  template <class Type> void boostDownOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type factor);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysSum (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysProduct (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDifference (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
@@ -209,6 +210,7 @@ public:
   template <class Type> void matrixInitialization (matrixType<Type> & matrixObject, Type value);
   template <class Type> void normalizeMatrix (matrixType<Type> & matrixObject);
   template <class Type> void boostUpMatrix (matrixType<Type> & matrixObject, Type factor); 
+  template <class Type> void boostDownMatrix (matrixType<Type> & matrixObject, Type factor); 
   template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
   template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
   template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
