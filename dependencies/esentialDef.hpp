@@ -159,7 +159,8 @@ public:
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysProduct (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDifference (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDivision (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
-
+  template <class Type> bool checkIfEqualOneDimensionalArrays (oneDimensionalArrayType<Type> firstODA, oneDimensionalArrayType<Type> secondODA);
+  
   template <class Type> bool binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
   template <class Type> bool linearSearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
 

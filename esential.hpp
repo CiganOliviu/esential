@@ -737,6 +737,17 @@ template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow
   return ODAObjectOne;
 }
 
+template <class Type> bool oneDimensionalArraysWorkFlow::checkIfEqualOneDimensionalArrays (oneDimensionalArrayType<Type> firstODA, oneDimensionalArrayType<Type> secondODA) {
+
+  __handler__.equalityHandlerOneDimensionalArrays (firstODA, secondODA);
+
+  for (size_t iterator = 0; iterator < firstODA.length + firstODA.endPoint; iterator++)
+    if (firstODA.oneDimensionalArray[iterator] != secondODA.oneDimensionalArray[iterator])
+      return false;
+
+  return true;
+}
+  
 template <class Type> bool oneDimensionalArraysWorkFlow::binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
