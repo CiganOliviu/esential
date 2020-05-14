@@ -274,9 +274,6 @@ template <class Type> void matricesTestingWorkFlow::assertMatrixElementsDifferen
 class fundamentalAlgorithmsTestingWorkflow {
 
 private:
-	numbersPropertiesWorkFlow __numberProperties__;
-	equationsWorkFlow equations;	
-	checkersWorkFlow checks;
 	fundamentalAlgorithmsWorkFlow fundamentalAlgosWorkFlow;
 	assertions __assert__;
 	portData port;
@@ -284,19 +281,65 @@ private:
 public:
 	fundamentalAlgorithmsTestingWorkflow () {}
 
+	void assertGaussSum ();
+	void assertFactorialNumber ();
+	void assertFactorialNumberRecursive ();
+	void assertAckermanNumber ();
+	void assertEulerianNumber ();
+	void assertCatalanNumber ();
+	void assertFibonacciNumber ();
+	void assertFibonacciNumberRecursive ();
+	void assertMannaPnueliNumber ();
+
+	virtual ~fundamentalAlgorithmsTestingWorkflow () {}
+};
+
+class numbersPropertiesTestingWorkFlow {
+private:
+	numbersPropertiesWorkFlow __numberProperties__;
+	assertions __assert__;
+	portData port;
+
+public:
+	numbersPropertiesTestingWorkFlow () {}
+
+	void assertTheLargestCommonDivisor ();
+	void assertTheLargestCommonDivisorRecursive ();
+	void assertTheLargestCommonDivisorOfTwoNumbers ();
+	void assertLeastCommonMultiple ();
+	void assertLeastCommonMultipleOfTwoNumbers ();
+	void assertReversedNumber ();
+	void assertPalindromeNumber ();
+	void assertMeansOfTwoNumbers ();
+
+	virtual ~numbersPropertiesTestingWorkFlow () {}
+};
+
+class equationsWorkFlowTesting {
+private:
+	equationsWorkFlow equations;	
+	assertions __assert__;
+	portData port;
+
+public:
+	equationsWorkFlowTesting () {}
+
 	void assertRootLinearEquation ();
 	void assertValueLinearEquation ();
 	void assertRootsQuadraticEquation ();
 	void assertValueQuadraticEquation ();
 
-	void assertGaussSum ();
+	virtual ~equationsWorkFlowTesting () {}
+};
 
-	void assertTheLargestCommonDivisor ();
-	void assertTheLargestCommonDivisorRecursive ();
-	void assertTheLargestCommonDivisorOfTwoNumbers ();
+class checkersWorkFlowTesting {
+private:	
+	checkersWorkFlow checks;
+	assertions __assert__;
+	portData port;
 
-	void assertLeastCommonMultiple ();
-	void assertLeastCommonMultipleOfTwoNumbers ();
+public:
+	checkersWorkFlowTesting () {}
 
 	void assertIfPrime ();
 	void assertIfOdd ();
@@ -305,92 +348,8 @@ public:
 	void assertPerfectSquare ();
 	void assertIsFibonacciNumber ();
 
-	void assertReversedNumber ();
-	void assertPalindromeNumber ();
-	void assertMeansOfTwoNumbers ();
-
-	void assertFactorialNumber ();
-	void assertFactorialNumberRecursive ();
-
-	void assertAckermanNumber ();
-	void assertEulerianNumber ();
-	void assertCatalanNumber ();
-
-	void assertFibonacciNumber ();
-	void assertFibonacciNumberRecursive ();
-
-	void assertMannaPnueliNumber ();
-
-	virtual ~fundamentalAlgorithmsTestingWorkflow () {}
+	virtual ~checkersWorkFlowTesting () {}
 };
-
-void fundamentalAlgorithmsTestingWorkflow::assertRootLinearEquation () {
-
-	linearEquation __LEquation__;
-
-	__LEquation__.y_intercept = 4;
-	__LEquation__.slope = 2;
-	__LEquation__.root = -2;
-
-	limits<float> results;
-
-	results.minimLimit = equations.getRootLinearEquation(__LEquation__);
-	results.maximLimit = -2;
-
-	__assert__.countTest ((char*)"getRootLinearEquation", __assert__.assertPrimitiveDataTypes<float>(results) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertValueLinearEquation () {
-
-	linearEquation __LEquation__;
-
-	__LEquation__.y_intercept = 4;
-	__LEquation__.slope = 2;
-	__LEquation__.root = 2;
-
-	limits<float> results;
-
-	results.minimLimit = equations.getValueLinearEquation(__LEquation__);
-	results.maximLimit = 8;
-
-	__assert__.countTest ((char*)"getValueLinearEquation", __assert__.assertPrimitiveDataTypes<float>(results) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertRootsQuadraticEquation () {
-
-	quadraticEquation __QEquation__;
-
-	__QEquation__.coefficient_a = 1;
-	__QEquation__.coefficient_b = 3;
-	__QEquation__.coefficient_c = 2;
-
-	limits<float> roots;
-	port.portLimits (roots, equations.getRootsQuadraticEquation (__QEquation__));
-
-	limits<float> results;
-
-	results.minimLimit = -1;
-	results.maximLimit = -2;
-
-	__assert__.countTest ((char*)"getRootsQuadraticEquation", __assert__.assertLimits<float>(roots, results) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertValueQuadraticEquation () {
-
-	quadraticEquation __QEquation__;
-
-	__QEquation__.coefficient_a = 1;
-	__QEquation__.coefficient_b = -3;
-	__QEquation__.coefficient_c = 2;
-	float roots = 5;
-
-	limits<float> results;
-
-	results.minimLimit = equations.getValueQuadraticEquation (__QEquation__, roots);
-	results.maximLimit = 12;
-
-	__assert__.countTest ((char*)"getValueQuadraticEquation", __assert__.assertPrimitiveDataTypes<float>(results) );
-}
 
 void fundamentalAlgorithmsTestingWorkflow::assertGaussSum () {
 
@@ -400,207 +359,6 @@ void fundamentalAlgorithmsTestingWorkflow::assertGaussSum () {
 	results.maximLimit = 15;
 
 	__assert__.countTest ((char*)"getGaussSum", __assert__.assertPrimitiveDataTypes<float>(results) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertTheLargestCommonDivisor () {
-
-	limits<int> interval;
-
-	interval.minimLimit = 12;
-	interval.maximLimit = 36;
-
-	limits<int> results;
-
-	results.minimLimit = __numberProperties__.getTheLargestCommonDivisor (interval);
-	results.maximLimit = 12;
-
-	__assert__.countTest ((char*)"getTheLargestCommonDivisor", __assert__.assertPrimitiveDataTypes<int>(results) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertTheLargestCommonDivisorRecursive () {
-
-	limits<int> interval;
-
-	interval.minimLimit = 12;
-	interval.maximLimit = 36;
-
-	limits<int> results;
-
-	results.minimLimit = __numberProperties__.getTheLargestCommonDivisorRecursive (interval);
-	results.maximLimit = 12;
-
-	__assert__.countTest ((char*)"getTheLargestCommonDivisorRecursive", __assert__.assertPrimitiveDataTypes<int>(results) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertTheLargestCommonDivisorOfTwoNumbers () {
-
-	limits<int> results;
-
-	results.minimLimit = __numberProperties__.getTheLargestCommonDivisorOfTwoNumbers (12, 36);
-	results.maximLimit = 12;
-
-	__assert__.countTest ((char*)"getTheLargestCommonDivisorOfTwoNumbers", __assert__.assertPrimitiveDataTypes<int>(results) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertLeastCommonMultiple () {
-
-	limits<int> interval;
-
-	interval.minimLimit = 12;
-	interval.maximLimit = 36;
-
-	limits<int> results;
-
-	results.minimLimit = __numberProperties__.getLeastCommonMultiple (interval);
-	results.maximLimit = 36;
-
-	__assert__.countTest ((char*)"getLeastCommonMultiple", __assert__.assertPrimitiveDataTypes<int>(results) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertLeastCommonMultipleOfTwoNumbers () {
-
-	limits<int> results;
-
-	results.minimLimit = __numberProperties__.getLeastCommonMultipleOfTwoNumbers (12, 36);
-	results.maximLimit = 36;
-
-	__assert__.countTest ((char*)"getLeastCommonMultipleOfTwoNumbers", __assert__.assertPrimitiveDataTypes<int>(results) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertIfPrime () {
-
-	limits<bool> resultsSetOne;
-	limits<bool> resultsSetTwo;
-
-	resultsSetOne.minimLimit = checks.isPrime(13);
-	resultsSetOne.maximLimit = true;
-
-	resultsSetTwo.minimLimit = checks.isPrime(14);
-	resultsSetTwo.maximLimit = false;
-
-	__assert__.countTest ((char*)"assertIfPrimeSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
-	__assert__.countTest ((char*)"assertIfPrimeSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
-}
-
-
-void fundamentalAlgorithmsTestingWorkflow::assertIfOdd () {
-
-	limits<bool> resultsSetOne;
-	limits<bool> resultsSetTwo;
-
-	resultsSetOne.minimLimit = checks.isOdd(12);
-	resultsSetOne.maximLimit = false;
-
-	resultsSetTwo.minimLimit = checks.isOdd(13);
-	resultsSetTwo.maximLimit = true;
-
-	__assert__.countTest ((char*)"isOddSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
-	__assert__.countTest ((char*)"isOddSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertIfEven () {
-
-	limits<bool> resultsSetOne;
-	limits<bool> resultsSetTwo;
-
-	resultsSetOne.minimLimit = checks.isEven(57);
-	resultsSetOne.maximLimit = false;
-
-	resultsSetTwo.minimLimit = checks.isEven(12);
-	resultsSetTwo.maximLimit = true;
-
-	__assert__.countTest ((char*)"isEvenSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
-	__assert__.countTest ((char*)"isEvenSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertConstantNumber () {
-
-	limits<bool> resultsSetOne;
-	limits<bool> resultsSetTwo;
-
-	resultsSetOne.minimLimit = checks.isConstantNumber(12345);
-	resultsSetOne.maximLimit = false;
-
-	resultsSetTwo.minimLimit = checks.isConstantNumber(4444);
-	resultsSetTwo.maximLimit = true;
-
-	__assert__.countTest ((char*)"isConstantNumberSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
-	__assert__.countTest ((char*)"isConstantNumberSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertPerfectSquare () {
-
-	limits<bool> resultsSetOne;
-	limits<bool> resultsSetTwo;
-
-	resultsSetOne.minimLimit = checks.isPerfectSquare(25);
-	resultsSetOne.maximLimit = true;
-
-	resultsSetTwo.minimLimit = checks.isPerfectSquare(34);
-	resultsSetTwo.maximLimit = false;
-
-	__assert__.countTest ((char*)"isPerfectSquareSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
-	__assert__.countTest ((char*)"isPerfectSquareSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertIsFibonacciNumber () {
-
-	limits<bool> resultsSetOne;
-	limits<bool> resultsSetTwo;
-
-	resultsSetOne.minimLimit = checks.isFibonacci(13);
-	resultsSetOne.maximLimit = true;
-
-	resultsSetTwo.minimLimit = checks.isFibonacci(12);
-	resultsSetTwo.maximLimit = false;
-
-	__assert__.countTest ((char*)"isFibonacciNumberSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
-	__assert__.countTest ((char*)"isFibonacciNumberSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertReversedNumber () {
-
-	limits<int> resultsSetOne;
-	limits<int> resultsSetTwo;
-
-	resultsSetOne.minimLimit = __numberProperties__.reverseNumber(12321);
-	resultsSetOne.maximLimit = 12321;
-
-	resultsSetTwo.minimLimit = __numberProperties__.reverseNumber(65);
-	resultsSetTwo.maximLimit = 56;
-
-	__assert__.countTest ((char*)"assertReversedNumberSetOne", __assert__.assertPrimitiveDataTypes<int>(resultsSetOne) );
-	__assert__.countTest ((char*)"assertReversedNumberSetTwo", __assert__.assertPrimitiveDataTypes<int>(resultsSetTwo) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertPalindromeNumber () {
-
-	limits<int> resultsSetOne;
-	limits<int> resultsSetTwo;
-
-	resultsSetOne.minimLimit = __numberProperties__.getPalindromValue(123421);
-	resultsSetOne.maximLimit = 0;
-
-	resultsSetTwo.minimLimit = __numberProperties__.getPalindromValue(8);
-	resultsSetTwo.maximLimit = 8;
-
-	__assert__.countTest ((char*)"assertPalindromeNumberSetOne", __assert__.assertPrimitiveDataTypes<int>(resultsSetOne) );
-	__assert__.countTest ((char*)"assertPalindromeNumberSetTwo", __assert__.assertPrimitiveDataTypes<int>(resultsSetTwo) );
-}
-
-void fundamentalAlgorithmsTestingWorkflow::assertMeansOfTwoNumbers () {
-
-	limits<float> resultsSetOne;
-	limits<float> resultsSetTwo;
-
-	resultsSetOne.minimLimit = __numberProperties__.getMeanOfTwoNumbers(12, 24);
-	resultsSetOne.maximLimit = 18;
-
-	resultsSetTwo.minimLimit = __numberProperties__.getMeanOfTwoNumbers(13, 3);
-	resultsSetTwo.maximLimit = 8;
-
-	__assert__.countTest ((char*)"getMeanOfTwoNumbersSetOne", __assert__.assertPrimitiveDataTypes<float>(resultsSetOne) );
-	__assert__.countTest ((char*)"getMeanOfTwoNumbersSetTwo", __assert__.assertPrimitiveDataTypes<float>(resultsSetTwo) );
 }
 
 void fundamentalAlgorithmsTestingWorkflow::assertFactorialNumber () {
@@ -708,12 +466,284 @@ void fundamentalAlgorithmsTestingWorkflow::assertMannaPnueliNumber () {
 	__assert__.countTest ((char*)"getThe_N_mannaPnueliNumber", __assert__.assertPrimitiveDataTypes<int>(resultsSetTwo) );
 }
 
+void numbersPropertiesTestingWorkFlow::assertTheLargestCommonDivisor () {
+
+	limits<int> interval;
+
+	interval.minimLimit = 12;
+	interval.maximLimit = 36;
+
+	limits<int> results;
+
+	results.minimLimit = __numberProperties__.getTheLargestCommonDivisor (interval);
+	results.maximLimit = 12;
+
+	__assert__.countTest ((char*)"getTheLargestCommonDivisor", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void numbersPropertiesTestingWorkFlow::assertTheLargestCommonDivisorRecursive () {
+
+	limits<int> interval;
+
+	interval.minimLimit = 12;
+	interval.maximLimit = 36;
+
+	limits<int> results;
+
+	results.minimLimit = __numberProperties__.getTheLargestCommonDivisorRecursive (interval);
+	results.maximLimit = 12;
+
+	__assert__.countTest ((char*)"getTheLargestCommonDivisorRecursive", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void numbersPropertiesTestingWorkFlow::assertTheLargestCommonDivisorOfTwoNumbers () {
+
+	limits<int> results;
+
+	results.minimLimit = __numberProperties__.getTheLargestCommonDivisorOfTwoNumbers (12, 36);
+	results.maximLimit = 12;
+
+	__assert__.countTest ((char*)"getTheLargestCommonDivisorOfTwoNumbers", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void numbersPropertiesTestingWorkFlow::assertLeastCommonMultiple () {
+
+	limits<int> interval;
+
+	interval.minimLimit = 12;
+	interval.maximLimit = 36;
+
+	limits<int> results;
+
+	results.minimLimit = __numberProperties__.getLeastCommonMultiple (interval);
+	results.maximLimit = 36;
+
+	__assert__.countTest ((char*)"getLeastCommonMultiple", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void numbersPropertiesTestingWorkFlow::assertLeastCommonMultipleOfTwoNumbers () {
+
+	limits<int> results;
+
+	results.minimLimit = __numberProperties__.getLeastCommonMultipleOfTwoNumbers (12, 36);
+	results.maximLimit = 36;
+
+	__assert__.countTest ((char*)"getLeastCommonMultipleOfTwoNumbers", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void numbersPropertiesTestingWorkFlow::assertReversedNumber () {
+
+	limits<int> resultsSetOne;
+	limits<int> resultsSetTwo;
+
+	resultsSetOne.minimLimit = __numberProperties__.reverseNumber(12321);
+	resultsSetOne.maximLimit = 12321;
+
+	resultsSetTwo.minimLimit = __numberProperties__.reverseNumber(65);
+	resultsSetTwo.maximLimit = 56;
+
+	__assert__.countTest ((char*)"assertReversedNumberSetOne", __assert__.assertPrimitiveDataTypes<int>(resultsSetOne) );
+	__assert__.countTest ((char*)"assertReversedNumberSetTwo", __assert__.assertPrimitiveDataTypes<int>(resultsSetTwo) );
+}
+
+void numbersPropertiesTestingWorkFlow::assertPalindromeNumber () {
+
+	limits<int> resultsSetOne;
+	limits<int> resultsSetTwo;
+
+	resultsSetOne.minimLimit = __numberProperties__.getPalindromValue(123421);
+	resultsSetOne.maximLimit = 0;
+
+	resultsSetTwo.minimLimit = __numberProperties__.getPalindromValue(8);
+	resultsSetTwo.maximLimit = 8;
+
+	__assert__.countTest ((char*)"assertPalindromeNumberSetOne", __assert__.assertPrimitiveDataTypes<int>(resultsSetOne) );
+	__assert__.countTest ((char*)"assertPalindromeNumberSetTwo", __assert__.assertPrimitiveDataTypes<int>(resultsSetTwo) );
+}
+
+void numbersPropertiesTestingWorkFlow::assertMeansOfTwoNumbers () {
+
+	limits<float> resultsSetOne;
+	limits<float> resultsSetTwo;
+
+	resultsSetOne.minimLimit = __numberProperties__.getMeanOfTwoNumbers(12, 24);
+	resultsSetOne.maximLimit = 18;
+
+	resultsSetTwo.minimLimit = __numberProperties__.getMeanOfTwoNumbers(13, 3);
+	resultsSetTwo.maximLimit = 8;
+
+	__assert__.countTest ((char*)"getMeanOfTwoNumbersSetOne", __assert__.assertPrimitiveDataTypes<float>(resultsSetOne) );
+	__assert__.countTest ((char*)"getMeanOfTwoNumbersSetTwo", __assert__.assertPrimitiveDataTypes<float>(resultsSetTwo) );
+}
+
+void equationsWorkFlowTesting::assertRootLinearEquation () {
+
+	linearEquation __LEquation__;
+
+	__LEquation__.y_intercept = 4;
+	__LEquation__.slope = 2;
+	__LEquation__.root = -2;
+
+	limits<float> results;
+
+	results.minimLimit = equations.getRootLinearEquation(__LEquation__);
+	results.maximLimit = -2;
+
+	__assert__.countTest ((char*)"getRootLinearEquation", __assert__.assertPrimitiveDataTypes<float>(results) );
+}
+
+void equationsWorkFlowTesting::assertValueLinearEquation () {
+
+	linearEquation __LEquation__;
+
+	__LEquation__.y_intercept = 4;
+	__LEquation__.slope = 2;
+	__LEquation__.root = 2;
+
+	limits<float> results;
+
+	results.minimLimit = equations.getValueLinearEquation(__LEquation__);
+	results.maximLimit = 8;
+
+	__assert__.countTest ((char*)"getValueLinearEquation", __assert__.assertPrimitiveDataTypes<float>(results) );
+}
+
+void equationsWorkFlowTesting::assertRootsQuadraticEquation () {
+
+	quadraticEquation __QEquation__;
+
+	__QEquation__.coefficient_a = 1;
+	__QEquation__.coefficient_b = 3;
+	__QEquation__.coefficient_c = 2;
+
+	limits<float> roots;
+	port.portLimits (roots, equations.getRootsQuadraticEquation (__QEquation__));
+
+	limits<float> results;
+
+	results.minimLimit = -1;
+	results.maximLimit = -2;
+
+	__assert__.countTest ((char*)"getRootsQuadraticEquation", __assert__.assertLimits<float>(roots, results) );
+}
+
+void equationsWorkFlowTesting::assertValueQuadraticEquation () {
+
+	quadraticEquation __QEquation__;
+
+	__QEquation__.coefficient_a = 1;
+	__QEquation__.coefficient_b = -3;
+	__QEquation__.coefficient_c = 2;
+	float roots = 5;
+
+	limits<float> results;
+
+	results.minimLimit = equations.getValueQuadraticEquation (__QEquation__, roots);
+	results.maximLimit = 12;
+
+	__assert__.countTest ((char*)"getValueQuadraticEquation", __assert__.assertPrimitiveDataTypes<float>(results) );
+}
+
+void checkersWorkFlowTesting::assertIfPrime () {
+
+	limits<bool> resultsSetOne;
+	limits<bool> resultsSetTwo;
+
+	resultsSetOne.minimLimit = checks.isPrime(13);
+	resultsSetOne.maximLimit = true;
+
+	resultsSetTwo.minimLimit = checks.isPrime(14);
+	resultsSetTwo.maximLimit = false;
+
+	__assert__.countTest ((char*)"assertIfPrimeSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
+	__assert__.countTest ((char*)"assertIfPrimeSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
+}
+
+
+void checkersWorkFlowTesting::assertIfOdd () {
+
+	limits<bool> resultsSetOne;
+	limits<bool> resultsSetTwo;
+
+	resultsSetOne.minimLimit = checks.isOdd(12);
+	resultsSetOne.maximLimit = false;
+
+	resultsSetTwo.minimLimit = checks.isOdd(13);
+	resultsSetTwo.maximLimit = true;
+
+	__assert__.countTest ((char*)"isOddSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
+	__assert__.countTest ((char*)"isOddSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
+}
+
+void checkersWorkFlowTesting::assertIfEven () {
+
+	limits<bool> resultsSetOne;
+	limits<bool> resultsSetTwo;
+
+	resultsSetOne.minimLimit = checks.isEven(57);
+	resultsSetOne.maximLimit = false;
+
+	resultsSetTwo.minimLimit = checks.isEven(12);
+	resultsSetTwo.maximLimit = true;
+
+	__assert__.countTest ((char*)"isEvenSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
+	__assert__.countTest ((char*)"isEvenSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
+}
+
+void checkersWorkFlowTesting::assertConstantNumber () {
+
+	limits<bool> resultsSetOne;
+	limits<bool> resultsSetTwo;
+
+	resultsSetOne.minimLimit = checks.isConstantNumber(12345);
+	resultsSetOne.maximLimit = false;
+
+	resultsSetTwo.minimLimit = checks.isConstantNumber(4444);
+	resultsSetTwo.maximLimit = true;
+
+	__assert__.countTest ((char*)"isConstantNumberSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
+	__assert__.countTest ((char*)"isConstantNumberSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
+}
+
+void checkersWorkFlowTesting::assertPerfectSquare () {
+
+	limits<bool> resultsSetOne;
+	limits<bool> resultsSetTwo;
+
+	resultsSetOne.minimLimit = checks.isPerfectSquare(25);
+	resultsSetOne.maximLimit = true;
+
+	resultsSetTwo.minimLimit = checks.isPerfectSquare(34);
+	resultsSetTwo.maximLimit = false;
+
+	__assert__.countTest ((char*)"isPerfectSquareSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
+	__assert__.countTest ((char*)"isPerfectSquareSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
+}
+
+void checkersWorkFlowTesting::assertIsFibonacciNumber () {
+
+	limits<bool> resultsSetOne;
+	limits<bool> resultsSetTwo;
+
+	resultsSetOne.minimLimit = checks.isFibonacci(13);
+	resultsSetOne.maximLimit = true;
+
+	resultsSetTwo.minimLimit = checks.isFibonacci(12);
+	resultsSetTwo.maximLimit = false;
+
+	__assert__.countTest ((char*)"isFibonacciNumberSetOne", __assert__.assertPrimitiveDataTypes<bool>(resultsSetOne) );
+	__assert__.countTest ((char*)"isFibonacciNumberSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
+}
+
 class RunTests {
 private:
 		assertions __assert__;
 		oneDimensionalArrayTestingWorkflow ODATWF;
 		matricesTestingWorkFlow MTWF;
 		fundamentalAlgorithmsTestingWorkflow FAWF;
+		numbersPropertiesTestingWorkFlow NUMWF;
+		equationsWorkFlowTesting EWF;
+		checkersWorkFlowTesting CWF;
 
 public:
 	RunTests () {}
@@ -737,25 +767,29 @@ public:
 		MTWF.assertMatrixElementsProduct<int> ();
 		MTWF.assertMatrixElementsDifference<int> ();
 
-		FAWF.assertRootLinearEquation ();
-		FAWF.assertValueLinearEquation ();
-		FAWF.assertRootsQuadraticEquation ();
-		FAWF.assertValueQuadraticEquation ();
-		FAWF.assertGaussSum ();
-		FAWF.assertTheLargestCommonDivisor ();
-		FAWF.assertTheLargestCommonDivisorRecursive ();
-		FAWF.assertLeastCommonMultipleOfTwoNumbers ();
-		FAWF.assertLeastCommonMultiple ();
-		FAWF.assertIfPrime ();
-		FAWF.assertIfOdd ();
-		FAWF.assertIfEven ();
-		FAWF.assertConstantNumber ();
-		FAWF.assertPerfectSquare ();
-		FAWF.assertIsFibonacciNumber ();
+		EWF.assertRootLinearEquation ();
+		EWF.assertValueLinearEquation ();
+		EWF.assertRootsQuadraticEquation ();
+		EWF.assertValueQuadraticEquation ();
 		
-		FAWF.assertReversedNumber ();
-		FAWF.assertPalindromeNumber ();
-		FAWF.assertMeansOfTwoNumbers ();
+		
+		NUMWF.assertTheLargestCommonDivisor ();
+		NUMWF.assertTheLargestCommonDivisorRecursive ();
+		NUMWF.assertTheLargestCommonDivisorOfTwoNumbers ();
+		NUMWF.assertLeastCommonMultiple ();
+		NUMWF.assertLeastCommonMultipleOfTwoNumbers ();
+		NUMWF.assertReversedNumber ();
+		NUMWF.assertPalindromeNumber ();
+		NUMWF.assertMeansOfTwoNumbers ();
+		
+		CWF.assertIfPrime ();
+		CWF.assertIfOdd ();
+		CWF.assertIfEven ();
+		CWF.assertConstantNumber ();
+		CWF.assertPerfectSquare ();
+		CWF.assertIsFibonacciNumber ();
+		
+		FAWF.assertGaussSum ();
 		FAWF.assertFactorialNumber ();
 		FAWF.assertFactorialNumberRecursive ();
 		FAWF.assertAckermanNumber ();
