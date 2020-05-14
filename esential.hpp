@@ -741,7 +741,7 @@ template <class Type> bool oneDimensionalArraysWorkFlow::checkIfEqualOneDimensio
 
   __handler__.equalityHandlerOneDimensionalArrays (firstODA, secondODA);
 
-  for (size_t iterator = 0; iterator < firstODA.length + firstODA.endPoint; iterator++)
+  for (size_t iterator = firstODA.startPoint; iterator < firstODA.length + firstODA.endPoint; iterator++)
     if (firstODA.oneDimensionalArray[iterator] != secondODA.oneDimensionalArray[iterator])
       return false;
 
@@ -1206,6 +1206,18 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixO
       }
 
   return oneDimensionalArrayValuesFromOrder;
+}
+
+template <class Type> bool matricesWorkFlow::checkIfEqualMatrices (matrixType<Type> matrixOne, matrixType<Type> matrixTwo) {
+  
+  __handler__.equalityHandlerMatrices (matrixOne, matrixTwo);
+
+  for (int iterator = matrixOne.startLinePoint; iterator < matrixOne.lineRefference + matrixOne.endPoint; iterator++)
+    for (int jiterator = matrixOne.startColumnPoint; jiterator < matrixOne.columnRefference; jiterator++)
+      if (matrixOne.matrix[iterator][jiterator] != matrixTwo.matrix[iterator][jiterator])
+        return false; 
+
+  return true;
 }
 
 template <class Type> Type fundamentalAlgorithmsWorkFlow::getGaussSum (Type limit) {

@@ -227,6 +227,8 @@ public:
   template <class Type> oneDimensionalArrayType<Type> getMatrixOrderMainDiagonal (matrixType<Type> matrixObject, int order);
   template <class Type> oneDimensionalArrayType<Type> getMatrixOrderSecondaryDiagonal (matrixType<Type> matrixObject, int order);
 
+  template <class Type> bool checkIfEqualMatrices (matrixType<Type> matrixOne, matrixType<Type> matrixTwo);
+  
   bool classResponse () { return true; }
 
   virtual ~matricesWorkFlow () {}
