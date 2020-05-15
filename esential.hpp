@@ -1226,7 +1226,7 @@ template <class Type> bool searchEnginesWorkFlow::binarySearch (oneDimensionalAr
   return false;
 }
 
-template <class Type> bool searchEnginesWorkFlow::linearSearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
+template <class Type> bool searchEnginesWorkFlow::linearSearchOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
   
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 

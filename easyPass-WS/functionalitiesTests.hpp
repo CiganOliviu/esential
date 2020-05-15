@@ -247,7 +247,7 @@ public:
 	searchEnginesWorkFlowTesting () {}
 
 	template <class Type> void assertBinarySearch ();
-	template <class Type> void assertLinearSearch ();
+	template <class Type> void assertLinearSearchOneDimensionalArray ();
 
 	virtual ~searchEnginesWorkFlowTesting () {}
 };
@@ -268,7 +268,7 @@ template <class Type> void searchEnginesWorkFlowTesting::assertBinarySearch () {
 	__assert__.countTest ((char*)"binarySearch", __assert__.assertPrimitiveDataTypes<bool> (interval));
 }
 
-template <class Type> void searchEnginesWorkFlowTesting::assertLinearSearch () {
+template <class Type> void searchEnginesWorkFlowTesting::assertLinearSearchOneDimensionalArray () {
 	
 	oneDimensionalArrayType<Type> ODAObject;
 
@@ -278,7 +278,7 @@ template <class Type> void searchEnginesWorkFlowTesting::assertLinearSearch () {
 	
 	limits<bool> interval;
 
-	interval.minimLimit = engine.linearSearch<Type> (ODAObject, -3009);
+	interval.minimLimit = engine.linearSearchOneDimensionalArray<Type> (ODAObject, -3009);
 	interval.maximLimit = true;
 
 	__assert__.countTest ((char*)"linearSearch", __assert__.assertPrimitiveDataTypes<bool> (interval));
@@ -780,7 +780,7 @@ public:
 		MTWF.assertMatrixElementsDifference<int> ();
 
 		SWK.assertBinarySearch<int> ();
-		SWK.assertLinearSearch<int> ();
+		SWK.assertLinearSearchOneDimensionalArray<int> ();
 
 		FAWF.assertGaussSum ();
 		FAWF.assertFactorialNumber ();
