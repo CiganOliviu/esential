@@ -161,9 +161,6 @@ public:
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDifference (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDivision (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> bool checkIfEqualOneDimensionalArrays (oneDimensionalArrayType<Type> firstODA, oneDimensionalArrayType<Type> secondODA);
-  
-  template <class Type> bool binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
-  template <class Type> bool linearSearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
 
   bool classResponse () { return true; }
 
@@ -234,6 +231,22 @@ public:
   bool classResponse () { return true; }
 
   virtual ~matricesWorkFlow () {}
+};
+
+class searchEnginesWorkFlow {
+private:
+  errorsHandler __handler__;
+  validationRules __validations__;
+
+public:
+  searchEnginesWorkFlow () {}
+
+  template <class Type> bool binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
+  template <class Type> bool linearSearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
+
+  bool classResponse () { return true; }
+  
+  virtual ~searchEnginesWorkFlow () {}
 };
 
 class fundamentalAlgorithmsWorkFlow {
@@ -405,7 +418,7 @@ private:
 public:
   charArrayWorkFlow () {}
 
-  ~charArrayWorkFlow () {}
+  virtual ~charArrayWorkFlow () {}
 
   bool classResponse () { return true; }
 };

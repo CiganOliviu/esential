@@ -16,6 +16,8 @@ private:
 
   matricesWorkFlow MatricesWorkFlow;
 
+  searchEnginesWorkFlow SearchWorkFlow;
+
   fundamentalAlgorithmsWorkFlow fundamentalAlgosWorkFlow;
 
   complexNumbersWorkFlow ComplexNumbers;
@@ -44,6 +46,7 @@ public:
   void assertOneDimensionalArraysWorkFlow ();
   void assertsortAlgorithmsOneDimensionalArray ();
   void assertMatricesWorkFlow ();
+  void assertSearchEnginesWorkFlow ();
   void assertFundamentalAlgorithmsWorkFlow ();
   void assertComplexNumbersWorkFlow ();
   void assertNumbersPropertiesWorkFlow ();
@@ -217,6 +220,16 @@ void systemTestingWorkflow::assertCharArrayWorkFlow () {
   __assert__.countTest ((char*)"assertCharArrayWorkFlow", __assert__.assertPrimitiveDataTypes<bool>(results) );
 }
 
+void systemTestingWorkflow::assertSearchEnginesWorkFlow () {
+
+  limits<bool> results;
+
+  results.minimLimit = SearchWorkFlow.classResponse();
+  results.maximLimit = true;
+
+  __assert__.countTest ((char*)"assertSearchEnginesWorkFlow", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
 class RunSystemTests {
 private:
   systemTestingWorkflow testingObject;
@@ -240,6 +253,8 @@ void RunSystemTests::run () {
 
   testingObject.assertMatricesWorkFlow ();
 
+  testingObject.assertSearchEnginesWorkFlow ();
+  
   testingObject.assertFundamentalAlgorithmsWorkFlow ();
 
   testingObject.assertComplexNumbersWorkFlow ();

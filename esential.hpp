@@ -755,36 +755,6 @@ template <class Type> bool oneDimensionalArraysWorkFlow::checkIfEqualOneDimensio
 
   return true;
 }
-  
-template <class Type> bool oneDimensionalArraysWorkFlow::binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
-
-  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
-
-  int leftIndex = ODAObject.startPoint;
-  int rightIndex = ODAObject.length - 1;
-
-  while (leftIndex <= rightIndex) {
-
-    int middleIndex = (leftIndex + rightIndex) / 2;
-
-    if (valueToSearch == ODAObject.oneDimensionalArray[middleIndex]) return true;
-    if (valueToSearch < ODAObject.oneDimensionalArray[middleIndex]) rightIndex = middleIndex - 1;
-    if (valueToSearch > ODAObject.oneDimensionalArray[middleIndex]) leftIndex = middleIndex + 1;
-  }
-
-  return false;
-}
-
-template <class Type> bool oneDimensionalArraysWorkFlow::linearSearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
-  
-  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
-
-  for (int iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++) 
-      if (valueToSearch == ODAObject.oneDimensionalArray[iterator])
-        return true;
-
-  return false;
-}
 
 template <class Type> void sortAlgorithmsOneDimensionalArray::bubbleSort (oneDimensionalArrayType<Type> ODAObject) {
 
@@ -1235,6 +1205,36 @@ template <class Type> bool matricesWorkFlow::checkIfEqualMatrices (matrixType<Ty
         return false; 
 
   return true;
+}
+
+template <class Type> bool searchEnginesWorkFlow::binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
+
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
+
+  int leftIndex = ODAObject.startPoint;
+  int rightIndex = ODAObject.length - 1;
+
+  while (leftIndex <= rightIndex) {
+
+    int middleIndex = (leftIndex + rightIndex) / 2;
+
+    if (valueToSearch == ODAObject.oneDimensionalArray[middleIndex]) return true;
+    if (valueToSearch < ODAObject.oneDimensionalArray[middleIndex]) rightIndex = middleIndex - 1;
+    if (valueToSearch > ODAObject.oneDimensionalArray[middleIndex]) leftIndex = middleIndex + 1;
+  }
+
+  return false;
+}
+
+template <class Type> bool searchEnginesWorkFlow::linearSearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
+  
+  __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
+
+  for (int iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++) 
+      if (valueToSearch == ODAObject.oneDimensionalArray[iterator])
+        return true;
+
+  return false;
 }
 
 template <class Type> Type fundamentalAlgorithmsWorkFlow::getGaussSum (Type limit) {

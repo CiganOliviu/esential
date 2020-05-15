@@ -20,9 +20,6 @@ public:
 	template <class Type> void assertMinimumValueOneDimensionalArrayDivideEtEmpera ();
 	template <class Type> void assertMaximumValueOneDimensionalArrayDivideEtEmpera ();
 
-	template <class Type> void assertBinarySearch ();
-	template <class Type> void assertLinearSearch ();
-
 	virtual ~oneDimensionalArrayTestingWorkflow () {}
 };
 
@@ -150,38 +147,6 @@ template <class Type> void oneDimensionalArrayTestingWorkflow::assertMaximumValu
 	__assert__.countTest ((char*)"getMaximumValueOneDimensionalArrayDivideEtEmpera", __assert__.assertPrimitiveDataTypes<Type>(results) );
 }
 
-template <class Type> void oneDimensionalArrayTestingWorkflow::assertBinarySearch () {
-
-	oneDimensionalArrayType<Type> ODAObject;
-
-	ioODA.readDynamicFileOneDimensionalArray ((char*)"data/arrayDataSet.data", ODAObject);
-
-	SortWorkFlow.bubbleSort (ODAObject);
-	
-	limits<bool> interval;
-
-	interval.minimLimit = ODAWorkFlow.binarySearch<Type> (ODAObject, -3009);
-	interval.maximLimit = true;
-
-	__assert__.countTest ((char*)"binarySearch", __assert__.assertPrimitiveDataTypes<bool> (interval));
-}
-
-template <class Type> void oneDimensionalArrayTestingWorkflow::assertLinearSearch () {
-	
-	oneDimensionalArrayType<Type> ODAObject;
-
-	ioODA.readDynamicFileOneDimensionalArray ((char*)"data/arrayDataSet.data", ODAObject);
-
-	SortWorkFlow.bubbleSort (ODAObject);
-	
-	limits<bool> interval;
-
-	interval.minimLimit = ODAWorkFlow.linearSearch<Type> (ODAObject, -3009);
-	interval.maximLimit = true;
-
-	__assert__.countTest ((char*)"linearSearch", __assert__.assertPrimitiveDataTypes<bool> (interval));
-}
-
 class matricesTestingWorkFlow {
 
 private:
@@ -269,6 +234,54 @@ template <class Type> void matricesTestingWorkFlow::assertMatrixElementsDifferen
 		results.maximLimit = 250902;
 
 		__assert__.countTest ((char*)"getMatrixElementsDifference", __assert__.assertPrimitiveDataTypes<Type>(results) );
+}
+
+class searchEnginesWorkFlowTesting {
+private:
+	searchEnginesWorkFlow engine;
+	IOSystemOneDimensionalArray ioODA;
+	sortAlgorithmsOneDimensionalArray SortWorkFlow;
+	assertions __assert__;
+
+public:
+	searchEnginesWorkFlowTesting () {}
+
+	template <class Type> void assertBinarySearch ();
+	template <class Type> void assertLinearSearch ();
+
+	virtual ~searchEnginesWorkFlowTesting () {}
+};
+
+template <class Type> void searchEnginesWorkFlowTesting::assertBinarySearch () {
+
+	oneDimensionalArrayType<Type> ODAObject;
+
+	ioODA.readDynamicFileOneDimensionalArray ((char*)"data/arrayDataSet.data", ODAObject);
+
+	SortWorkFlow.bubbleSort (ODAObject);
+	
+	limits<bool> interval;
+
+	interval.minimLimit = engine.binarySearch<Type> (ODAObject, -3009);
+	interval.maximLimit = true;
+
+	__assert__.countTest ((char*)"binarySearch", __assert__.assertPrimitiveDataTypes<bool> (interval));
+}
+
+template <class Type> void searchEnginesWorkFlowTesting::assertLinearSearch () {
+	
+	oneDimensionalArrayType<Type> ODAObject;
+
+	ioODA.readDynamicFileOneDimensionalArray ((char*)"data/arrayDataSet.data", ODAObject);
+
+	SortWorkFlow.bubbleSort (ODAObject);
+	
+	limits<bool> interval;
+
+	interval.minimLimit = engine.linearSearch<Type> (ODAObject, -3009);
+	interval.maximLimit = true;
+
+	__assert__.countTest ((char*)"linearSearch", __assert__.assertPrimitiveDataTypes<bool> (interval));
 }
 
 class fundamentalAlgorithmsTestingWorkflow {
@@ -740,6 +753,7 @@ private:
 		assertions __assert__;
 		oneDimensionalArrayTestingWorkflow ODATWF;
 		matricesTestingWorkFlow MTWF;
+		searchEnginesWorkFlowTesting SWK;
 		fundamentalAlgorithmsTestingWorkflow FAWF;
 		numbersPropertiesTestingWorkFlow NUMWF;
 		equationsWorkFlowTesting EWF;
@@ -758,14 +772,25 @@ public:
 		ODATWF.assertOneDimensionalArrayMean<int> ();
 		ODATWF.assertMinimumValueOneDimensionalArrayDivideEtEmpera<int> ();
 		ODATWF.assertMaximumValueOneDimensionalArrayDivideEtEmpera<int> ();
-		ODATWF.assertBinarySearch<int> ();
-		ODATWF.assertLinearSearch<int> ();
 
 		MTWF.assertMaximumValueFromMatrix<int> ();
 		MTWF.assertMinimumValueFromMatrix<int> ();
 		MTWF.assertMatrixElementsSum<int> ();
 		MTWF.assertMatrixElementsProduct<int> ();
 		MTWF.assertMatrixElementsDifference<int> ();
+
+		SWK.assertBinarySearch<int> ();
+		SWK.assertLinearSearch<int> ();
+
+		FAWF.assertGaussSum ();
+		FAWF.assertFactorialNumber ();
+		FAWF.assertFactorialNumberRecursive ();
+		FAWF.assertAckermanNumber ();
+		FAWF.assertEulerianNumber ();
+		FAWF.assertCatalanNumber ();
+		FAWF.assertFibonacciNumber ();
+		FAWF.assertFibonacciNumberRecursive ();
+		FAWF.assertMannaPnueliNumber ();
 
 		EWF.assertRootLinearEquation ();
 		EWF.assertValueLinearEquation ();
@@ -788,16 +813,6 @@ public:
 		CWF.assertConstantNumber ();
 		CWF.assertPerfectSquare ();
 		CWF.assertIsFibonacciNumber ();
-		
-		FAWF.assertGaussSum ();
-		FAWF.assertFactorialNumber ();
-		FAWF.assertFactorialNumberRecursive ();
-		FAWF.assertAckermanNumber ();
-		FAWF.assertEulerianNumber ();
-		FAWF.assertCatalanNumber ();
-		FAWF.assertFibonacciNumber ();
-		FAWF.assertFibonacciNumberRecursive ();
-		FAWF.assertMannaPnueliNumber ();
 
 		__assert__.getConclusion();
 	}
