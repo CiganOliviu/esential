@@ -397,3 +397,15 @@ public:
 
   virtual ~graphsWorkFlow () {}
 };
+
+class charArrayWorkFlow {
+private:
+  errorsHandler __handler__;
+
+public:
+  charArrayWorkFlow () {}
+
+  ~charArrayWorkFlow () {}
+
+  bool classResponse () { return true; }
+};

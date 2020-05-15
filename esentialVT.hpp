@@ -30,6 +30,8 @@ private:
 
   graphsWorkFlow GWorkFlow;
 
+  charArrayWorkFlow CAWorkFlow;
+
 public:
   systemTestingWorkflow () {}
 
@@ -49,6 +51,7 @@ public:
   void assertCheckersWorkFlow ();
   void assertTreesWorkFlow ();
   void assertGraphsWorkFlow ();
+  void assertCharArrayWorkFlow ();
 
   virtual ~systemTestingWorkflow () {}
 };
@@ -204,6 +207,16 @@ void systemTestingWorkflow::assertGraphsWorkFlow () {
   __assert__.countTest ((char*)"assertGraphsWorkFlow", __assert__.assertPrimitiveDataTypes<bool>(results) );
 }
 
+void systemTestingWorkflow::assertCharArrayWorkFlow () {
+
+  limits<bool> results;
+
+  results.minimLimit = CAWorkFlow.classResponse();
+  results.maximLimit = true;
+
+  __assert__.countTest ((char*)"assertCharArrayWorkFlow", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
 class RunSystemTests {
 private:
   systemTestingWorkflow testingObject;
@@ -240,4 +253,6 @@ void RunSystemTests::run () {
   testingObject.assertTreesWorkFlow ();
   
   testingObject.assertGraphsWorkFlow ();
+
+  testingObject.assertCharArrayWorkFlow ();
 }
