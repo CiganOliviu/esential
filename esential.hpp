@@ -1868,6 +1868,9 @@ unsigned int charArrayWorkFlow::getCharArrayLength (char charArray[]) {
 
 void charArrayWorkFlow::concatCharArrays (char charArrayOne[], char charArrayTwo[]) {
 
+  if (__validations__.isNegative(getCharArrayLength(charArrayOne))) throw systemException ("Unable to process negative length in void charArrayWorkFlow::concatCharArrays (char charArrayOne[], char charArrayTwo[]);");
+  if (__validations__.isNegative(getCharArrayLength(charArrayTwo))) throw systemException ("Unable to process negative length in void charArrayWorkFlow::concatCharArrays (char charArrayOne[], char charArrayTwo[]);");
+  
   unsigned int charArrayOneSize;
 
   for (charArrayOneSize = 0; charArrayOne[charArrayOneSize]; charArrayOneSize++);
@@ -1882,6 +1885,9 @@ void charArrayWorkFlow::concatCharArrays (char charArrayOne[], char charArrayTwo
 
 void charArrayWorkFlow::copyCharArray (char charArrayOne[], char charArrayTwo[]) {
 
+  if (__validations__.isNegative(getCharArrayLength(charArrayOne))) throw systemException ("Unable to process negative length in void charArrayWorkFlow::copyCharArray (char charArrayOne[], char charArrayTwo[]);");
+  if (__validations__.isNegative(getCharArrayLength(charArrayTwo))) throw systemException ("Unable to process negative length in void charArrayWorkFlow::copyCharArray (char charArrayOne[], char charArrayTwo[]);");
+
   unsigned int size;
 
   for (size = 0; charArrayTwo[size]; size++)
@@ -1891,6 +1897,9 @@ void charArrayWorkFlow::copyCharArray (char charArrayOne[], char charArrayTwo[])
 }
 
 int charArrayWorkFlow::compareCharArrays (char charArrayOne[], char charArrayTwo[]) {
+
+  if (__validations__.isNegative(getCharArrayLength(charArrayOne))) throw systemException ("Unable to process negative length in int charArrayWorkFlow::compareCharArrays (char charArrayOne[], char charArrayTwo[]);");
+  if (__validations__.isNegative(getCharArrayLength(charArrayTwo))) throw systemException ("Unable to process negative length in int charArrayWorkFlow::compareCharArrays (char charArrayOne[], char charArrayTwo[]);");
 
   unsigned int size;
 
@@ -1903,6 +1912,8 @@ int charArrayWorkFlow::compareCharArrays (char charArrayOne[], char charArrayTwo
 
 bool charArrayWorkFlow::searchCharInCharArray (char charArray[], char characterToSearch) {
 
+  if (__validations__.isNegative(getCharArrayLength(charArray))) throw systemException ("Unable to process negative length in bool charArrayWorkFlow::searchCharInCharArray (char charArray[], char characterToSearch);");
+
   for (unsigned int size = 0; charArray[size]; size++)
     if (charArray[size] == characterToSearch)
       return true;
@@ -1911,6 +1922,8 @@ bool charArrayWorkFlow::searchCharInCharArray (char charArray[], char characterT
 }
 
 int charArrayWorkFlow::getNumberOfVowelsInCharArray (char charArray[]) {
+
+  if (__validations__.isNegative(getCharArrayLength(charArray))) throw systemException ("Unable to process negative length in int charArrayWorkFlow::getNumberOfVowelsInCharArray (char charArray[]);");
 
   int result = 0;
 
@@ -1923,6 +1936,8 @@ int charArrayWorkFlow::getNumberOfVowelsInCharArray (char charArray[]) {
 
 int charArrayWorkFlow::getNumberOfConsonantsInCharArray (char charArray[]) {
   
+  if (__validations__.isNegative(getCharArrayLength(charArray))) throw systemException ("Unable to process negative length in int charArrayWorkFlow::getNumberOfConsonantsInCharArray (char charArray[]);");
+
   int result = 0;
 
   for (unsigned int iterator = 0; iterator < getCharArrayLength(charArray); iterator++)

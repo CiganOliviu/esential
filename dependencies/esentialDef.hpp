@@ -414,7 +414,7 @@ public:
 
 class charArrayWorkFlow {
 private:
-  errorsHandler __handler__;
+  validationRules __validations__;
 
 public:
   charArrayWorkFlow () {}
