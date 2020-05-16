@@ -1237,6 +1237,19 @@ template <class Type> bool searchEnginesWorkFlow::linearSearchOneDimensionalArra
   return false;
 }
 
+template <class Type> bool searchEnginesWorkFlow::linearSearchMatrix (matrixType<Type> MObject, Type valueToSearch) {
+  
+  __handler__.standardHandlerMatrix (MObject, __PRETTY_FUNCTION__);
+
+  for (size_t iterator = MObject.startLinePoint; iterator < MObject.lineRefference + MObject.endLinePoint; iterator++)
+    for (size_t jiterator = MObject.startColumnPoint; jiterator < MObject.columnRefference + MObject.endColumnPoint; jiterator++)
+      if (MObject.matrix[iterator][jiterator] == valueToSearch)
+        return true;
+
+  return false;
+
+}
+
 template <class Type> Type fundamentalAlgorithmsWorkFlow::getGaussSum (Type limit) {
 
   return (limit * (limit + 1) / 2);

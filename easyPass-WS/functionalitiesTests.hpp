@@ -223,7 +223,21 @@ template <class Type> void searchEnginesWorkFlowTesting::assertLinearSearchOneDi
 	interval.minimLimit = engine.linearSearchOneDimensionalArray<Type> (ODAObject, -3009);
 	interval.maximLimit = true;
 
-	__assert__.countTest ((char*)"linearSearch", __assert__.assertPrimitiveDataTypes<bool> (interval));
+	__assert__.countTest ((char*)"linearSearchOneDimensionalArray", __assert__.assertPrimitiveDataTypes<bool> (interval));
+}
+
+template <class Type> void searchEnginesWorkFlowTesting::assertLinearSearchMatrix () {
+
+	matrixType<Type> MObject; 
+
+	ioM.readDynamicFileMatrix ((char*)"data/matrixDataSet.data", MObject);
+	
+	limits<bool> interval;
+
+	interval.minimLimit = engine.linearSearchMatrix<Type> (MObject, 32543);
+	interval.maximLimit = true;
+
+	__assert__.countTest ((char*)"linearSearchMatrix", __assert__.assertPrimitiveDataTypes<bool> (interval));
 }
 
 void fundamentalAlgorithmsTestingWorkflow::assertGaussSum () {
@@ -736,7 +750,8 @@ public:
 
 		SWK.assertBinarySearch<int> ();
 		SWK.assertLinearSearchOneDimensionalArray<int> ();
-
+		SWK.assertLinearSearchMatrix<int> ();
+		
 		FAWF.assertGaussSum ();
 		FAWF.assertFactorialNumber ();
 		FAWF.assertFactorialNumberRecursive ();

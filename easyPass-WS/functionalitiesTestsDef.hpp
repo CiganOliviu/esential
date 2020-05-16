@@ -46,6 +46,7 @@ class searchEnginesWorkFlowTesting {
 private:
 	searchEnginesWorkFlow engine;
 	IOSystemOneDimensionalArray ioODA;
+	IOSystemMatrices ioM;
 	sortAlgorithmsOneDimensionalArray SortWorkFlow;
 	assertions __assert__;
 
@@ -54,6 +55,7 @@ public:
 
 	template <class Type> void assertBinarySearch ();
 	template <class Type> void assertLinearSearchOneDimensionalArray ();
+	template <class Type> void assertLinearSearchMatrix ();
 
 	virtual ~searchEnginesWorkFlowTesting () {}
 };

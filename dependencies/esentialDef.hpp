@@ -243,8 +243,8 @@ public:
 
   template <class Type> bool binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
   template <class Type> bool linearSearchOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
-  template <class Type> bool linearSearchMatrix (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
-
+  template <class Type> bool linearSearchMatrix (matrixType<Type> MObject, Type valueToSearch);
+  
   bool classResponse () { return true; }
   
   virtual ~searchEnginesWorkFlow () {}
