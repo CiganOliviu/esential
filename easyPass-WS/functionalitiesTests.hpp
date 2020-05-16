@@ -678,6 +678,30 @@ void charArrayWorkFlowTesting::assertSearchCharInCharArray () {
 	__assert__.countTest ((char*)"assertSearchCharInCharArray", __assert__.assertPrimitiveDataTypes<bool>(results) );
 }
 
+void charArrayWorkFlowTesting::assertGetNumberOfConsonantsInCharArray () {
+
+	char charArrayOne[120] = "just";
+
+	limits<int> results;
+
+	results.minimLimit = CharArrayWF.getNumberOfConsonantsInCharArray(charArrayOne);
+	results.maximLimit = 3;
+
+	__assert__.countTest ((char*)"getNumberOfConsonantsInCharArray", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void charArrayWorkFlowTesting::assertGetNumberOfVowelsInCharArray () {
+
+	char charArrayOne[120] = "just";
+
+	limits<int> results;
+
+	results.minimLimit = CharArrayWF.getNumberOfVowelsInCharArray(charArrayOne);
+	results.maximLimit = 1;
+
+	__assert__.countTest ((char*)"getNumberOfVowelsInCharArray", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
 class RunTests {
 private:
 		assertions __assert__;
@@ -750,7 +774,9 @@ public:
 		CAWF.assertCopyCharArray ();
 		CAWF.assertCompareCharArrays ();
 		CAWF.assertSearchCharInCharArray ();
-		
+		CAWF.assertGetNumberOfConsonantsInCharArray ();
+		CAWF.assertGetNumberOfVowelsInCharArray ();
+
 		__assert__.getConclusion();
 	}
 

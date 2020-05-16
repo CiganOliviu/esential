@@ -424,6 +424,8 @@ public:
   void copyCharArray (char charArrayOne[], char charArrayTwo[]);
   int compareCharArrays (char charArrayOne[], char charArrayTwo[]);
   bool searchCharInCharArray (char charArray[], char characterToSearch);
+  int getNumberOfConsonantsInCharArray (char charArray[]);
+  int getNumberOfVowelsInCharArray (char charArray[]);
 
   virtual ~charArrayWorkFlow () {}
 

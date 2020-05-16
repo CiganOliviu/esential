@@ -1909,3 +1909,27 @@ bool charArrayWorkFlow::searchCharInCharArray (char charArray[], char characterT
 
   return false;
 }
+
+int charArrayWorkFlow::getNumberOfVowelsInCharArray (char charArray[]) {
+
+  int result = 0;
+
+  for (unsigned int iterator = 0; iterator < getCharArrayLength(charArray); iterator++)
+    if (charArray[iterator] == 'a' || charArray[iterator] == 'e' || charArray[iterator] == 'i' || charArray[iterator] == 'o' || charArray[iterator] == 'u')
+      result += 1;  
+
+  return result;
+}
+
+int charArrayWorkFlow::getNumberOfConsonantsInCharArray (char charArray[]) {
+  
+  int result = 0;
+
+  for (unsigned int iterator = 0; iterator < getCharArrayLength(charArray); iterator++)
+    if (charArray[iterator] == 'a' || charArray[iterator] == 'e' || charArray[iterator] == 'i' || charArray[iterator] == 'o' || charArray[iterator] == 'u')
+        continue;
+    else
+      result += 1;
+
+  return result;
+}
