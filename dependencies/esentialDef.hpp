@@ -419,6 +419,13 @@ private:
 public:
   charArrayWorkFlow () {}
 
+  unsigned int getCharArrayLength ();
+  void concatCharArrays ();
+  void CopyCharArray ();
+  int CompareCharArrays ();
+  char * SearchCharInCharArray ();
+  char * SearchCharArrayInCharArray ();
+
   virtual ~charArrayWorkFlow () {}
 
   bool classResponse () { return true; }
