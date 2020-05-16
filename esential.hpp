@@ -1856,3 +1856,56 @@ template <class Type> void graphsWorkFlow::valencyOfVertices (graphType<Type> gr
       valency = 0;
   }
 }
+
+unsigned int charArrayWorkFlow::getCharArrayLength (char charArray[]) {
+
+  unsigned int size;
+
+  for (size = 0; charArray[size]; size++);
+
+  return size;
+}
+
+void charArrayWorkFlow::concatCharArrays (char charArrayOne[], char charArrayTwo[]) {
+
+  unsigned int charArrayOneSize;
+
+  for (charArrayOneSize = 0; charArrayOne[charArrayOneSize]; charArrayOneSize++);
+
+  unsigned int charArrayTwoSize;
+
+  for (charArrayTwoSize = 0; charArrayTwo[charArrayTwoSize]; charArrayTwoSize++) {
+    charArrayOne[charArrayOneSize] = charArrayTwo[charArrayTwoSize];
+    charArrayOneSize += 1;
+  }
+}
+
+void charArrayWorkFlow::copyCharArray (char charArrayOne[], char charArrayTwo[]) {
+
+  unsigned int size;
+
+  for (size = 0; charArrayTwo[size]; size++)
+    charArrayOne[size] = charArrayTwo[size];
+
+  charArrayOne[size] = '\0';
+}
+
+int charArrayWorkFlow::compareCharArrays (char charArrayOne[], char charArrayTwo[]) {
+
+  unsigned int size;
+
+  for (size = 0; charArrayOne[size] && charArrayTwo[size] && charArrayOne[size] != charArrayTwo[size]; size++);
+
+  if (charArrayOne[size] && charArrayTwo[size]) return 0;
+  
+  return charArrayOne[size] - charArrayTwo[size];
+}
+
+bool charArrayWorkFlow::searchCharInCharArray (char charArray[], char characterToSearch) {
+
+  for (unsigned int size = 0; charArray[size]; size++)
+    if (charArray[size] == characterToSearch)
+      return true;
+
+  return false;
+}

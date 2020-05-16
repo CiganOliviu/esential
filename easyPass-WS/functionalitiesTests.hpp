@@ -1,27 +1,4 @@
-#include "../esential.hpp"
-
-class oneDimensionalArrayTestingWorkflow {
-private:
-	oneDimensionalArraysWorkFlow ODAWorkFlow;
-	sortAlgorithmsOneDimensionalArray SortWorkFlow;
-	IOSystemOneDimensionalArray ioODA;
-	assertions __assert__;
-
-public:
-	oneDimensionalArrayTestingWorkflow () {}
-
-	template<class Type> void assertMinimumValueOneDimensionalArray ();
-	template<class Type> void assertMaximumValueOneDimensionalArray ();
-	template<class Type> void assertOneDimensionalArrayElementsSum ();
-	template<class Type> void assertOneDimensionalArrayElementsProduct ();
-	template<class Type> void assertOneDimensionalArrayElementsDifference ();
-	template<class Type> void assertOneDimensionalArrayMean ();
-
-	template <class Type> void assertMinimumValueOneDimensionalArrayDivideEtEmpera ();
-	template <class Type> void assertMaximumValueOneDimensionalArrayDivideEtEmpera ();
-
-	virtual ~oneDimensionalArrayTestingWorkflow () {}
-};
+#include "functionalitiesTestsDef.hpp"
 
 template<class Type> void oneDimensionalArrayTestingWorkflow::assertMinimumValueOneDimensionalArray () {
 
@@ -147,25 +124,6 @@ template <class Type> void oneDimensionalArrayTestingWorkflow::assertMaximumValu
 	__assert__.countTest ((char*)"getMaximumValueOneDimensionalArrayDivideEtEmpera", __assert__.assertPrimitiveDataTypes<Type>(results) );
 }
 
-class matricesTestingWorkFlow {
-
-private:
-	matricesWorkFlow MWorkFlow;
-	IOSystemMatrices ioM;
-	assertions __assert__;
-
-public:
-	matricesTestingWorkFlow () {}
-
-	template <class Type> void assertMaximumValueFromMatrix ();
-	template <class Type> void assertMinimumValueFromMatrix ();
-	template <class Type> void assertMatrixElementsSum ();
-	template <class Type> void assertMatrixElementsProduct ();
-	template <class Type> void assertMatrixElementsDifference ();
-
-	virtual ~matricesTestingWorkFlow () {}
-};
-
 template <class Type> void matricesTestingWorkFlow::assertMaximumValueFromMatrix () {
 
 		matrixType<Type> matrixObject;
@@ -236,22 +194,6 @@ template <class Type> void matricesTestingWorkFlow::assertMatrixElementsDifferen
 		__assert__.countTest ((char*)"getMatrixElementsDifference", __assert__.assertPrimitiveDataTypes<Type>(results) );
 }
 
-class searchEnginesWorkFlowTesting {
-private:
-	searchEnginesWorkFlow engine;
-	IOSystemOneDimensionalArray ioODA;
-	sortAlgorithmsOneDimensionalArray SortWorkFlow;
-	assertions __assert__;
-
-public:
-	searchEnginesWorkFlowTesting () {}
-
-	template <class Type> void assertBinarySearch ();
-	template <class Type> void assertLinearSearchOneDimensionalArray ();
-
-	virtual ~searchEnginesWorkFlowTesting () {}
-};
-
 template <class Type> void searchEnginesWorkFlowTesting::assertBinarySearch () {
 
 	oneDimensionalArrayType<Type> ODAObject;
@@ -283,86 +225,6 @@ template <class Type> void searchEnginesWorkFlowTesting::assertLinearSearchOneDi
 
 	__assert__.countTest ((char*)"linearSearch", __assert__.assertPrimitiveDataTypes<bool> (interval));
 }
-
-class fundamentalAlgorithmsTestingWorkflow {
-
-private:
-	fundamentalAlgorithmsWorkFlow fundamentalAlgosWorkFlow;
-	assertions __assert__;
-	portData port;
-
-public:
-	fundamentalAlgorithmsTestingWorkflow () {}
-
-	void assertGaussSum ();
-	void assertFactorialNumber ();
-	void assertFactorialNumberRecursive ();
-	void assertAckermanNumber ();
-	void assertEulerianNumber ();
-	void assertCatalanNumber ();
-	void assertFibonacciNumber ();
-	void assertFibonacciNumberRecursive ();
-	void assertMannaPnueliNumber ();
-
-	virtual ~fundamentalAlgorithmsTestingWorkflow () {}
-};
-
-class numbersPropertiesTestingWorkFlow {
-private:
-	numbersPropertiesWorkFlow __numberProperties__;
-	assertions __assert__;
-	portData port;
-
-public:
-	numbersPropertiesTestingWorkFlow () {}
-
-	void assertTheLargestCommonDivisor ();
-	void assertTheLargestCommonDivisorRecursive ();
-	void assertTheLargestCommonDivisorOfTwoNumbers ();
-	void assertLeastCommonMultiple ();
-	void assertLeastCommonMultipleOfTwoNumbers ();
-	void assertReversedNumber ();
-	void assertPalindromeNumber ();
-	void assertMeansOfTwoNumbers ();
-
-	virtual ~numbersPropertiesTestingWorkFlow () {}
-};
-
-class equationsWorkFlowTesting {
-private:
-	equationsWorkFlow equations;	
-	assertions __assert__;
-	portData port;
-
-public:
-	equationsWorkFlowTesting () {}
-
-	void assertRootLinearEquation ();
-	void assertValueLinearEquation ();
-	void assertRootsQuadraticEquation ();
-	void assertValueQuadraticEquation ();
-
-	virtual ~equationsWorkFlowTesting () {}
-};
-
-class checkersWorkFlowTesting {
-private:	
-	checkersWorkFlow checks;
-	assertions __assert__;
-	portData port;
-
-public:
-	checkersWorkFlowTesting () {}
-
-	void assertIfPrime ();
-	void assertIfOdd ();
-	void assertIfEven ();
-	void assertConstantNumber ();
-	void assertPerfectSquare ();
-	void assertIsFibonacciNumber ();
-
-	virtual ~checkersWorkFlowTesting () {}
-};
 
 void fundamentalAlgorithmsTestingWorkflow::assertGaussSum () {
 
@@ -748,6 +610,74 @@ void checkersWorkFlowTesting::assertIsFibonacciNumber () {
 	__assert__.countTest ((char*)"isFibonacciNumberSetTwo", __assert__.assertPrimitiveDataTypes<bool>(resultsSetTwo) );
 }
 
+void charArrayWorkFlowTesting::assertGetCharArrayLength () {
+
+	char charArray[120] = "Just";
+
+	limits<int> results;
+
+	results.minimLimit = CharArrayWF.getCharArrayLength(charArray);
+	results.maximLimit = 4;
+
+	__assert__.countTest ((char*)"assertGetCharArrayLength", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void charArrayWorkFlowTesting::assertConcatCharArrays () {
+
+	char charArrayOne[120] = "Just";
+	char charArrayTwo[120] = " Do it";
+
+	CharArrayWF.concatCharArrays(charArrayOne, charArrayTwo);
+
+	limits<int> results;
+
+	results.minimLimit = CharArrayWF.getCharArrayLength(charArrayOne);
+	results.maximLimit = 10;
+
+	__assert__.countTest ((char*)"assertConcatCharArrays", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void charArrayWorkFlowTesting::assertCopyCharArray () {
+
+	char charArrayOne[120] = "Just";
+	char charArrayTwo[120] = "Do it";
+
+	CharArrayWF.copyCharArray(charArrayOne, charArrayTwo);
+
+	limits<int> results;
+
+	results.minimLimit = CharArrayWF.getCharArrayLength(charArrayOne);
+	results.maximLimit = 5;
+
+	__assert__.countTest ((char*)"assertCopyCharArray", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void charArrayWorkFlowTesting::assertCompareCharArrays () {
+
+	char charArrayOne[120] = "Just";
+	char charArrayTwo[120] = "Just";
+
+	limits<int> results;
+
+	results.minimLimit = CharArrayWF.compareCharArrays(charArrayOne, charArrayTwo);
+	results.maximLimit = 0;
+
+	__assert__.countTest ((char*)"assertCompareCharArrays", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
+void charArrayWorkFlowTesting::assertSearchCharInCharArray () {
+
+	char charArrayOne[120] = "Just";
+	char charToSearch = 's';
+
+	limits<bool> results;
+
+	results.minimLimit = CharArrayWF.searchCharInCharArray(charArrayOne, charToSearch);
+	results.maximLimit = true;
+
+	__assert__.countTest ((char*)"assertSearchCharInCharArray", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
 class RunTests {
 private:
 		assertions __assert__;
@@ -758,6 +688,7 @@ private:
 		numbersPropertiesTestingWorkFlow NUMWF;
 		equationsWorkFlowTesting EWF;
 		checkersWorkFlowTesting CWF;
+		charArrayWorkFlowTesting CAWF;
 
 public:
 	RunTests () {}
@@ -814,6 +745,12 @@ public:
 		CWF.assertPerfectSquare ();
 		CWF.assertIsFibonacciNumber ();
 
+		CAWF.assertGetCharArrayLength ();
+		CAWF.assertConcatCharArrays ();
+		CAWF.assertCopyCharArray ();
+		CAWF.assertCompareCharArrays ();
+		CAWF.assertSearchCharInCharArray ();
+		
 		__assert__.getConclusion();
 	}
 

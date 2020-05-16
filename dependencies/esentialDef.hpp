@@ -419,12 +419,11 @@ private:
 public:
   charArrayWorkFlow () {}
 
-  unsigned int getCharArrayLength ();
-  void concatCharArrays ();
-  void CopyCharArray ();
-  int CompareCharArrays ();
-  char * SearchCharInCharArray ();
-  char * SearchCharArrayInCharArray ();
+  unsigned int getCharArrayLength (char charArray[]);
+  void concatCharArrays (char charArrayOne[], char charArrayTwo[]);
+  void copyCharArray (char charArrayOne[], char charArrayTwo[]);
+  int compareCharArrays (char charArrayOne[], char charArrayTwo[]);
+  bool searchCharInCharArray (char charArray[], char characterToSearch);
 
   virtual ~charArrayWorkFlow () {}
 
