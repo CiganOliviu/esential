@@ -1207,7 +1207,7 @@ template <class Type> bool matricesWorkFlow::checkIfEqualMatrices (matrixType<Ty
   return true;
 }
 
-template <class Type> bool searchEnginesWorkFlow::binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
+template <class Type> bool searchEnginesWorkFlow::findValueByBinarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
@@ -1226,7 +1226,7 @@ template <class Type> bool searchEnginesWorkFlow::binarySearch (oneDimensionalAr
   return false;
 }
 
-template <class Type> bool searchEnginesWorkFlow::linearSearchOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
+template <class Type> bool searchEnginesWorkFlow::findValueByLinearSearchOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
   
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
@@ -1237,7 +1237,7 @@ template <class Type> bool searchEnginesWorkFlow::linearSearchOneDimensionalArra
   return false;
 }
 
-template <class Type> bool searchEnginesWorkFlow::linearSearchMatrix (matrixType<Type> MObject, Type valueToSearch) {
+template <class Type> bool searchEnginesWorkFlow::findValueByLinearSearchMatrix (matrixType<Type> MObject, Type valueToSearch) {
   
   __handler__.standardHandlerMatrix (MObject, __PRETTY_FUNCTION__);
 

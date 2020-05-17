@@ -241,9 +241,9 @@ private:
 public:
   searchEnginesWorkFlow () {}
 
-  template <class Type> bool binarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
-  template <class Type> bool linearSearchOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
-  template <class Type> bool linearSearchMatrix (matrixType<Type> MObject, Type valueToSearch);
+  template <class Type> bool findValueByBinarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
+  template <class Type> bool findValueByLinearSearchOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
+  template <class Type> bool findValueByLinearSearchMatrix (matrixType<Type> MObject, Type valueToSearch);
   
   bool classResponse () { return true; }
   

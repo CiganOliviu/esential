@@ -194,7 +194,7 @@ template <class Type> void matricesTestingWorkFlow::assertMatrixElementsDifferen
 		__assert__.countTest ((char*)"getMatrixElementsDifference", __assert__.assertPrimitiveDataTypes<Type>(results) );
 }
 
-template <class Type> void searchEnginesWorkFlowTesting::assertBinarySearch () {
+template <class Type> void searchEnginesWorkFlowTesting::assertFindValueByBinarySearch () {
 
 	oneDimensionalArrayType<Type> ODAObject;
 
@@ -204,13 +204,13 @@ template <class Type> void searchEnginesWorkFlowTesting::assertBinarySearch () {
 	
 	limits<bool> interval;
 
-	interval.minimLimit = engine.binarySearch<Type> (ODAObject, -3009);
+	interval.minimLimit = engine.findValueByBinarySearch<Type> (ODAObject, -3009);
 	interval.maximLimit = true;
 
 	__assert__.countTest ((char*)"binarySearch", __assert__.assertPrimitiveDataTypes<bool> (interval));
 }
 
-template <class Type> void searchEnginesWorkFlowTesting::assertLinearSearchOneDimensionalArray () {
+template <class Type> void searchEnginesWorkFlowTesting::assertFindValueByLinearSearchOneDimensionalArray () {
 	
 	oneDimensionalArrayType<Type> ODAObject;
 
@@ -220,13 +220,13 @@ template <class Type> void searchEnginesWorkFlowTesting::assertLinearSearchOneDi
 	
 	limits<bool> interval;
 
-	interval.minimLimit = engine.linearSearchOneDimensionalArray<Type> (ODAObject, -3009);
+	interval.minimLimit = engine.findValueByLinearSearchOneDimensionalArray<Type> (ODAObject, -3009);
 	interval.maximLimit = true;
 
 	__assert__.countTest ((char*)"linearSearchOneDimensionalArray", __assert__.assertPrimitiveDataTypes<bool> (interval));
 }
 
-template <class Type> void searchEnginesWorkFlowTesting::assertLinearSearchMatrix () {
+template <class Type> void searchEnginesWorkFlowTesting::assertFindValueByLinearSearchMatrix () {
 
 	matrixType<Type> MObject; 
 
@@ -234,7 +234,7 @@ template <class Type> void searchEnginesWorkFlowTesting::assertLinearSearchMatri
 	
 	limits<bool> interval;
 
-	interval.minimLimit = engine.linearSearchMatrix<Type> (MObject, 32543);
+	interval.minimLimit = engine.findValueByLinearSearchMatrix<Type> (MObject, 32543);
 	interval.maximLimit = true;
 
 	__assert__.countTest ((char*)"linearSearchMatrix", __assert__.assertPrimitiveDataTypes<bool> (interval));
@@ -776,9 +776,9 @@ public:
 		MTWF.assertMatrixElementsProduct<int> ();
 		MTWF.assertMatrixElementsDifference<int> ();
 
-		SWK.assertBinarySearch<int> ();
-		SWK.assertLinearSearchOneDimensionalArray<int> ();
-		SWK.assertLinearSearchMatrix<int> ();
+		SWK.assertFindValueByBinarySearch<int> ();
+		SWK.assertFindValueByLinearSearchOneDimensionalArray<int> ();
+		SWK.assertFindValueByLinearSearchMatrix<int> ();
 		
 		FAWF.assertGaussSum ();
 		FAWF.assertFactorialNumber ();

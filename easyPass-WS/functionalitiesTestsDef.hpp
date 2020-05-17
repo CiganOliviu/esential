@@ -53,9 +53,9 @@ private:
 public:
 	searchEnginesWorkFlowTesting () {}
 
-	template <class Type> void assertBinarySearch ();
-	template <class Type> void assertLinearSearchOneDimensionalArray ();
-	template <class Type> void assertLinearSearchMatrix ();
+	template <class Type> void assertFindValueByBinarySearch ();
+	template <class Type> void assertFindValueByLinearSearchOneDimensionalArray ();
+	template <class Type> void assertFindValueByLinearSearchMatrix ();
 
 	virtual ~searchEnginesWorkFlowTesting () {}
 };
