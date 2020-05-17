@@ -311,6 +311,7 @@ class numbersPropertiesWorkFlow {
     int getPalindromValue (int parameter);
     float getMeanOfTwoNumbers (float parameterOne, float parameterTwo);
     void  interchangeValuesViaPointers (int * parameterOne, int * parameterTwo);
+    void interchangeValuesViaDisclosiveDisjunction (int & parameterOne, int & parameterTwo);
 
     bool classResponse () { return true; };
 

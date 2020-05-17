@@ -1516,6 +1516,13 @@ void numbersPropertiesWorkFlow::interchangeValuesViaPointers (int * parameterOne
   * parameterOne = * parameterOne - * parameterTwo;
 }
 
+void numbersPropertiesWorkFlow::interchangeValuesViaDisclosiveDisjunction (int & parameterOne, int & parameterTwo) {
+
+  parameterOne = parameterOne + parameterTwo;
+  parameterTwo = parameterOne - parameterTwo;
+  parameterOne = parameterOne - parameterTwo;
+}
+
 float equationsWorkFlow::getRootLinearEquation (linearEquation __LEquation__) {
 
   if (__validations__.isZero(__LEquation__.slope))
