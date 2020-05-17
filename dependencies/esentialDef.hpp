@@ -268,7 +268,6 @@ public:
   int getThe_N_fibonacciNumber (int parameter);
   int getThe_N_fibonacciNumberRecursive (int parameter);
   int getThe_N_masterTheoremNumber (int parameter);
-  void removeCharFromString (char * string, char value);
 
   bool classResponse () { return true; }
 
@@ -426,6 +425,7 @@ public:
   bool searchCharInCharArray (char charArray[], char characterToSearch);
   int getNumberOfConsonantsInCharArray (char charArray[]);
   int getNumberOfVowelsInCharArray (char charArray[]);
+  void removeCharFromString (char * string, char value);
 
   virtual ~charArrayWorkFlow () {}
 

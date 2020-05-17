@@ -1353,22 +1353,6 @@ int fundamentalAlgorithmsWorkFlow::getThe_N_fibonacciNumberRecursive (int parame
   return 2 * getThe_N_masterTheoremNumber (parameter / 2) + parameter;
 }
 
-void fundamentalAlgorithmsWorkFlow::removeCharFromString (char * string, char value) {
-
-  if (NULL == string) return;
-
-  char *stringDest = string;
-
-  while (*string) {
-
-    if (*string != value) *stringDest++ = *string;
-
-    string++;
-  }
-
-  *stringDest = '\0';
-}
-
 complexNumber complexNumbersWorkFlow::complexNumbersProduct (complexNumber * numberOne, complexNumber * numberTwo) {
 
   complexNumber resultedComplexNumber;
@@ -1960,4 +1944,20 @@ int charArrayWorkFlow::getNumberOfConsonantsInCharArray (char charArray[]) {
       result += 1;
 
   return result;
+}
+
+void charArrayWorkFlow::removeCharFromString (char * string, char value) {
+
+  if (NULL == string) return;
+
+  char *stringDest = string;
+
+  while (*string) {
+
+    if (*string != value) *stringDest++ = *string;
+
+    string++;
+  }
+
+  *stringDest = '\0';
 }
