@@ -716,6 +716,34 @@ void charArrayWorkFlowTesting::assertGetNumberOfVowelsInCharArray () {
 	__assert__.countTest ((char*)"getNumberOfVowelsInCharArray", __assert__.assertPrimitiveDataTypes<int>(results) );
 }
 
+void charArrayWorkFlowTesting::assertConvertToLowerCase () {
+
+	char character = 'A';
+	
+	CharArrayWF.convertToLowerCase(character);
+
+	limits<char> results;
+
+	results.minimLimit = character;
+	results.maximLimit = 'a';
+
+	__assert__.countTest ((char*)"convertToLowerCase", __assert__.assertPrimitiveDataTypes<char>(results) );
+}
+
+void charArrayWorkFlowTesting::assertConvertToUpperCase () {
+
+	char character = 'a';
+
+	CharArrayWF.convertToUpperCase(character);
+
+	limits<char> results;
+
+	results.minimLimit = character;
+	results.maximLimit = 'A';
+
+	__assert__.countTest ((char*)"convertToUpperCase", __assert__.assertPrimitiveDataTypes<char>(results) );
+}
+
 class RunTests {
 private:
 		assertions __assert__;
@@ -791,6 +819,8 @@ public:
 		CAWF.assertSearchCharInCharArray ();
 		CAWF.assertGetNumberOfConsonantsInCharArray ();
 		CAWF.assertGetNumberOfVowelsInCharArray ();
+		CAWF.assertConvertToLowerCase ();
+		CAWF.assertConvertToUpperCase ();
 
 		__assert__.getConclusion();
 	}

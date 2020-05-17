@@ -155,6 +155,8 @@ public:
 	void assertSearchCharInCharArray ();
 	void assertGetNumberOfConsonantsInCharArray ();
 	void assertGetNumberOfVowelsInCharArray ();
+	void assertConvertToLowerCase ();
+	void assertConvertToUpperCase ();
 
 	virtual ~charArrayWorkFlowTesting () {}
 };

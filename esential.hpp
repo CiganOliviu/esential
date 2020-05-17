@@ -1961,3 +1961,15 @@ void charArrayWorkFlow::removeCharFromString (char * string, char value) {
 
   *stringDest = '\0';
 }
+
+void charArrayWorkFlow::convertToLowerCase (char & character) {
+
+  if (character <= 97 && character != ' ')
+    character += 32;
+}
+
+void charArrayWorkFlow::convertToUpperCase (char & character) {
+
+  if (character >= 97)
+    character -= 32;
+}

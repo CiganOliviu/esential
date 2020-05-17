@@ -426,7 +426,9 @@ public:
   int getNumberOfConsonantsInCharArray (char charArray[]);
   int getNumberOfVowelsInCharArray (char charArray[]);
   void removeCharFromString (char * string, char value);
-
+  void convertToLowerCase (char & character);
+  void convertToUpperCase (char & character);
+  
   virtual ~charArrayWorkFlow () {}
 
   bool classResponse () { return true; }
