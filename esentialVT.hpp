@@ -9,6 +9,7 @@ private:
   IOSystemTrees inputOutputSystemTrees;
   IOSystemGraphs inputOutputSystemGraphs;
   IOSystemComplexNumbers inputOutputSystemComplexNumbers;
+  IOSystemCharArray inputOutputSystemCharArray;
 
   oneDimensionalArraysWorkFlow ODAWorkFlow;
 
@@ -42,6 +43,7 @@ public:
   void assertIOSystemTrees ();
   void assertIOSystemGraphs ();
   void assertIOSystemComplexNumbers ();
+  void assertIOSystemCharArray ();
 
   void assertOneDimensionalArraysWorkFlow ();
   void assertsortAlgorithmsOneDimensionalArray ();
@@ -107,6 +109,16 @@ void systemTestingWorkflow::assertIOSystemComplexNumbers () {
   results.maximLimit = true;
 
   __assert__.countTest ((char*)"assertIOSystemComplexNumbers", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
+void systemTestingWorkflow::assertIOSystemCharArray () {
+
+  limits<bool> results;
+
+  results.minimLimit = inputOutputSystemCharArray.classResponse();
+  results.maximLimit = true;
+
+  __assert__.countTest ((char*)"assertIOSystemCharArray", __assert__.assertPrimitiveDataTypes<bool>(results) );
 }
 
 void systemTestingWorkflow::assertOneDimensionalArraysWorkFlow () {
@@ -248,7 +260,8 @@ void RunSystemTests::run () {
   testingObject.assertIOSystemMatrices ();
   testingObject.assertIOSystemTrees ();
   testingObject.assertIOSystemGraphs ();
-
+  testingObject.assertIOSystemCharArray ();
+  
   testingObject.assertOneDimensionalArraysWorkFlow ();
 
   testingObject.assertMatricesWorkFlow ();

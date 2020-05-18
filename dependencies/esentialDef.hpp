@@ -123,9 +123,25 @@ public:
   void readComplexData (complexNumber * number);
   void outputComplexData (complexNumber * number);
 
-  bool classResponse () { return true; };
+  bool classResponse () { return true; }
 
   virtual ~IOSystemComplexNumbers () {}
+};
+
+class IOSystemCharArray {
+private:
+  errorsHandler __handler__;
+  validationRules __validations__;
+
+public: 
+  IOSystemCharArray () {}
+
+  void readCharArray (char charArray[]);
+  void outputCharArray (char charArray[]);
+
+  bool classResponse () { return true; }
+
+  virtual ~IOSystemCharArray () {}
 };
 
 class oneDimensionalArraysWorkFlow {
