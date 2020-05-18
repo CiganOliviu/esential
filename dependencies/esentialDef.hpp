@@ -136,7 +136,7 @@ private:
 public: 
   IOSystemCharArray () {}
 
-  void readCharArray (char charArray[]);
+  void readCharArray (char charArray[], int size);
   void outputCharArray (char charArray[]);
 
   bool classResponse () { return true; }

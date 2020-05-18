@@ -410,9 +410,21 @@ void IOSystemComplexNumbers::readComplexData (complexNumber * number) {
     scanf("%f", &number[iterator].imaginaryPart);
   }
 }
+
 void IOSystemComplexNumbers::outputComplexData (complexNumber *number) {
 
     std::cout << number->realPart << " " << number->imaginaryPart << '\n';
+}
+
+void IOSystemCharArray::readCharArray (char charArray[], int size) {
+
+  std::cin.getline(charArray, size);
+}
+
+void IOSystemCharArray::outputCharArray (char charArray[]) {
+
+  for (int iterator = 0; iterator < strlen(charArray); iterator++) 
+    std::cout << charArray[iterator] << " ";
 }
 
 template <class Type> Type oneDimensionalArraysWorkFlow::getMinimumValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
