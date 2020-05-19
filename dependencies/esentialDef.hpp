@@ -164,18 +164,23 @@ public:
   template <class Type> Type getOneDimensionalArrayElementsDifference (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> Type getOneDimensionalArrayElementsDivision (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> float getOneDimensionalArrayMean (oneDimensionalArrayType<Type> ODAObject);  
+
   template <class Type> void oneDimensionalArrayInitialization (oneDimensionalArrayType<Type> ODAObject, Type initializator); 
   template <class Type> bool checkIfSymetricOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void addValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, limits<Type> valueAndPosition);
   template <class Type> bool isValueInOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type value);
   template <class Type> void normalizeOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
+
   template <class Type> oneDimensionalArrayType<Type> convertNumberToOneDimensionalArray (int number);
+
   template <class Type> void boostUpOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type factor);
   template <class Type> void boostDownOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type factor);
+
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysSum (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysProduct (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDifference (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDivision (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
+  
   template <class Type> bool checkIfEqualOneDimensionalArrays (oneDimensionalArrayType<Type> firstODA, oneDimensionalArrayType<Type> secondODA);
 
   bool classResponse () { return true; }
@@ -220,14 +225,19 @@ public:
   template <class Type> Type getMatrixElementsProduct (matrixType<Type> matrixObject);
   template <class Type> Type getMatrixElementsDifference (matrixType<Type> matrixObject);
   template <class Type> Type getMatrixElementsDivision (matrixType<Type> matrixObject);
+
   template <class Type> void matrixInitialization (matrixType<Type> & matrixObject, Type value);
+
   template <class Type> void normalizeMatrix (matrixType<Type> & matrixObject);
+
   template <class Type> void boostUpMatrix (matrixType<Type> & matrixObject, Type factor); 
   template <class Type> void boostDownMatrix (matrixType<Type> & matrixObject, Type factor); 
+
   template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
   template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
   template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
   template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
+  
   template <class Type> oneDimensionalArrayType<Type> getMatrixMainDiagonal (matrixType<Type> matrixObject);
   template <class Type> oneDimensionalArrayType<Type> getMatrixAboveMainDiagonal (matrixType<Type> matrixObject);
   template <class Type> oneDimensionalArrayType<Type> getMatrixUnderMainDiagonal (matrixType<Type> matrixObject);
