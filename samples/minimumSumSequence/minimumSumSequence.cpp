@@ -1,6 +1,6 @@
 #include "../../esential.hpp"
 
-int maximumSequenceSum (oneDimensionalArrayType<int> ODA) {
+int minimumSequenceSum (oneDimensionalArrayType<int> ODA) {
 
 	errorsHandler __handler__;
 	int sum = 0;
@@ -11,7 +11,7 @@ int maximumSequenceSum (oneDimensionalArrayType<int> ODA) {
 		
 		sum += ODA.oneDimensionalArray[iterator];
 
-		if (sum <= 0)
+		if (sum >= 0)
 			sum = 0;	
 	}
 
@@ -27,7 +27,7 @@ int main (int argc, char const * argv[]) {
 
 	int result;
 
-	result = maximumSequenceSum (Data);
+	result = minimumSequenceSum (Data);
 
 	std::cout << result;
 
