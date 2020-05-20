@@ -716,6 +716,20 @@ void charArrayWorkFlowTesting::assertGetNumberOfVowelsInCharArray () {
 	__assert__.countTest ((char*)"getNumberOfVowelsInCharArray", __assert__.assertPrimitiveDataTypes<int>(results) );
 }
 
+void charArrayWorkFlowTesting::assertDeleteCharFromCharArray () {
+
+	char charArrayOne[120] = "just";
+ 
+	limits<int> results;
+
+	CharArrayWF.deleteCharFromCharArray(charArrayOne, 2);
+
+	results.minimLimit = CharArrayWF.getCharArrayLength (charArrayOne);
+	results.maximLimit = 3;
+
+	__assert__.countTest ((char*)"deleteCharFromCharArray", __assert__.assertPrimitiveDataTypes<int>(results) );
+}
+
 void charArrayWorkFlowTesting::assertConvertToLowerCase () {
 
 	char character = 'A';
@@ -819,6 +833,7 @@ public:
 		CAWF.assertSearchCharInCharArray ();
 		CAWF.assertGetNumberOfConsonantsInCharArray ();
 		CAWF.assertGetNumberOfVowelsInCharArray ();
+		CAWF.assertDeleteCharFromCharArray ();
 		CAWF.assertConvertToLowerCase ();
 		CAWF.assertConvertToUpperCase ();
 

@@ -155,6 +155,7 @@ public:
 	void assertSearchCharInCharArray ();
 	void assertGetNumberOfConsonantsInCharArray ();
 	void assertGetNumberOfVowelsInCharArray ();
+	void assertDeleteCharFromCharArray ();
 	void assertConvertToLowerCase ();
 	void assertConvertToUpperCase ();
 

@@ -1981,6 +1981,12 @@ void charArrayWorkFlow::removeCharFromString (char * string, char value) {
   *stringDest = '\0';
 }
 
+void charArrayWorkFlow::deleteCharFromCharArray (char charArray[], int position) {
+
+    for (int iterator = position; iterator < strlen(charArray); iterator++)
+      charArray[iterator] = charArray[iterator + 1];
+}
+
 void charArrayWorkFlow::convertToLowerCase (char & character) {
 
   if (character <= 97 && character != ' ')
