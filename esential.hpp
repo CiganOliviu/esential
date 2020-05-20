@@ -1983,6 +1983,8 @@ void charArrayWorkFlow::removeCharFromString (char * string, char value) {
 
 void charArrayWorkFlow::deleteCharFromCharArray (char charArray[], int position) {
 
+    if (__validations__.isNegative(getCharArrayLength(charArray))) throw systemException ("Unable to process negative length in void charArrayWorkFlow::deleteCharFromCharArray (char charArray[], int position);");
+
     for (int iterator = position; iterator < strlen(charArray); iterator++)
       charArray[iterator] = charArray[iterator + 1];
 }
