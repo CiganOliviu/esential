@@ -49,6 +49,20 @@ template <class Type> bool validationRules::isNotNegativeOrZero (Type parameter)
   return true;
 }
 
+template <class Type> bool validationRules::isBigger (Type parameterOne, Type parameterTwo) {
+  
+  if (parameterOne > parameterTwo) return true;
+
+  return false;
+}
+
+template <class Type> bool validationRules::isLower (Type parameterOne, Type parameterTwo) {
+  
+  if (parameterOne < parameterTwo) return false;
+
+  return true;
+}
+
 template <class Type> bool validationRules::isNull (Type parameter) {
 
   if (parameter == NULL) return true;
@@ -185,6 +199,16 @@ template <class Type> void errorsHandler::equalityHandlerMatrices (matrixType<Ty
   if (__validations__.isNotEqualParameterBased<Type>(MTObjectOne.endLinePoint, MTObjectTwo.endLinePoint)) throw systemException (__errorMessages__.unequalEndLinePointsError);
   if (__validations__.isNotEqualParameterBased<Type>(MTObjectOne.startColumnPoint, MTObjectTwo.startColumnPoint)) throw systemException (__errorMessages__.unequalStartColumnPointsError);
   if (__validations__.isNotEqualParameterBased<Type>(MTObjectOne.endColumnPoint, MTObjectTwo.endColumnPoint)) throw systemException (__errorMessages__.unequalEndColumnPointsError);
+}
+
+template <class Type> void errorsHandler::checkLengthHandler (iteratorObject<Type> ItObject, int length, const char coreFunction[]) {
+    
+  int ItObjLength = (sizeof(ItObject.iteratorArray)/sizeof(*ItObject.iteratorArray));
+
+  __errorMessages__.unequalLengthError += coreFunction;
+
+  if (__validations__.isEqualParameterBased(ItObjLength, length)) throw systemException (__errorMessages__.unequalLengthError);
+  if (__validations__.isBigger(ItObjLength, length)) throw systemException (__errorMessages__.unequalLengthError);
 }
 
 void errorsHandler::standardFileHandler (std::ifstream & file, const char coreFunction[]) {
