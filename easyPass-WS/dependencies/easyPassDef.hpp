@@ -23,10 +23,13 @@ SOFTWARE.
 */
 
 #include "coreDependencies.hpp"
-#include "dataStructures.hpp"
+#include "dataStructures/dataStructures.hpp"
+#include "dataStructures/calculationStructures.hpp"
+#include "dataStructures/geometryStructures.hpp"
 #include "errorMessages.hpp"
 
 using namespace dataStructures;
+using namespace calculationStructures;
 
 namespace easyPassDefinitions {
 

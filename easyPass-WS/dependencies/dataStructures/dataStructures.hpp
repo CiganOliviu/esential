@@ -116,58 +116,6 @@ namespace dataStructures {
     virtual ~graphType () {}
   };
 
-  template <class Type> class limits {
-  private:
-    int standardLimitSize = 0;
-
-  public:
-    limits () {}
-
-    Type minimLimit = standardLimitSize;
-    Type maximLimit = standardLimitSize;
-
-    virtual ~limits () {}
-  };
-
-  class linearEquation {
-
-  public:
-    linearEquation () {};
-
-    float slope;
-    float y_intercept;
-    float root;
-
-    virtual ~linearEquation () {}
-  };
-
-  class quadraticEquation {
-
-  public:
-    quadraticEquation () {}
-
-    float coefficient_a;
-    float coefficient_b;
-    float coefficient_c;
-    limits<float> roots;
-
-    virtual ~quadraticEquation () {}
-  };
-
-  class complexNumber {
-  private:
-    float standardComplexNumber = 1;
-
-  public:
-    complexNumber () {}
-
-    unsigned int complexNumberLength = standardComplexNumber;
-    float realPart = standardComplexNumber;
-    float imaginaryPart = standardComplexNumber;
-
-    virtual ~complexNumber () {}
-  };
-
   template <class Type> class linkedCentrum {
 
   public:
