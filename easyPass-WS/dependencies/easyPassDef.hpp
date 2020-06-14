@@ -27,6 +27,7 @@ SOFTWARE.
 #include "dataStructures/calculationStructures.hpp"
 #include "dataStructures/geometryStructures.hpp"
 #include "errorMessages.hpp"
+#include "preprocessors.hpp"
 
 using namespace dataStructures;
 using namespace calculationStructures;
