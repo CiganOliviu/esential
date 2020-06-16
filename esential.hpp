@@ -423,8 +423,17 @@ void IOSystemCharArray::readCharArray (char charArray[], int size) {
 
 void IOSystemCharArray::outputCharArray (char charArray[]) {
 
-  for (int iterator = 0; iterator < strlen(charArray); iterator++) 
+  for (int iterator = 0; iterator < strlen(charArray); iterator++)
     std::cout << charArray[iterator] << " ";
+}
+
+template <class Type> Type IOSystemDirectFlow::readDirectFlowData () {
+
+  Type result;
+
+  std::cin >> result;
+
+  return result;
 }
 
 template <class Type> Type oneDimensionalArraysWorkFlow::getMinimumValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
@@ -714,7 +723,7 @@ template <class Type> void oneDimensionalArraysWorkFlow::boostDownOneDimensional
    __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
-    ODAObject.oneDimensionalArray[iterator] /= factor; 
+    ODAObject.oneDimensionalArray[iterator] /= factor;
 }
 
 template <class Type> oneDimensionalArrayType<Type> oneDimensionalArraysWorkFlow::getOneDimensionalArraysSum (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo) {
@@ -1208,13 +1217,13 @@ template <class Type> oneDimensionalArrayType<Type> matricesWorkFlow::getMatrixO
 }
 
 template <class Type> bool matricesWorkFlow::checkIfEqualMatrices (matrixType<Type> matrixOne, matrixType<Type> matrixTwo) {
-  
+
   __handler__.equalityHandlerMatrices (matrixOne, matrixTwo);
 
   for (int iterator = matrixOne.startLinePoint; iterator < matrixOne.lineRefference + matrixOne.endPoint; iterator++)
     for (int jiterator = matrixOne.startColumnPoint; jiterator < matrixOne.columnRefference; jiterator++)
       if (matrixOne.matrix[iterator][jiterator] != matrixTwo.matrix[iterator][jiterator])
-        return false; 
+        return false;
 
   return true;
 }
@@ -1239,10 +1248,10 @@ template <class Type> bool searchEnginesWorkFlow::findValueByBinarySearch (oneDi
 }
 
 template <class Type> bool searchEnginesWorkFlow::findValueByLinearSearchOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch) {
-  
+
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
 
-  for (int iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++) 
+  for (int iterator = ODAObject.startPoint; iterator < ODAObject.length + ODAObject.endPoint; iterator++)
       if (valueToSearch == ODAObject.oneDimensionalArray[iterator])
         return true;
 
@@ -1250,7 +1259,7 @@ template <class Type> bool searchEnginesWorkFlow::findValueByLinearSearchOneDime
 }
 
 template <class Type> bool searchEnginesWorkFlow::findValueByLinearSearchMatrix (matrixType<Type> MObject, Type valueToSearch) {
-  
+
   __handler__.standardHandlerMatrix (MObject, __PRETTY_FUNCTION__);
 
   for (size_t iterator = MObject.startLinePoint; iterator < MObject.lineRefference + MObject.endLinePoint; iterator++)
@@ -1542,7 +1551,7 @@ float equationsWorkFlow::getRootLinearEquation (linearEquation __LEquation__) {
     else throw systemException ("Imcompatible equation in float fundamentalAlgorithmsWorkFlow::getRootLinearEquation (linearEquation __LEquation__);");
 
   float result = float(-__LEquation__.y_intercept / __LEquation__.slope);
-  
+
   return result;
 }
 
@@ -1553,7 +1562,7 @@ float equationsWorkFlow::getValueLinearEquation (linearEquation __LEquation__) {
     else throw systemException ("Imcompatible equation in float fundamentalAlgorithmsWorkFlow::getValueLinearEquation (linearEquation __LEquation__);");
 
   float result = (( __LEquation__.slope * __LEquation__.root) + __LEquation__.y_intercept );
-  
+
   return result;
 }
 
@@ -1886,7 +1895,7 @@ void charArrayWorkFlow::concatCharArrays (char charArrayOne[], char charArrayTwo
 
   if (__validations__.isNegative(getCharArrayLength(charArrayOne))) throw systemException ("Unable to process negative length in void charArrayWorkFlow::concatCharArrays (char charArrayOne[], char charArrayTwo[]);");
   if (__validations__.isNegative(getCharArrayLength(charArrayTwo))) throw systemException ("Unable to process negative length in void charArrayWorkFlow::concatCharArrays (char charArrayOne[], char charArrayTwo[]);");
-  
+
   unsigned int charArrayOneSize;
 
   for (charArrayOneSize = 0; charArrayOne[charArrayOneSize]; charArrayOneSize++);
@@ -1922,7 +1931,7 @@ int charArrayWorkFlow::compareCharArrays (char charArrayOne[], char charArrayTwo
   for (size = 0; charArrayOne[size] && charArrayTwo[size] && charArrayOne[size] != charArrayTwo[size]; size++);
 
   if (charArrayOne[size] && charArrayTwo[size]) return 0;
-  
+
   return charArrayOne[size] - charArrayTwo[size];
 }
 
@@ -1945,13 +1954,13 @@ int charArrayWorkFlow::getNumberOfVowelsInCharArray (char charArray[]) {
 
   for (unsigned int iterator = 0; iterator < getCharArrayLength(charArray); iterator++)
     if (charArray[iterator] == 'a' || charArray[iterator] == 'e' || charArray[iterator] == 'i' || charArray[iterator] == 'o' || charArray[iterator] == 'u')
-      result += 1;  
+      result += 1;
 
   return result;
 }
 
 int charArrayWorkFlow::getNumberOfConsonantsInCharArray (char charArray[]) {
-  
+
   if (__validations__.isNegative(getCharArrayLength(charArray))) throw systemException ("Unable to process negative length in int charArrayWorkFlow::getNumberOfConsonantsInCharArray (char charArray[]);");
 
   int result = 0;

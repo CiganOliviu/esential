@@ -10,6 +10,7 @@ private:
   IOSystemGraphs inputOutputSystemGraphs;
   IOSystemComplexNumbers inputOutputSystemComplexNumbers;
   IOSystemCharArray inputOutputSystemCharArray;
+  IOSystemDirectFlow inputOutputSystemDirectFlow;
 
   oneDimensionalArraysWorkFlow ODAWorkFlow;
 
@@ -44,6 +45,7 @@ public:
   void assertIOSystemGraphs ();
   void assertIOSystemComplexNumbers ();
   void assertIOSystemCharArray ();
+  void assertIOSystemDirectFlow ();
 
   void assertOneDimensionalArraysWorkFlow ();
   void assertsortAlgorithmsOneDimensionalArray ();
@@ -119,6 +121,16 @@ void systemTestingWorkflow::assertIOSystemCharArray () {
   results.maximLimit = true;
 
   __assert__.countTest ((char*)"assertIOSystemCharArray", __assert__.assertPrimitiveDataTypes<bool>(results) );
+}
+
+void systemTestingWorkflow::assertIOSystemDirectFlow () {
+
+  limits<bool> results;
+
+  results.minimLimit = inputOutputSystemDirectFlow.classResponse();
+  results.maximLimit = true;
+
+  __assert__.countTest ((char*)"assertIOSystemDirectFlow", __assert__.assertPrimitiveDataTypes<bool>(results) );
 }
 
 void systemTestingWorkflow::assertOneDimensionalArraysWorkFlow () {
@@ -261,13 +273,14 @@ void RunSystemTests::run () {
   testingObject.assertIOSystemTrees ();
   testingObject.assertIOSystemGraphs ();
   testingObject.assertIOSystemCharArray ();
-  
+  testingObject.assertIOSystemDirectFlow ();
+
   testingObject.assertOneDimensionalArraysWorkFlow ();
 
   testingObject.assertMatricesWorkFlow ();
 
   testingObject.assertSearchEnginesWorkFlow ();
-  
+
   testingObject.assertFundamentalAlgorithmsWorkFlow ();
 
   testingObject.assertComplexNumbersWorkFlow ();
@@ -279,7 +292,7 @@ void RunSystemTests::run () {
   testingObject.assertCheckersWorkFlow ();
 
   testingObject.assertTreesWorkFlow ();
-  
+
   testingObject.assertGraphsWorkFlow ();
 
   testingObject.assertCharArrayWorkFlow ();

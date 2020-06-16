@@ -133,7 +133,7 @@ private:
   errorsHandler __handler__;
   validationRules __validations__;
 
-public: 
+public:
   IOSystemCharArray () {}
 
   void readCharArray (char charArray[], int size);
@@ -142,6 +142,19 @@ public:
   bool classResponse () { return true; }
 
   virtual ~IOSystemCharArray () {}
+};
+
+class IOSystemDirectFlow {
+private:
+
+public:
+  IOSystemDirectFlow () {}
+
+  template <class Type> Type readDirectFlowData ();
+
+  bool classResponse () { return true; }
+
+  virtual ~IOSystemDirectFlow () {}
 };
 
 class oneDimensionalArraysWorkFlow {
@@ -163,9 +176,9 @@ public:
   template <class Type> Type getOneDimensionalArrayElementsProduct (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> Type getOneDimensionalArrayElementsDifference (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> Type getOneDimensionalArrayElementsDivision (oneDimensionalArrayType<Type> ODAObject);
-  template <class Type> float getOneDimensionalArrayMean (oneDimensionalArrayType<Type> ODAObject);  
+  template <class Type> float getOneDimensionalArrayMean (oneDimensionalArrayType<Type> ODAObject);
 
-  template <class Type> void oneDimensionalArrayInitialization (oneDimensionalArrayType<Type> ODAObject, Type initializator); 
+  template <class Type> void oneDimensionalArrayInitialization (oneDimensionalArrayType<Type> ODAObject, Type initializator);
   template <class Type> bool checkIfSymetricOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject);
   template <class Type> void addValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, limits<Type> valueAndPosition);
   template <class Type> bool isValueInOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type value);
@@ -180,7 +193,7 @@ public:
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysProduct (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDifference (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
   template <class Type> oneDimensionalArrayType<Type> getOneDimensionalArraysDivision (oneDimensionalArrayType<Type> ODAObjectOne, oneDimensionalArrayType<Type> ODAObjectTwo);
-  
+
   template <class Type> bool checkIfEqualOneDimensionalArrays (oneDimensionalArrayType<Type> firstODA, oneDimensionalArrayType<Type> secondODA);
 
   bool classResponse () { return true; }
@@ -230,14 +243,14 @@ public:
 
   template <class Type> void normalizeMatrix (matrixType<Type> & matrixObject);
 
-  template <class Type> void boostUpMatrix (matrixType<Type> & matrixObject, Type factor); 
-  template <class Type> void boostDownMatrix (matrixType<Type> & matrixObject, Type factor); 
+  template <class Type> void boostUpMatrix (matrixType<Type> & matrixObject, Type factor);
+  template <class Type> void boostDownMatrix (matrixType<Type> & matrixObject, Type factor);
 
   template <class Type> matrixType<Type> getMatricesSum (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
   template <class Type> matrixType<Type> getMatricesProduct (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
   template <class Type> matrixType<Type> getMatricesDifference (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
   template <class Type> matrixType<Type> getMatricesDivision (matrixType<Type> & matrixObjectOne, matrixType<Type> matrixObjectTwo);
-  
+
   template <class Type> oneDimensionalArrayType<Type> getMatrixMainDiagonal (matrixType<Type> matrixObject);
   template <class Type> oneDimensionalArrayType<Type> getMatrixAboveMainDiagonal (matrixType<Type> matrixObject);
   template <class Type> oneDimensionalArrayType<Type> getMatrixUnderMainDiagonal (matrixType<Type> matrixObject);
@@ -270,9 +283,9 @@ public:
   template <class Type> bool findValueByBinarySearch (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
   template <class Type> bool findValueByLinearSearchOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject, Type valueToSearch);
   template <class Type> bool findValueByLinearSearchMatrix (matrixType<Type> MObject, Type valueToSearch);
-  
+
   bool classResponse () { return true; }
-  
+
   virtual ~searchEnginesWorkFlow () {}
 };
 
@@ -388,7 +401,7 @@ public:
   bool isFibonacci (int parameter);
 
   bool classResponse () { return true; }
-  
+
   virtual ~checkersWorkFlow () {}
 };
 
@@ -450,16 +463,16 @@ public:
   void copyCharArray (char charArrayOne[], char charArrayTwo[]);
   int compareCharArrays (char charArrayOne[], char charArrayTwo[]);
   bool searchCharInCharArray (char charArray[], char characterToSearch);
-  
+
   int getNumberOfConsonantsInCharArray (char charArray[]);
   int getNumberOfVowelsInCharArray (char charArray[]);
-  
+
   void removeCharFromString (char * string, char value);
   void deleteCharFromCharArray (char charArray[], int position);
 
   void convertToLowerCase (char & character);
   void convertToUpperCase (char & character);
-  
+
   virtual ~charArrayWorkFlow () {}
 
   bool classResponse () { return true; }

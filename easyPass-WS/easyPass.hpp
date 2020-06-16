@@ -50,14 +50,14 @@ template <class Type> bool validationRules::isNotNegativeOrZero (Type parameter)
 }
 
 template <class Type> bool validationRules::isBigger (Type parameterOne, Type parameterTwo) {
-  
+
   if (parameterOne > parameterTwo) return true;
 
   return false;
 }
 
 template <class Type> bool validationRules::isLower (Type parameterOne, Type parameterTwo) {
-  
+
   if (parameterOne < parameterTwo) return false;
 
   return true;
@@ -202,7 +202,7 @@ template <class Type> void errorsHandler::equalityHandlerMatrices (matrixType<Ty
 }
 
 template <class Type> void errorsHandler::checkLengthHandler (iteratorObject<Type> ItObject, int length, const char coreFunction[]) {
-    
+
   int ItObjLength = (sizeof(ItObject.iteratorArray)/sizeof(*ItObject.iteratorArray));
 
   __errorMessages__.unequalLengthError += coreFunction;

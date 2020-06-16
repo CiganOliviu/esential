@@ -123,7 +123,7 @@ namespace easyPassDefinitions {
   class lowLevelSupport {
   private:
     errorsHandler __handler__;
-    
+
   public:
     lowLevelSupport () {}
 
