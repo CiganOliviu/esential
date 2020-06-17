@@ -146,11 +146,14 @@ public:
 
 class IOSystemDirectFlow {
 private:
+  errorsHandler __handler__;
 
 public:
   IOSystemDirectFlow () {}
 
   template <class Type> Type readDirectFlowData ();
+  template <class Type> oneDimensionalArrayType<Type> readDirectFlowOneDimensionalArray ();
+  template <class Type> matrixType<Type> readDirectFlowMatrix ();
 
   bool classResponse () { return true; }
 

@@ -436,6 +436,27 @@ template <class Type> Type IOSystemDirectFlow::readDirectFlowData () {
   return result;
 }
 
+template <class Type> oneDimensionalArrayType<Type> IOSystemDirectFlow::readDirectFlowOneDimensionalArray () {
+
+  oneDimensionalArrayType<Type> ODAObject;
+
+  for (size_t iterator = ODAObject.startPoint; iterator < ODAObject.length; iterator++)
+    std::cin >> ODAObject.oneDimensionalArray[iterator];
+
+  return ODAObject;
+}
+
+template <class Type> matrixType<Type> IOSystemDirectFlow::readDirectFlowMatrix () {
+
+  matrixType<Type> matrixObject;
+
+  for (size_t iterator = matrixObject.startLinePoint; iterator < matrixObject.lineRefference; iterator++)
+    for (size_t jiterator = matrixObject.startColumnPoint; jiterator < matrixObject.columnRefference; jiterator++)
+      std::cin >> matrixObject.matrix[iterator][jiterator];
+
+  return matrixObject;
+}
+
 template <class Type> Type oneDimensionalArraysWorkFlow::getMinimumValueOneDimensionalArray (oneDimensionalArrayType<Type> ODAObject) {
 
   __handler__.standardHandlerOneDimensionalArray (ODAObject, __PRETTY_FUNCTION__);
