@@ -420,18 +420,32 @@ template <class Type> void lowLevelSupport::putsTree (binaryTreeType<Type> * roo
   }
 }
 
-template <class Type> Type checkAndSupport::returnTheMaximumParameter (limits<Type> limitsObject) {
+template <class Type> Type checkAndSupport::returnTheMaximumParameterWithObject (limits<Type> limitsObject) {
 
   if (limitsObject.minimLimit >= limitsObject.maximLimit) return limitsObject.minimLimit;
 
   return limitsObject.maximLimit;
 }
 
-template <class Type> Type checkAndSupport::returnTheMinimumParameter (limits<Type> limitsObject) {
+template <class Type> Type checkAndSupport::returnTheMaximumParameterWithoutObject (Type parameterOne, Type parameterTwo) {
+
+  if (parameterOne > parameterTwo) return parameterOne;
+
+  return parameterTwo;
+}
+
+template <class Type> Type checkAndSupport::returnTheMinimumParameterWithObject (limits<Type> limitsObject) {
 
   if (limitsObject.minimLimit <= limitsObject.maximLimit) return limitsObject.minimLimit;
 
   return limitsObject.maximLimit;
+}
+
+template <class Type> Type checkAndSupport::returnTheMinimumParameterWithoutObject (Type parameterOne, Type parameterTwo) {
+
+  if (parameterOne < parameterTwo) return parameterOne;
+
+  return parameterTwo;
 }
 
 template <class Type> void checkAndSupport::interchangeValues (Type & parameterOne, Type & parameterTwo) {

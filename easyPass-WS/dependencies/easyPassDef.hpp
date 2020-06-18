@@ -151,8 +151,11 @@ namespace easyPassDefinitions {
   public:
     checkAndSupport () {}
 
-    template <class Type> Type returnTheMaximumParameter (limits<Type> limitsObject);
-    template <class Type> Type returnTheMinimumParameter (limits<Type> limitsObject);
+    template <class Type> Type returnTheMaximumParameterWithObject (limits<Type> limitsObject);
+    template <class Type> Type returnTheMaximumParameterWithoutObject (Type parameterOne, Type parameterTwo);
+    template <class Type> Type returnTheMinimumParameterWithObject (limits<Type> limitsObject);
+    template <class Type> Type returnTheMinimumParameterWithoutObject (Type parameterOne, Type parameterTwo);
+
     template <class Type> void interchangeValues (Type & parameterOne, Type & parameterTwo);
 
     virtual ~checkAndSupport () {}

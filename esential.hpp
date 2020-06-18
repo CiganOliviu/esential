@@ -489,7 +489,7 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getMinimumValueOneDimen
     returningIntervalCaseOne.minimLimit = ODAObject.oneDimensionalArray[positionLeft];
     returningIntervalCaseOne.maximLimit = ODAObject.oneDimensionalArray[positionRight];
 
-    return __support__.returnTheMinimumParameter<Type> (returningIntervalCaseOne);
+    return __support__.returnTheMinimumParameterWithObject<Type> (returningIntervalCaseOne);
   } else {
 
     middle = (interval.minimLimit + interval.maximLimit) / 2;
@@ -503,7 +503,7 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getMinimumValueOneDimen
     leftRightLimits.minimLimit = getMinimumValueOneDimensionalArrayDivideEtEmpera<Type> (leftWing, ODAObject);
     leftRightLimits.maximLimit = getMinimumValueOneDimensionalArrayDivideEtEmpera<Type> (rightWing, ODAObject);
 
-    return __support__.returnTheMinimumParameter<Type> (leftRightLimits);
+    return __support__.returnTheMinimumParameterWithObject<Type> (leftRightLimits);
   }
 }
 
@@ -539,7 +539,7 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getMaximumValueOneDimen
     returningIntervalCaseOne.minimLimit = ODAObject.oneDimensionalArray[positionLeft];
     returningIntervalCaseOne.maximLimit = ODAObject.oneDimensionalArray[positionRight];
 
-    return __support__.returnTheMaximumParameter<Type> (returningIntervalCaseOne);
+    return __support__.returnTheMaximumParameterWithObject<Type> (returningIntervalCaseOne);
   } else {
 
     middle = (interval.minimLimit + interval.maximLimit) / 2;
@@ -553,7 +553,7 @@ template <class Type> Type oneDimensionalArraysWorkFlow::getMaximumValueOneDimen
     leftRightLimits.minimLimit = getMaximumValueOneDimensionalArrayDivideEtEmpera<Type> (leftWing, ODAObject);
     leftRightLimits.maximLimit = getMaximumValueOneDimensionalArrayDivideEtEmpera<Type> (rightWing, ODAObject);
 
-    return __support__.returnTheMaximumParameter<Type> (leftRightLimits);
+    return __support__.returnTheMaximumParameterWithObject<Type> (leftRightLimits);
   }
 }
 
