@@ -334,30 +334,32 @@ public:
 };
 
 class numbersPropertiesWorkFlow {
-  private:
-    errorsHandler __handler__;
-    validationRules __validations__;
-    fundamentalAlgorithmsWorkFlow __algos__;
+private:
+  errorsHandler __handler__;
+  validationRules __validations__;
+  fundamentalAlgorithmsWorkFlow __algos__;
 
-  public:
+public:
 
-    numbersPropertiesWorkFlow () {}
+  numbersPropertiesWorkFlow () {}
 
-    int getTheLargestCommonDivisor (limits<int> interval);
-    int getTheLargestCommonDivisorRecursive (limits<int> interval);
-    int getTheLargestCommonDivisorOfTwoNumbers (int numberOne, int numberTwo);
-    int getLeastCommonMultiple (limits<int> interval);
-    int getLeastCommonMultipleOfTwoNumbers (int numberOne, int numberTwo);
-    int getPrimevalue (int parameter);
-    int reverseNumber (int parameter);
-    int getPalindromValue (int parameter);
-    float getMeanOfTwoNumbers (float parameterOne, float parameterTwo);
-    void  interchangeValuesViaPointers (int * parameterOne, int * parameterTwo);
-    void interchangeValuesViaDisclosiveDisjunction (int & parameterOne, int & parameterTwo);
+  int getTheLargestCommonDivisor (limits<int> interval);
+  int getTheLargestCommonDivisorRecursive (limits<int> interval);
+  int getTheLargestCommonDivisorOfTwoNumbers (int numberOne, int numberTwo);
+  int getLeastCommonMultiple (limits<int> interval);
+  int getLeastCommonMultipleOfTwoNumbers (int numberOne, int numberTwo);
+  int getPrimevalue (int parameter);
+  int reverseNumber (int parameter);
+  int getPalindromValue (int parameter);
+  float getMeanOfTwoNumbers (float parameterOne, float parameterTwo);
+  void  interchangeValuesViaPointers (int * parameterOne, int * parameterTwo);
+  void interchangeValuesViaDisclosiveDisjunction (int & parameterOne, int & parameterTwo);
+  int getDigitsSumForNumber (int number);
+  int getDigitsProductForNumber (int number);
 
-    bool classResponse () { return true; };
+  bool classResponse () { return true; };
 
-    virtual ~numbersPropertiesWorkFlow () {}
+  virtual ~numbersPropertiesWorkFlow () {}
 };
 
 class equationsWorkFlow {

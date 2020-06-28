@@ -1565,6 +1565,42 @@ void numbersPropertiesWorkFlow::interchangeValuesViaDisclosiveDisjunction (int &
   parameterOne = parameterOne - parameterTwo;
 }
 
+int numbersPropertiesWorkFlow::getDigitsSumForNumber (int number) {
+
+  __handler__.zeroNumberHandler (number, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (number, __PRETTY_FUNCTION__);
+
+  int result = 0;
+
+  while (number > 0) {
+
+    digit = number % 10;
+    result += digit;
+
+    number /= 10;
+  }
+
+  return result;
+}
+
+int numbersPropertiesWorkFlow::getDigitsProductForNumber (int number) {
+
+  __handler__.zeroNumberHandler (number, __PRETTY_FUNCTION__);
+  __handler__.negativeNumberHandler (number, __PRETTY_FUNCTION__);
+
+  int result = 1;
+
+  while (number > 0) {
+
+    digit = number % 10;
+    result *= digit;
+
+    number /= 10;
+  }
+
+  return result;
+}
+
 float equationsWorkFlow::getRootLinearEquation (linearEquation __LEquation__) {
 
   if (__validations__.isZero(__LEquation__.slope))
