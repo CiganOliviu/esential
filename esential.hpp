@@ -1571,7 +1571,8 @@ int numbersPropertiesWorkFlow::getDigitsSumForNumber (int number) {
   __handler__.negativeNumberHandler (number, __PRETTY_FUNCTION__);
 
   int result = 0;
-
+  int digit = 0;
+  
   while (number > 0) {
 
     digit = number % 10;
@@ -1589,6 +1590,7 @@ int numbersPropertiesWorkFlow::getDigitsProductForNumber (int number) {
   __handler__.negativeNumberHandler (number, __PRETTY_FUNCTION__);
 
   int result = 1;
+  int digit = 0;
 
   while (number > 0) {
 
