@@ -1835,6 +1835,8 @@ template <class Type> bool treesWorkFlow::convertToMirror (binaryTreeType<Type> 
   convertToMirror (treeObject->rightLeaf);
 
   std::swap (treeObject->leftLeaf, treeObject->rightLeaf);
+
+  return true;
 }
 
 template <class Type> void graphsWorkFlow::royWarshallAlgo (graphType<Type> & graphObject) {
